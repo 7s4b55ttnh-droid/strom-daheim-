@@ -90,6 +90,16 @@ select{width:100%;font:inherit;color:var(--ink);background:var(--soft);border:0;
 .kp div{background:var(--soft);border-radius:18px;padding:20px 18px}
 .kp b{display:block;font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:6px}
 .kp span{font-size:.86rem;color:var(--mut);line-height:1.3;display:block}
+#ctl .cq{padding-bottom:16px;border-bottom:1px solid var(--line)}
+#ctl .chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+#ctl .chips button{padding:7px 12px;border-radius:999px;background:var(--soft);color:var(--ink);font-size:.84rem;font-weight:500}
+#ctl .chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chint{font-size:.84rem;color:var(--mut);margin:4px 0 0;line-height:1.4}
+.verdict{background:var(--pan);border-radius:20px;padding:18px 20px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.verdict p{font-size:1.08rem;line-height:1.45;margin-top:6px}
+.help{border:0!important;margin-top:2px}.help summary{padding:6px 0;font-size:.88rem;font-weight:500;color:var(--sky);justify-content:flex-start;gap:4px}
+.help summary:after{display:none}.help summary:before{content:"ⓘ ";}
+.help p{font-size:.9rem;color:var(--mut)}
 /* Geräte */
 .dv{margin-bottom:18px}.dv:last-child{margin-bottom:0}
 .dh{display:flex;justify-content:space-between;gap:12px;font-size:.98rem;align-items:baseline}.dh b{font-weight:600}
@@ -192,12 +202,12 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
     <div id="ctl"></div>
     <p class="upd" style="margin-top:18px">Orientierung für den Strompreis: Am 25.10.2026 lag die Grundversorgung im Schnitt bei 40,39 ct/kWh, der günstigste Tarif bei 31,13 ct/kWh (3.500 kWh/Jahr, stromauskunft.de).</p>
   </div>
-  <div class="kp">
+  <div style="display:grid;gap:12px"><div class="verdict"><span class="eyebrow">Dein Ergebnis</span><p id="verdict" aria-live="polite"></p></div><div class="kp">
     <div><b id="k1"></b><span>Ersparnis im ersten Jahr</span></div>
     <div><b id="k2"></b><span>bis sich die Anlage bezahlt hat</span></div>
     <div><b id="k3"></b><span>Solarstrom, den du selbst nutzt</span></div>
     <div><b id="k4"></b><span>Gewinn nach 15 Jahren</span></div>
-  </div>
+  </div><details class="help"><summary>So rechnen wir</summary><p>Ertrag: 900 kWh pro kWp und Jahr bei Südausrichtung, 10 % Systemverluste, verteilt über einen durchschnittlichen Tag. Selbst genutzt wird, was gleichzeitig mit deinem Grundverbrauch anfällt; der Rest fließt ohne Vergütung ins Netz. Über 15 Jahre: Strompreis +2 % und Modulleistung −0,5 % pro Jahr. Dein echter Ertrag hängt von Dach, Schatten und Alltag ab.</p></details></div>
 </div>
 </div></section>
 
@@ -353,7 +363,8 @@ const $=s=>document.querySelector(s),fm=(n,d=0)=>n.toLocaleString('de-DE',{maxim
 const S={wp:800,base:250,price:35,cost:500,t:4,o:1};try{Object.assign(S,JSON.parse(localStorage.getItem('ww')||'{}'))}catch(e){}
 const cfg=[['wp','Leistung der Module','Wp',400,2000,100],['base','Grundverbrauch im Haushalt','W',100,600,10],['price','Strompreis','ct/kWh',25,45,1],['cost','Anschaffung','€',200,1500,10]];
 const U={};cfg.forEach(c=>U[c[0]]=c[2]);
-$('#ctl').innerHTML=cfg.map(([k,l,u,a,b,s])=>`<label>${l}<output id="o${k}"></output><input type="range" id="r${k}" min="${a}" max="${b}" step="${s}" value="${S[k]}"></label>`).join('')+`<label>Ausrichtung<select id="ori"><option value="1">Süd, geneigt (ideal)</option><option value="0.8">Ost oder West, geneigt</option><option value="0.72">Süd, senkrecht am Geländer</option><option value="0.6">Ost oder West, senkrecht</option><option value="0.45">Nord oder stark verschattet</option></select></label>`;$('#ori').value=S.o;
+const HINT={wp:['Steht auf dem Typenschild der Module oder im Produkttitel, z. B. „2 × 450 W“ = 900 Wp. Erlaubt sind bis 2.000 Wp.',[[800,'2 Module'],[900,'Standard-Set'],[1800,'4 Module']]],base:['Was dauerhaft läuft: Kühlschrank, Router, Standby. Messbar nachts am Zähler. Typisch 150–300 W.',[[150,'Single'],[250,'Paar'],[400,'Familie']]],price:['Arbeitspreis auf deiner Stromrechnung, brutto. Grundversorgung im Schnitt 40,39 ct, günstigster Tarif 31,13 ct (25.10.2026).',[[31,'Günstig'],[35,'Durchschnitt'],[40,'Grundversorgung']]],cost:['Was das Set inklusive Halterung kostet. Komplettsets liegen meist zwischen 300 und 800 €.',[[350,'Einfach'],[550,'Mittel'],[900,'Mit Extras']]]};
+$('#ctl').innerHTML=cfg.map(([k,l,u,a,b,s])=>`<div class="cq"><label for="r${k}">${l}<output id="o${k}"></output></label><div class="chips" data-k="${k}">${HINT[k][1].map(([v,t])=>`<button type="button" data-v="${v}">${t}</button>`).join('')}</div><input type="range" id="r${k}" min="${a}" max="${b}" step="${s}" value="${S[k]}"><p class="chint">${HINT[k][0]}</p></div>`).join('')+`<label>Ausrichtung<select id="ori"><option value="1">Süd, geneigt (ideal)</option><option value="0.8">Ost oder West, geneigt</option><option value="0.72">Süd, senkrecht am Geländer</option><option value="0.6">Ost oder West, senkrecht</option><option value="0.45">Nord oder stark verschattet</option></select></label>`;$('#ori').value=S.o;
 const raw=h=>h<6||h>20?0:Math.pow(Math.sin(Math.PI*(h-6)/14),1.5);
 const con=h=>S.base*(.7+.5*Math.exp(-Math.pow((h-7.5)/1.5,2))+.9*Math.exp(-Math.pow((h-19)/2,2)));
 let K=0,frac=0,sav=0,yv=0;
@@ -390,8 +401,11 @@ function drawDev(){
   c.forEach((v,i)=>{$('#dc'+i).textContent=fm(v)+' € pro Jahr';$('#db'+i).style.width=(v/m*100)+'%';$('#dl'+i).textContent=fm(+$('#dh'+i).value,1)+' Std. pro Tag'});
   $('#dt').innerHTML=`Zusammen <b>${fm(t)} €</b> im Jahr. Am teuersten: <b>${dev[c.indexOf(Math.max(...c))][0]}</b>.`;
 }
-function upd(){cfg.forEach(([k])=>$('#o'+k).textContent=fm(S[k])+' '+U[k]);try{localStorage.setItem('ww',JSON.stringify({wp:S.wp,base:S.base,price:S.price,cost:S.cost,o:S.o}))}catch(e){}model();drawDay();drawYear();drawDev()}
+var upd;upd=function(){cfg.forEach(([k])=>$('#o'+k).textContent=fm(S[k])+' '+U[k]);try{localStorage.setItem('ww',JSON.stringify({wp:S.wp,base:S.base,price:S.price,cost:S.cost,o:S.o}))}catch(e){}model();drawDay();drawYear();drawDev()}
 cfg.forEach(([k])=>$('#r'+k).addEventListener('input',e=>{S[k]=+e.target.value;upd()}));
+document.querySelectorAll('#ctl .chips button').forEach(b=>b.addEventListener('click',()=>{const k=b.parentNode.dataset.k;S[k]=+b.dataset.v;$('#r'+k).value=S[k];upd()}));
+function chipState(){document.querySelectorAll('#ctl .chips').forEach(c=>c.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===S[c.dataset.k])))}
+const _upd=upd;upd=function(){_upd();chipState();const v=$('#verdict');if(v)v.innerHTML=`Mit <b>${fm(S.wp)} Wp</b> sparst du im ersten Jahr etwa <b>${$('#k1').textContent}</b>. Du nutzt <b>${$('#k3').textContent}</b> deines Solarstroms selbst, der Rest geht unvergütet ins Netz. Die Anlage hat sich nach <b>${$('#k2').textContent.replace(/Jahre$/,'Jahren')}</b> bezahlt gemacht.`};
 dev.forEach((_,i)=>$('#dh'+i).addEventListener('input',drawDev));
 $('#ori').addEventListener('change',e=>{S.o=+e.target.value;upd()});
 $('#ck').innerHTML=['Vermieter oder Eigentümergemeinschaft informiert','Set mit Wechselrichter bis 800 W gekauft','Angeschlossen und in Betrieb genommen','Im Marktstammdatenregister registriert (innerhalb eines Monats)','Zähler geprüft (alter Ferraris-Zähler ohne Rücklaufsperre? Der Netzbetreiber tauscht ihn meist kostenlos)'].map((t,i)=>`<label><input type="checkbox" id="ck${i}" data-i="${i}">${t}</label>`).join('');
