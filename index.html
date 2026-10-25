@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Strom-Daheim – Balkonkraftwerk, Wallbox und Stromkosten</title>
 <meta name="description" content="Strom-Daheim: unabhängiger Ratgeber zu Balkonkraftwerk, Wallbox, E-Auto laden und Stromsparen – mit Rechner, Set-Vergleich und geprüften Quellen.">
 <link rel="canonical" href="https://strom-daheim.de/">
@@ -11,8 +11,8 @@
 /* Layout: filmische Scroll-Bühne – fünf bildschirmfüllende Szenen (Balkon, Zelle, Wallbox, E-Auto, Wohnung), die beim Scrollen
    festgepinnt bleiben, während Text einblendet; danach Rechner und Inhalte als dunkle Karten. Dark-first, Systemschrift, keine externen Dateien. */
 :root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
-:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
 *,*:before,*:after{box-sizing:inherit}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -42,8 +42,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #th{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:.95rem;flex:none;color:#f5f5f7}
 button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
 /* Szenen */
-.scene{height:240vh;position:relative;background:#000;color:#f5f5f7}
-.scene.first{height:200vh}
+.scene{height:190vh;position:relative;background:#000;color:#f5f5f7}
+.scene.first{height:165vh}
 .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .pin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.12 - var(--p,0)*.12));filter:brightness(calc(.6 + var(--p,0)*.35)) saturate(1.05);will-change:transform}
 .pin:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.75) 100%)}
@@ -57,7 +57,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,su
 .cap .big{display:block;font-size:clamp(3.2rem,12vw,7.5rem);font-weight:700;letter-spacing:-.045em;line-height:.95;color:#fff;font-variant-numeric:tabular-nums}
 .cap .sub{font-size:1rem;color:rgba(245,245,247,.7);margin-top:8px;letter-spacing:.02em}
 .cap .soon{display:inline-block;margin-left:12px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;vertical-align:middle}
-.cap .scbtn{display:inline-block;margin-top:22px;padding:12px 20px;border-radius:999px;background:#f5f5f7;color:#000;font-weight:600;font-size:.95rem;pointer-events:auto}.cap .scbtn:hover{text-decoration:none;opacity:.88}.cap:not(.on){pointer-events:none}
+.cap .scbtn{display:inline-block;margin-top:22px;padding:12px 20px;border-radius:999px;background:#f5f5f7;color:#000;font-weight:600;font-size:.95rem;pointer-events:auto}.cap .scbtn:hover{text-decoration:none;opacity:.88}.cap:not(.on){pointer-events:none}.herobtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.herobtns .scbtn{margin-top:0}.cap .scbtn.ghost{background:rgba(255,255,255,.16);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .hint{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;z-index:2;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,247,.6)}
 .hint:after{content:"";display:block;width:1px;height:36px;margin:10px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);animation:hint 1.8s ease-in-out infinite}
 @keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -82,7 +82,7 @@ input[type=range]{width:100%;accent-color:var(--sky);margin:8px 0 6px;height:32p
 .ctlwrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
 .card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
 #ctl{display:grid;gap:14px}
-#ctl label{display:block;font-size:.95rem;font-weight:500}
+#ctl label{display:block;font-size:.95rem;font-weight:500}#ctl .ql{display:flex;align-items:baseline;gap:12px}#ctl .ql label{flex:1}
 #ctl output{float:right;font-weight:600;font-variant-numeric:tabular-nums;color:var(--mut)}
 select{width:100%;font:inherit;color:var(--ink);background:var(--soft);border:0;border-radius:12px;padding:12px 40px 12px 14px;margin-top:8px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
 .upd{font-size:.82rem;color:var(--mut);line-height:1.45}
@@ -155,41 +155,57 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 @media(max-width:900px){.rows{grid-template-columns:1fr}.ctlwrap{grid-template-columns:1fr}}
 @media(max-width:520px){.num{grid-template-columns:1fr}.kp{grid-template-columns:1fr 1fr}.stage{border-radius:22px}}
 </style>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script></head><body>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Muss ich ein Balkonkraftwerk anmelden?","acceptedAnswer":{"@type":"Answer","text":"Ja, im Marktstammdatenregister der Bundesnetzagentur, innerhalb eines Monats nach Inbetriebnahme. Eine zusätzliche Meldung beim Netzbetreiber ist bei Einhaltung der Grenzen (800 W Wechselrichter, 2.000 W Module) und reinem Eigenverbrauch nicht mehr nötig."}},{"@type":"Question","name":"Wie viel Leistung darf ein Balkonkraftwerk haben?","acceptedAnswer":{"@type":"Answer","text":"Der Wechselrichter höchstens 800 Watt, die Module zusammen höchstens 2.000 Watt."}},{"@type":"Question","name":"Lohnt sich ein Speicher am Balkonkraftwerk?","acceptedAnswer":{"@type":"Answer","text":"Bei kleinen Anlagen mit zwei Modulen meist nicht: Der zusätzliche Eigenverbrauch bringt nur wenige Dutzend Euro pro Jahr, der Speicher kostet 200 bis 400 Euro pro kWh. Bei vier Modulen und hohem Abendverbrauch kann er sich rechnen."}}]}</script>
-<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="#alles">Übersicht</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
-<main>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 19 36h11l-3 18 18-27H34z"/></svg><span>Strom-Daheim</span></a><nav class="sh-links" aria-label="Hauptmenü"><a href="/" aria-current="page">Balkonkraftwerk</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a></nav><button class="sh-ic" id="th" type="button" aria-label="Hell oder dunkel umschalten"><svg class="th-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="th-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button><button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menü</span></button></div></header>
+<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in"><div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber"><a href="/#rechner-sektion"><span class="i" aria-hidden="true">☀️</span><span><b>Lohnt sich ein Balkonkraftwerk?</b><small>Rechner mit deinen Zahlen</small></span></a><a href="/anleitung-balkonkraftwerk.html"><span class="i" aria-hidden="true">🔧</span><span><b>Balkonkraftwerk montieren</b><small>8 Schritte und Einkaufsliste</small></span></a><a href="/#vergleich"><span class="i" aria-hidden="true">⚖️</span><span><b>Welches Set kaufen?</b><small>4 geprüfte Komplettsets</small></span></a><a href="/#speicher"><span class="i" aria-hidden="true">🔋</span><span><b>Lohnt sich ein Speicher?</b><small>Zwei Rechenbeispiele</small></span></a><a href="/e-auto.html"><span class="i" aria-hidden="true">🚗</span><span><b>Was kostet mein E-Auto?</b><small>Ladekosten-Rechner</small></span></a><a href="/anleitung-wallbox.html"><span class="i" aria-hidden="true">🔌</span><span><b>Wallbox installieren</b><small>Schritte, Kosten, Förderung</small></span></a><a href="/#geraete"><span class="i" aria-hidden="true">💡</span><span><b>Stromfresser finden</b><small>Geräte-Rechner</small></span></a><a href="/#ratgeber"><span class="i" aria-hidden="true">📋</span><span><b>Anmelden, Mieten, Tarif</b><small>Kurz erklärt</small></span></a></nav><div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div><p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></div>
+<main id="main">
 
 <div class="scene first" id="s1"><div class="pin">
-  <img src="assets/hero.jpg" srcset="assets/hero-m.jpg 960w, assets/hero.jpg 1920w" sizes="100vw" alt="Zwei schwarze Solarmodule an einem Balkongeländer im Abendlicht, dahinter die Stadt" fetchpriority="high">
-  <div class="cap top" data-from="0" data-to="0.55"><span class="eyebrow">Strom-Daheim</span><h1>Dein Strom.<br>Dein Balkon.</h1><p>Balkonkraftwerk, Wallbox, E-Auto und Stromsparen. Verständlich gerechnet, mit geprüften Quellen.</p></div>
+  <picture><source type="image/webp" srcset="assets/hero-m.webp 960w, assets/hero.webp 1920w" sizes="100vw"><img src="assets/hero.jpg" srcset="assets/hero-m.jpg 960w, assets/hero.jpg 1920w" sizes="100vw" alt="Zwei schwarze Solarmodule an einem Balkongeländer im Abendlicht, dahinter die Stadt" fetchpriority="high"></picture>
+  <div class="cap top" data-from="0" data-to="0.55"><span class="eyebrow">Strom-Daheim</span><h1>Dein Strom.<br>Dein Balkon.</h1><p>Balkonkraftwerk, Wallbox, E-Auto und Stromsparen. Verständlich gerechnet, mit geprüften Quellen.</p><div class="herobtns"><a class="scbtn" href="#rechner-sektion">Ersparnis berechnen</a><a class="scbtn ghost" href="#alles">Alle Ratgeber</a></div></div>
   <div class="cap bot" data-from="0.5" data-to="1"><h2>Zwei Module.<br>Rund 700 kWh im Jahr.</h2><p>Was mittags vom Dach kommt, muss in der Wohnung ankommen. Darum geht es auf dieser Seite.</p><a class="scbtn" href="/anleitung-balkonkraftwerk.html">Montage-Anleitung</a></div>
   <div class="hint" data-from="0" data-to="0.2">Scrollen</div>
 </div></div>
 
 <div class="scene" id="s2"><div class="pin">
-  <img src="assets/cell.jpg" srcset="assets/cell-m.jpg 960w, assets/cell.jpg 1920w" sizes="100vw" alt="Nahaufnahme einer schwarzen Solarzelle mit silbernen Leiterbahnen im Streiflicht" loading="lazy">
+  <picture><source type="image/webp" srcset="assets/cell-m.webp 960w, assets/cell.webp 1920w" sizes="100vw"><img src="assets/cell.jpg" srcset="assets/cell-m.jpg 960w, assets/cell.jpg 1920w" sizes="100vw" alt="Nahaufnahme einer schwarzen Solarzelle mit silbernen Leiterbahnen im Streiflicht" loading="lazy"></picture>
   <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">800 Watt</span><h2>Mehr darf nicht.<br>Mehr muss auch nicht.</h2><p>800 Watt am Wechselrichter. Bis 960 Watt Module darfst du selbst in die normale Steckdose stecken, bis 2.000 Watt mit Einspeisesteckdose vom Elektriker.</p></div>
   <div class="cap mid" data-from="0.55" data-to="1"><span class="eyebrow">Eigenverbrauch</span><h2>Nur was du selbst nutzt,<br>spart Geld.</h2><p>Der Rest fließt ohne Vergütung ins Netz. Haushalte ohne Speicher nutzen im Schnitt 55 bis 70 Prozent ihres Solarstroms selbst.</p></div>
 </div></div>
 
 <div class="scene" id="s3"><div class="pin">
-  <img src="assets/wallbox.jpg" srcset="assets/wallbox-m.jpg 960w, assets/wallbox.jpg 1920w" sizes="100vw" alt="Matt-schwarze Wallbox an einer Betonwand, das Ladekabel steckt in einem Elektroauto mit grün leuchtendem Ladeport" loading="lazy">
+  <picture><source type="image/webp" srcset="assets/wallbox-m.webp 960w, assets/wallbox.webp 1920w" sizes="100vw"><img src="assets/wallbox.jpg" srcset="assets/wallbox-m.jpg 960w, assets/wallbox.jpg 1920w" sizes="100vw" alt="Matt-schwarze Wallbox an einer Betonwand, das Ladekabel steckt in einem Elektroauto mit grün leuchtendem Ladeport" loading="lazy"></picture>
   <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">Wallbox</span><h2>Laden, wo das Auto<br>ohnehin steht.</h2><p>11 kW an der Wand statt 2,3 kW aus der Steckdose. Welche Box zu Haus und Auto passt, was Elektriker und Anmeldung kosten.</p><a class="scbtn" href="/anleitung-wallbox.html">Zur Wallbox-Anleitung</a></div>
   <div class="cap mid" data-from="0.55" data-to="1"><h2>Zuhause laden ist<br>meist am günstigsten.</h2><p>Mit dem eigenen Stromtarif, ohne Ladesäulen-Aufschlag. Und mit Solarstrom vom Dach noch einmal billiger.</p></div>
 </div></div>
 
 <div class="scene" id="s4"><div class="pin">
-  <img src="assets/ev.jpg" srcset="assets/ev-m.jpg 960w, assets/ev.jpg 1920w" sizes="100vw" alt="Elektroauto in einer Einfahrt zur blauen Stunde, an einer Wallbox neben der Haustür angeschlossen, Solarmodule auf dem Dach" loading="lazy">
+  <picture><source type="image/webp" srcset="assets/ev-m.webp 960w, assets/ev.webp 1920w" sizes="100vw"><img src="assets/ev.jpg" srcset="assets/ev-m.jpg 960w, assets/ev.jpg 1920w" sizes="100vw" alt="Elektroauto in einer Einfahrt zur blauen Stunde, an einer Wallbox neben der Haustür angeschlossen, Solarmodule auf dem Dach" loading="lazy"></picture>
   <div class="cap top" data-from="0.05" data-to="0.5"><span class="eyebrow">E-Auto</span><h2>Was eine Ladung<br>wirklich kostet.</h2><p>Zuhause, unterwegs, mit Sonne: die Rechnung pro 100 Kilometer, ehrlich und ohne Marketing.</p><a class="scbtn" href="/e-auto.html">Ladekosten berechnen</a></div>
   <div class="cap bot" data-from="0.55" data-to="1"><div class="stats"><div><b>40,39 ct</b><span>pro kWh in der Grundversorgung (25.10.2026)</span></div><div><b>31,13 ct</b><span>pro kWh im günstigsten Tarif</span></div><div><b>300 €+</b><span>Unterschied im Jahr bei 3.500 kWh</span></div></div></div>
 </div></div>
 
 <div class="scene" id="s5"><div class="pin">
-  <img src="assets/home.jpg" srcset="assets/home-m.jpg 960w, assets/home.jpg 1920w" sizes="100vw" alt="Blick vom Balkon in ein warm beleuchtetes Wohnzimmer bei Nacht" loading="lazy">
+  <picture><source type="image/webp" srcset="assets/home-m.webp 960w, assets/home.webp 1920w" sizes="100vw"><img src="assets/home.jpg" srcset="assets/home-m.jpg 960w, assets/home.jpg 1920w" sizes="100vw" alt="Blick vom Balkon in ein warm beleuchtetes Wohnzimmer bei Nacht" loading="lazy"></picture>
   <div class="cap mid" data-from="0.05" data-to="0.55"><span class="eyebrow">Stromsparen</span><h2>Abends läuft alles.<br>Mittags scheint die Sonne.</h2><p>Spülmaschine, Waschmaschine und Trockner in die Mittagszeit legen hebt den Eigenverbrauch – oft günstiger als jeder Speicher.</p></div>
   <div class="cap mid" data-from="0.6" data-to="1"><h2>Rechne es durch.</h2><p>Der Rechner darunter nutzt einen durchschnittlichen deutschen Tag. Schieb die Uhrzeit und sieh, wie viel Solarstrom in deiner Wohnung landet.</p></div>
 </div></div>
+
+<section id="alles"><div class="wrap">
+<div class="head center"><span class="eyebrow">Alle Ratgeber</span><h2>Wobei können wir dir helfen?</h2></div>
+<div class="hub">
+<a href="#rechner"><span class="ic">☀️</span><b>Lohnt sich ein Balkonkraftwerk?</b><span>Rechner mit deinen Zahlen</span></a>
+<a href="/anleitung-balkonkraftwerk.html"><span class="ic">🔧</span><b>Balkonkraftwerk montieren</b><span>8 Schritte, Einkaufsliste, neue Norm</span></a>
+<a href="#vergleich"><span class="ic">⚖️</span><b>Welches Set kaufen?</b><span>4 geprüfte Komplettsets</span></a>
+<a href="#speicher"><span class="ic">🔋</span><b>Lohnt sich ein Speicher?</b><span>Zwei Rechenbeispiele</span></a>
+<a href="/e-auto.html"><span class="ic">🚗</span><b>Was kostet mein E-Auto?</b><span>Ladekosten-Rechner</span></a>
+<a href="/anleitung-wallbox.html"><span class="ic">🔌</span><b>Wallbox installieren</b><span>Schritte, Kosten, Förderung</span></a>
+<a href="#geraete"><span class="ic">💡</span><b>Stromfresser finden</b><span>Geräte-Rechner</span></a>
+<a href="#ratgeber"><span class="ic">📋</span><b>Anmelden, Mieten, Tarif</b><span>Kurz erklärt</span></a>
+</div>
+</div></section>
 
 <section id="rechner-sektion"><div class="wrap">
 <div class="head center"><span class="eyebrow">Rechner</span><h2>Wann liefert dein Balkonkraftwerk Strom?</h2><p class="lede">Schieb die Uhrzeit. Gelb ist, was du selbst nutzt. Blau ist dein Verbrauch.</p></div>
@@ -202,13 +218,13 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="head center"><span class="eyebrow">Deine Zahlen</span><h2>Vier Regler. Dein Ergebnis.</h2><p class="lede">Stell Module, Verbrauch, Strompreis und Anschaffung so ein, wie es bei dir aussieht. Die Zahlen rechts rechnen sofort mit.</p></div>
+<div class="head center"><span class="eyebrow">Deine Zahlen</span><h2>Vier Regler. Dein Ergebnis.</h2><p class="lede">Stell Module, Verbrauch, Strompreis und Anschaffung so ein, wie es bei dir aussieht. Tippe auf einen Vorschlag, schieb den Regler oder tippe die Zahl direkt ein.</p></div>
 <div class="ctlwrap">
   <div class="card">
     <div id="ctl"></div>
     <p class="upd" style="margin-top:18px">Orientierung für den Strompreis: Am 25.10.2026 lag die Grundversorgung im Schnitt bei 40,39 ct/kWh, der günstigste Tarif bei 31,13 ct/kWh (3.500 kWh/Jahr, stromauskunft.de).</p>
   </div>
-  <div style="display:grid;gap:12px"><div class="verdict"><span class="eyebrow">Dein Ergebnis</span><p id="verdict" aria-live="polite"></p></div><div class="kp">
+  <div style="display:grid;gap:12px"><div class="verdict"><span class="eyebrow">Dein Ergebnis</span><p id="verdict" aria-live="polite"></p><div class="acts"><button class="abtn" type="button" data-share="verdict"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div></div><div class="kp">
     <div><b id="k1"></b><span>Ersparnis im ersten Jahr</span></div>
     <div><b id="k2"></b><span>bis sich die Anlage bezahlt hat</span></div>
     <div><b id="k3"></b><span>Solarstrom, den du selbst nutzt</span></div>
@@ -229,13 +245,13 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 
 <section id="vergleich"><div class="wrap">
 <div class="head center"><span class="eyebrow">Sets</span><h2>Balkonkraftwerk-Sets im Vergleich.</h2><p class="lede">Vier Komplettsets, die im Oktober 2026 bei mehreren Händlern erhältlich sind. Technische Angaben laut Hersteller und Händlern (geprüft am 25.10.2026). Preise ändern sich dort fast täglich, deshalb nennen wir keine. Die Links sind Partnerlinks<span class="tag">Anzeige</span></p></div>
-<div class="tbl"><table>
-<thead><tr><th>Set</th><th>Module</th><th>Wechselrichter</th><th>Für wen</th><th></th></tr></thead>
+<div class="tbl cards"><table>
+<thead><tr><th>Set</th><th>Module</th><th>Wechselrichter</th><th>Für wen</th><th><span class="sr">Angebot</span></th></tr></thead>
 <tbody>
-<tr><td><b>Anker SOLIX 910 W</b>2 × 455 W IBC-Module, Zubehör, WLAN</td><td>910 Wp</td><td>600/800 W, per App umschaltbar</td><td>Standard-Balkon, wer eine App zur Ertragsanzeige will</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+Balkonkraftwerk+910+W&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
-<tr><td><b>Anker SOLIX RS40 830 Wp</b>2 × 415 W, ohne Halterung</td><td>830 Wp</td><td>800 W (ab Werk auf 600 W gedrosselt, OTA-Update)</td><td>Wer schon eine Halterung hat oder flach auflegt</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+RS40+830+W+Balkonkraftwerk&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
-<tr><td><b>Solakon 900 W</b>2 × 450 W bifazial, 5 m Kabel, ohne Halterung</td><td>900 Wp</td><td>800 W</td><td>Preisbewusste, Module mit Rückseiten-Ertrag für helle Fassaden</td><td><a class="btn" href="https://www.amazon.de/s?k=Solakon+900+W+Balkonkraftwerk+800+W+bifazial&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
-<tr><td><b>Mit Speicher: Anker SOLIX Solarbank 2 E1600 Pro</b>Speicher 1,6 kWh, erweiterbar, als Komplettset mit Modulen erhältlich</td><td>je nach Set</td><td>800 W, im Speicher integriert</td><td>Haushalte mit Abendverbrauch, siehe Speicher-Ratgeber unten</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+Solarbank+2+E1600+Pro+Balkonkraftwerk+Set&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
+<tr><td><b>Anker SOLIX 910 W</b>2 × 455 W IBC-Module, Zubehör, WLAN</td><td data-l="Module">910 Wp</td><td data-l="Wechselrichter">600/800 W, per App umschaltbar</td><td data-l="Für wen">Standard-Balkon, wer eine App zur Ertragsanzeige will</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+Balkonkraftwerk+910+W&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
+<tr><td><b>Anker SOLIX RS40 830 Wp</b>2 × 415 W, ohne Halterung</td><td data-l="Module">830 Wp</td><td data-l="Wechselrichter">800 W (ab Werk auf 600 W gedrosselt, OTA-Update)</td><td data-l="Für wen">Wer schon eine Halterung hat oder flach auflegt</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+RS40+830+W+Balkonkraftwerk&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
+<tr><td><b>Solakon 900 W</b>2 × 450 W bifazial, 5 m Kabel, ohne Halterung</td><td data-l="Module">900 Wp</td><td data-l="Wechselrichter">800 W</td><td data-l="Für wen">Preisbewusste, Module mit Rückseiten-Ertrag für helle Fassaden</td><td><a class="btn" href="https://www.amazon.de/s?k=Solakon+900+W+Balkonkraftwerk+800+W+bifazial&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
+<tr><td><b>Mit Speicher: Anker SOLIX Solarbank 2 E1600 Pro</b>Speicher 1,6 kWh, erweiterbar, als Komplettset mit Modulen erhältlich</td><td data-l="Module">je nach Set</td><td data-l="Wechselrichter">800 W, im Speicher integriert</td><td data-l="Für wen">Haushalte mit Abendverbrauch, siehe Speicher-Ratgeber unten</td><td><a class="btn" href="https://www.amazon.de/s?k=Anker+SOLIX+Solarbank+2+E1600+Pro+Balkonkraftwerk+Set&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a></td></tr>
 </tbody></table></div>
 <article class="read" style="margin-top:40px">
 <h3>Worauf du beim Set achtest</h3>
@@ -349,20 +365,6 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 </div>
 </div></section>
 
-<section id="alles"><div class="wrap">
-<div class="head center"><span class="eyebrow">Alle Ratgeber</span><h2>Wobei können wir dir helfen?</h2></div>
-<div class="hub">
-<a href="#rechner"><span class="ic">☀️</span><b>Lohnt sich ein Balkonkraftwerk?</b><span>Rechner mit deinen Zahlen</span></a>
-<a href="/anleitung-balkonkraftwerk.html"><span class="ic">🔧</span><b>Balkonkraftwerk montieren</b><span>8 Schritte, Einkaufsliste, neue Norm</span></a>
-<a href="#vergleich"><span class="ic">⚖️</span><b>Welches Set kaufen?</b><span>4 geprüfte Komplettsets</span></a>
-<a href="#speicher"><span class="ic">🔋</span><b>Lohnt sich ein Speicher?</b><span>Zwei Rechenbeispiele</span></a>
-<a href="/e-auto.html"><span class="ic">🚗</span><b>Was kostet mein E-Auto?</b><span>Ladekosten-Rechner</span></a>
-<a href="/anleitung-wallbox.html"><span class="ic">🔌</span><b>Wallbox installieren</b><span>Schritte, Kosten, Förderung</span></a>
-<a href="#geraete"><span class="ic">💡</span><b>Stromfresser finden</b><span>Geräte-Rechner</span></a>
-<a href="#ratgeber"><span class="ic">📋</span><b>Anmelden, Mieten, Tarif</b><span>Kurz erklärt</span></a>
-</div>
-</div></section>
-
 <section class="band tight"><div class="wrap">
 <div class="head center"><h2 style="font-size:clamp(1.6rem,4vw,2.4rem)">Weiter sparen.</h2></div>
 <div class="rows">
@@ -375,15 +377,15 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 <footer><div class="wrap">
 <p>Alle Zahlen sind vereinfachte Modellrechnungen ohne Gewähr: ein durchschnittlicher Tag, 900 kWh Ertrag pro kWp und Jahr, keine Vergütung für eingespeisten Strom. Dein Dach, deine Ausrichtung und dein Alltag weichen ab. Mit Anzeige markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht.</p>
 <p>Zuletzt aktualisiert am 25.10.2026.</p>
-<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto laden</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto laden</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
 </div></footer>
 <script>
 const $=s=>document.querySelector(s),fm=(n,d=0)=>n.toLocaleString('de-DE',{maximumFractionDigits:d,minimumFractionDigits:d});
 const S={wp:800,base:250,price:35,cost:500,t:4,o:1};try{Object.assign(S,JSON.parse(localStorage.getItem('ww')||'{}'))}catch(e){}
-const cfg=[['wp','Leistung der Module','Wp',400,2000,100],['base','Grundverbrauch im Haushalt','W',100,600,10],['price','Strompreis','ct/kWh',25,45,1],['cost','Anschaffung','€',200,1500,10]];
+const cfg=[['wp','Leistung der Module','Wp',300,2000,10],['base','Grundverbrauch im Haushalt','W',50,1000,10],['price','Strompreis','ct/kWh',15,60,0.5],['cost','Anschaffung','€',100,3000,10]];
 const U={};cfg.forEach(c=>U[c[0]]=c[2]);
 const HINT={wp:['Steht auf dem Typenschild der Module oder im Produkttitel, z. B. „2 × 450 W“ = 900 Wp. Bis 960 Wp in die normale Steckdose, bis 2.000 Wp mit Einspeisesteckdose vom Elektriker.',[[800,'2 Module'],[900,'Standard-Set'],[1800,'4 Module (Elektriker)']]],base:['Was dauerhaft läuft: Kühlschrank, Router, Standby. Messbar nachts am Zähler. Typisch 150–300 W.',[[150,'Single'],[250,'Paar'],[400,'Familie']]],price:['Arbeitspreis auf deiner Stromrechnung, brutto. Grundversorgung im Schnitt 40,39 ct, günstigster Tarif 31,13 ct (25.10.2026).',[[31,'Günstig'],[35,'Durchschnitt'],[40,'Grundversorgung']]],cost:['Was das Set inklusive Halterung kostet. Komplettsets liegen meist zwischen 300 und 800 €.',[[350,'Einfach'],[550,'Mittel'],[900,'Mit Extras']]]};
-$('#ctl').innerHTML=cfg.map(([k,l,u,a,b,s])=>`<div class="cq"><label for="r${k}">${l}<output id="o${k}"></output></label><div class="chips" data-k="${k}">${HINT[k][1].map(([v,t])=>`<button type="button" data-v="${v}">${t}</button>`).join('')}</div><input type="range" id="r${k}" min="${a}" max="${b}" step="${s}" value="${S[k]}"><p class="chint">${HINT[k][0]}</p></div>`).join('')+`<label>Ausrichtung<select id="ori"><option value="1">Süd, geneigt (ideal)</option><option value="0.8">Ost oder West, geneigt</option><option value="0.72">Süd, senkrecht am Geländer</option><option value="0.6">Ost oder West, senkrecht</option><option value="0.45">Nord oder stark verschattet</option></select></label>`;$('#ori').value=S.o;
+$('#ctl').innerHTML=cfg.map(([k,l,u,a,b,s])=>`<div class="cq"><div class="ql"><label for="r${k}">${l}</label><span class="vbox"><input class="vin${k=='cost'||k=='wp'?' wide':''}" id="o${k}" type="number" inputmode="decimal" min="${a}" max="${b}" step="${s}" aria-label="${l} in ${u}, Zahl eingeben"><span class="vu">${u}</span></span></div><div class="chips" data-k="${k}">${HINT[k][1].map(([v,t])=>`<button type="button" data-v="${v}">${t}</button>`).join('')}</div><input type="range" id="r${k}" min="${a}" max="${b}" step="${s}" value="${S[k]}"><p class="chint">${HINT[k][0]}</p></div>`).join('')+`<label>Ausrichtung<select id="ori"><option value="1">Süd, geneigt (ideal)</option><option value="0.8">Ost oder West, geneigt</option><option value="0.72">Süd, senkrecht am Geländer</option><option value="0.6">Ost oder West, senkrecht</option><option value="0.45">Nord oder stark verschattet</option></select></label>`;$('#ori').value=S.o;
 const raw=h=>h<6||h>20?0:Math.pow(Math.sin(Math.PI*(h-6)/14),1.5);
 const con=h=>S.base*(.7+.5*Math.exp(-Math.pow((h-7.5)/1.5,2))+.9*Math.exp(-Math.pow((h-19)/2,2)));
 let K=0,frac=0,sav=0,yv=0;
@@ -420,8 +422,9 @@ function drawDev(){
   c.forEach((v,i)=>{$('#dc'+i).textContent=fm(v)+' € pro Jahr';$('#db'+i).style.width=(v/m*100)+'%';$('#dl'+i).textContent=fm(+$('#dh'+i).value,1)+' Std. pro Tag'});
   $('#dt').innerHTML=`Zusammen <b>${fm(t)} €</b> im Jahr. Am teuersten: <b>${dev[c.indexOf(Math.max(...c))][0]}</b>.`;
 }
-var upd;upd=function(){cfg.forEach(([k])=>$('#o'+k).textContent=fm(S[k])+' '+U[k]);try{localStorage.setItem('ww',JSON.stringify({wp:S.wp,base:S.base,price:S.price,cost:S.cost,o:S.o}))}catch(e){}model();drawDay();drawYear();drawDev()}
+var upd;upd=function(){cfg.forEach(([k])=>{const n=$('#o'+k);if(document.activeElement!==n)n.value=S[k]});try{localStorage.setItem('ww',JSON.stringify({wp:S.wp,base:S.base,price:S.price,cost:S.cost,o:S.o}))}catch(e){}model();drawDay();drawYear();drawDev()}
 cfg.forEach(([k])=>$('#r'+k).addEventListener('input',e=>{S[k]=+e.target.value;upd()}));
+cfg.forEach(([k,l,u,a,b])=>{const n=$('#o'+k),r=$('#r'+k);n.addEventListener('input',()=>{const v=parseFloat(String(n.value).replace(',','.'));if(!isNaN(v)&&v>=a&&v<=b){S[k]=v;r.value=v;upd()}});n.addEventListener('change',()=>{let v=parseFloat(String(n.value).replace(',','.'));if(isNaN(v))v=S[k];v=Math.min(b,Math.max(a,v));S[k]=v;r.value=v;n.value=v;upd()})});
 document.querySelectorAll('#ctl .chips button').forEach(b=>b.addEventListener('click',()=>{const k=b.parentNode.dataset.k;S[k]=+b.dataset.v;$('#r'+k).value=S[k];upd()}));
 function chipState(){document.querySelectorAll('#ctl .chips').forEach(c=>c.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===S[c.dataset.k])))}
 const _upd=upd;upd=function(){_upd();chipState();const v=$('#verdict');if(v)v.innerHTML=`Mit <b>${fm(S.wp)} Wp</b> sparst du im ersten Jahr etwa <b>${$('#k1').textContent}</b>. Du nutzt <b>${$('#k3').textContent}</b> deines Solarstroms selbst, der Rest geht unvergütet ins Netz. Die Anlage hat sich nach <b>${$('#k2').textContent.replace(/Jahre$/,'Jahren')}</b> bezahlt gemacht.`};
@@ -445,7 +448,7 @@ new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){o.disconnect();yv=1;dra
 const cv=document.createElement('canvas');cv.setAttribute('aria-hidden','true');cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none';document.body.prepend(cv);
 const cx=cv.getContext('2d'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 let W,H,D=1,mx=.5;const P=Array.from({length:80},()=>({x:Math.random(),y:Math.random(),z:.3+Math.random()*.7,p:Math.random()*6.28}));
-const rs=()=>{D=Math.min(devicePixelRatio||1,2);W=cv.width=innerWidth*D;H=cv.height=innerHeight*D};
+const rs=()=>{D=Math.min(devicePixelRatio||1,1.5);W=cv.width=innerWidth*D;H=cv.height=innerHeight*D};
 function sky(ts){
   const t=S.t,dl=Math.max(0,Math.sin(Math.PI*(t-5.5)/15)),dk=dm(),c=dl>.08?(dk?'255,201,51':'245,163,0'):'110,168,255';
   const sx=W*(.08+.84*t/24)+(mx-.5)*W*.04,sy=H*(.8-.62*dl)-scrollY*.2*D,R=Math.max(W,H)*.7;
@@ -461,7 +464,9 @@ function sky(ts){
     cx.fillStyle=`rgba(${pc},${.15+.25*Math.pow(Math.sin(ts/700+q.p),2)})`;
     cx.beginPath();cx.arc(q.x*W+(mx-.5)*q.z*50*D,q.y*H,q.z*2*D,0,6.283);cx.fill()}
 }
-function loop(t){sky(t);RM||requestAnimationFrame(loop)}
+const SC=[...document.querySelectorAll('.scene')];let cov=false,last=0;const chk=()=>{cov=SC.some(x=>{const r=x.getBoundingClientRect();return r.top<=0&&r.bottom>=innerHeight})};addEventListener('scroll',chk,{passive:true});chk();
+function loop(t){if(RM){sky(t);return}if(document.hidden)return;if(!cov&&t-last>=33){last=t;sky(t)}requestAnimationFrame(loop)}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!RM)requestAnimationFrame(loop)});
 rs();addEventListener('resize',()=>{rs();RM&&sky(0)});
 addEventListener('pointermove',e=>{mx=e.clientX/innerWidth},{passive:true});
 if(RM)addEventListener('scroll',()=>sky(0),{passive:true});

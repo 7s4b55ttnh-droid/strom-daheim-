@@ -1,0 +1,117 @@
+/* Strom-Daheim – gemeinsame Bausteine aller Seiten: Kopfzeile, Menü, Hilfen, Druck.
+   Nutzt die Farbtokens der jeweiligen Seite (--bg, --pan, --soft, --ink, --mut, --line, --sky, --sun). */
+
+/* Sprunglink für Tastatur und Screenreader */
+.skip{position:fixed;left:12px;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:200;padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;transform:translateY(-200%);transition:transform .2s}
+.skip:focus{transform:none;text-decoration:none}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Kopfzeile */
+.sh{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;color:var(--ink);background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent);transition:background-color .25s,color .25s,border-color .25s}
+.sh.ondark{color:#f5f5f7;background:rgba(0,0,0,.5);border-bottom-color:rgba(255,255,255,.08)}
+body::before{background:color-mix(in srgb,var(--bg) 80%,transparent)!important;z-index:61!important}
+body:has(.sh.ondark)::before{background:rgba(0,0,0,.5)!important}
+.sh-in{max-width:1100px;margin:0 auto;height:52px;display:flex;align-items:center;gap:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
+.sh-logo{display:flex;align-items:center;gap:8px;color:inherit;font-weight:700;letter-spacing:-.02em;font-size:1.02rem;white-space:nowrap;margin-right:auto}
+.sh a,.sh-sheet .sh-grid a,.sh-toc a{text-decoration:none}.sh-logo:hover{text-decoration:none}
+.sh-logo svg{width:22px;height:22px;fill:var(--sun)}
+.sh-links{display:flex;gap:2px}
+.sh-links a{color:inherit;opacity:.72;font-size:.86rem;font-weight:500;padding:7px 11px;border-radius:999px;white-space:nowrap}
+.sh-links a:hover,.sh-links a[aria-current]{opacity:1;background:color-mix(in srgb,currentColor 12%,transparent);text-decoration:none}
+.sh-ic,#th.sh-ic{flex:none;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:0;background:transparent;color:inherit;cursor:pointer;padding:0}
+.sh-ic:hover,#th.sh-ic:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.sh-ic svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sh-mb{display:flex!important;align-items:center;gap:6px;width:auto!important;padding:0 14px 0 12px!important;border-radius:999px!important;font-family:inherit}
+.sh-mb span{font-size:.9rem;font-weight:600}
+.th-moon{display:none}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .th-sun{display:none}:root:not([data-theme="dark"]) .th-moon{display:block}}
+:root[data-theme="light"] .th-sun{display:none}:root[data-theme="light"] .th-moon{display:block}
+:root[data-theme="dark"] .th-sun{display:block}:root[data-theme="dark"] .th-moon{display:none}
+@media(max-width:820px){.sh-links{display:none}}
+@supports (animation-timeline:scroll()){.sh:after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:linear-gradient(90deg,var(--sky),var(--sun));transform-origin:0 50%;animation:shpg linear both;animation-timeline:scroll(root)}@keyframes shpg{from{transform:scaleX(0)}to{transform:scaleX(1)}}}
+
+/* Menü */
+.sh-sheet{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--bg) 70%,transparent);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);overflow-y:auto;overscroll-behavior:contain;color:var(--ink)}
+.sh-sheet-in{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 10px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 32px) max(16px,env(safe-area-inset-left,0px));animation:shin .28s cubic-bezier(.2,.7,.2,1) both}
+@keyframes shin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.sh-top{display:flex;align-items:center;justify-content:space-between;height:52px;margin-bottom:8px}
+.sh-top b{font-size:1.02rem;letter-spacing:-.02em}
+.sh-h{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 10px}
+.sh-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sh-grid a{display:flex;gap:12px;align-items:center;background:var(--pan,var(--bg));border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:16px;padding:13px 14px;color:var(--ink);min-height:62px}
+.sh-grid a:hover{border-color:var(--sky);text-decoration:none}
+.sh-grid a[aria-current]{border-color:var(--sun)}
+.sh-grid .i{font-size:1.35rem;flex:none;width:28px;text-align:center}
+.sh-grid b{display:block;font-size:.95rem;letter-spacing:-.01em;line-height:1.25}
+.sh-grid small{display:block;font-size:.8rem;color:var(--mut);line-height:1.3;margin-top:2px}
+.sh-toc{display:flex;flex-wrap:wrap;gap:8px}
+.sh-toc a{padding:9px 14px;border-radius:999px;background:var(--soft,var(--bg));color:var(--ink);font-size:.9rem;font-weight:500}
+.sh-toc a:hover{text-decoration:none;outline:1px solid var(--line)}
+.sh-foot{margin:26px 0 0;font-size:.88rem;color:var(--mut)}
+.sh-foot a{color:var(--mut);text-decoration:underline}
+@media(max-width:520px){.sh-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.sh-sheet-in{animation:none}.sh,.skip{transition:none}}
+
+/* Nach oben */
+.totop{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:55;width:46px;height:46px;border-radius:50%;border:1px solid color-mix(in srgb,var(--line) 80%,transparent);background:color-mix(in srgb,var(--pan,var(--bg)) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){.totop{transition:none}}
+
+/* Hinweis-Toast */
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translate(-50%,20px);z-index:120;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:600;font-size:.92rem;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* Aktionsknöpfe: Teilen, Drucken */
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.abtn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.abtn:hover{background:var(--soft,transparent)}
+.abtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Direkteingabe von Zahlen in Rechnern */
+.vbox{display:inline-flex;align-items:baseline;gap:5px;margin-left:auto;white-space:nowrap}
+.vin{width:5.2ch;font:inherit;font-size:1.3rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);background:transparent;border:0;border-bottom:1.5px dashed color-mix(in srgb,var(--mut) 70%,transparent);border-radius:0;padding:0 2px 1px;-moz-appearance:textfield;appearance:textfield}
+.vin::-webkit-outer-spin-button,.vin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.vin:hover{border-bottom-color:var(--sky)}
+.vin:focus{outline:none;border-bottom:2px solid var(--sky);background:var(--soft,transparent);border-radius:6px 6px 0 0}
+.vin.wide{width:6.6ch}
+.vu{font-size:.95rem;font-weight:600;color:var(--mut)}
+.qh .vbox{display:inline-flex}.qh .vbox .vu{display:inline;font-size:.95rem}
+
+/* Text-Links unterstreichen, damit sie nicht nur an der Farbe erkennbar sind */
+main p a:not(.btn):not(.scbtn),main li a:not(.btn),.meta a,.why a,.lede a,details a,.note a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* Vergleichstabellen werden am Handy zu Karten */
+@media(max-width:700px){
+.tbl.cards{overflow:visible;background:none;box-shadow:none;border:0;border-radius:0}
+.tbl.cards table{min-width:0;font-size:.95rem}
+.tbl.cards thead{display:none}
+.tbl.cards tr{display:block;background:var(--pan,var(--bg));border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:20px;padding:18px 18px 16px;margin-bottom:12px;box-shadow:var(--shadow,none)}
+.tbl.cards td{display:block;border:0;padding:5px 0}
+.tbl.cards td:first-child b{font-size:1.08rem;margin-bottom:4px}
+.tbl.cards td[data-l]{display:grid;grid-template-columns:118px 1fr;gap:10px}
+.tbl.cards td[data-l]:before{content:attr(data-l);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding-top:3px}
+.tbl.cards td:last-child{padding-top:12px}
+.tbl.cards .btn{display:block;text-align:center;padding:12px 16px}
+}
+
+/* Unterseiten: Bühne am Handy etwas niedriger, damit der Inhalt früher kommt */
+@media(max-width:640px){.hero{min-height:62svh}}
+
+/* Druck: hell, ohne Navigation und Bilder */
+@media print{
+:root,:root[data-theme],:root:not([data-theme="light"]),:root:not([data-theme="dark"]){--bg:#fff;--pan:#fff;--soft:#f2f2f2;--ink:#000;--mut:#333;--line:#bbb;--shadow:none;color-scheme:light}
+.sh,.skip,.totop,.toast,.sh-sheet,.jump,.cta,.acts,.hint,.scbtn,footer .fl,.item .go,canvas,.hero img,.pin img{display:none!important}
+body::before{display:none!important}
+body{background:#fff!important;color:#000!important;font-size:11pt}
+.hero{min-height:0!important;background:none!important;color:#000!important}.hero:after,.pin:after{display:none!important}
+.hero .wrap{padding:0 0 12pt!important}.hero h1,.hero p,.hero .eyebrow{color:#000!important}
+section{padding-block:12pt!important;break-inside:auto}.band{background:#fff!important}
+.card,.item,ol.steps>li,.tbl{box-shadow:none!important;break-inside:avoid}
+a{color:#000!important;text-decoration:none!important}
+details>div{display:block!important}
+.scene{height:auto!important}.pin{position:static!important;height:auto!important}.cap{position:static!important;opacity:1!important;transform:none!important;color:#000!important}
+}
+
+/* Vorschlag-Knöpfe auf grauen Karten sichtbar halten */
+.band .card .chips button:not([aria-pressed="true"]){background:var(--pan,var(--bg))}
