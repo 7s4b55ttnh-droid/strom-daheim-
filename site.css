@@ -104,7 +104,7 @@ main p a:not(.btn):not(.scbtn),main li a:not(.btn),.meta a,.why a,.lede a,detail
 .sh,.skip,.totop,.toast,.sh-sheet,.jump,.cta,.acts,.hint,.scbtn,footer .fl,.item .go,canvas,.hero img,.pin img{display:none!important}
 body::before{display:none!important}
 body{background:#fff!important;color:#000!important;font-size:11pt}
-.hero{min-height:0!important;background:none!important;color:#000!important}.hero:after,.pin:after{display:none!important}
+.hero,.pic{min-height:0!important;background:none!important;color:#000!important}.hero:after,.pin:after,.pic:after,.pic img{display:none!important}.pic .wrap{padding:0!important}.pic h2,.pic p,.pic .eyebrow{color:#000!important}
 .hero .wrap{padding:0 0 12pt!important}.hero h1,.hero p,.hero .eyebrow{color:#000!important}
 section{padding-block:12pt!important;break-inside:auto}.band{background:#fff!important}
 .card,.item,ol.steps>li,.tbl{box-shadow:none!important;break-inside:avoid}

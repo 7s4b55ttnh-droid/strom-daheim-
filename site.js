@@ -38,7 +38,7 @@
   }
 
   /* Kopfzeile dunkel, solange sie über einem dunklen Bild liegt */
-  var sh=$('#sh'),darks=$$('.scene,.hero'),tick=0;
+  var sh=$('#sh'),darks=$$('.scene,.hero,.pic'),tick=0;
   function hdr(){tick=0;if(!sh)return;var y=52,on=false;for(var i=0;i<darks.length;i++){var r=darks[i].getBoundingClientRect();if(r.top<=y&&r.bottom>y){on=true;break}}sh.classList.toggle('ondark',on)}
 
   /* Nach oben */
