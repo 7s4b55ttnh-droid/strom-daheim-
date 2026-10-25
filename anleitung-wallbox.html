@@ -1,0 +1,324 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wallbox installieren: Anleitung und Einkaufsliste – Strom-Daheim</title>
+<meta name="description" content="Wallbox zuhause installieren lassen: 8 Schritte von der Erlaubnis über die Anmeldung beim Netzbetreiber bis zur Inbetriebnahme. Mit Kosten, Förderung 2026 und kompletter Einkaufsliste vom Dübel bis zur Wallbox.">
+<link rel="canonical" href="https://strom-daheim.de/anleitung-wallbox.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/wallbox.jpg"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;background:rgba(0,0,0,.55);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f5f7}
+.nav{display:flex;align-items:center;gap:16px;height:48px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7;white-space:nowrap;flex:none}
+.nav nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
+.nav nav a{color:rgba(245,245,247,.72);font-size:.84rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:#fff;background:rgba(255,255,255,.12);text-decoration:none}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Schritte */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:4px 16px;background:var(--pan);border-radius:22px;padding:22px 22px 20px;box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+ol.steps>li:before{content:counter(s);grid-row:1/span 3;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
+ol.steps h3{margin:6px 0 6px}
+ol.steps .who{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+ol.steps .who.du{color:var(--ok)}ol.steps .who.pro{color:var(--warn)}
+ol.steps p,ol.steps ul{font-size:1rem;margin:0 0 10px;color:var(--ink)}
+ol.steps ul{padding-left:20px}ol.steps li li{margin:4px 0}
+ol.steps .meta{font-size:.86rem;color:var(--mut);margin:0}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.sum td{font-weight:700}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+.calc output{float:right;font-weight:600;color:var(--mut);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:18px}
+.res b{display:block;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
+@media(max-width:640px){.grid2,.items{grid-template-columns:1fr}ol.steps>li{grid-template-columns:1fr;padding:20px}ol.steps>li:before{grid-row:auto;margin-bottom:6px}.hero{min-height:70svh}}
+</style>
+
+</head><body>
+<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html" aria-current="page">Wallbox</a><a href="#einkauf">Einkaufsliste</a></nav></div></header>
+<main>
+<div class="hero">
+  <img src="assets/wallbox.jpg" srcset="assets/wallbox-m.jpg 960w, assets/wallbox.jpg 1920w" sizes="100vw" alt="Matt-schwarze Wallbox an einer Betonwand, Ladekabel steckt in einem Elektroauto" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">Anleitung · Stand 25. Oktober 2026</span>
+    <h1>Wallbox installieren. In acht Schritten.</h1>
+    <p>Von der Erlaubnis über die Anmeldung bis zur ersten Ladung. Mit Kosten, Förderung und allem, was du kaufen musst.</p>
+    <div class="jump"><a class="pri" href="#schritte">Zu den Schritten</a><a href="#einkauf">Einkaufsliste</a><a href="#kosten">Kosten</a></div>
+  </div>
+</div>
+
+<section><div class="wrap read">
+<div class="note"><span class="ic">⚡</span><div><b>Den Stromanschluss macht immer ein Elektriker.</b><p>Eine Wallbox hängt an 400 Volt. Anschließen, absichern und in Betrieb nehmen darf in Deutschland nur ein Elektrofachbetrieb, der beim Netzbetreiber eingetragen ist. Du kannst planen, vorbereiten und kaufen – und sparst dabei oft eine Arbeitsstunde. Jeder Schritt unten sagt dir, wer ihn macht.</p></div></div>
+<div class="grid3">
+  <div class="card opt"><span class="pill ok">Du</span><b class="t" style="margin-top:12px">Planen und vorbereiten</b><p>Erlaubnis holen, Angebote einholen, Wallbox auswählen, Platz und Halterungen vorbereiten.</p></div>
+  <div class="card opt"><span class="pill warn">Elektriker</span><b class="t" style="margin-top:12px">Anschließen und prüfen</b><p>Leitung verlegen, Schutzschalter setzen, Wallbox anschließen, messen, Protokoll schreiben.</p></div>
+  <div class="card opt"><span class="pill mut">Meist der Elektriker</span><b class="t" style="margin-top:12px">Anmelden</b><p>Beim Netzbetreiber vor der Installation, inklusive der Meldung als steuerbare Verbrauchseinrichtung.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="schritte"><div class="wrap read">
+<div class="head"><span class="eyebrow">Schritt für Schritt</span><h2>So kommt die Wallbox an die Wand.</h2></div>
+<ol class="steps">
+<li><div><div class="who du">Du · 15 Minuten</div><h3>Prüfen, ob du eine Wallbox brauchst</h3>
+<p>An einer normalen Steckdose lädt ein E-Auto mit etwa 2,3 kW. Ein 38-kWh-Akku braucht so über 15 Stunden. Eine 11-kW-Wallbox schafft das in rund 3,5 Stunden.</p>
+<p>Versicherer und VDE raten davon ab, an der Haushaltssteckdose dauerhaft zu laden: Steckdose und Leitung können heiß werden. Wer täglich lädt, braucht eine Wallbox.</p>
+<p class="meta">Quelle: AUTO BILD, 30.05.2026; GDV und VDE dort zitiert.</p></div></li>
+
+<li><div><div class="who du">Du · je nach Antwort 1–6 Wochen</div><h3>Erlaubnis holen</h3>
+<p><b>Eigenheim:</b> Du entscheidest selbst.</p>
+<p><b>Mietwohnung:</b> Seit 2020 hast du einen Anspruch darauf, dass dein Vermieter eine Lademöglichkeit erlaubt (§ 554 BGB). Er darf Auflagen zur Ausführung machen und ablehnen, wenn es ihm nicht zuzumuten ist. Die Kosten trägst du.</p>
+<p><b>Eigentumswohnung:</b> Gleicher Anspruch gegenüber der Eigentümergemeinschaft (§ 20 WEG). Über das Wie beschließt die Versammlung.</p>
+<p class="meta">Tipp: Schriftlich anfragen, Gerät und Kabelweg beschreiben, Frist setzen.</p></div></li>
+
+<li><div><div class="who du">Du + Elektriker · 1 Termin</div><h3>Vor-Ort-Check und Angebote</h3>
+<p>Lass zwei bis drei Elektriker kommen. Sie prüfen Hausanschluss, Zählerschrank und den Kabelweg zum Stellplatz. Davon hängt der Preis am stärksten ab.</p>
+<ul><li>Wie weit ist der Zählerschrank vom Stellplatz entfernt?</li><li>Ist im Zählerschrank Platz für neue Schutzschalter?</li><li>Muss die Leitung durch Wände, unter die Erde oder außen entlang?</li></ul>
+<p class="meta">Frag direkt, ob die Anmeldung beim Netzbetreiber im Angebot enthalten ist.</p></div></li>
+
+<li><div><div class="who du">Du · 1 Abend</div><h3>Wallbox auswählen</h3>
+<ul>
+<li><b>11 kW reichen fast immer.</b> Viele Autos laden mit Wechselstrom ohnehin nicht schneller. 22 kW braucht eine Genehmigung des Netzbetreibers.</li>
+<li><b>Typ-2-Anschluss</b> ist in Europa Standard.</li>
+<li><b>Fest angeschlagenes Kabel</b> ist bequemer, eine Steckdose flexibler. Kabellänge: 5 m reichen meist, 7,5 m wenn das Auto oft andersherum parkt.</li>
+<li><b>Gleichstrom-Fehlerstromerkennung (6 mA DC) eingebaut</b> spart dem Elektriker den teureren FI-Schalter Typ B.</li>
+<li><b>Steuerbar</b> (Eingang für den Netzbetreiber, § 14a EnWG) – Pflicht für günstigere Netzentgelte.</li>
+<li><b>App oder Solarüberschuss-Laden</b> nur, wenn du es nutzt. Kostet 200–300 € mehr.</li>
+</ul>
+<p class="meta">Passende Modelle findest du in der <a href="#einkauf">Einkaufsliste</a>.</p></div></li>
+
+<li><div><div class="who pro">Meist der Elektriker · vor der Installation</div><h3>Beim Netzbetreiber anmelden</h3>
+<p>Jede Wallbox muss <b>vor</b> der Installation beim Netzbetreiber gemeldet werden (§ 19 NAV). Bis 11 kW reicht die Anmeldung. Über 11 kW muss der Netzbetreiber zustimmen und hat dafür bis zu zwei Monate Zeit.</p>
+<p>Über 4,2 kW gilt die Wallbox als <b>steuerbare Verbrauchseinrichtung</b> (§ 14a EnWG). Der Netzbetreiber darf sie bei Überlastung kurz drosseln, aber nie unter 4,2 kW. Dafür zahlst du weniger Netzentgelt: pauschal etwa 110 bis 190 € im Jahr (Modul 1).</p>
+<p class="meta">Quellen: Vattenfall (Anmeldung, § 19 NAV); energiemarie, 31.07.2026 (§ 14a, Module).</p></div></li>
+
+<li><div><div class="who du">Du · 1–2 Stunden</div><h3>Platz vorbereiten</h3>
+<p>Das darfst du selbst, solange du nichts an Stromleitungen machst:</p>
+<ul>
+<li>Platz festlegen: in der Nähe der Ladeklappe, gut erreichbar, nicht im Weg.</li>
+<li>Höhe markieren: Unterkante etwa 1 m, Bedienteil auf 1,2–1,5 m.</li>
+<li>Vor jedem Bohren mit dem Leitungssucher prüfen, ob in der Wand Strom-, Wasser- oder Gasleitungen liegen.</li>
+<li>Kabelhalter und Steckerhalter montieren, draußen Wetterschutzdach und Anfahrschutz.</li>
+<li>Weg zum Zählerschrank freiräumen, damit der Elektriker schnell arbeiten kann.</li>
+</ul>
+<p class="meta">Die Wallbox selbst hängt der Elektriker auf, weil er die Leitung von hinten einführen muss.</p></div></li>
+
+<li><div><div class="who pro">Elektriker · 3–6 Stunden</div><h3>Installation</h3>
+<p>Der Elektriker verlegt eine eigene Leitung vom Zählerschrank zur Wallbox, typisch NYM-J 5×6 mm². Im Zählerschrank setzt er einen Leitungsschutzschalter und einen Fehlerstromschutzschalter: Typ B oder Typ A mit Gleichstromerkennung in der Wallbox.</p>
+<p>Danach misst er die Anlage durch und gibt dir ein <b>Prüfprotokoll</b>. Heb es auf: Versicherung, Förderstelle und Netzbetreiber können es verlangen.</p>
+<p class="meta">Quelle: EMA Energiewelt, 08.04.2026.</p></div></li>
+
+<li><div><div class="who du">Du · 30 Minuten</div><h3>Einrichten und günstig laden</h3>
+<ul>
+<li>Wallbox in der App einrichten oder Ladestrom am Gerät einstellen.</li>
+<li>Prüfen, ob die Inbetriebnahme beim Netzbetreiber fertig gemeldet ist.</li>
+<li>Netzentgelt-Modul wählen. Modul 1 ist der einfache Pauschalrabatt.</li>
+<li>Stromtarif vergleichen: Zuhause laden kostet bei 35 ct/kWh etwa 7 € pro 100 km, bei 25 ct/kWh etwa 5 €.</li>
+</ul>
+<p class="meta">Rechne deine eigenen Kosten im <a href="/e-auto.html#rechner">E-Auto-Rechner</a> aus.</p></div></li>
+</ol>
+</div></section>
+
+<section id="kosten"><div class="wrap read">
+<div class="head"><span class="eyebrow">Kosten 2026</span><h2>Was eine Wallbox wirklich kostet.</h2><p class="lede">Richtwerte. Den genauen Preis bestimmt dein Kabelweg – hol immer mehrere Angebote ein.</p></div>
+<div class="tbl"><table>
+<thead><tr><th>Posten</th><th>Spanne</th></tr></thead>
+<tbody>
+<tr><td>Wallbox 11 kW, Standard</td><td>400–700 €</td></tr>
+<tr><td>Wallbox 11 kW, smart mit App und Solarüberschuss</td><td>600–1.000 €</td></tr>
+<tr><td>Montage und Verkabelung (3–6 Stunden)</td><td>300–700 €</td></tr>
+<tr><td>Fehlerstromschutzschalter, Material</td><td>80–250 €</td></tr>
+<tr><td>Leitung NYM-J 5×6 mm², pro Meter</td><td>3–8 €</td></tr>
+<tr><td>Prüfprotokoll, Anfahrt, Anmeldung</td><td>50–400 €</td></tr>
+<tr class="sum"><td>Gesamt, Standardfall</td><td>800–2.200 €</td></tr>
+<tr><td>Zusätzlich, falls der Zählerschrank umgebaut werden muss</td><td>500–1.500 €</td></tr>
+</tbody></table></div>
+<p class="src" style="margin-top:12px">Quelle: EMA Energiewelt, Wallbox-Installation Kosten 2026 (08.04.2026).</p>
+
+<div class="card" style="margin-top:28px"><h3>Förderung 2026</h3>
+<p style="margin-top:10px"><b>Für Einfamilienhäuser gibt es vom Bund kein Geld.</b> Die KfW zahlt aktuell nichts für private Wallboxen.</p>
+<p><b>Mehrparteienhäuser:</b> Seit 15. April 2026 gibt es ein Bundesprogramm mit bis zu 2.000 € pro Stellplatz, Anträge bis 10. November 2026, solange Geld da ist. Voraussetzung: Bestandsgebäude ab drei Wohnungen, mindestens 20 % der Stellplätze vorverkabelt. Antragsteller sind Eigentümergemeinschaften, Vermieter und kleinere Unternehmen.</p>
+<p style="margin:0"><b>Städte und Stadtwerke:</b> Manche zahlen kleine Zuschüsse, etwa 100 bis 400 €. Frag bei deinen Stadtwerken nach – <b>vor</b> der Bestellung, sonst gibt es meist nichts.</p>
+<p class="src" style="margin-top:12px">Quelle: ADAC, Wallbox-Förderung 2026 (18.08.2026).</p></div>
+</div></section>
+
+<section class="band" id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Einkaufsliste</span><h2>Von der Schraube bis zur Wallbox.</h2><p class="lede">Alles, was du für Laden, Montage und Außenbereich brauchst. Die Links führen zu passenden Angeboten bei Amazon<span class="tag">Anzeige</span></p></div>
+<div class="shop">
+<h3>1 · Laden</h3><p class="why">Das Herzstück. Achte auf 11 kW, Typ 2 und eingebaute Gleichstrom-Fehlerstromerkennung.</p>
+<div class="items">
+<a class="item" href="https://www.amazon.de/s?k=wallbox+11+kw+typ+2+dc+fehlerstromerkennung&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🔌</span><div><b>Wallbox 11 kW mit festem Kabel</b><span>Typ 2, 6 mA DC-Erkennung, steuerbar nach § 14a</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=wallbox+11+kw+app+pv+%C3%BCberschuss+laden&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">📱</span><div><b>Smarte Wallbox mit App</b><span>Nur sinnvoll mit Solaranlage oder dynamischem Tarif</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=typ+2+ladekabel+11+kw+5m+mode+3&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">〰️</span><div><b>Typ-2-Ladekabel 11 kW, 5 m</b><span>Für öffentliche Ladesäulen und Wallboxen mit Steckdose</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=mobiles+ladeger%C3%A4t+e+auto+schuko+typ+2+temperatur%C3%BCberwachung&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🧳</span><div><b>Mobiles Notladekabel (Schuko)</b><span>Für unterwegs, mit Temperaturfühler im Stecker. Nur in Ausnahmefällen</span></div><span class="go">Ansehen →</span></a>
+</div>
+
+<h3>2 · Halterungen und Ordnung</h3><p class="why">Damit das Kabel nicht auf dem Boden liegt und der Stecker sauber bleibt.</p>
+<div class="items">
+<a class="item" href="https://www.amazon.de/s?k=ladekabel+halterung+wand+e+auto&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🪝</span><div><b>Wandhalter für das Ladekabel</b><span>Kabel aufrollen statt auf dem Boden liegen lassen</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=typ+2+stecker+halterung+wand&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🧷</span><div><b>Steckerhalter Typ 2</b><span>Hält den Stecker trocken und sauber</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=ladekabel+tasche+e+auto&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">👜</span><div><b>Tasche für das Ladekabel</b><span>Für den Kofferraum</span></div><span class="go">Ansehen →</span></a>
+</div>
+
+<h3>3 · Werkzeug für die Vorbereitung</h3><p class="why">Für Halterungen, Wetterschutz und Anfahrschutz. Nichts davon ist für Stromleitungen gedacht.</p>
+<div class="items">
+<a class="item" href="https://www.amazon.de/s?k=leitungssucher+ortungsger%C3%A4t+wand&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🔍</span><div><b>Leitungssucher</b><span>Vor jedem Bohrloch: findet Strom- und Wasserleitungen</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=bohrhammer+sds+plus+akku&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🛠️</span><div><b>Bohrhammer (SDS-plus)</b><span>Für Beton und Mauerwerk in der Garage</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=akkuschrauber+18v+set&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🔩</span><div><b>Akkuschrauber</b><span>Zum Eindrehen der Schrauben, nicht zum Bohren in Beton</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=steinbohrer+set+sds+plus+6+8+10+mm&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🌀</span><div><b>Steinbohrer-Set 6–10 mm</b><span>Passend zu den Dübeln</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=d%C3%BCbel+schrauben+set+beton+8+mm+10+mm&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🪛</span><div><b>Dübel- und Schrauben-Set</b><span>8 und 10 mm für Beton und Mauerwerk</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=bit+set+schraubendreher&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🧰</span><div><b>Bit-Set und Schraubendreher</b><span>Torx, Kreuz, Schlitz</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=wasserwaage+60+cm&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">📏</span><div><b>Wasserwaage</b><span>Damit Halter und Dach gerade hängen</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=ma%C3%9Fband+5m+zollstock&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">📐</span><div><b>Maßband oder Zollstock</b><span>Höhen markieren, Kabelweg messen</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=schutzbrille+geh%C3%B6rschutz+set&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🥽</span><div><b>Schutzbrille und Gehörschutz</b><span>Beim Bohren in Beton Pflicht</span></div><span class="go">Ansehen →</span></a>
+</div>
+
+<h3>4 · Draußen und in der Einfahrt</h3><p class="why">Nur nötig, wenn die Wallbox nicht in der Garage hängt.</p>
+<div class="items">
+<a class="item" href="https://www.amazon.de/s?k=wetterschutzdach+wallbox&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">☂️</span><div><b>Wetterschutzdach für die Wallbox</b><span>Schützt vor Regen, Schnee und praller Sonne</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=anfahrschutz+wallbox+rammschutz+b%C3%BCgel&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🛡️</span><div><b>Anfahrschutz</b><span>Bügel vor der Wallbox gegen Rempler beim Einparken</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=wallbox+stands%C3%A4ule+stele&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🗼</span><div><b>Standsäule</b><span>Wenn keine Wand in der Nähe ist. Fundament plant der Elektriker mit</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=kabelkanal+au%C3%9Fen+uv+best%C3%A4ndig&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">📦</span><div><b>Kabelkanal für außen</b><span>UV-beständig. Vorher mit dem Elektriker abstimmen</span></div><span class="go">Ansehen →</span></a>
+</div>
+
+<h3>5 · Bringt der Elektriker mit</h3><p class="why">Nur damit du weißt, was auf der Rechnung steht. Bitte nicht selbst einbauen.</p>
+<div class="items">
+<div class="item pro"><span class="ic">🧯</span><div><b>Fehlerstromschutzschalter</b><span>Typ B, oder Typ A wenn die Wallbox Gleichstrom selbst erkennt</span></div><span class="go">Elektriker</span></div>
+<div class="item pro"><span class="ic">🔀</span><div><b>Leitungsschutzschalter, 3-polig</b><span>Eigener Stromkreis nur für die Wallbox</span></div><span class="go">Elektriker</span></div>
+<div class="item pro"><span class="ic">🧵</span><div><b>Leitung NYM-J 5×6 mm²</b><span>Vom Zählerschrank zur Wallbox</span></div><span class="go">Elektriker</span></div>
+<div class="item pro"><span class="ic">📋</span><div><b>Messgeräte und Prüfprotokoll</b><span>Pflicht nach der Installation</span></div><span class="go">Elektriker</span></div>
+</div>
+</div>
+</div></section>
+
+<section><div class="wrap read">
+<div class="head"><span class="eyebrow">Checkliste</span><h2>Hast du an alles gedacht?</h2></div>
+<div class="card"><div class="ckbar"><i id="ckb"></i></div><div class="ck" id="ck"></div><p class="src" id="ckt" style="margin:12px 0 0"></p></div>
+</div></section>
+
+<section class="band"><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Darf ich die Wallbox selbst anschließen?</summary><div><p>Nein. Den Anschluss an das Stromnetz darf nur ein Elektrofachbetrieb machen, der beim Netzbetreiber eingetragen ist. Ohne Prüfprotokoll riskierst du deinen Versicherungsschutz. Halterungen, Wetterschutz und Anfahrschutz montieren darfst du selbst.</p></div></details>
+<details><summary>11 kW oder 22 kW?</summary><div><p>11 kW. Das reicht, um die meisten Autos über Nacht voll zu laden. 22 kW braucht die Zustimmung des Netzbetreibers, eine dickere Leitung, und viele Autos laden mit Wechselstrom ohnehin nur mit 11 kW.</p></div></details>
+<details><summary>Kann ich mit meinem Balkonkraftwerk das Auto laden?</summary><div><p>Kaum. Ein Balkonkraftwerk liefert höchstens 800 Watt, eine Wallbox lädt mit mindestens 1,4 bis 4,2 kW. Der Solarstrom senkt deinen Verbrauch im Haus, aber für das Auto brauchst du eine Solaranlage auf dem Dach.</p></div></details>
+<details><summary>Was passiert bei der Drosselung nach § 14a?</summary><div><p>Wenn das Stromnetz in deiner Straße zu voll ist, darf der Netzbetreiber die Wallbox kurz herunterregeln, aber nie unter 4,2 kW. Dein Haushaltsstrom bleibt unberührt. Dafür zahlst du dauerhaft weniger Netzentgelt.</p></div></details>
+<details><summary>Brauche ich einen eigenen Stromzähler?</summary><div><p>Nicht unbedingt. Für den Pauschalrabatt (Modul 1) reicht dein normaler Zähler. Einen eigenen Zähler brauchst du nur für Modul 2 mit prozentualem Rabatt, und das lohnt sich nur bei sehr viel Ladestrom.</p></div></details>
+</div></section>
+
+<section><div class="wrap read">
+<div class="cta"><a class="btn" href="/e-auto.html">Ladekosten berechnen</a><a class="btn sec" href="/">Zum Balkonkraftwerk</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>Vattenfall: Wallbox anmelden – Was Sie wissen sollten (§ 19 NAV, Anmeldung und Genehmigung) <a href="https://www.vattenfall.de/infowelt-energie/e-mobility/wallbox-anmelden" target="_blank" rel="noopener">vattenfall.de</a></li>
+<li>energiemarie: § 14a EnWG – reduzierte Netzentgelte für Wallboxen (31.07.2026) <a href="https://energiemarie.de/nachhaltigkeit/elektroauto/14a-netzentgelte" target="_blank" rel="noopener">energiemarie.de</a></li>
+<li>EMA Energiewelt: Wallbox-Installation Kosten 2026 (08.04.2026) <a href="https://ema-energiewelt.de/wissen/wallbox-installation-kosten-elektriker-2026" target="_blank" rel="noopener">ema-energiewelt.de</a></li>
+<li>ADAC: Wallbox-Förderung 2026 (18.08.2026) <a href="https://www.adac.de/news/einbau-von-wallboxen-fuer-elektroautos-soll-erleichtert-werden" target="_blank" rel="noopener">adac.de</a></li>
+<li>AUTO BILD: E-Auto an der Schuko-Steckdose laden (30.05.2026) <a href="https://www.autobild.de/artikel/e-auto-laden-schuko-steckdose-verlaengerung-hausstrom-230v-18712323.html" target="_blank" rel="noopener">autobild.de</a></li>
+</ol><p style="margin-top:12px">Allgemeine Informationen, keine Rechts- oder Elektroberatung. Geprüft am 25.10.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+</div></footer>
+<script>
+(()=>{const L=['Erlaubnis von Vermieter oder Eigentümergemeinschaft (falls nötig)','Zwei bis drei Angebote von Elektrikern eingeholt','Wallbox mit 11 kW, Typ 2 und Gleichstromerkennung gewählt','Bei Stadtwerken nach Zuschuss gefragt, bevor bestellt wurde','Anmeldung beim Netzbetreiber erledigt (vor der Installation)','Platz markiert, Wand mit Leitungssucher geprüft','Kabel- und Steckerhalter montiert','Installation durch den Elektriker, Prüfprotokoll erhalten','Netzentgelt-Modul nach § 14a gewählt','Stromtarif verglichen'];
+const box=document.getElementById('ck');let s=[];try{s=JSON.parse(localStorage.getItem('wbck')||'[]')}catch(e){}
+box.innerHTML=L.map((t,i)=>`<label><input type="checkbox" id="wb${i}" data-i="${i}">${t}</label>`).join('');
+const up=()=>{const n=s.filter(Boolean).length;document.getElementById('ckb').style.width=(n/L.length*100)+'%';document.getElementById('ckt').textContent=n+' von '+L.length+' erledigt. Wird nur in deinem Browser gespeichert.'};
+box.querySelectorAll('input').forEach(b=>{b.checked=!!s[b.dataset.i];b.onchange=()=>{s[b.dataset.i]=b.checked;try{localStorage.setItem('wbck',JSON.stringify(s))}catch(e){}up()}});up();})();
+</script>
+</body></html>

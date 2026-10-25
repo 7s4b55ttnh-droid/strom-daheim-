@@ -1,0 +1,228 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E-Auto zuhause laden: Kosten, Kabel, Wallbox – Strom-Daheim</title>
+<meta name="description" content="E-Auto zuhause laden: Was 100 km wirklich kosten, Steckdose oder Wallbox, welche Kabel du brauchst, wie du Netzentgelte sparst. Mit Rechner und Einkaufsliste.">
+<link rel="canonical" href="https://strom-daheim.de/e-auto.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/ev.jpg"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;background:rgba(0,0,0,.55);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f5f7}
+.nav{display:flex;align-items:center;gap:16px;height:48px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7;white-space:nowrap;flex:none}
+.nav nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
+.nav nav a{color:rgba(245,245,247,.72);font-size:.84rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:#fff;background:rgba(255,255,255,.12);text-decoration:none}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Schritte */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:4px 16px;background:var(--pan);border-radius:22px;padding:22px 22px 20px;box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+ol.steps>li:before{content:counter(s);grid-row:1/span 3;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
+ol.steps h3{margin:6px 0 6px}
+ol.steps .who{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+ol.steps .who.du{color:var(--ok)}ol.steps .who.pro{color:var(--warn)}
+ol.steps p,ol.steps ul{font-size:1rem;margin:0 0 10px;color:var(--ink)}
+ol.steps ul{padding-left:20px}ol.steps li li{margin:4px 0}
+ol.steps .meta{font-size:.86rem;color:var(--mut);margin:0}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.sum td{font-weight:700}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+.calc output{float:right;font-weight:600;color:var(--mut);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:18px}
+.res b{display:block;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
+@media(max-width:640px){.grid2,.items{grid-template-columns:1fr}ol.steps>li{grid-template-columns:1fr;padding:20px}ol.steps>li:before{grid-row:auto;margin-bottom:6px}.hero{min-height:70svh}}
+</style>
+
+</head><body>
+<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/e-auto.html" aria-current="page">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="#rechner">Rechner</a></nav></div></header>
+<main>
+<div class="hero">
+  <img src="assets/ev.jpg" srcset="assets/ev-m.jpg 960w, assets/ev.jpg 1920w" sizes="100vw" alt="Elektroauto in einer Einfahrt zur blauen Stunde, an einer Wallbox neben der Haustür angeschlossen" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">E-Auto · Stand 25. Oktober 2026</span>
+    <h1>Zuhause laden. Für etwa 5 bis 8 € pro 100 km.</h1>
+    <p>Was dein E-Auto wirklich kostet, wo du am besten lädst und was du dafür brauchst.</p>
+    <div class="jump"><a class="pri" href="#rechner">Kosten berechnen</a><a href="#laden">Steckdose oder Wallbox?</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a></div>
+  </div>
+</div>
+
+<section id="laden"><div class="wrap">
+<div class="head"><span class="eyebrow">Drei Wege</span><h2>Wo lädst du am besten?</h2><p class="lede">Zuhause ist fast immer am günstigsten. Die Frage ist nur, womit.</p></div>
+<div class="grid3">
+  <div class="card opt"><span class="pill warn">Nur im Ausnahmefall</span><b class="t" style="margin-top:12px">Haushaltssteckdose</b><span class="kw">2,3 kW</span><span class="sub">38-kWh-Akku: über 15 Stunden</span><p>Geht mit dem Notladekabel. Aber: Steckdose und Leitung können bei Dauerlast heiß werden, und es gehen bis zu einem Viertel der Energie verloren. Versicherer und VDE raten vom regelmäßigen Laden ab.</p></div>
+  <div class="card opt"><span class="pill ok">Empfohlen</span><b class="t" style="margin-top:12px">Wallbox</b><span class="kw">11 kW</span><span class="sub">38-kWh-Akku: etwa 3,5 Stunden</span><p>Sicher, schnell, günstig. Mit Anmeldung als steuerbare Verbrauchseinrichtung sparst du zusätzlich etwa 110 bis 190 € Netzentgelt im Jahr. <a href="/anleitung-wallbox.html">So geht's →</a></p></div>
+  <div class="card opt"><span class="pill mut">Unterwegs</span><b class="t" style="margin-top:12px">Öffentlich laden</b><span class="kw">39–89 ct</span><span class="sub">pro kWh, je nach Säule und Vertrag</span><p>An normalen Säulen 7,80 bis 11,20 € pro 100 km, an Schnellladern ohne Vertrag bis etwa 17,80 €. Praktisch auf Reisen, teuer im Alltag.</p></div>
+</div>
+<p class="src" style="margin-top:14px">Quellen: AUTO BILD, 30.05.2026 (Steckdose, ADAC-Ladeverluste); Bellemann, 21.07.2026 (öffentliche Preise); energiemarie, 31.07.2026 (§ 14a).</p>
+</div></section>
+
+<section class="band" id="rechner"><div class="wrap">
+<div class="head"><span class="eyebrow">Rechner</span><h2>Was kosten dich 100 Kilometer?</h2><p class="lede">Stell dein Auto und deinen Stromtarif ein. Ladeverluste von 12 % sind schon eingerechnet.</p></div>
+<div class="calc">
+  <div class="card">
+    <label for="c_v">Verbrauch deines Autos<output id="o_v"></output><input type="range" id="c_v" min="13" max="26" step="0.5" value="18"></label>
+    <label for="c_p">Strompreis zuhause<output id="o_p"></output><input type="range" id="c_p" min="18" max="50" step="0.5" value="35"></label>
+    <label for="c_k">Kilometer pro Jahr<output id="o_k"></output><input type="range" id="c_k" min="5000" max="40000" step="1000" value="15000"></label>
+    <label for="c_b" style="margin-bottom:0">Benzinpreis zum Vergleich<output id="o_b"></output><input type="range" id="c_b" min="1.40" max="2.20" step="0.01" value="1.75"></label>
+    <p class="src" style="margin:14px 0 0">Typisch: kleine E-Autos 15, Mittelklasse 18, große 20–25 kWh/100 km. Vergleichs-Benziner: 6,5 l/100 km.</p>
+  </div>
+  <div class="res">
+    <div><b id="r1"></b><span>pro 100 km zuhause</span></div>
+    <div><b id="r2"></b><span>pro Jahr zuhause</span></div>
+    <div><b id="r3"></b><span>pro 100 km an öffentlichen Säulen (ca. 49 ct/kWh)</span></div>
+    <div><b id="r4"></b><span>pro Jahr mit einem Benziner</span></div>
+    <div class="hi"><b id="r5"></b><span id="r5t">Ersparnis pro Jahr gegenüber dem Benziner, plus etwa 110–190 € Netzentgelt-Rabatt mit angemeldeter Wallbox</span></div>
+  </div>
+</div>
+</div></section>
+
+<section><div class="wrap read">
+<div class="head"><span class="eyebrow">Kabel und Stecker</span><h2>Was passt an dein Auto?</h2></div>
+<div class="grid2">
+  <div class="card opt"><b class="t">Typ 2</b><p>Der Standard-Stecker in Europa für Wechselstrom: an der Wallbox und an normalen Ladesäulen. Fast jedes E-Auto hat ihn.</p></div>
+  <div class="card opt"><b class="t">CCS</b><p>Typ 2 mit zwei zusätzlichen Kontakten für Gleichstrom-Schnellladen. Das Kabel hängt immer fest an der Säule, du brauchst keins.</p></div>
+  <div class="card opt"><b class="t">Mode-3-Kabel (Typ 2 auf Typ 2)</b><p>Für Säulen und Wallboxen ohne festes Kabel. Gehört in jeden Kofferraum. 11 kW, 5 m reichen meist.</p></div>
+  <div class="card opt"><b class="t">Mode-2-Notladekabel (Schuko)</b><p>Mit Steuerbox im Kabel für die Haushaltssteckdose. Nur für Ausnahmen, nie mit Kabeltrommel oder altem Verlängerungskabel.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Einkaufsliste</span><h2>Das brauchst du fürs Laden.</h2><p class="lede">Die komplette Liste für die Montage vom Dübel bis zum Anfahrschutz steht in der <a href="/anleitung-wallbox.html#einkauf">Wallbox-Anleitung</a>.<span class="tag">Anzeige</span></p></div>
+<div class="shop"><div class="items">
+<a class="item" href="https://www.amazon.de/s?k=wallbox+11+kw+typ+2+dc+fehlerstromerkennung&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🔌</span><div><b>Wallbox 11 kW</b><span>Typ 2, mit Gleichstromerkennung, steuerbar</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=typ+2+ladekabel+11+kw+5m+mode+3&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">〰️</span><div><b>Typ-2-Ladekabel, 5 m</b><span>Für Ladesäulen unterwegs</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=mobiles+ladeger%C3%A4t+e+auto+schuko+typ+2+temperatur%C3%BCberwachung&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🧳</span><div><b>Mobiles Notladekabel</b><span>Mit Temperaturfühler im Stecker</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=steckdosentester+schuko+fi&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🧪</span><div><b>Steckdosentester</b><span>Erster Check, ersetzt nicht den Elektriker</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=ladekabel+halterung+wand+e+auto&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">🪝</span><div><b>Kabelhalter für die Wand</b><span>Ordnung in Garage und Carport</span></div><span class="go">Ansehen →</span></a>
+<a class="item" href="https://www.amazon.de/s?k=ladekabel+tasche+e+auto&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic">👜</span><div><b>Kabeltasche</b><span>Für den Kofferraum</span></div><span class="go">Ansehen →</span></a>
+</div></div>
+</div></section>
+
+<section><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Darf ich mein E-Auto an der normalen Steckdose laden?</summary><div><p>Erlaubt ist es, aber nur für Ausnahmen. Lass die Steckdose vorher von einem Elektriker prüfen: Sie muss geerdet und mit 16 A abgesichert sein. Nutze nie eine Kabeltrommel oder ein altes Verlängerungskabel. Frag bei häufigem Laden deinen Gebäudeversicherer.</p></div></details>
+<details><summary>Lohnt sich ein dynamischer Stromtarif?</summary><div><p>Oft ja, wenn du flexibel nachts oder bei viel Wind und Sonne laden kannst. Mit rund 22 ct/kWh kommst du auf etwa 4,40 € pro 100 km. Dafür brauchst du ein intelligentes Messsystem.</p></div></details>
+<details><summary>Kann ich mit dem Balkonkraftwerk laden?</summary><div><p>Kaum. Ein Balkonkraftwerk liefert höchstens 800 Watt, eine Wallbox lädt mit mindestens 1,4 bis 4,2 kW. Fürs Auto brauchst du eine Solaranlage auf dem Dach. Das Balkonkraftwerk senkt dafür den übrigen Verbrauch im Haushalt. <a href="/">Zum Balkonkraftwerk-Rechner</a></p></div></details>
+<details><summary>Ich wohne zur Miete. Bekomme ich trotzdem eine Wallbox?</summary><div><p>Ja. Seit 2020 hast du einen Anspruch darauf, dass dein Vermieter eine Lademöglichkeit erlaubt (§ 554 BGB). Die Kosten trägst du. In Eigentumswohnungen gilt das Gleiche gegenüber der Gemeinschaft (§ 20 WEG). <a href="/anleitung-wallbox.html#schritte">So gehst du vor</a></p></div></details>
+</div></section>
+
+<section class="band"><div class="wrap read">
+<div class="cta"><a class="btn" href="/anleitung-wallbox.html">Wallbox-Anleitung lesen</a><a class="btn sec" href="/">Zum Balkonkraftwerk</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>Bellemann: E-Auto-Ladekosten 2026 pro 100 km (aktualisiert 21.07.2026; nennt Verivox, StromAuskunft, ADAC, Bundesnetzagentur) <a href="https://automobilsalon-bellemann.de/news/e-auto-ladekosten-2026-pro-100-km-zuhause-vs-oeffentlich/" target="_blank" rel="noopener">automobilsalon-bellemann.de</a></li>
+<li>AUTO BILD: E-Auto an der Schuko-Steckdose laden (30.05.2026) <a href="https://www.autobild.de/artikel/e-auto-laden-schuko-steckdose-verlaengerung-hausstrom-230v-18712323.html" target="_blank" rel="noopener">autobild.de</a></li>
+<li>energiemarie: § 14a EnWG – reduzierte Netzentgelte (31.07.2026) <a href="https://energiemarie.de/nachhaltigkeit/elektroauto/14a-netzentgelte" target="_blank" rel="noopener">energiemarie.de</a></li>
+<li>stromauskunft.de: Strompreise am 25.10.2026 <a href="https://www.stromauskunft.de/strompreise/" target="_blank" rel="noopener">stromauskunft.de</a></li>
+</ol><p style="margin-top:12px">Alle Zahlen sind Richtwerte ohne Gewähr. Geprüft am 25.10.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+</div></footer>
+<script>
+(()=>{const $=i=>document.getElementById(i),f=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
+const loss=1.12,pub=49,petrol=6.5;
+function up(){const v=+$('c_v').value,p=+$('c_p').value,k=+$('c_k').value,b=+$('c_b').value;
+$('o_v').textContent=f(v,1)+' kWh/100 km';$('o_p').textContent=f(p,1)+' ct/kWh';$('o_k').textContent=f(k)+' km';$('o_b').textContent=f(b,2)+' €/l';
+const h=v*loss*p/100,y=h*k/100,o=v*loss*pub/100,bz=petrol*b*k/100;
+$('r1').textContent=f(h,2)+' €';$('r2').textContent=f(y)+' €';$('r3').textContent=f(o,2)+' €';$('r4').textContent=f(bz)+' €';$('r5').textContent=f(bz-y)+' €';}
+['c_v','c_p','c_k','c_b'].forEach(i=>$(i).addEventListener('input',up));up();})();
+</script>
+</body></html>

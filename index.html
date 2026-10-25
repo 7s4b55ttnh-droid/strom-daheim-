@@ -34,7 +34,7 @@ section{padding-block:clamp(72px,10vw,128px)}section.tight{padding-block:clamp(4
 /* Nav */
 header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;background:rgba(0,0,0,.5);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f5f7}
 .nav{display:flex;align-items:center;gap:20px;height:48px}
-.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7;white-space:nowrap;flex:none}
 .nav nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
 .nav nav a{color:rgba(245,245,247,.7);font-size:.84rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
 .nav nav a:hover{color:#fff;background:rgba(255,255,255,.1);text-decoration:none}
@@ -57,6 +57,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,su
 .cap .big{display:block;font-size:clamp(3.2rem,12vw,7.5rem);font-weight:700;letter-spacing:-.045em;line-height:.95;color:#fff;font-variant-numeric:tabular-nums}
 .cap .sub{font-size:1rem;color:rgba(245,245,247,.7);margin-top:8px;letter-spacing:.02em}
 .cap .soon{display:inline-block;margin-left:12px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;vertical-align:middle}
+.cap .scbtn{display:inline-block;margin-top:22px;padding:12px 20px;border-radius:999px;background:#f5f5f7;color:#000;font-weight:600;font-size:.95rem;pointer-events:auto}.cap .scbtn:hover{text-decoration:none;opacity:.88}.cap:not(.on){pointer-events:none}
 .hint{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;z-index:2;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,247,.6)}
 .hint:after{content:"";display:block;width:1px;height:36px;margin:10px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);animation:hint 1.8s ease-in-out infinite}
 @keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -140,7 +141,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 </style>
 </head><body>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Muss ich ein Balkonkraftwerk anmelden?","acceptedAnswer":{"@type":"Answer","text":"Ja, im Marktstammdatenregister der Bundesnetzagentur, innerhalb eines Monats nach Inbetriebnahme. Eine zusätzliche Meldung beim Netzbetreiber ist bei Einhaltung der Grenzen (800 W Wechselrichter, 2.000 W Module) und reinem Eigenverbrauch nicht mehr nötig."}},{"@type":"Question","name":"Wie viel Leistung darf ein Balkonkraftwerk haben?","acceptedAnswer":{"@type":"Answer","text":"Der Wechselrichter höchstens 800 Watt, die Module zusammen höchstens 2.000 Watt."}},{"@type":"Question","name":"Lohnt sich ein Speicher am Balkonkraftwerk?","acceptedAnswer":{"@type":"Answer","text":"Bei kleinen Anlagen mit zwei Modulen meist nicht: Der zusätzliche Eigenverbrauch bringt nur wenige Dutzend Euro pro Jahr, der Speicher kostet 200 bis 400 Euro pro kWh. Bei vier Modulen und hohem Abendverbrauch kann er sich rechnen."}}]}</script>
-<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
+<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
 <main>
 
 <div class="scene first" id="s1"><div class="pin">
@@ -158,13 +159,13 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 
 <div class="scene" id="s3"><div class="pin">
   <img src="assets/wallbox.jpg" srcset="assets/wallbox-m.jpg 960w, assets/wallbox.jpg 1920w" sizes="100vw" alt="Matt-schwarze Wallbox an einer Betonwand, das Ladekabel steckt in einem Elektroauto mit grün leuchtendem Ladeport" loading="lazy">
-  <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">Wallbox <span class="soon">Ratgeber in Arbeit</span></span><h2>Laden, wo das Auto<br>ohnehin steht.</h2><p>11 kW an der Wand statt 2,3 kW aus der Steckdose. Welche Box zu Haus und Auto passt, was Elektriker und Anmeldung kosten.</p></div>
+  <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">Wallbox</span><h2>Laden, wo das Auto<br>ohnehin steht.</h2><p>11 kW an der Wand statt 2,3 kW aus der Steckdose. Welche Box zu Haus und Auto passt, was Elektriker und Anmeldung kosten.</p><a class="scbtn" href="/anleitung-wallbox.html">Zur Wallbox-Anleitung</a></div>
   <div class="cap mid" data-from="0.55" data-to="1"><h2>Zuhause laden ist<br>meist am günstigsten.</h2><p>Mit dem eigenen Stromtarif, ohne Ladesäulen-Aufschlag. Und mit Solarstrom vom Dach noch einmal billiger.</p></div>
 </div></div>
 
 <div class="scene" id="s4"><div class="pin">
   <img src="assets/ev.jpg" srcset="assets/ev-m.jpg 960w, assets/ev.jpg 1920w" sizes="100vw" alt="Elektroauto in einer Einfahrt zur blauen Stunde, an einer Wallbox neben der Haustür angeschlossen, Solarmodule auf dem Dach" loading="lazy">
-  <div class="cap top" data-from="0.05" data-to="0.5"><span class="eyebrow">E-Auto <span class="soon">Ratgeber in Arbeit</span></span><h2>Was eine Ladung<br>wirklich kostet.</h2><p>Zuhause, unterwegs, mit Sonne: die Rechnung pro 100 Kilometer, ehrlich und ohne Marketing.</p></div>
+  <div class="cap top" data-from="0.05" data-to="0.5"><span class="eyebrow">E-Auto</span><h2>Was eine Ladung<br>wirklich kostet.</h2><p>Zuhause, unterwegs, mit Sonne: die Rechnung pro 100 Kilometer, ehrlich und ohne Marketing.</p><a class="scbtn" href="/e-auto.html">Ladekosten berechnen</a></div>
   <div class="cap bot" data-from="0.55" data-to="1"><div class="stats"><div><b>40,39 ct</b><span>pro kWh in der Grundversorgung (25.10.2026)</span></div><div><b>31,13 ct</b><span>pro kWh im günstigsten Tarif</span></div><div><b>300 €+</b><span>Unterschied im Jahr bei 3.500 kWh</span></div></div></div>
 </div></div>
 
@@ -345,7 +346,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 <footer><div class="wrap">
 <p>Alle Zahlen sind vereinfachte Modellrechnungen ohne Gewähr: ein durchschnittlicher Tag, 900 kWh Ertrag pro kWp und Jahr, keine Vergütung für eingespeisten Strom. Dein Dach, deine Ausrichtung und dein Alltag weichen ab. Mit Anzeige markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht.</p>
 <p>Zuletzt aktualisiert am 25.10.2026.</p>
-<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/e-auto.html">E-Auto laden</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
 </div></footer>
 <script>
 const $=s=>document.querySelector(s),fm=(n,d=0)=>n.toLocaleString('de-DE',{maximumFractionDigits:d,minimumFractionDigits:d});
