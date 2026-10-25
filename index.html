@@ -2,52 +2,71 @@
 <title>Strom-Daheim – Balkonkraftwerk, Wallbox und Stromkosten</title>
 <meta name="description" content="Strom-Daheim: unabhängiger Ratgeber zu Balkonkraftwerk, Wallbox, E-Auto laden und Stromsparen – mit Rechner, Set-Vergleich und geprüften Quellen.">
 <link rel="canonical" href="https://strom-daheim.de/">
-<meta property="og:title" content="Strom-Daheim – Strom zuhause, verständlich gerechnet">
+<meta property="og:title" content="Strom-Daheim – Dein Strom. Dein Zuhause.">
 <meta property="og:description" content="Balkonkraftwerk, Wallbox, E-Auto und Stromsparen: Rechner, Vergleiche und Ratgeber mit geprüften Quellen.">
+<meta property="og:image" content="https://strom-daheim.de/assets/hero.jpg">
 <meta property="og:url" content="https://strom-daheim.de/"><meta property="og:type" content="website">
+<meta name="theme-color" content="#000000">
 <style>
-/* Layout: ein Produkt-Launch im Apple-Stil – zentrierte Hero-Bühne mit dem Rechner, danach breite Abschnitte mit viel Luft,
-   schmale Lesespalten für Text, große Zahlen als eigene Bühne. Sonne = Bernstein, Netz = Blau. Nur Systemschrift (SF/Segoe), keine externen Dateien. */
-:root{--bg:#f5f5f7;--pan:#ffffff;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--soft:#e8e8ed;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--shadow:0 10px 40px rgba(0,0,0,.08);box-sizing:border-box;color-scheme:light}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--pan:#151518;--ink:#f5f5f7;--mut:#a1a1a6;--line:#2c2c30;--soft:#1c1c1f;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--shadow:0 10px 40px rgba(0,0,0,.6);color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#000000;--pan:#151518;--ink:#f5f5f7;--mut:#a1a1a6;--line:#2c2c30;--soft:#1c1c1f;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--shadow:0 10px 40px rgba(0,0,0,.6);color-scheme:dark}
+/* Layout: filmische Scroll-Bühne – fünf bildschirmfüllende Szenen (Balkon, Zelle, Wallbox, E-Auto, Wohnung), die beim Scrollen
+   festgepinnt bleiben, während Text einblendet; danach Rechner und Inhalte als dunkle Karten. Dark-first, Systemschrift, keine externen Dateien. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
 *,*:before,*:after{box-sizing:inherit}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
 a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
-h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.025em;line-height:1.06;text-wrap:balance}
-h1{font-size:clamp(2.6rem,8.5vw,4.6rem);letter-spacing:-.035em}
-h2{font-size:clamp(2rem,5.5vw,3.2rem)}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.04;text-wrap:balance}
+h1{font-size:clamp(2.8rem,10vw,6rem);letter-spacing:-.04em}
+h2{font-size:clamp(2rem,5.5vw,3.4rem)}
 h3{font-size:1.25rem;letter-spacing:-.015em;line-height:1.25}
-p{margin:0}
-.mut{color:var(--mut)}
+p{margin:0}.mut{color:var(--mut)}
 .wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .read{max-width:680px;margin:0 auto}
-.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-.lede{font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.4;color:var(--mut);font-weight:400;letter-spacing:-.01em;max-width:40ch}
-section{padding-block:clamp(72px,10vw,128px)}
-section.tight{padding-block:clamp(48px,7vw,88px)}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.4;color:var(--mut);letter-spacing:-.01em;max-width:42ch}
+section{padding-block:clamp(72px,10vw,128px)}section.tight{padding-block:clamp(48px,7vw,88px)}
 .center{text-align:center}.center .lede{margin-inline:auto}
 .head{display:grid;gap:14px;margin-bottom:clamp(32px,5vw,56px)}
 .band{background:var(--pan)}
-/* Navigation */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
-.nav{display:flex;align-items:center;gap:20px;height:52px}
-.logo{font-weight:700;letter-spacing:-.02em;font-size:1.05rem;color:var(--ink)}
-.nav nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
-.nav nav a{color:var(--mut);font-size:.86rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
-.nav nav a:hover{color:var(--ink);background:var(--soft);text-decoration:none}
-button{font:inherit;color:var(--ink);background:none;border:0;cursor:pointer}
-#th{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:1rem;flex:none}
+/* Nav */
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;background:rgba(0,0,0,.5);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f5f7}
+.nav{display:flex;align-items:center;gap:20px;height:48px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7}
+.nav nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
+.nav nav a{color:rgba(245,245,247,.7);font-size:.84rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav nav a:hover{color:#fff;background:rgba(255,255,255,.1);text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+#th{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:.95rem;flex:none;color:#f5f5f7}
 button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
-/* Hero */
-.hero{padding-block:clamp(56px,9vw,112px) clamp(40px,6vw,72px);text-align:center}
-.hero .eyebrow{margin-bottom:18px}
-.hero h1{max-width:18ch;margin:0 auto 20px}
-.hero .lede{margin:0 auto 44px;max-width:46ch}
-.stage{background:color-mix(in srgb,var(--pan) 82%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:28px;padding:clamp(18px,3vw,32px);box-shadow:var(--shadow);text-align:left;max-width:900px;margin:0 auto}
+/* Szenen */
+.scene{height:240vh;position:relative;background:#000;color:#f5f5f7}
+.scene.first{height:200vh}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.pin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.12 - var(--p,0)*.12));filter:brightness(calc(.6 + var(--p,0)*.35)) saturate(1.05);will-change:transform}
+.pin:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.75) 100%)}
+.cap{position:absolute;z-index:2;left:0;right:0;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);max-width:1100px;margin:0 auto}
+.cap.on{opacity:1;transform:none}
+.cap.top{top:18vh}.cap.mid{top:50%;transform:translateY(calc(-50% + 28px))}.cap.mid.on{transform:translateY(-50%)}.cap.bot{bottom:12vh}
+.cap .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.cap h1,.cap h2{color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.cap h2{font-size:clamp(2.2rem,7vw,4.4rem);letter-spacing:-.035em}
+.cap p{color:rgba(245,245,247,.82);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:38ch;margin-top:16px;line-height:1.4;text-shadow:0 1px 20px rgba(0,0,0,.6)}
+.cap .big{display:block;font-size:clamp(3.2rem,12vw,7.5rem);font-weight:700;letter-spacing:-.045em;line-height:.95;color:#fff;font-variant-numeric:tabular-nums}
+.cap .sub{font-size:1rem;color:rgba(245,245,247,.7);margin-top:8px;letter-spacing:.02em}
+.cap .soon{display:inline-block;margin-left:12px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;vertical-align:middle}
+.hint{position:absolute;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;z-index:2;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,247,.6)}
+.hint:after{content:"";display:block;width:1px;height:36px;margin:10px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.7),transparent);animation:hint 1.8s ease-in-out infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px}
+.stats div b{display:block;font-size:clamp(2.4rem,7vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.stats div span{display:block;margin-top:8px;font-size:.95rem;color:rgba(245,245,247,.72);line-height:1.3;max-width:22ch}
+@media(prefers-reduced-motion:reduce){.scene{height:auto}.pin{position:relative;height:auto;min-height:70vh}.pin img{position:relative;transform:none;filter:brightness(.7)}.cap{position:relative;opacity:1;transform:none;padding-block:28px;top:auto;bottom:auto}.cap.mid,.cap.mid.on{transform:none}.hint{display:none}}
+@media(max-width:640px){.stats{grid-template-columns:1fr;gap:18px}.cap.top{top:14vh}.cap.bot{bottom:10vh}}
+/* Rechner-Bühne */
+.stage{background:color-mix(in srgb,var(--pan) 82%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:28px;padding:clamp(18px,3vw,32px);box-shadow:var(--shadow);max-width:900px;margin:0 auto}
 .leg{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;color:var(--mut);margin:0 0 10px}
 .leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:-1px}
 svg{display:block;width:100%;height:auto}
@@ -57,24 +76,14 @@ svg{display:block;width:100%;height:auto}
 .dr{animation:dr 1.8s ease-out both}@keyframes dr{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
 @media(prefers-reduced-motion:reduce){.dr{animation:none}}
 input[type=range]{width:100%;accent-color:var(--sky);margin:8px 0 6px;height:32px}
-.ro{font-variant-numeric:tabular-nums;min-height:3em;font-size:1rem;line-height:1.45;margin-top:6px}
-.ro b{font-weight:600}
-/* Säulen */
-.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.pillar{display:block;background:var(--pan);border-radius:22px;padding:24px 22px;color:var(--ink);min-height:170px;box-shadow:var(--shadow);transition:transform .25s ease;position:relative;overflow:hidden}
-.pillar:hover{transform:translateY(-3px);text-decoration:none}
-.pillar .ic{font-size:1.7rem;line-height:1;margin-bottom:28px;display:block}
-.pillar b{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
-.pillar span{font-size:.9rem;color:var(--mut);display:block;line-height:1.35}
-.pillar .soon{position:absolute;top:16px;right:16px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
-@media(prefers-reduced-motion:reduce){.pillar{transition:none}}
+.ro{font-variant-numeric:tabular-nums;min-height:3em;font-size:1rem;line-height:1.45;margin-top:6px}.ro b{font-weight:600}
 /* Regler + Kennzahlen */
 .ctlwrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:var(--shadow)}
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,32px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
 #ctl{display:grid;gap:14px}
 #ctl label{display:block;font-size:.95rem;font-weight:500}
 #ctl output{float:right;font-weight:600;font-variant-numeric:tabular-nums;color:var(--mut)}
-select{width:100%;font:inherit;color:var(--ink);background:var(--soft);border:0;border-radius:12px;padding:12px 14px;margin-top:8px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+select{width:100%;font:inherit;color:var(--ink);background:var(--soft);border:0;border-radius:12px;padding:12px 40px 12px 14px;margin-top:8px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
 .upd{font-size:.82rem;color:var(--mut);line-height:1.45}
 .kp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .kp div{background:var(--soft);border-radius:18px;padding:20px 18px}
@@ -82,13 +91,12 @@ select{width:100%;font:inherit;color:var(--ink);background:var(--soft);border:0;
 .kp span{font-size:.86rem;color:var(--mut);line-height:1.3;display:block}
 /* Geräte */
 .dv{margin-bottom:18px}.dv:last-child{margin-bottom:0}
-.dh{display:flex;justify-content:space-between;gap:12px;font-size:.98rem;align-items:baseline}
-.dh b{font-weight:600}
+.dh{display:flex;justify-content:space-between;gap:12px;font-size:.98rem;align-items:baseline}.dh b{font-weight:600}
 .bar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:8px 0 0}
 .bar i{display:block;height:100%;background:var(--sun);border-radius:3px;width:0;transition:width .25s}
 #dt{font-size:1.1rem;margin-top:22px}
 /* Tabelle */
-.tbl{overflow-x:auto;margin-top:8px;border-radius:24px;background:var(--pan);box-shadow:var(--shadow)}
+.tbl{overflow-x:auto;margin-top:8px;border-radius:24px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
 table{border-collapse:collapse;width:100%;min-width:720px;font-size:.93rem}
 th,td{padding:18px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600;padding-top:22px}
@@ -99,18 +107,16 @@ td b{display:block;font-weight:600;letter-spacing:-.01em;margin-bottom:2px}
 .tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
 /* Artikel */
 article{font-size:1.05rem;line-height:1.6}
-article p,article li{max-width:62ch}
-article p{margin:0 0 18px}
+article p,article li{max-width:62ch}article p{margin:0 0 18px}
 article h3{margin:34px 0 10px;font-size:1.35rem}
 article ul{padding-left:22px;margin:0 0 18px}article li{margin:6px 0}
-.box{background:var(--soft);border-radius:18px;padding:18px 20px;margin:18px 0;font-size:1rem}
-.box b{font-weight:600}
+.box{background:var(--soft);border-radius:18px;padding:18px 20px;margin:18px 0;font-size:1rem}.box b{font-weight:600}
 .num{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}
 .num div{background:var(--pan);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
 .num b{display:block;font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums;margin-bottom:6px}
 .num span{font-size:.86rem;color:var(--mut);line-height:1.3}
 .src{font-size:.86rem;color:var(--mut);margin-top:26px;border-top:1px solid var(--line);padding-top:16px}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0;max-width:none}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
-/* Ratgeber-Akkordeon */
+/* Akkordeon */
 details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
 summary{cursor:pointer;padding:22px 0;font-size:1.2rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
 summary::-webkit-details-marker{display:none}
@@ -120,41 +126,61 @@ details>div{padding:0 0 22px;font-size:1.02rem;line-height:1.6}details>div p{mar
 .ck label{display:flex;gap:12px;padding:10px 0;font-size:.98rem;align-items:flex-start}.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
 /* Weiter sparen */
 .rows{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.rows a{display:block;background:var(--pan);border-radius:22px;padding:24px 22px;color:var(--ink);box-shadow:var(--shadow);transition:transform .25s ease}
+.rows a{display:block;background:var(--pan);border-radius:22px;padding:24px 22px;color:var(--ink);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);transition:transform .25s ease}
 .rows a:hover{transform:translateY(-3px);text-decoration:none}
 .rows b{display:block;font-size:1.08rem;letter-spacing:-.015em;margin-bottom:6px}
 .rows span{font-size:.9rem;color:var(--mut);line-height:1.4;display:block}
+@media(prefers-reduced-motion:reduce){.rows a{transition:none}}
 /* Footer */
 footer{padding:48px 0 56px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
 footer p{max-width:72ch;margin:0 0 10px}footer a{color:var(--mut);text-decoration:underline}
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
-@supports (animation-timeline:scroll()){header:after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:linear-gradient(90deg,var(--sky),var(--sun));transform-origin:0 50%;animation:pg linear both;animation-timeline:scroll(root)}@keyframes pg{from{transform:scaleX(0)}to{transform:scaleX(1)}}}
-@media(max-width:900px){.pillars{grid-template-columns:1fr 1fr}.rows{grid-template-columns:1fr}.ctlwrap{grid-template-columns:1fr}}
-@media(max-width:520px){.pillars{grid-template-columns:1fr}.num{grid-template-columns:1fr}.kp{grid-template-columns:1fr 1fr}.stage{border-radius:22px}}
+@media(max-width:900px){.rows{grid-template-columns:1fr}.ctlwrap{grid-template-columns:1fr}}
+@media(max-width:520px){.num{grid-template-columns:1fr}.kp{grid-template-columns:1fr 1fr}.stage{border-radius:22px}}
 </style>
 </head><body>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Muss ich ein Balkonkraftwerk anmelden?","acceptedAnswer":{"@type":"Answer","text":"Ja, im Marktstammdatenregister der Bundesnetzagentur, innerhalb eines Monats nach Inbetriebnahme. Eine zusätzliche Meldung beim Netzbetreiber ist bei Einhaltung der Grenzen (800 W Wechselrichter, 2.000 W Module) und reinem Eigenverbrauch nicht mehr nötig."}},{"@type":"Question","name":"Wie viel Leistung darf ein Balkonkraftwerk haben?","acceptedAnswer":{"@type":"Answer","text":"Der Wechselrichter höchstens 800 Watt, die Module zusammen höchstens 2.000 Watt."}},{"@type":"Question","name":"Lohnt sich ein Speicher am Balkonkraftwerk?","acceptedAnswer":{"@type":"Answer","text":"Bei kleinen Anlagen mit zwei Modulen meist nicht: Der zusätzliche Eigenverbrauch bringt nur wenige Dutzend Euro pro Jahr, der Speicher kostet 200 bis 400 Euro pro kWh. Bei vier Modulen und hohem Abendverbrauch kann er sich rechnen."}}]}</script>
 <header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
 <main>
 
-<section class="hero"><div class="wrap">
-<span class="eyebrow">Balkonkraftwerk · Wallbox · E-Auto · Stromsparen</span>
-<h1>Wann liefert dein Balkonkraftwerk Strom. Und wann brauchst du ihn.</h1>
-<p class="lede">Schieb die Uhrzeit. Die Rechnung nutzt einen durchschnittlichen deutschen Tag und zeigt, wie viel Solarstrom wirklich in deiner Wohnung landet.</p>
+<div class="scene first" id="s1"><div class="pin">
+  <img src="assets/hero.jpg" srcset="assets/hero-m.jpg 960w, assets/hero.jpg 1920w" sizes="100vw" alt="Zwei schwarze Solarmodule an einem Balkongeländer im Abendlicht, dahinter die Stadt" fetchpriority="high">
+  <div class="cap top" data-from="0" data-to="0.55"><span class="eyebrow">Strom-Daheim</span><h1>Dein Strom.<br>Dein Balkon.</h1><p>Balkonkraftwerk, Wallbox, E-Auto und Stromsparen. Verständlich gerechnet, mit geprüften Quellen.</p></div>
+  <div class="cap bot" data-from="0.5" data-to="1"><h2>Zwei Module.<br>Rund 700 kWh im Jahr.</h2><p>Was mittags vom Dach kommt, muss in der Wohnung ankommen. Darum geht es auf dieser Seite.</p></div>
+  <div class="hint" data-from="0" data-to="0.2">Scrollen</div>
+</div></div>
+
+<div class="scene" id="s2"><div class="pin">
+  <img src="assets/cell.jpg" srcset="assets/cell-m.jpg 960w, assets/cell.jpg 1920w" sizes="100vw" alt="Nahaufnahme einer schwarzen Solarzelle mit silbernen Leiterbahnen im Streiflicht" loading="lazy">
+  <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">800 Watt</span><h2>Mehr darf nicht.<br>Mehr muss auch nicht.</h2><p>800 Watt am Wechselrichter, bis zu 2.000 Watt Module. Das ist seit dem Solarpaket I die Grenze für das vereinfachte Verfahren.</p></div>
+  <div class="cap mid" data-from="0.55" data-to="1"><span class="eyebrow">Eigenverbrauch</span><h2>Nur was du selbst nutzt,<br>spart Geld.</h2><p>Der Rest fließt ohne Vergütung ins Netz. Haushalte ohne Speicher nutzen im Schnitt 55 bis 70 Prozent ihres Solarstroms selbst.</p></div>
+</div></div>
+
+<div class="scene" id="s3"><div class="pin">
+  <img src="assets/wallbox.jpg" srcset="assets/wallbox-m.jpg 960w, assets/wallbox.jpg 1920w" sizes="100vw" alt="Matt-schwarze Wallbox an einer Betonwand, das Ladekabel steckt in einem Elektroauto mit grün leuchtendem Ladeport" loading="lazy">
+  <div class="cap mid" data-from="0.05" data-to="0.5"><span class="eyebrow">Wallbox <span class="soon">Ratgeber in Arbeit</span></span><h2>Laden, wo das Auto<br>ohnehin steht.</h2><p>11 kW an der Wand statt 2,3 kW aus der Steckdose. Welche Box zu Haus und Auto passt, was Elektriker und Anmeldung kosten.</p></div>
+  <div class="cap mid" data-from="0.55" data-to="1"><h2>Zuhause laden ist<br>meist am günstigsten.</h2><p>Mit dem eigenen Stromtarif, ohne Ladesäulen-Aufschlag. Und mit Solarstrom vom Dach noch einmal billiger.</p></div>
+</div></div>
+
+<div class="scene" id="s4"><div class="pin">
+  <img src="assets/ev.jpg" srcset="assets/ev-m.jpg 960w, assets/ev.jpg 1920w" sizes="100vw" alt="Elektroauto in einer Einfahrt zur blauen Stunde, an einer Wallbox neben der Haustür angeschlossen, Solarmodule auf dem Dach" loading="lazy">
+  <div class="cap top" data-from="0.05" data-to="0.5"><span class="eyebrow">E-Auto <span class="soon">Ratgeber in Arbeit</span></span><h2>Was eine Ladung<br>wirklich kostet.</h2><p>Zuhause, unterwegs, mit Sonne: die Rechnung pro 100 Kilometer, ehrlich und ohne Marketing.</p></div>
+  <div class="cap bot" data-from="0.55" data-to="1"><div class="stats"><div><b>40,39 ct</b><span>pro kWh in der Grundversorgung (25.10.2026)</span></div><div><b>31,13 ct</b><span>pro kWh im günstigsten Tarif</span></div><div><b>300 €+</b><span>Unterschied im Jahr bei 3.500 kWh</span></div></div></div>
+</div></div>
+
+<div class="scene" id="s5"><div class="pin">
+  <img src="assets/home.jpg" srcset="assets/home-m.jpg 960w, assets/home.jpg 1920w" sizes="100vw" alt="Blick vom Balkon in ein warm beleuchtetes Wohnzimmer bei Nacht" loading="lazy">
+  <div class="cap mid" data-from="0.05" data-to="0.55"><span class="eyebrow">Stromsparen</span><h2>Abends läuft alles.<br>Mittags scheint die Sonne.</h2><p>Spülmaschine, Waschmaschine und Trockner in die Mittagszeit legen hebt den Eigenverbrauch – oft günstiger als jeder Speicher.</p></div>
+  <div class="cap mid" data-from="0.6" data-to="1"><h2>Rechne es durch.</h2><p>Der Rechner darunter nutzt einen durchschnittlichen deutschen Tag. Schieb die Uhrzeit und sieh, wie viel Solarstrom in deiner Wohnung landet.</p></div>
+</div></div>
+
+<section id="rechner-sektion"><div class="wrap">
+<div class="head center"><span class="eyebrow">Rechner</span><h2>Wann liefert dein Balkonkraftwerk Strom?</h2><p class="lede">Schieb die Uhrzeit. Gelb ist, was du selbst nutzt. Blau ist dein Verbrauch.</p></div>
 <div class="stage" id="rechner">
   <div class="leg"><span><i style="background:var(--sun)"></i>Solarstrom, selbst genutzt</span><span><i style="background:var(--sun);opacity:.3"></i>Überschuss ins Netz</span><span><i style="background:var(--sky)"></i>Dein Verbrauch</span></div>
   <svg id="day" viewBox="0 0 640 250" role="img" aria-label="Tagesverlauf von Solarerzeugung und Haushaltsverbrauch"></svg>
   <input type="range" id="tm" min="0" max="24" step="0.25" value="4" aria-label="Uhrzeit">
   <p class="ro" id="ro" aria-live="polite"></p>
-</div>
-</div></section>
-
-<section class="tight"><div class="wrap">
-<div class="pillars">
-  <a class="pillar" href="#rechner"><span class="ic">☀️</span><b>Balkonkraftwerk</b><span>Rechner, Set-Vergleich, Anmeldung und Speicher-Check.</span></a>
-  <a class="pillar" href="#ratgeber"><span class="soon">In Arbeit</span><span class="ic">🔌</span><b>Wallbox</b><span>Welche Box zu Haus und Auto passt, was Förderung und Elektriker kosten.</span></a>
-  <a class="pillar" href="#ratgeber"><span class="soon">In Arbeit</span><span class="ic">🚗</span><b>E-Auto laden</b><span>Zuhause, unterwegs, mit Solarstrom: was eine Ladung wirklich kostet.</span></a>
-  <a class="pillar" href="#geraete"><span class="ic">💡</span><b>Stromsparen</b><span>Stromfresser finden, Tarif wechseln, Grundlast senken.</span></a>
 </div>
 </div></section>
 
@@ -408,5 +434,12 @@ if(RM)addEventListener('scroll',()=>sky(0),{passive:true});
 window.__rd=()=>{RM&&sky(0)};
 requestAnimationFrame(loop);
 })();
+</script>
+<script>
+(()=>{const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;const sc=[...document.querySelectorAll('.scene')];
+if(RM){document.querySelectorAll('.cap').forEach(c=>c.classList.add('on'));return}
+let tick=0;function run(){tick=0;const vh=innerHeight;for(const s of sc){const r=s.getBoundingClientRect();const p=Math.min(1,Math.max(0,-r.top/(r.height-vh)));s.style.setProperty('--p',p.toFixed(3));
+for(const c of s.querySelectorAll('[data-from]')){const a=+c.dataset.from,b=+c.dataset.to;c.classList.toggle('on',p>=a&&p<b)}}}
+addEventListener('scroll',()=>{tick||(tick=requestAnimationFrame(run))},{passive:true});addEventListener('resize',run);run();})();
 </script>
 </body></html>
