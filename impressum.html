@@ -4,7 +4,7 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:720px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-left,0px)) 48px max(16px,env(safe-area-inset-right,0px))}
 a{color:var(--sky)}h1{font-size:1.6rem;margin:12px 0 20px}h2{font-size:1.1rem;margin:28px 0 8px}p,li{max-width:65ch}.mut{color:var(--mut);font-size:.9rem}
-.back{display:inline-block;margin-bottom:8px;font-weight:600;text-decoration:none}</style></head><body><main>
+.back{display:inline-block;margin-bottom:8px;font-weight:600;text-decoration:none}</style><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body><main>
 <a class="back" href="/">← Strom-Daheim</a>
 <h1>Impressum</h1>
 <h2>Angaben gemäß § 5 DDG</h2>
@@ -21,4 +21,12 @@ a{color:var(--sky)}h1{font-size:1.6rem;margin:12px 0 20px}h2{font-size:1.1rem;ma
 <p>Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte, insbesondere der Modellrechnungen und Preisangaben, übernehmen wir jedoch keine Gewähr. Die Inhalte sind keine Energie-, Rechts- oder Steuerberatung.</p>
 <h2>Haftung für Links</h2>
 <p>Diese Seite enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar; bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige Links umgehend.</p>
-<p class="mut">Stand: 25. Oktober 2026</p></main></body></html>
+<p class="mut">Stand: 25. Oktober 2026</p></main><script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>

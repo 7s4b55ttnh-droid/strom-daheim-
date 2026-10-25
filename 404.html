@@ -1,0 +1,146 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Seite nicht gefunden – Strom-Daheim</title><meta name="robots" content="noindex"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#6e6e73;--line:#d2d2d7;--sun:#f5a300;--sky:#2a6fdb;--ok:#1f8f5a;--warn:#c25e00;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;background:rgba(0,0,0,.55);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);color:#f5f5f7}
+.nav{display:flex;align-items:center;gap:16px;height:48px}
+.logo{font-weight:700;letter-spacing:-.02em;font-size:1rem;color:#f5f5f7;white-space:nowrap;flex:none}
+.nav nav{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}
+.nav nav a{color:rgba(245,245,247,.72);font-size:.84rem;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.nav nav a:hover,.nav nav a[aria-current]{color:#fff;background:rgba(255,255,255,.12);text-decoration:none}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.62);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note>div>b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Schritte */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:4px 16px;background:var(--pan);border-radius:22px;padding:22px 22px 20px;box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+ol.steps>li:before{content:counter(s);grid-row:1/span 3;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums}
+ol.steps h3{margin:6px 0 6px}
+ol.steps .who{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+ol.steps .who.du{color:var(--ok)}ol.steps .who.pro{color:var(--warn)}
+ol.steps p,ol.steps ul{font-size:1rem;margin:0 0 10px;color:var(--ink)}
+ol.steps ul{padding-left:20px}ol.steps li li{margin:4px 0}
+ol.steps .meta{font-size:.86rem;color:var(--mut);margin:0}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.sum td{font-weight:700}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--soft);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+.calc output{float:right;font-weight:600;color:var(--mut);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:18px}
+.res b{display:block;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
+@media(max-width:640px){.grid2,.items{grid-template-columns:1fr}ol.steps>li{grid-template-columns:1fr;padding:20px}ol.steps>li:before{grid-row:auto;margin-bottom:6px}.hero{min-height:70svh}}
+</style><link rel="icon" href="/favicon.svg" type="image/svg+xml"></head><body>
+<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/">Rechner</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a></nav></div></header>
+<main><section style="padding-top:140px"><div class="wrap read">
+<span class="eyebrow">Fehler 404</span><h1 style="margin:12px 0 16px">Diese Seite gibt es nicht.</h1>
+<p class="lede">Vielleicht hat sich die Adresse geändert. Hier findest du alles, was es auf Strom-Daheim gibt:</p>
+<div class="cta" style="margin-top:24px"><a class="btn" href="/">Zur Startseite</a><a class="btn sec" href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a class="btn sec" href="/e-auto.html">E-Auto-Kosten</a><a class="btn sec" href="/anleitung-wallbox.html">Wallbox installieren</a></div>
+</div></section></main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+</div></footer>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>

@@ -128,7 +128,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 @media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
 @media(max-width:640px){.grid2,.items{grid-template-columns:1fr}ol.steps>li{grid-template-columns:1fr;padding:20px}ol.steps>li:before{grid-row:auto;margin-bottom:6px}.hero{min-height:70svh}}
 </style>
-</head><body>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
 <header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/">Rechner</a><a href="/anleitung-balkonkraftwerk.html" aria-current="page">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a></nav></div></header>
 <main>
 <div class="hero">
@@ -294,5 +294,13 @@ const box=document.getElementById('ck');let s=[];try{s=JSON.parse(localStorage.g
 box.innerHTML=L.map((t,i)=>`<label><input type="checkbox" id="bk${i}" data-i="${i}">${t}</label>`).join('');
 const up=()=>{const n=s.filter(Boolean).length;document.getElementById('ckb').style.width=(n/L.length*100)+'%';document.getElementById('ckt').textContent=n+' von '+L.length+' erledigt. Wird nur in deinem Browser gespeichert.'};
 box.querySelectorAll('input').forEach(b=>{b.checked=!!s[b.dataset.i];b.onchange=()=>{s[b.dataset.i]=b.checked;try{localStorage.setItem('bkck',JSON.stringify(s))}catch(e){}up()}});up();})();
+</script>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
 </script>
 </body></html>

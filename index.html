@@ -135,6 +135,12 @@ summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;bac
 details[open] summary:after{content:"–";transform:rotate(180deg)}
 details>div{padding:0 0 22px;font-size:1.02rem;line-height:1.6}details>div p{margin:0 0 14px;max-width:62ch}details h3{font-size:1.05rem;margin:20px 0 6px}
 .ck label{display:flex;gap:12px;padding:10px 0;font-size:.98rem;align-items:flex-start}.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.hub{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.hub a{display:block;background:var(--pan);border-radius:20px;padding:20px 18px;color:var(--ink);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);transition:transform .2s,border-color .2s}
+.hub a:hover{transform:translateY(-2px);border-color:var(--sky);text-decoration:none}
+.hub .ic{display:block;font-size:1.5rem;margin-bottom:14px}.hub b{display:block;font-size:1rem;letter-spacing:-.01em;line-height:1.25;margin-bottom:4px}.hub span:not(.ic){font-size:.86rem;color:var(--mut)}
+@media(max-width:900px){.hub{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.hub a{transition:none}}
 /* Weiter sparen */
 .rows{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .rows a{display:block;background:var(--pan);border-radius:22px;padding:24px 22px;color:var(--ink);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);transition:transform .25s ease}
@@ -149,9 +155,9 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 @media(max-width:900px){.rows{grid-template-columns:1fr}.ctlwrap{grid-template-columns:1fr}}
 @media(max-width:520px){.num{grid-template-columns:1fr}.kp{grid-template-columns:1fr 1fr}.stage{border-radius:22px}}
 </style>
-</head><body>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"></head><body>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Muss ich ein Balkonkraftwerk anmelden?","acceptedAnswer":{"@type":"Answer","text":"Ja, im Marktstammdatenregister der Bundesnetzagentur, innerhalb eines Monats nach Inbetriebnahme. Eine zusätzliche Meldung beim Netzbetreiber ist bei Einhaltung der Grenzen (800 W Wechselrichter, 2.000 W Module) und reinem Eigenverbrauch nicht mehr nötig."}},{"@type":"Question","name":"Wie viel Leistung darf ein Balkonkraftwerk haben?","acceptedAnswer":{"@type":"Answer","text":"Der Wechselrichter höchstens 800 Watt, die Module zusammen höchstens 2.000 Watt."}},{"@type":"Question","name":"Lohnt sich ein Speicher am Balkonkraftwerk?","acceptedAnswer":{"@type":"Answer","text":"Bei kleinen Anlagen mit zwei Modulen meist nicht: Der zusätzliche Eigenverbrauch bringt nur wenige Dutzend Euro pro Jahr, der Speicher kostet 200 bis 400 Euro pro kWh. Bei vier Modulen und hohem Abendverbrauch kann er sich rechnen."}}]}</script>
-<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
+<header><div class="wrap nav"><a class="logo" href="/">Strom-Daheim</a><nav aria-label="Hauptmenü"><a href="#alles">Übersicht</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="#rechner">Rechner</a><a href="#geraete">Geräte</a><a href="#vergleich">Sets</a><a href="#speicher">Speicher</a><a href="#ratgeber">Ratgeber</a></nav><button id="th" type="button" aria-label="Hell oder Dunkel wechseln">◐</button></div></header>
 <main>
 
 <div class="scene first" id="s1"><div class="pin">
@@ -343,6 +349,20 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 </div>
 </div></section>
 
+<section id="alles"><div class="wrap">
+<div class="head center"><span class="eyebrow">Alle Ratgeber</span><h2>Wobei können wir dir helfen?</h2></div>
+<div class="hub">
+<a href="#rechner"><span class="ic">☀️</span><b>Lohnt sich ein Balkonkraftwerk?</b><span>Rechner mit deinen Zahlen</span></a>
+<a href="/anleitung-balkonkraftwerk.html"><span class="ic">🔧</span><b>Balkonkraftwerk montieren</b><span>8 Schritte, Einkaufsliste, neue Norm</span></a>
+<a href="#vergleich"><span class="ic">⚖️</span><b>Welches Set kaufen?</b><span>4 geprüfte Komplettsets</span></a>
+<a href="#speicher"><span class="ic">🔋</span><b>Lohnt sich ein Speicher?</b><span>Zwei Rechenbeispiele</span></a>
+<a href="/e-auto.html"><span class="ic">🚗</span><b>Was kostet mein E-Auto?</b><span>Ladekosten-Rechner</span></a>
+<a href="/anleitung-wallbox.html"><span class="ic">🔌</span><b>Wallbox installieren</b><span>Schritte, Kosten, Förderung</span></a>
+<a href="#geraete"><span class="ic">💡</span><b>Stromfresser finden</b><span>Geräte-Rechner</span></a>
+<a href="#ratgeber"><span class="ic">📋</span><b>Anmelden, Mieten, Tarif</b><span>Kurz erklärt</span></a>
+</div>
+</div></section>
+
 <section class="band tight"><div class="wrap">
 <div class="head center"><h2 style="font-size:clamp(1.6rem,4vw,2.4rem)">Weiter sparen.</h2></div>
 <div class="rows">
@@ -455,5 +475,13 @@ if(RM){document.querySelectorAll('.cap').forEach(c=>c.classList.add('on'));retur
 let tick=0;function run(){tick=0;const vh=innerHeight;for(const s of sc){const r=s.getBoundingClientRect();const p=Math.min(1,Math.max(0,-r.top/(r.height-vh)));s.style.setProperty('--p',p.toFixed(3));
 for(const c of s.querySelectorAll('[data-from]')){const a=+c.dataset.from,b=+c.dataset.to;c.classList.toggle('on',p>=a&&p<b)}}}
 addEventListener('scroll',()=>{tick||(tick=requestAnimationFrame(run))},{passive:true});addEventListener('resize',run);run();})();
+</script>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
 </script>
 </body></html>
