@@ -62,7 +62,7 @@ header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30
 /* Hinweisbox */
 .note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
 .note .ic{font-size:1.4rem;line-height:1.2;flex:none}
-.note b{display:block;margin-bottom:2px}
+.note>div>b{display:block;margin-bottom:2px}
 .note p{margin:0}
 /* Schritte */
 ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:s}
@@ -283,7 +283,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 </main>
 <footer><div class="wrap">
 <p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
-<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></div>
 </div></footer>
 <script>
 (()=>{const $=i=>document.getElementById(i),f=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
