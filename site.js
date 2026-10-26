@@ -5,6 +5,10 @@
   function $(s,c){return (c||d).querySelector(s)}
   function $$(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))}
 
+  /* Zahlenfelder: Ein Feld vom Typ number verschluckt das deutsche Komma (aus 17,5 wird 175).
+     Deshalb als Textfeld mit Zahlentastatur; die Rechner lesen Komma und Punkt. */
+  $$('input.vin[type=number]').forEach(function(n){n.type='text';n.setAttribute('inputmode','decimal');n.setAttribute('autocomplete','off')});
+
   /* Hell/Dunkel: die Startseite hat einen eigenen Schalter, hier nur für die übrigen Seiten */
   var th=$('#th');
   function isDark(){var a=root.dataset.theme;return a?a==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
