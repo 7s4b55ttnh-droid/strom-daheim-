@@ -115,3 +115,17 @@ details>div{display:block!important}
 
 /* Vorschlag-Knöpfe auf grauen Karten sichtbar halten */
 .band .card .chips button:not([aria-pressed="true"]){background:var(--pan,var(--bg))}
+
+/* Bewegung (sanft, aus bei „Bewegung reduzieren“) */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.2,1) var(--rd,0ms),transform .6s cubic-bezier(.2,.7,.2,1) var(--rd,0ms)}
+.rv.in{opacity:1;transform:none}
+.btn,.chips button,.item,.abtn,.jump a,.dev button{transition:transform .18s cubic-bezier(.3,1.6,.5,1),opacity .2s,background-color .2s,border-color .2s}
+.btn:active,.chips button:active,.item:active,.abtn:active,.jump a:active,.dev button:active{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.btn:active,.chips button:active,.item:active,.abtn:active,.jump a:active,.dev button:active{transform:none}}
+@media print{.rv{opacity:1!important;transform:none!important}}
+main>section.ln{position:relative}
+main>section.ln::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--sun) 50%,transparent);transform:scaleX(0);opacity:0;transition:transform 1.6s cubic-bezier(.2,.7,.2,1),opacity .5s}
+main>section.ln.in::before{transform:scaleX(1);opacity:.85}
+.scale span{transition:background-color .35s,color .35s,transform .45s cubic-bezier(.3,1.6,.5,1)}.scale span.on{transform:translateY(-3px) scale(1.08)}
+.mtr i,.bar i{transition:width .6s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){main>section.ln::before{display:none}.scale span{transition:none}.scale span.on{transform:none}}

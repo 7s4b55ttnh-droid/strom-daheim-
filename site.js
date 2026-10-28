@@ -75,3 +75,31 @@
   addEventListener('beforeprint',function(){closed=$$('details:not([open])');closed.forEach(function(x){x.open=true})});
   addEventListener('afterprint',function(){closed.forEach(function(x){x.open=false});closed=[]});
 })();
+
+/* Bewegung: Auswahl für Strom-Daheim */
+window.__MOTION={reveal:'.card,.item,.hub a,.rows a,ol.steps>li,.tbl,.note,.res>div,.mods',count:'.opt .kw,.res b',
+ extra:function(io){var H=innerHeight,A=[].filter.call(document.querySelectorAll('main>section:not(.scene)'),function(s){return s.getBoundingClientRect().top>=H});A.forEach(function(s){s.classList.add('ln');io.observe(s)})}};
+/* Bewegung: Inhalte gleiten beim Scrollen sanft ins Bild, Ergebniszahlen zählen einmal hoch.
+   Aus bei „Bewegung reduzieren“. Was beim Laden schon sichtbar ist, bleibt ruhig (schnelles Laden). */
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var C=window.__MOTION||{},d=document,H=innerHeight;
+  function ready(f){d.readyState==='loading'?d.addEventListener('DOMContentLoaded',f):f()}
+  function count(el){var t=el.textContent,m=t.match(/^(\D*?)(\d{1,3}(?:\.\d{3})+|\d+)(,\d+)?(\D*)$/);
+    if(!m||/[–-]/.test(t))return;var dec=m[3]?m[3].length-1:0,v=parseFloat((m[2]+(m[3]||'')).replace(/\./g,'').replace(',','.'));
+    if(!(v>0))return;var t0=performance.now(),last=t;
+    (function step(n){if(el.textContent!==last)return;var p=Math.min(1,(n-t0)/700),e=1-Math.pow(1-p,3);
+      last=m[1]+(v*e).toLocaleString('de-DE',{minimumFractionDigits:dec,maximumFractionDigits:dec})+m[4];if(p>=1)last=t;el.textContent=last;if(p<1)requestAnimationFrame(step)})(t0)}
+  ready(function(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+      el.classList.add('in');if(el.classList.contains('rv'))setTimeout(function(){el.classList.remove('rv','in');el.style.removeProperty('--rd')},1400);if(el.__cnt)el.__cnt.forEach(count);
+      if(C.onIn)C.onIn(el)})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    /* Erst alles messen, dann ändern: verhindert wiederholtes Neuberechnen des Layouts */
+    var L=[].filter.call(d.querySelectorAll(C.reveal||''),function(el){if(el.closest('.hero,.hd,.sh,.sh-sheet,.sheet-m,header,footer'))return false;
+      var po=getComputedStyle(el.parentElement).overflowX;return po!=='auto'&&po!=='scroll'&&el.getBoundingClientRect().top>=H});
+    L.forEach(function(el){var sib=0,p=el.previousElementSibling;while(p&&sib<5){if(p.matches(C.reveal))sib++;p=p.previousElementSibling}el.__rd=sib*70;
+      if(C.count){var cs=[].slice.call(el.querySelectorAll(C.count));if(el.matches(C.count))cs.push(el);if(cs.length)el.__cnt=cs}});
+    L.forEach(function(el){el.style.setProperty('--rd',el.__rd+'ms');el.classList.add('rv');io.observe(el)});
+    if(C.extra)C.extra(io);
+  });
+})();
