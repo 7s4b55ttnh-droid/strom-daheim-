@@ -1,0 +1,362 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>E-Auto mit Solarstrom laden: Überschussladen und Rechner – Strom-Daheim</title><meta property="og:title" content="E-Auto mit Solarstrom laden: Überschussladen und Rechner – Strom-Daheim"><meta property="og:type" content="article"><meta property="og:description" content="So lädst du dein E-Auto mit Solarstrom vom Dach: wie Überschussladen funktioniert, Mindestleistung, Phasenumschaltung, Ersparnis-Rechner und warum ein Balkonkraftwerk dafür zu klein ist.">
+<meta name="description" content="So lädst du dein E-Auto mit Solarstrom vom Dach: wie Überschussladen funktioniert, Mindestleistung, Phasenumschaltung, Ersparnis-Rechner und warum ein Balkonkraftwerk dafür zu klein ist.">
+<link rel="canonical" href="https://strom-daheim.de/solar-laden.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/solar.jpg"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% 50%;filter:brightness(.9);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Bild-Band in der Mitte */
+.pic{position:relative;min-height:74vh;min-height:74svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden;padding:0}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 100%)}
+.pic .wrap{position:relative;z-index:2;padding-block:96px 52px}
+.pic .eyebrow{color:rgba(245,245,247,.75);margin-bottom:12px}
+.pic h2{color:#fff;max-width:17ch}
+.pic p{color:rgba(245,245,247,.86);font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:42ch;margin-top:14px;line-height:1.4}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid4 .opt .kw{font-size:clamp(1.5rem,2.2vw,1.85rem)}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(1.9rem,4.4vw,2.5rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.opt .ic{display:block;font-size:1.6rem;margin-bottom:10px}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+.card.match{outline:2px solid var(--ok);outline-offset:-2px}
+.mt{display:none!important;margin-top:14px}.card.match .mt{display:inline-block!important}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note>div>b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Merkmals-Karten */
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.crit .card{display:flex;gap:14px;align-items:flex-start}
+.crit .ic{font-size:1.5rem;line-height:1.2;flex:none;width:32px;text-align:center}
+.crit h3{margin:2px 0 6px;font-size:1.08rem}
+.crit p{margin:0;color:var(--mut);font-size:.96rem}
+.crit p b{color:var(--ink);font-weight:600}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.band .item{background:var(--soft);border-color:transparent}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed;border-color:var(--line)}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .tbl{background:var(--soft);box-shadow:none;border:0}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:first-child{color:var(--mut);font-size:.86rem;min-width:150px}
+td b{display:block;font-weight:600;letter-spacing:-.01em;margin-bottom:2px;color:var(--ink);font-size:.98rem}
+td:last-child{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+td .btn{padding:10px 16px;font-size:.88rem}
+.tsub{display:block;color:var(--mut);font-size:.84rem;margin-top:2px}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--pan);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.q{display:grid;gap:4px}
+.qb{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.qh{display:flex;gap:12px;align-items:center}
+.qh b{display:block;font-size:1.05rem;letter-spacing:-.01em}.qh span{display:block;font-size:.84rem;color:var(--mut)}
+.qh .qn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.chips button{padding:8px 13px;border-radius:999px;background:var(--soft);color:var(--ink);font-size:.86rem;font-weight:500;border:1px solid transparent}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chips button:hover{border-color:var(--line)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.dev button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 10px;border-radius:14px;background:var(--pan);color:var(--ink);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-size:.86rem;font-weight:500;line-height:1.2;text-align:left}
+.dev button:hover{border-color:var(--sky)}
+.dev button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dev .e{font-size:1.15rem;flex:none}
+.dlh{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.dl{display:grid;gap:8px}
+.dr{display:grid;grid-template-columns:1fr auto auto;gap:2px 8px;align-items:center;background:var(--pan);border-radius:16px;padding:8px 6px 10px 14px}
+.dr .n{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.96rem;min-width:0}
+.dr .wh{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.dr .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--mut);font-size:1.4rem;line-height:1}
+.dr .x:hover{background:var(--soft);color:var(--ink)}
+.dr .ip{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;color:var(--mut)}
+.dr .ip label{display:inline-flex;align-items:baseline;gap:5px;margin:0;font-weight:400;font-size:.9rem}
+.dr .vin{font-size:1.08rem;width:4.6ch}
+.dr small{grid-column:1/-1;font-size:.82rem;color:var(--mut);line-height:1.35;margin-top:4px;padding-right:8px}
+.empty{font-size:.92rem;color:var(--mut);margin:12px 0 0}
+.help{border:0;margin-top:4px}.help summary{padding:6px 0;font-size:.88rem;font-weight:500;color:var(--sky);justify-content:flex-start}
+.help summary:after{display:none}.help summary:before{content:"ⓘ";margin-right:6px}
+.help p{font-size:.9rem;color:var(--mut);margin:4px 0 0;max-width:none}
+.more{border-top:0;border-bottom:0!important}.more>summary{font-size:.95rem;padding:4px 0 16px;color:var(--sky)}
+.more>summary:after{width:24px;height:24px}
+.hint{font-size:.84rem;color:var(--mut);margin:6px 0 0}
+.out{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px)}
+.verdict p{font-size:1.1rem;line-height:1.45;margin:8px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:16px 18px}
+.res b{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}.res .hi span{color:var(--ink)}
+.res .hi b{font-size:clamp(1.35rem,3vw,1.8rem)}
+.res .hi a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.res .hi.neg{background:color-mix(in srgb,var(--warn) 18%,var(--soft))}
+.mods h3{font-size:1rem;margin:0 0 2px}
+.mods>p{font-size:.84rem;color:var(--mut);margin:0 0 6px}
+.mrow{display:grid;gap:6px;padding:12px 0 0;margin-top:10px;border-top:1px solid var(--line)}
+.mrow .tp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem}
+.mrow .tp b{font-weight:600}
+.mrow .tp em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mtr{height:10px;border-radius:5px;background:var(--pan);overflow:hidden}
+.mtr i{display:block;height:100%;width:0;border-radius:5px;background:var(--mut);transition:width .3s}
+.mrow.ok .mtr i{background:var(--ok)}.mrow.bad .mtr i{background:var(--warn)}
+.mrow .st{font-size:.84rem;color:var(--mut)}
+.mrow .st:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:7px;vertical-align:1px}
+.mrow.ok .st:before{background:var(--ok)}.mrow.bad .st:before{background:var(--warn)}
+.rec{display:none;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--ok);border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.mrow.fit .rec{display:inline-block}
+@media(max-width:900px){.out{position:static}}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr}.dev{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.dev{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.grid4 .opt .kw{font-size:2rem}.hero img{object-position:90% 50%}.pic img{object-position:80% 50%}.items,.crit,.grid4{grid-template-columns:1fr}.dev{grid-template-columns:1fr 1fr}.hero{min-height:70svh}.pic{min-height:68svh}}
+/* Seite */
+.hero:after{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 35%,rgba(0,0,0,.9) 100%)}
+.hero img{object-position:40% 50%}
+@media(max-width:640px){.hero img{object-position:70% 50%}}
+.crit .ic.n{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:1rem;font-weight:700;line-height:1;margin-top:2px}
+.calc>*{min-width:0}
+.more .qh{margin-top:4px}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script></head><body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 19 36h11l-3 18 18-27H34z"/></svg><span>Strom-Daheim</span></a><nav class="sh-links" aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="/powerstation.html">Notstrom</a></nav><button class="sh-ic" id="th" type="button" aria-label="Hell oder dunkel umschalten"><svg class="th-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="th-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button><button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menü</span></button></div></header>
+<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in"><div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber"><a href="/#rechner-sektion"><span class="i" aria-hidden="true">☀️</span><span><b>Lohnt sich ein Balkonkraftwerk?</b><small>Rechner mit deinen Zahlen</small></span></a><a href="/anleitung-balkonkraftwerk.html"><span class="i" aria-hidden="true">🔧</span><span><b>Balkonkraftwerk montieren</b><small>8 Schritte und Einkaufsliste</small></span></a><a href="/#vergleich"><span class="i" aria-hidden="true">⚖️</span><span><b>Welches Set kaufen?</b><small>4 geprüfte Komplettsets</small></span></a><a href="/#speicher"><span class="i" aria-hidden="true">🔋</span><span><b>Lohnt sich ein Speicher?</b><small>Zwei Rechenbeispiele</small></span></a><a href="/e-auto.html"><span class="i" aria-hidden="true">🚗</span><span><b>Was kostet mein E-Auto?</b><small>Ladekosten-Rechner</small></span></a><a href="/anleitung-wallbox.html"><span class="i" aria-hidden="true">🔌</span><span><b>Wallbox installieren</b><small>Schritte, Kosten, Förderung</small></span></a><a href="/powerstation.html"><span class="i" aria-hidden="true">🔦</span><span><b>Powerstation und Notstrom</b><small>Größen-Rechner und Vorsorge-Liste</small></span></a><a href="/stromfresser.html"><span class="i" aria-hidden="true">💡</span><span><b>Stromfresser finden</b><small>Verbrauch vergleichen, Geräte-Rechner</small></span></a><a href="/stromtarif.html"><span class="i" aria-hidden="true">💶</span><span><b>Stromtarif wechseln</b><small>Wechsel-Rechner, dynamischer Tarif</small></span></a><a href="/waermepumpe.html"><span class="i" aria-hidden="true">♨️</span><span><b>Wärmepumpe</b><small>Kosten, Förderung, Altbau</small></span></a><a href="/solar-laden.html" aria-current="page"><span class="i" aria-hidden="true">🌞</span><span><b>E-Auto mit Solarstrom laden</b><small>Überschussladen und Rechner</small></span></a><a href="/#ratgeber"><span class="i" aria-hidden="true">📋</span><span><b>Anmelden, Mieten, Tarif</b><small>Kurz erklärt</small></span></a></nav><div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div><p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></div>
+<main id="main">
+<div class="hero">
+  <picture><source type="image/webp" srcset="assets/solar-m.webp 960w, assets/solar.webp 1672w" sizes="100vw"><img src="assets/solar.jpg" srcset="assets/solar-m.jpg 960w, assets/solar.jpg 1672w" sizes="100vw" alt="Carport mit Solarmodulen bei Sonnenuntergang, darunter lädt ein Elektroauto an einer Wallbox" fetchpriority="high"></picture>
+  <div class="wrap">
+    <span class="eyebrow">Ratgeber · Stand 28. Oktober 2026</span>
+    <h1>Das Auto mit Sonne laden.</h1>
+    <p>Solarstrom vom eigenen Dach kostet einen Bruchteil von Netzstrom. So funktioniert Überschussladen, was es dir bringt und warum ein Balkonkraftwerk dafür zu klein ist.</p>
+    <div class="jump"><a class="pri" href="#rechner">Ersparnis berechnen</a><a href="#so-gehts">So funktioniert es</a><a href="#balkon">Mit Balkonkraftwerk?</a></div>
+  </div>
+</div>
+
+<section id="kurz"><div class="wrap">
+<div class="head"><span class="eyebrow">Auf einen Blick</span><h2>Warum sich das lohnt.</h2><p class="lede">Strom ins Netz zu verkaufen bringt wenig. Ihn selbst ins Auto zu laden spart viel.</p></div>
+<div class="grid3">
+  <div class="card opt"><b class="t">Solarstrom vom Dach</b><span class="kw">6–14&nbsp;ct</span><span class="sub">pro kWh, kleine Anlage ohne Speicher</span><p>So viel kostet es, eine Kilowattstunde selbst zu erzeugen.</p></div>
+  <div class="card opt"><b class="t">Strom aus dem Netz</b><span class="kw">37&nbsp;ct</span><span class="sub">pro kWh im Schnitt 2026</span><p>Was Haushalte laut ADAC im Schnitt zahlen.</p></div>
+  <div class="card opt"><b class="t">Einspeisevergütung</b><span class="kw">7,7&nbsp;ct</span><span class="sub">pro kWh, neue Anlagen bis 10&nbsp;kWp</span><p>Für Anlagen, die vom 1. August 2026 bis 31. Januar 2027 in Betrieb gehen.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="rechner"><div class="wrap">
+<div class="head"><span class="eyebrow">Rechner</span><h2>Was spart dir Solarstrom im Auto?</h2><p class="lede">Für jede Kilowattstunde aus der Sonne zahlst du keinen Netzstrom. Du verzichtest nur auf die Einspeisevergütung.</p></div>
+<div class="calc">
+  <div class="card q">
+    <div class="qb">
+      <div class="qh"><span class="qn">1</span><div><b>Wie weit fährst du im Jahr?</b><span>Kilometer</span></div><span class="vbox"><input class="vin wide" id="o_km" type="text" inputmode="decimal" autocomplete="off" aria-label="Kilometer pro Jahr"><span class="vu">km</span></span></div>
+      <div class="chips" data-for="r_km"><button type="button" data-v="8000">8.000</button><button type="button" data-v="12000">12.000</button><button type="button" data-v="20000">20.000</button></div>
+      <input type="range" id="r_km" min="2000" max="50000" step="500" value="12000" aria-label="Kilometer pro Jahr">
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">2</span><div><b>Wie viel braucht dein Auto?</b><span>kWh pro 100&nbsp;km mit Ladeverlust</span></div><span class="vbox"><input class="vin" id="o_v" type="text" inputmode="decimal" autocomplete="off" aria-label="Verbrauch in Kilowattstunden pro 100 Kilometer"><span class="vu">kWh</span></span></div>
+      <input type="range" id="r_v" min="10" max="35" step="0.5" value="18" aria-label="Verbrauch in Kilowattstunden pro 100 Kilometer">
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">3</span><div><b>Wie viel davon kommt von der Sonne?</b><span>Anteil am Laden zuhause</span></div><span class="vbox"><input class="vin" id="o_s" type="text" inputmode="decimal" autocomplete="off" aria-label="Solaranteil in Prozent"><span class="vu">%</span></span></div>
+      <div class="chips" data-for="r_s"><button type="button" data-v="20">20 · meist abends daheim</button><button type="button" data-v="40">40</button><button type="button" data-v="60">60 · oft tagsüber daheim</button></div>
+      <input type="range" id="r_s" min="0" max="90" step="5" value="40" aria-label="Solaranteil in Prozent">
+      <p class="hint">Das ist eine Annahme. Wie viel klappt, hängt davon ab, wie oft das Auto bei Sonne zuhause steht, und von der Jahreszeit.</p>
+    </div>
+    <div class="qb" style="margin-bottom:0;border-bottom:0">
+      <div class="qh"><span class="qn">4</span><div><b>Was kostet dich Netzstrom?</b><span>Arbeitspreis pro kWh</span></div><span class="vbox"><input class="vin" id="o_p" type="text" inputmode="decimal" autocomplete="off" aria-label="Netzstrompreis in Cent pro Kilowattstunde"><span class="vu">ct</span></span></div>
+      <div class="chips" data-for="r_p"><button type="button" data-v="31.13">31,13</button><button type="button" data-v="37">37</button></div>
+      <input type="range" id="r_p" min="15" max="60" step="0.01" value="37" aria-label="Netzstrompreis in Cent pro Kilowattstunde">
+      <details class="more"><summary>Mehr einstellen: Einspeisevergütung</summary>
+        <div class="qh"><div><b>Einspeisevergütung</b><span>ct pro kWh, steht im Vertrag deiner Anlage</span></div><span class="vbox"><input class="vin" id="o_e" type="text" inputmode="decimal" autocomplete="off" aria-label="Einspeisevergütung in Cent pro Kilowattstunde"><span class="vu">ct</span></span></div>
+        <input type="range" id="r_e" min="0" max="15" step="0.01" value="7.7" aria-label="Einspeisevergütung in Cent pro Kilowattstunde">
+      </details>
+    </div>
+  </div>
+  <div class="out">
+    <div class="verdict card"><span class="eyebrow">Dein Ergebnis</span><p id="stxt" aria-live="polite"></p></div>
+    <div class="res">
+      <div><b id="s1"></b><span id="s1t">Ladestrom im Jahr</span></div>
+      <div><b id="s2"></b><span>pro 100&nbsp;km mit Solaranteil</span></div>
+      <div class="hi"><b id="s3"></b><span>sparst du im Jahr gegenüber reinem Netzstrom</span></div>
+    </div>
+    <div class="acts" style="margin-top:0"><button class="abtn" type="button" data-share="stxt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div>
+    <details class="help"><summary>So rechnen wir</summary><p>Ladestrom = km × Verbrauch ÷ 100. Für den Solaranteil zahlst du statt Netzstrom nur die entgangene Einspeisevergütung. Die Anlage selbst ist schon bezahlt und nicht eingerechnet. Was das Laden ohne Solar kostet, zeigt auch der <a href="/e-auto.html">E-Auto-Rechner</a>.</p></details>
+  </div>
+</div>
+</div></section>
+
+<section id="so-gehts"><div class="wrap">
+<div class="head"><span class="eyebrow">Überschussladen</span><h2>So funktioniert es.</h2><p class="lede">Die Wallbox lädt nur mit dem Strom, der sonst ins Netz fließen würde.</p></div>
+<div class="crit">
+  <div class="card"><span class="ic n" aria-hidden="true">1</span><div><h3>Messen am Hausanschluss</h3><p>Ein Energiemanagement misst laufend, wie viel Strom gerade ins Netz fließen würde, und gibt genau diese Leistung an die Wallbox.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">2</span><div><h3>Die Mindestleistung</h3><p>Ein E-Auto lädt nicht mit beliebig wenig Strom. Einphasig braucht es etwa <b>1,4&nbsp;kW</b> Überschuss, dreiphasig mindestens <b>4,2&nbsp;kW</b>.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">3</span><div><h3>Phasenumschaltung</h3><p>Bei wenig Sonne schaltet eine gute Wallbox von drei auf eine Phase um. So startet das Laden früher und bricht seltener ab.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">4</span><div><h3>Die passende Anlage</h3><p>Regelmäßig genug Überschuss liefern Anlagen ab etwa <b>6 bis 10&nbsp;kWp</b>. PV-fähige Wallboxen kosten etwa 500 bis 1.700&nbsp;€, dazu Zähler, Energiemanagement und Montage.</p></div></div>
+</div>
+<div class="read" style="margin-top:28px"><div class="note"><span class="ic" aria-hidden="true">🔧</span><div><b>Einbau nur vom Elektriker</b><p>Wallbox, Zähler und Energiemanagement installiert und meldet eine Elektrofachkraft beim Netzbetreiber an. Prüf vorher, ob Wechselrichter, Zähler und Wallbox zusammenarbeiten, am einfachsten mit Geräten eines Herstellers. Wie die Wallbox zu dir kommt, steht in der <a href="/anleitung-wallbox.html">Wallbox-Anleitung</a>.</p></div></div></div>
+</div></section>
+
+<section class="band" id="balkon"><div class="wrap read">
+<div class="head"><span class="eyebrow">Balkonkraftwerk</span><h2>Reicht ein Balkonkraftwerk fürs Auto?</h2></div>
+<p class="lede" style="max-width:none">Leider kaum. Ein Balkonkraftwerk liefert höchstens 800&nbsp;W, das Auto braucht zum Laden aber mindestens etwa 1,4&nbsp;kW. Steckt das Auto am Notladekabel, kommt der größte Teil des Stroms deshalb trotzdem aus dem Netz.</p>
+<p>Lohnend bleibt das Balkonkraftwerk für die Grundlast im Haushalt: Kühlschrank, Router, Standby. Was es dir dort bringt, rechnet der <a href="/#rechner">Balkonkraftwerk-Rechner</a> aus.</p>
+</div></section>
+
+<section id="mehr"><div class="wrap">
+<div class="head"><span class="eyebrow">Weiter sparen</span><h2>Wenn die Sonne nicht reicht.</h2></div>
+<div class="crit">
+  <div class="card"><span class="ic" aria-hidden="true">🌙</span><div><h3>Nachts günstig laden</h3><p>Im Winter liefert die Anlage wenig. Ein dynamischer Stromtarif macht das Laden in günstigen Nachtstunden billiger, mehr im <a href="/stromtarif.html#dynamisch">Ratgeber Stromtarif</a>.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">📉</span><div><h3>§ 14a anmelden</h3><p>Eine steuerbare Wallbox beim Netzbetreiber angemeldet bringt weniger Netzentgelt, rund 110 bis 190&nbsp;€ im Jahr.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🔁</span><div><h3>Bidirektionales Laden</h3><p>Das Auto als Speicher fürs Haus ist seit Ende 2025 gesetzlich geregelt, Rückspeisung kostet kein zweites Netzentgelt mehr. Es braucht aber ein freigegebenes Auto und eine teure bidirektionale Wallbox, laut Händlerangaben 3.500 bis 6.000&nbsp;€ mit Einbau.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">⏳</span><div><h3>Vergütung sinkt</h3><p>Für neue kleine Anlagen soll die feste Einspeisevergütung ab 2027 wegfallen, das Gesetz ist noch im Verfahren. Umso mehr lohnt es, den eigenen Strom selbst zu nutzen.</p></div></div>
+</div>
+</div></section>
+
+<section class="band" id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Einkaufsliste</span><h2>Rund ums Laden.</h2><p class="lede">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span></p></div>
+<div class="items">
+  <a class="item" href="https://www.amazon.de/s?k=Typ+2+Ladekabel+11+kW+5+m&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🔌</span><div><b>Typ-2-Ladekabel 11&nbsp;kW</b><span>Für Wallbox mit Steckdose und öffentliche Säulen</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Ladekabel+Halterung+Wand+Typ+2&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🪝</span><div><b>Kabelhalter für die Wand</b><span>Ordnung am Stellplatz</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Ladekabel+Tasche+Elektroauto&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">👜</span><div><b>Tasche fürs Ladekabel</b><span>Sauber im Kofferraum</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="/anleitung-wallbox.html"><span class="ic" aria-hidden="true">🚗</span><div><b>Wallbox mit Solarfunktion</b><span>Schritte, Kosten, Förderung</span></div><span class="go">Zur Anleitung →</span></a>
+</div>
+</div></section>
+
+<section id="fragen"><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Brauche ich einen Batteriespeicher?</summary><div><p>Nicht für das Auto. Das Auto ist selbst ein großer Akku. Wichtiger ist, dass es bei Sonne zuhause steht und die Wallbox den Überschuss nutzt.</p></div></details>
+<details><summary>Welche Wallbox kann Überschussladen?</summary><div><p>Viele PV-fähige Modelle. Im ADAC-Test 2023 bekamen alle acht Wallboxen mit Solarfunktion die Note gut. Wichtig ist, dass sie mit deinem Wechselrichter oder Energiemanagement zusammenarbeitet.</p></div></details>
+<details><summary>Was bringt mir die Sonne im Winter?</summary><div><p>Wenig. Zwischen November und Februar reicht der Überschuss oft nicht für die Mindestleistung. Den Großteil lädst du dann aus dem Netz, am besten in günstigen Stunden.</p></div></details>
+<details><summary>Lohnt eine neue PV-Anlage noch, wenn die Vergütung wegfällt?</summary><div><p>Je mehr du selbst verbrauchst, desto weniger hängt es an der Vergütung. Mit E-Auto oder Wärmepumpe steigt der Eigenverbrauch deutlich. Mehr zur Wärmepumpe im <a href="/waermepumpe.html">Ratgeber Wärmepumpe</a>.</p></div></details>
+</div></section>
+
+<section class="band"><div class="wrap read">
+<div class="cta"><a class="btn" href="#rechner">Ersparnis berechnen</a><a class="btn sec" href="/e-auto.html">Ladekosten E-Auto</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>ADAC: Wallbox-Überschussladen, PV-Strom fürs E-Auto clever nutzen (11.09.2026) <a href="https://www.adac.de/rund-ums-haus/energie/versorgung/wallbox-ueberschussladen/" target="_blank" rel="noopener">adac.de</a></li>
+<li>ADAC: Einspeisevergütung, Förderung für Strom aus der PV-Anlage 2026 und 2027 (01.09.2026) <a href="https://www.adac.de/rund-ums-haus/energie/spartipps/einspeiseverguetung-pv-anlagen" target="_blank" rel="noopener">adac.de</a></li>
+<li>Automobilsalon Bellemann: Bidirektionales Laden 2026, Stand der Technik und Recht (22.05.2026, Händlerseite) <a href="https://automobilsalon-bellemann.de/news/bidirektionales-laden-2026-v2h-v2g-stand-der-technik-und-recht/" target="_blank" rel="noopener">automobilsalon-bellemann.de</a></li>
+<li>energiemarie: Dynamischer Stromtarif fürs E-Auto, § 14a (aktualisiert 07.08.2026) <a href="https://energiemarie.de/nachhaltigkeit/elektroauto/dynamischer-tarif" target="_blank" rel="noopener">energiemarie.de</a></li>
+</ol><p style="margin-top:12px">Allgemeine Informationen, keine Beratung im Einzelfall. Geprüft am 28.10.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/powerstation.html">Powerstation und Notstrom</a><a href="/stromtarif.html">Stromtarif wechseln</a><a href="/stromfresser.html">Stromfresser finden</a><a href="/waermepumpe.html">Wärmepumpe</a><a href="/solar-laden.html">Mit Solarstrom laden</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://stil-daheim.de/">Schwesterseite Stil-Daheim</a></div>
+</div></footer>
+<script>
+/* Rechner: Solarstrom im E-Auto. Werte bleiben nur in deinem Browser. */
+(()=>{const $=i=>document.getElementById(i),
+  f=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}),
+  E=n=>f(Math.round(n))+' €',K=n=>f(Math.round(n))+' kWh',
+  fi=v=>v.toLocaleString('de-DE',{maximumFractionDigits:2}),
+  num=v=>{let s=String(v).trim().replace(/\s|€|ct|kwh|km|%/gi,'');if(!s)return NaN;
+    if(s.includes(',')){s=s.replace(/\./g,'').replace(',','.')}else if(/^\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'')}
+    return /^-?\d*\.?\d+$/.test(s)?parseFloat(s):NaN};
+const P=[['km','r_km',12000],['v','r_v',18],['s','r_s',40],['p','r_p',37],['e','r_e',7.7]];
+const S={},K2={};let sv={};
+try{sv=JSON.parse(localStorage.getItem('slr')||'{}')||{}}catch(e){}
+P.forEach(([k,r,d])=>{const R=$(r),v=+sv[k];K2[r]=k;S[k]=(sv[k]!=null&&isFinite(v)&&v>=+R.min&&v<=+R.max)?v:d});
+P.forEach(([k,r])=>{const n=$('o_'+k),R=$(r);
+  R.addEventListener('input',()=>{S[k]=+R.value;up()});
+  n.addEventListener('input',()=>{const v=num(n.value);if(isFinite(v)&&v>=+R.min&&v<=+R.max){S[k]=v;up()}});
+  n.addEventListener('change',()=>{let v=num(n.value);if(!isFinite(v))v=S[k];S[k]=Math.min(+R.max,Math.max(+R.min,v));n.value=fi(S[k]);up()})});
+document.querySelectorAll('.chips[data-for] button').forEach(b=>b.addEventListener('click',()=>{S[K2[b.parentNode.dataset.for]]=+b.dataset.v;up()}));
+function up(){
+  P.forEach(([k,r])=>{const n=$('o_'+k);$(r).value=S[k];if(document.activeElement!==n)n.value=fi(S[k])});
+  document.querySelectorAll('.chips[data-for] button').forEach(b=>b.setAttribute('aria-pressed',Math.abs(+b.dataset.v-S[K2[b.parentNode.dataset.for]])<1e-9));
+  const kwh=S.km*S.v/100,sol=kwh*S.s/100,grid=kwh-sol,all=kwh*S.p/100,mix=grid*S.p/100+sol*S.e/100,sav=all-mix;
+  $('s1').textContent=K(kwh);$('s1t').textContent='Ladestrom im Jahr, davon '+K(sol)+' Sonne';
+  $('s2').textContent=f(mix/S.km*100,2)+' €';$('s3').textContent=E(sav);
+  let t=`Für ${f(S.km)} km brauchst du rund ${K(kwh)} im Jahr. Nur aus dem Netz kostet das ${E(all)}.`;
+  t+=S.s>0?` Mit ${f(S.s)} % Sonne sind es ${E(mix)}: rund ${E(sav)} weniger im Jahr.`:' Ohne Solaranteil sparst du nichts.';
+  $('stxt').textContent=t;
+  try{localStorage.setItem('slr',JSON.stringify(S))}catch(e){}
+}
+up();})();
+</script>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>
