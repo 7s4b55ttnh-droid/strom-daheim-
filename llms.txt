@@ -1,0 +1,16 @@
+# Strom-Daheim
+
+> Ratgeber-Website zu Strom zuhause in Deutschland: Balkonkraftwerk, Wallbox, E-Auto laden, Wärmepumpe, Stromtarif, Stromsparen und Notstrom. Mit Rechnern, Quellen und Prüfdatum. Finanziert über gekennzeichnete Amazon-Partnerlinks.
+
+## Ratgeber und Rechner
+
+- [Balkonkraftwerk montieren: Anleitung und Einkaufsliste](https://strom-daheim.de/anleitung-balkonkraftwerk.html): Balkonkraftwerk selbst montieren in 8 Schritten: Platz wählen, Steckdose prüfen, Halterung, Module, Wechselrichter, Anmeldung. Mit neuer VDE-Norm 2026, Werkzeug- und Einkaufsliste.
+- [Wallbox installieren: Anleitung und Einkaufsliste](https://strom-daheim.de/anleitung-wallbox.html): Wallbox zuhause installieren lassen: 8 Schritte von der Erlaubnis über die Anmeldung beim Netzbetreiber bis zur Inbetriebnahme. Mit Kosten, Förderung 2026 und kompletter Einkaufsliste vom Dübel bis zur Wallbox.
+- [E-Auto zuhause laden: Kosten, Kabel, Wallbox](https://strom-daheim.de/e-auto.html): E-Auto zuhause laden: Was 100 km wirklich kosten, Steckdose oder Wallbox, welche Kabel du brauchst, wie du Netzentgelte sparst. Mit Rechner und Einkaufsliste.
+- [Strom-Daheim – Balkonkraftwerk, Wallbox und Stromkosten](https://strom-daheim.de/): Strom-Daheim: unabhängiger Ratgeber zu Balkonkraftwerk, Wallbox, E-Auto laden und Stromsparen – mit Rechner, Set-Vergleich und geprüften Quellen.
+- [Powerstation für Stromausfall und Camping: Größe berechnen](https://strom-daheim.de/powerstation.html): Welche Powerstation brauchst du? Rechner für Stromausfall, Camping und Garten, drei Empfehlungen von 245 bis 2.048 Wh, Sicherheitsregeln und die Vorsorge-Liste nach BBK.
+- [So arbeiten wir](https://strom-daheim.de/so-arbeiten-wir.html): Wer hinter Strom-Daheim steht, wie Empfehlungen und Rechner entstehen, woher die Zahlen kommen und wie sich die Seite finanziert.
+- [E-Auto mit Solarstrom laden: Überschussladen und Rechner](https://strom-daheim.de/solar-laden.html): So lädst du dein E-Auto mit Solarstrom vom Dach: wie Überschussladen funktioniert, Mindestleistung, Phasenumschaltung, Ersparnis-Rechner und warum ein Balkonkraftwerk dafür zu klein ist.
+- [Stromfresser finden: Verbrauch vergleichen und Geräte-Rechner](https://strom-daheim.de/stromfresser.html): Ist dein Stromverbrauch normal? Vergleich mit dem Stromspiegel 2025, Geräte-Rechner mit Rangliste, richtig messen, Standby finden und Spartipps mit Zahlen der Verbraucherzentrale.
+- [Stromtarif wechseln: Ersparnis berechnen, dynamischer Stromtarif](https://strom-daheim.de/stromtarif.html): Was bringt der Wechsel aus der Grundversorgung? Rechner mit deinen Zahlen, Wechsel in fünf Schritten, Kündigungsfristen und wann sich ein dynamischer Stromtarif lohnt.
+- [Wärmepumpe: Kosten, Förderung 2026 und Altbau-Check](https://strom-daheim.de/waermepumpe.html): Lohnt sich eine Wärmepumpe? Rechner Gas gegen Wärmepumpe, Förderrechner nach den neuen KfW-Regeln seit Juli 2026, der 55-Grad-Test für den Altbau und Tipps für günstigen Strom.

@@ -129,3 +129,9 @@ main>section.ln.in::before{transform:scaleX(1);opacity:.85}
 .scale span{transition:background-color .35s,color .35s,transform .45s cubic-bezier(.3,1.6,.5,1)}.scale span.on{transform:translateY(-3px) scale(1.08)}
 .mtr i,.bar i{transition:width .6s cubic-bezier(.2,.7,.2,1)}
 @media (prefers-reduced-motion:reduce){main>section.ln::before{display:none}.scale span{transition:none}.scale span.on{transform:none}}
+
+/* Kasten „Kurz gesagt“ (werkzeuge/seo.py) */
+.kurz-s{padding-block:clamp(28px,4vw,44px) 0}
+.kurz{border-left:3px solid var(--sun);background:var(--pan);border-radius:0 16px 16px 0;padding:16px 20px}
+.kurz b{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.kurz p{margin:0;font-size:1.02rem;line-height:1.5}
