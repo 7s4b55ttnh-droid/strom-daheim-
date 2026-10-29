@@ -1,0 +1,376 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Solaranlage aufs Dach: Kosten, Ertrag und EEG-Reform 2027 – Strom-Daheim</title><meta property="og:title" content="Solaranlage aufs Dach: Kosten, Ertrag und EEG-Reform 2027 – Strom-Daheim"><meta property="og:type" content="article"><meta property="og:description" content="Lohnt sich eine Photovoltaik-Anlage noch? Kosten pro kWp 2026, Ertrag je Ausrichtung, Rechner mit Eigenverbrauch und Amortisation und was die geplante EEG-Reform für neue Anlagen bedeutet.">
+<meta name="description" content="Lohnt sich eine Photovoltaik-Anlage noch? Kosten pro kWp 2026, Ertrag je Ausrichtung, Rechner mit Eigenverbrauch und Amortisation und was die geplante EEG-Reform für neue Anlagen bedeutet.">
+<link rel="canonical" href="https://strom-daheim.de/pv-anlage.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/solar.jpg"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% 50%;filter:brightness(.9);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Bild-Band in der Mitte */
+.pic{position:relative;min-height:74vh;min-height:74svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden;padding:0}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 100%)}
+.pic .wrap{position:relative;z-index:2;padding-block:96px 52px}
+.pic .eyebrow{color:rgba(245,245,247,.75);margin-bottom:12px}
+.pic h2{color:#fff;max-width:17ch}
+.pic p{color:rgba(245,245,247,.86);font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:42ch;margin-top:14px;line-height:1.4}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid4 .opt .kw{font-size:clamp(1.5rem,2.2vw,1.85rem)}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(1.9rem,4.4vw,2.5rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.opt .ic{display:block;font-size:1.6rem;margin-bottom:10px}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+.card.match{outline:2px solid var(--ok);outline-offset:-2px}
+.mt{display:none!important;margin-top:14px}.card.match .mt{display:inline-block!important}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note>div>b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Merkmals-Karten */
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.crit .card{display:flex;gap:14px;align-items:flex-start}
+.crit .ic{font-size:1.5rem;line-height:1.2;flex:none;width:32px;text-align:center}
+.crit h3{margin:2px 0 6px;font-size:1.08rem}
+.crit p{margin:0;color:var(--mut);font-size:.96rem}
+.crit p b{color:var(--ink);font-weight:600}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.band .item{background:var(--soft);border-color:transparent}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed;border-color:var(--line)}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .tbl{background:var(--soft);box-shadow:none;border:0}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:first-child{color:var(--mut);font-size:.86rem;min-width:150px}
+td b{display:block;font-weight:600;letter-spacing:-.01em;margin-bottom:2px;color:var(--ink);font-size:.98rem}
+td:last-child{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+td .btn{padding:10px 16px;font-size:.88rem}
+.tsub{display:block;color:var(--mut);font-size:.84rem;margin-top:2px}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--pan);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.q{display:grid;gap:4px}
+.qb{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.qh{display:flex;gap:12px;align-items:center}
+.qh b{display:block;font-size:1.05rem;letter-spacing:-.01em}.qh span{display:block;font-size:.84rem;color:var(--mut)}
+.qh .qn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.chips button{padding:8px 13px;border-radius:999px;background:var(--soft);color:var(--ink);font-size:.86rem;font-weight:500;border:1px solid transparent}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chips button:hover{border-color:var(--line)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.dev button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 10px;border-radius:14px;background:var(--pan);color:var(--ink);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-size:.86rem;font-weight:500;line-height:1.2;text-align:left}
+.dev button:hover{border-color:var(--sky)}
+.dev button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dev .e{font-size:1.15rem;flex:none}
+.dlh{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.dl{display:grid;gap:8px}
+.dr{display:grid;grid-template-columns:1fr auto auto;gap:2px 8px;align-items:center;background:var(--pan);border-radius:16px;padding:8px 6px 10px 14px}
+.dr .n{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.96rem;min-width:0}
+.dr .wh{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.dr .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--mut);font-size:1.4rem;line-height:1}
+.dr .x:hover{background:var(--soft);color:var(--ink)}
+.dr .ip{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;color:var(--mut)}
+.dr .ip label{display:inline-flex;align-items:baseline;gap:5px;margin:0;font-weight:400;font-size:.9rem}
+.dr .vin{font-size:1.08rem;width:4.6ch}
+.dr small{grid-column:1/-1;font-size:.82rem;color:var(--mut);line-height:1.35;margin-top:4px;padding-right:8px}
+.empty{font-size:.92rem;color:var(--mut);margin:12px 0 0}
+.help{border:0;margin-top:4px}.help summary{padding:6px 0;font-size:.88rem;font-weight:500;color:var(--sky);justify-content:flex-start}
+.help summary:after{display:none}.help summary:before{content:"ⓘ";margin-right:6px}
+.help p{font-size:.9rem;color:var(--mut);margin:4px 0 0;max-width:none}
+.more{border-top:0;border-bottom:0!important}.more>summary{font-size:.95rem;padding:4px 0 16px;color:var(--sky)}
+.more>summary:after{width:24px;height:24px}
+.hint{font-size:.84rem;color:var(--mut);margin:6px 0 0}
+.out{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px)}
+.verdict p{font-size:1.1rem;line-height:1.45;margin:8px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:16px 18px}
+.res b{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}.res .hi span{color:var(--ink)}
+.res .hi b{font-size:clamp(1.35rem,3vw,1.8rem)}
+.res .hi a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.res .hi.neg{background:color-mix(in srgb,var(--warn) 18%,var(--soft))}
+.mods h3{font-size:1rem;margin:0 0 2px}
+.mods>p{font-size:.84rem;color:var(--mut);margin:0 0 6px}
+.mrow{display:grid;gap:6px;padding:12px 0 0;margin-top:10px;border-top:1px solid var(--line)}
+.mrow .tp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem}
+.mrow .tp b{font-weight:600}
+.mrow .tp em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mtr{height:10px;border-radius:5px;background:var(--pan);overflow:hidden}
+.mtr i{display:block;height:100%;width:0;border-radius:5px;background:var(--mut);transition:width .3s}
+.mrow.ok .mtr i{background:var(--ok)}.mrow.bad .mtr i{background:var(--warn)}
+.mrow .st{font-size:.84rem;color:var(--mut)}
+.mrow .st:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:7px;vertical-align:1px}
+.mrow.ok .st:before{background:var(--ok)}.mrow.bad .st:before{background:var(--warn)}
+.rec{display:none;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--ok);border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.mrow.fit .rec{display:inline-block}
+@media(max-width:900px){.out{position:static}}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr}.dev{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.dev{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.grid4 .opt .kw{font-size:2rem}.hero img{object-position:90% 50%}.pic img{object-position:80% 50%}.items,.crit,.grid4{grid-template-columns:1fr}.dev{grid-template-columns:1fr 1fr}.hero{min-height:70svh}.pic{min-height:68svh}}
+/* Seite */
+.hero.noimg{min-height:0;background:radial-gradient(120% 90% at 85% 0%,#2a2416 0%,#000 60%)}.hero.noimg:after{display:none}.hero.noimg .wrap{padding-block:clamp(110px,16vw,170px) clamp(48px,7vw,80px)}
+.crit .ic.n{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:1rem;font-weight:700;line-height:1;margin-top:2px}
+.calc>*{min-width:0}
+.more .qh{margin-top:4px}
+.tbl td:last-child{text-align:left;white-space:normal}.tbl td:first-child{min-width:120px}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script><script type="application/ld+json" id="ld">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Solar aufs Dach. Lohnt sich das noch?", "name": "Solaranlage aufs Dach: Kosten, Ertrag und EEG-Reform 2027 – Strom-Daheim", "description": "Lohnt sich eine Photovoltaik-Anlage noch? Kosten pro kWp 2026, Ertrag je Ausrichtung, Rechner mit Eigenverbrauch und Amortisation und was die geplante EEG-Reform für neue Anlagen bedeutet.", "inLanguage": "de-DE", "url": "https://strom-daheim.de/pv-anlage.html", "mainEntityOfPage": "https://strom-daheim.de/pv-anlage.html", "author": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "publisher": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "image": "https://strom-daheim.de/assets/solar.jpg", "dateModified": "2026-10-29", "abstract": "Eine Photovoltaik-Anlage mit 10 kWp kostet 2026 rund 12.000 €, mit 10-kWh-Speicher rund 17.000 €, und erzeugt etwa 9.000 bis 11.000 kWh im Jahr. Lohnend ist vor allem der selbst genutzte Strom, denn die feste Einspeisevergütung für neue kleine Anlagen soll ab 2027 wegfallen; beschlossen ist das noch nicht."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Lohnt sich ein Speicher?", "acceptedAnswer": {"@type": "Answer", "text": "Er erhöht den Eigenverbrauch deutlich, kostet aber installiert etwa 350 bis 700 € pro kWh. Rechne im Rechner oben einmal mit 30 und einmal mit 50 % Eigenverbrauch und vergleiche den Mehrnutzen mit dem Speicherpreis."}}, {"@type": "Question", "name": "Muss ich Mehrwertsteuer zahlen?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Für Anlagen auf Wohngebäuden bis 30 kWp gilt seit Januar 2023 der Steuersatz von 0 %, ohne Befristung."}}, {"@type": "Question", "name": "Lohnt sich eine Anlage ohne Einspeisevergütung?", "acceptedAnswer": {"@type": "Answer", "text": "Wenn du viel selbst verbrauchst, ja. Stell im Rechner die Vergütung auf 0 und sieh, wie stark dein Ergebnis davon abhängt. Je höher dein Eigenverbrauch, desto weniger zählt die Vergütung."}}, {"@type": "Question", "name": "Geht auch ein Balkonkraftwerk statt Dachanlage?", "acceptedAnswer": {"@type": "Answer", "text": "Für Mieter oder als Einstieg ja. Es deckt vor allem die Grundlast, also Kühlschrank, Router und Standby. Was es dir bringt, rechnet der Balkonkraftwerk-Rechner aus."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Strom-Daheim", "item": "https://strom-daheim.de/"}, {"@type": "ListItem", "position": 2, "name": "Solar aufs Dach. Lohnt sich das noch?", "item": "https://strom-daheim.de/pv-anlage.html"}]}]}</script>
+</head><body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 19 36h11l-3 18 18-27H34z"/></svg><span>Strom-Daheim</span></a><nav class="sh-links" aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="/powerstation.html">Notstrom</a></nav><button class="sh-ic" id="th" type="button" aria-label="Hell oder dunkel umschalten"><svg class="th-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="th-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button><button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menü</span></button></div></header>
+<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in"><div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber"><a href="/#rechner-sektion"><span class="i" aria-hidden="true">☀️</span><span><b>Lohnt sich ein Balkonkraftwerk?</b><small>Rechner mit deinen Zahlen</small></span></a><a href="/anleitung-balkonkraftwerk.html"><span class="i" aria-hidden="true">🔧</span><span><b>Balkonkraftwerk montieren</b><small>8 Schritte und Einkaufsliste</small></span></a><a href="/#vergleich"><span class="i" aria-hidden="true">⚖️</span><span><b>Welches Set kaufen?</b><small>4 geprüfte Komplettsets</small></span></a><a href="/#speicher"><span class="i" aria-hidden="true">🔋</span><span><b>Lohnt sich ein Speicher?</b><small>Zwei Rechenbeispiele</small></span></a><a href="/e-auto.html"><span class="i" aria-hidden="true">🚗</span><span><b>Was kostet mein E-Auto?</b><small>Ladekosten-Rechner</small></span></a><a href="/anleitung-wallbox.html"><span class="i" aria-hidden="true">🔌</span><span><b>Wallbox installieren</b><small>Schritte, Kosten, Förderung</small></span></a><a href="/powerstation.html"><span class="i" aria-hidden="true">🔦</span><span><b>Powerstation und Notstrom</b><small>Größen-Rechner und Vorsorge-Liste</small></span></a><a href="/stromfresser.html"><span class="i" aria-hidden="true">💡</span><span><b>Stromfresser finden</b><small>Verbrauch vergleichen, Geräte-Rechner</small></span></a><a href="/stromtarif.html"><span class="i" aria-hidden="true">💶</span><span><b>Stromtarif wechseln</b><small>Wechsel-Rechner, dynamischer Tarif</small></span></a><a href="/waermepumpe.html"><span class="i" aria-hidden="true">♨️</span><span><b>Wärmepumpe</b><small>Kosten, Förderung, Altbau</small></span></a><a href="/solar-laden.html"><span class="i" aria-hidden="true">🌞</span><span><b>E-Auto mit Solarstrom laden</b><small>Überschussladen und Rechner</small></span></a><a href="/pv-anlage.html" aria-current="page"><span class="i" aria-hidden="true">🏠</span><span><b>Solaranlage aufs Dach</b><small>Kosten, Ertrag, EEG-Reform</small></span></a><a href="/#ratgeber"><span class="i" aria-hidden="true">📋</span><span><b>Anmelden, Mieten, Tarif</b><small>Kurz erklärt</small></span></a></nav><div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div><p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></div>
+<main id="main">
+<div class="hero noimg">
+  <div class="wrap">
+    <span class="eyebrow">Ratgeber · Stand 29. Oktober 2026</span>
+    <h1>Solar aufs Dach. Lohnt sich das noch?</h1>
+    <p>Was eine Photovoltaik-Anlage kostet, wie viel sie bringt und was die geplante EEG-Reform für neue Anlagen bedeutet. Mit Rechner für dein Dach.</p>
+    <div class="jump"><a class="pri" href="#rechner">Ertrag berechnen</a><a href="#reform">Einspeisevergütung 2027</a><a href="#schritte">So gehst du vor</a></div>
+  </div>
+</div>
+
+<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>Eine Photovoltaik-Anlage mit 10&nbsp;kWp kostet 2026 rund 12.000&nbsp;€, mit 10-kWh-Speicher rund 17.000&nbsp;€, und erzeugt etwa 9.000 bis 11.000&nbsp;kWh im Jahr. Lohnend ist vor allem der selbst genutzte Strom, denn die feste Einspeisevergütung für neue kleine Anlagen soll ab 2027 wegfallen; beschlossen ist das noch nicht.</p></div></div></section>
+<section id="kurz"><div class="wrap">
+<div class="head"><span class="eyebrow">Auf einen Blick</span><h2>Was eine Anlage kostet.</h2><p class="lede">Preise laut Fraunhofer ISE, Stand März 2026, für fertig montierte Anlagen.</p></div>
+<div class="grid3">
+  <div class="card opt"><b class="t">Anlage 5 bis 10&nbsp;kWp</b><span class="kw">1.100–1.400&nbsp;€</span><span class="sub">pro kWp</span><p>Eine typische Anlage mit 10&nbsp;kWp kostet ohne Speicher rund 12.000&nbsp;€.</p></div>
+  <div class="card opt"><b class="t">Mit Speicher</b><span class="kw">≈&nbsp;17.000&nbsp;€</span><span class="sub">10&nbsp;kWp mit 10&nbsp;kWh Speicher</span><p>Ein Speicher kostet installiert etwa 350 bis 700&nbsp;€ pro kWh.</p></div>
+  <div class="card opt"><b class="t">Eigener Solarstrom</b><span class="kw">8–12&nbsp;ct</span><span class="sub">pro kWh</span><p>Netzstrom kostet dagegen 27 bis 42&nbsp;ct. Auf Anlagen bis 30&nbsp;kWp fällt keine Mehrwertsteuer an.</p></div>
+</div>
+</div></section>
+
+<section class="band" id="rechner"><div class="wrap">
+<div class="head"><span class="eyebrow">Rechner</span><h2>Was bringt eine Anlage auf deinem Dach?</h2><p class="lede">Jede selbst genutzte Kilowattstunde spart dir Netzstrom. Den Rest verkaufst du für die Einspeisevergütung.</p></div>
+<div class="calc">
+  <div class="card q">
+    <div class="qb">
+      <div class="qh"><span class="qn">1</span><div><b>Wie groß wird die Anlage?</b><span>Leistung in kWp, ein Einfamilienhaus hat oft 8 bis 12</span></div><span class="vbox"><input class="vin" id="o_k" type="text" inputmode="decimal" autocomplete="off" aria-label="Anlagenleistung in Kilowatt Peak"><span class="vu">kWp</span></span></div>
+      <div class="chips" data-for="r_k"><button type="button" data-v="6">6</button><button type="button" data-v="10">10</button><button type="button" data-v="15">15</button></div>
+      <input type="range" id="r_k" min="2" max="30" step="0.5" value="10" aria-label="Anlagenleistung in Kilowatt Peak">
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">2</span><div><b>Wohin zeigt das Dach?</b><span>Süd mit 30 bis 35&nbsp;° Neigung bringt am meisten</span></div></div>
+      <div class="chips" id="dir" role="group" aria-label="Ausrichtung"><button type="button" data-d="1">Süden</button><button type="button" data-d="0.82">Ost und West</button><button type="button" data-d="0.6">Norden</button></div>
+      <div class="qh" style="margin-top:12px"><div><b>Ertrag bei Süddach</b><span>kWh pro kWp im Jahr, im Süden mehr</span></div><span class="vbox"><input class="vin" id="o_y" type="text" inputmode="decimal" autocomplete="off" aria-label="Ertrag in Kilowattstunden pro Kilowatt Peak"><span class="vu">kWh</span></span></div>
+      <input type="range" id="r_y" min="800" max="1200" step="10" value="950" aria-label="Ertrag in Kilowattstunden pro Kilowatt Peak">
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">3</span><div><b>Wie viel nutzt du selbst?</b><span>Anteil am Solarstrom</span></div><span class="vbox"><input class="vin" id="o_e" type="text" inputmode="decimal" autocomplete="off" aria-label="Eigenverbrauch in Prozent"><span class="vu">%</span></span></div>
+      <div class="chips" data-for="r_e"><button type="button" data-v="20">20 ohne Speicher</button><button type="button" data-v="30">30</button><button type="button" data-v="50">50 mit Speicher oder E-Auto</button></div>
+      <input type="range" id="r_e" min="5" max="90" step="5" value="30" aria-label="Eigenverbrauch in Prozent">
+      <p class="hint">Ohne Speicher nutzen viele Haushalte nur 15 bis 35&nbsp;%. Ost-West-Dächer, Speicher, E-Auto und Wärmepumpe heben den Anteil.</p>
+    </div>
+    <div class="qb" style="margin-bottom:0;border-bottom:0">
+      <div class="qh"><span class="qn">4</span><div><b>Was kostet die Anlage?</b><span>Gesamtpreis laut Angebot</span></div><span class="vbox"><input class="vin wide" id="o_c" type="text" inputmode="decimal" autocomplete="off" aria-label="Kosten in Euro"><span class="vu">€</span></span></div>
+      <input type="range" id="r_c" min="3000" max="50000" step="500" value="12000" aria-label="Kosten in Euro">
+      <details class="more"><summary>Mehr einstellen: Strompreis und Vergütung</summary>
+        <div class="qh"><div><b>Dein Strompreis</b><span>ct pro kWh</span></div><span class="vbox"><input class="vin" id="o_p" type="text" inputmode="decimal" autocomplete="off" aria-label="Strompreis in Cent pro Kilowattstunde"><span class="vu">ct</span></span></div>
+        <input type="range" id="r_p" min="15" max="60" step="0.01" value="37" aria-label="Strompreis in Cent pro Kilowattstunde">
+        <div class="qh" style="margin-top:12px"><div><b>Einspeisevergütung</b><span>7,7&nbsp;ct bis Januar 2027, geplant 5,2&nbsp;ct</span></div><span class="vbox"><input class="vin" id="o_v" type="text" inputmode="decimal" autocomplete="off" aria-label="Einspeisevergütung in Cent pro Kilowattstunde"><span class="vu">ct</span></span></div>
+        <div class="chips" data-for="r_v"><button type="button" data-v="7.7">7,7 heute</button><button type="button" data-v="5.2">5,2 geplant</button><button type="button" data-v="0">0</button></div>
+        <input type="range" id="r_v" min="0" max="15" step="0.1" value="7.7" aria-label="Einspeisevergütung in Cent pro Kilowattstunde">
+      </details>
+    </div>
+  </div>
+  <div class="out">
+    <div class="verdict card"><span class="eyebrow">Dein Ergebnis</span><p id="ptxt" aria-live="polite"></p></div>
+    <div class="res">
+      <div><b id="p1"></b><span>Solarstrom im Jahr</span></div>
+      <div><b id="p2"></b><span>Nutzen im Jahr</span></div>
+      <div class="hi" id="p3box"><b id="p3"></b><span>bis die Anlage bezahlt ist</span></div>
+    </div>
+    <div class="acts" style="margin-top:0"><button class="abtn" type="button" data-share="ptxt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div>
+    <details class="help"><summary>So rechnen wir</summary><p>Ertrag = kWp × kWh pro kWp × Faktor für die Ausrichtung (Ost und West rund 82&nbsp;%, Norden rund 60&nbsp;% des Süd-Ertrags). Nutzen = selbst genutzter Strom × Strompreis + eingespeister Strom × Vergütung. Die Amortisation ist Kosten ÷ Nutzen, ohne Wartung, Versicherung, Alterung der Module und steigende Strompreise. Grob, aber ehrlich.</p></details>
+  </div>
+</div>
+</div></section>
+
+<section id="ertrag"><div class="wrap">
+<div class="head"><span class="eyebrow">Ertrag</span><h2>Das Dach entscheidet.</h2></div>
+<div class="crit">
+  <div class="card"><span class="ic" aria-hidden="true">☀️</span><div><h3>900 bis 1.100&nbsp;kWh pro kWp</h3><p>So viel bringt ein Kilowatt Peak im Jahr in Deutschland, im Süden mehr als im Norden. Eine 10-kWp-Anlage erzeugt also grob 9.000 bis 11.000&nbsp;kWh.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🧭</span><div><h3>Süd ist Spitze</h3><p>Am meisten bringt ein Süddach mit 30 bis 35&nbsp;° Neigung. Ost oder West verliert rund 15 bis 20&nbsp;%, ein Norddach erreicht nur etwa 60&nbsp;%.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🌅</span><div><h3>Ost-West hat einen Vorteil</h3><p>Der Strom verteilt sich über den Tag. Dadurch nutzt du mehr selbst: Bei Ost-West landen nur etwa 50 bis 55&nbsp;% im Netz, bei Süd 65 bis 70&nbsp;%.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🏠</span><div><h3>Eigenverbrauch ist das Geld</h3><p>Jede selbst genutzte Kilowattstunde spart rund 37&nbsp;ct, jede eingespeiste bringt nur 7,7&nbsp;ct. Hilfreich sind ein <a href="/solar-laden.html">E-Auto</a>, eine <a href="/waermepumpe.html">Wärmepumpe</a> oder ein Speicher.</p></div></div>
+</div>
+</div></section>
+
+<section class="band" id="reform"><div class="wrap read">
+<div class="head"><span class="eyebrow">EEG-Reform</span><h2>Was sich 2027 ändern soll.</h2><p class="lede">Die Bundesregierung will die feste Einspeisevergütung für neue kleine Anlagen abschaffen. Beschlossen ist das noch nicht.</p></div>
+<div class="tbl"><table>
+<thead><tr><th>Wann in Betrieb</th><th>Was gilt</th></tr></thead>
+<tbody>
+<tr><td>Bis 31.01.2027</td><td><b>7,7&nbsp;ct pro kWh</b>Für neue Anlagen bis 10&nbsp;kWp mit Teileinspeisung, Stand seit 1. August 2026.</td></tr>
+<tr><td>Bis 31.12.2026</td><td><b>Bestandsschutz geplant</b>Laut Entwurf behalten diese Anlagen die feste Vergütung für 20 Jahre plus das Jahr der Inbetriebnahme.</td></tr>
+<tr><td>Ab 2027 geplant</td><td><b>Nur noch Übergang</b>Für kleine Anlagen höchstens 36 Monate rund 5,2&nbsp;ct, danach Verkauf über einen Direktvermarkter an der Börse. Neue Anlagen sollen höchstens die Hälfte ihrer Leistung gleichzeitig einspeisen.</td></tr>
+</tbody></table></div>
+<div class="note" style="margin-top:20px"><span class="ic" aria-hidden="true">⚖️</span><div><b>Stand 29. Oktober 2026</b><p>Das Kabinett hat den Entwurf am 29. Juli 2026 beschlossen, die erste Lesung im Bundestag war am 24. September. Die abschließenden Lesungen stehen noch aus, außerdem muss die EU-Kommission zustimmen. Wir aktualisieren diese Seite, sobald es beschlossen ist. Wer bereits plant, sollte mit dem Fachbetrieb klären, ob eine Inbetriebnahme bis Ende 2026 machbar ist.</p></div></div>
+</div></section>
+
+<section id="schritte"><div class="wrap">
+<div class="head"><span class="eyebrow">Anleitung</span><h2>So kommst du zur eigenen Anlage.</h2></div>
+<div class="crit">
+  <div class="card"><span class="ic n" aria-hidden="true">1</span><div><h3>Dach und Verbrauch prüfen</h3><p>Ausrichtung, Neigung, Verschattung und Zustand des Dachs. Dazu dein Stromverbrauch der letzten Jahre, am besten mit dem <a href="/stromfresser.html">Verbrauchs-Vergleich</a>.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">2</span><div><h3>Mehrere Angebote einholen</h3><p>Vergleiche den Preis pro kWp, die Komponenten und was im Preis steckt: Gerüst, Zählerschrank, Anmeldung.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">3</span><div><h3>Einbau vom Fachbetrieb</h3><p>Montage und Anschluss ans Hausnetz macht ein Elektrofachbetrieb. Er kümmert sich meist auch um die Anmeldung beim Netzbetreiber und den Zähler.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">4</span><div><h3>Eigenverbrauch planen</h3><p>Waschmaschine und Spülmaschine mittags laufen lassen, das Auto bei Sonne laden. Jede selbst genutzte Kilowattstunde zählt mehr als jede eingespeiste.</p></div></div>
+</div>
+</div></section>
+
+<section class="band" id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Einkaufsliste</span><h2>Mehr aus dem eigenen Strom machen.</h2><p class="lede">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span></p></div>
+<div class="items">
+  <a class="item" href="https://www.amazon.de/s?k=IR+Lesekopf+Stromz%C3%A4hler&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">📟</span><div><b>Lesekopf für den Stromzähler</b><span>Zeigt Bezug und Einspeisung live in der App</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=WLAN+Steckdose+mit+Strommessung&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">📱</span><div><b>Smarte Steckdose mit Messung</b><span>Geräte starten, wenn die Sonne scheint</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Zeitschaltuhr+digital+Steckdose&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">⏲️</span><div><b>Digitale Zeitschaltuhr</b><span>Die einfache Lösung für die Mittagsstunden</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="/solar-laden.html"><span class="ic" aria-hidden="true">🚗</span><div><b>E-Auto mit Solarstrom laden</b><span>Der größte Hebel für mehr Eigenverbrauch</span></div><span class="go">Zum Ratgeber →</span></a>
+</div>
+</div></section>
+
+<section id="fragen"><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Lohnt sich ein Speicher?</summary><div><p>Er erhöht den Eigenverbrauch deutlich, kostet aber installiert etwa 350 bis 700&nbsp;€ pro kWh. Rechne im Rechner oben einmal mit 30 und einmal mit 50&nbsp;% Eigenverbrauch und vergleiche den Mehrnutzen mit dem Speicherpreis.</p></div></details>
+<details><summary>Muss ich Mehrwertsteuer zahlen?</summary><div><p>Nein. Für Anlagen auf Wohngebäuden bis 30&nbsp;kWp gilt seit Januar 2023 der Steuersatz von 0&nbsp;%, ohne Befristung.</p></div></details>
+<details><summary>Lohnt sich eine Anlage ohne Einspeisevergütung?</summary><div><p>Wenn du viel selbst verbrauchst, ja. Stell im Rechner die Vergütung auf 0 und sieh, wie stark dein Ergebnis davon abhängt. Je höher dein Eigenverbrauch, desto weniger zählt die Vergütung.</p></div></details>
+<details><summary>Geht auch ein Balkonkraftwerk statt Dachanlage?</summary><div><p>Für Mieter oder als Einstieg ja. Es deckt vor allem die Grundlast, also Kühlschrank, Router und Standby. Was es dir bringt, rechnet der <a href="/#rechner">Balkonkraftwerk-Rechner</a> aus.</p></div></details>
+</div></section>
+
+<section class="band"><div class="wrap read">
+<div class="cta"><a class="btn" href="#rechner">Ertrag berechnen</a><a class="btn sec" href="/solar-laden.html">E-Auto mit Solarstrom</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>42watt: Photovoltaik Kosten 2026, Preise nach Fraunhofer ISE, Stand März 2026 (14.07.2026) <a href="https://42watt.de/magazin/photovoltaik-kosten" target="_blank" rel="noopener">42watt.de</a></li>
+<li>EMA Energiewelt: EEG-Novelle 2027, Kabinettsbeschluss, Einspeisevergütung endet (aktualisiert 17.10.2026) <a href="https://ema-energiewelt.de/wissen/eeg-novelle-2027-kabinettsbeschluss-einspeiseverguetung-endet" target="_blank" rel="noopener">ema-energiewelt.de</a></li>
+<li>Deutscher Bundestag: Bundesregierung legt EEG-Novelle vor, hib 701/2026 (10.09.2026) <a href="https://www.bundestag.de/1211152" target="_blank" rel="noopener">bundestag.de</a></li>
+<li>ADAC: Einspeisevergütung 2026 und 2027 (01.09.2026) <a href="https://www.adac.de/rund-ums-haus/energie/spartipps/einspeiseverguetung-pv-anlagen" target="_blank" rel="noopener">adac.de</a></li>
+<li>EMA Energiewelt: PV-Anlage, Ausrichtung und Neigung (29.03.2026) <a href="https://ema-energiewelt.de/wissen/pv-anlage-ausrichtung-neigung-optimum-2025" target="_blank" rel="noopener">ema-energiewelt.de</a></li>
+<li>Utopia: PV-Anlage, so errechnest du den Ertrag (aktualisiert 19.05.2026) <a href="https://utopia.de/ratgeber/pv-anlage-so-errechnest-du-den-ertrag_894971/" target="_blank" rel="noopener">utopia.de</a></li>
+</ol><p style="margin-top:12px">Allgemeine Informationen, keine Beratung im Einzelfall. Geprüft am 29.10.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<div class="fl"><span>© 2026 Strom-Daheim · Alex Noel, Leinach</span><a href="/">Startseite</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/powerstation.html">Powerstation und Notstrom</a><a href="/stromtarif.html">Stromtarif wechseln</a><a href="/stromfresser.html">Stromfresser finden</a><a href="/waermepumpe.html">Wärmepumpe</a><a href="/solar-laden.html">Mit Solarstrom laden</a><a href="/pv-anlage.html">Solaranlage aufs Dach</a><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://stil-daheim.de/">Schwesterseite Stil-Daheim</a></div>
+</div></footer>
+<script>
+/* Rechner: Photovoltaik auf dem Dach. Werte bleiben nur in deinem Browser. */
+(()=>{const $=i=>document.getElementById(i),
+  f=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}),
+  E=n=>f(Math.round(n))+' €',K=n=>f(Math.round(n))+' kWh',
+  fi=v=>v.toLocaleString('de-DE',{maximumFractionDigits:2}),
+  num=v=>{let s=String(v).trim().replace(/\s|€|ct|kwh|kwp|%/gi,'');if(!s)return NaN;
+    if(s.includes(',')){s=s.replace(/\./g,'').replace(',','.')}else if(/^\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'')}
+    return /^-?\d*\.?\d+$/.test(s)?parseFloat(s):NaN};
+const P=[['k','r_k',10],['y','r_y',950],['e','r_e',30],['c','r_c',12000],['p','r_p',37],['v','r_v',7.7]];
+const S={d:1},K2={};let sv={};
+try{sv=JSON.parse(localStorage.getItem('pvr')||'{}')||{}}catch(e){}
+P.forEach(([k,r,d])=>{const R=$(r),v=+sv[k];K2[r]=k;S[k]=(sv[k]!=null&&isFinite(v)&&v>=+R.min&&v<=+R.max)?v:d});
+if([1,0.82,0.6].includes(sv.d))S.d=sv.d;
+P.forEach(([k,r])=>{const n=$('o_'+k),R=$(r);
+  R.addEventListener('input',()=>{S[k]=+R.value;up()});
+  n.addEventListener('input',()=>{const v=num(n.value);if(isFinite(v)&&v>=+R.min&&v<=+R.max){S[k]=v;up()}});
+  n.addEventListener('change',()=>{let v=num(n.value);if(!isFinite(v))v=S[k];S[k]=Math.min(+R.max,Math.max(+R.min,v));n.value=fi(S[k]);up()})});
+document.querySelectorAll('.chips[data-for] button').forEach(b=>b.addEventListener('click',()=>{S[K2[b.parentNode.dataset.for]]=+b.dataset.v;up()}));
+$('dir').addEventListener('click',e=>{const b=e.target.closest('button');if(b){S.d=+b.dataset.d;up()}});
+function up(){
+  P.forEach(([k,r])=>{const n=$('o_'+k);$(r).value=S[k];if(document.activeElement!==n)n.value=fi(S[k])});
+  document.querySelectorAll('.chips[data-for] button').forEach(b=>b.setAttribute('aria-pressed',Math.abs(+b.dataset.v-S[K2[b.parentNode.dataset.for]])<1e-9));
+  $('dir').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',Math.abs(+b.dataset.d-S.d)<1e-9));
+  const yld=S.k*S.y*S.d,own=yld*S.e/100,feed=yld-own,save=own*S.p/100,earn=feed*S.v/100,ben=save+earn,am=ben>0?S.c/ben:Infinity;
+  $('p1').textContent=K(yld);$('p2').textContent=E(ben);$('p3').textContent=isFinite(am)?f(am,1)+' Jahre':'–';
+  $('p3box').classList.toggle('neg',!(am<=20));
+  let t=`Deine Anlage erzeugt rund ${K(yld)} im Jahr. Davon nutzt du ${K(own)} selbst und sparst ${E(save)}, für ${K(feed)} im Netz bekommst du ${E(earn)}.`;
+  t+=am<=12?` Nach rund ${f(am,1)} Jahren ist die Anlage bezahlt, danach bringt sie Geld.`:am<=20?` Bis die Anlage bezahlt ist, dauert es rund ${f(am,1)} Jahre. Mehr Eigenverbrauch verkürzt das.`:' So rechnet sich die Anlage kaum. Prüf Preis, Ausrichtung und Eigenverbrauch.';
+  $('ptxt').textContent=t;
+  try{localStorage.setItem('pvr',JSON.stringify(S))}catch(e){}
+}
+up();})();
+</script>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>
