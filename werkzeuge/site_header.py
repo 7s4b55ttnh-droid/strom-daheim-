@@ -24,6 +24,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/waermepumpe.html', '♨️', 'Wärmepumpe', 'Kosten, Förderung, Altbau', 'waermepumpe'),
         ('/solar-laden.html', '🌞', 'E-Auto mit Solarstrom laden', 'Überschussladen und Rechner', 'solar-laden'),
         ('/pv-anlage.html', '🏠', 'Solaranlage aufs Dach', 'Kosten, Ertrag, EEG-Reform', 'pv-anlage'),
+        ('/energielabel.html', '🏷️', 'Energielabel und sparsame Geräte', 'Label lesen, Tausch-Rechner', 'energielabel'),
         ('/#ratgeber', '📋', 'Anmelden, Mieten, Tarif', 'Kurz erklärt', None)]
 CUR = ' aria-current="page"'
 
