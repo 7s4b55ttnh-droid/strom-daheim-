@@ -307,12 +307,12 @@ function up(){R.value=S.k;if(document.activeElement!==n)n.value=f(S.k);
   $('st').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.s===S.s));
   $('pv').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.p===S.p));
   const pf=S.k>6000||S.s||S.p;let cap=0,why=[];
-  if(S.k>6000){cap=S.k<=10000?40:S.k<=20000?50:110;why.push(f(S.k)+' kWh Verbrauch')}
-  if(S.s){cap=Math.max(cap,50);why.push('ein steuerbares Gerät nach § 14a')}
-  if(S.p){cap=Math.max(cap,40);why.push('eine Solaranlage über 7 kW')}
+  if(S.k>6000){cap=S.k<=10000?40:S.k<=20000?50:110;why.push(f(S.k)+' kWh im Jahr brauchst')}
+  if(S.s){cap=Math.max(cap,50);why.push('ein steuerbares Gerät nach § 14a hast')}
+  if(S.p){cap=Math.max(cap,40);why.push('eine Solaranlage über 7 kW hast')}
   let t;
   if(pf){$('s1').textContent='Pflicht';$('s2').textContent=cap+' €';$('s2t').textContent='höchstens im Jahr';
-    t=`Wegen ${why.join(' und ')} bekommst du einen Smart Meter. Er darf dich höchstens ${cap} € im Jahr kosten. Widersprechen kannst du nicht.`}
+    t=`Du bekommst einen Smart Meter, weil du ${why.join(' und ')}. Er darf dich höchstens ${cap} € im Jahr kosten. Widersprechen kannst du nicht.`}
   else{$('s1').textContent='Freiwillig';$('s2').textContent='25 €';$('s2t').textContent='höchstens im Jahr für den digitalen Zähler';
     t='Für dich ist ein Smart Meter keine Pflicht. Du bekommst bis 2032 einen digitalen Zähler für höchstens 25 € im Jahr. Einen Smart Meter kannst du freiwillig bestellen: einmalig 100 €, dann 30 € im Jahr. Das lohnt sich vor allem für einen dynamischen Stromtarif.'}
   $('stxt').textContent=t;$('s2box').classList.toggle('neg',false);
