@@ -29,6 +29,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/klimageraet.html', '❄️', 'Klimagerät', 'Mobil oder Split, Stromkosten', 'klimageraet'),
         ('/heizluefter.html', '🔥', 'Heizlüfter und Elektroheizung', 'Stromkosten, Sicherheit', 'heizluefter'),
         ('/lueften.html', '🪟', 'Richtig lüften, Schimmel vermeiden', 'Wand-Check, Luftfeuchte', 'lueften'),
+        ('/weihnachtsbeleuchtung.html', '🎄', 'Weihnachtsbeleuchtung', 'Stromkosten, LED, Sicherheit', 'weihnachtsbeleuchtung'),
         ('/#ratgeber', '📋', 'Anmelden, Mieten, Tarif', 'Kurz erklärt', None)]
 CUR = ' aria-current="page"'
 
