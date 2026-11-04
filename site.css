@@ -135,3 +135,17 @@ main>section.ln.in::before{transform:scaleX(1);opacity:.85}
 .kurz{border-left:3px solid var(--sun);background:var(--pan);border-radius:0 16px 16px 0;padding:16px 20px}
 .kurz b{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
 .kurz p{margin:0;font-size:1.02rem;line-height:1.5}
+
+/* Illustrationen für Bühnen ohne Foto (Design-Agent 04.11.2026) */
+.hero.noimg .ill{position:absolute;z-index:1;right:max(16px,calc((100vw - 1180px)/2));top:50%;width:min(36vw,440px);height:auto;transform:translateY(-46%);pointer-events:none;overflow:visible}
+.hero.noimg .ill *{fill:none;stroke:rgba(245,245,247,.55);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.hero.noimg .ill .t{stroke:rgba(245,245,247,.32);stroke-width:1.8}
+.hero.noimg .ill .a{stroke:#ffb81c;fill:rgba(255,184,28,.10)}
+.hero.noimg .ill .g{stroke:#ffb81c;stroke-width:2.8;filter:drop-shadow(0 0 6px rgba(255,184,28,.55))}
+.hero.noimg .ill path,.hero.noimg .ill rect,.hero.noimg .ill circle{stroke-dasharray:900;stroke-dashoffset:900;animation:illdraw 1.8s .15s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes illdraw{to{stroke-dashoffset:0}}
+.hero h1{-webkit-hyphens:manual;hyphens:manual;overflow-wrap:break-word}
+@media (min-width:761px){.hero.noimg h1,.hero.noimg p{max-width:min(16ch,calc(100% - min(36vw,440px) - 24px))}.hero.noimg p{max-width:min(40ch,calc(100% - min(36vw,440px) - 24px))}}
+@media (max-width:760px){.hero.noimg .ill{top:62px;right:12px;width:150px;transform:none;opacity:.85}.hero.noimg .wrap{padding-top:200px}}
+@media (prefers-reduced-motion:reduce){.hero.noimg .ill path,.hero.noimg .ill rect,.hero.noimg .ill circle{animation:none;stroke-dashoffset:0}}
+@media print{.hero.noimg .ill{display:none}}
