@@ -1,0 +1,27 @@
+name: Pins freigeben
+# Gibt eingeplante Pinterest-Pins (assets/pins/pins.json) mittags und abends frei.
+# Läuft zu beiden möglichen UTC-Stunden, damit es im Winter und Sommer 12 und 20 Uhr Berlin trifft.
+on:
+  schedule:
+    - cron: '3 10,11,18,19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Feed bauen
+        run: python3 werkzeuge/teilbilder/pinfeed.py . https://strom-daheim.de
+      - name: Hochladen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet pins.xml; then echo "nichts neu"; exit 0; fi
+          git config user.name "Pin-Freigabe"
+          git config user.email "noreply@github.com"
+          git commit -am "Pins freigegeben"
+          git push
+          gh api -X POST repos/${{ github.repository }}/pages/builds || true
