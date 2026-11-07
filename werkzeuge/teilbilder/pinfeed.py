@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+"""RSS-Feed für Pinterest (automatisch veröffentlichen).
+Aufruf: python3 pinfeed.py <site-ordner> <https://domain>
+Liest <site>/assets/pins/pins.json (Liste: datei, titel, text, link, datum JJJJ-MM-TT),
+schreibt <site>/pins.xml. Neueste zuerst. Bilder liegen in <site>/assets/pins/."""
+import json, sys, pathlib, datetime, email.utils
+from xml.sax.saxutils import escape as e
+site, dom = pathlib.Path(sys.argv[1]), sys.argv[2].rstrip('/')
+pins = json.load(open(site / 'assets/pins/pins.json'))
+pins.sort(key=lambda p: p['datum'], reverse=True)
+def rfc(d):
+    t = datetime.datetime.strptime(d, '%Y-%m-%d').replace(hour=9, tzinfo=datetime.timezone.utc)
+    return email.utils.format_datetime(t)
+items = []
+for p in pins:
+    img = '%s/assets/pins/%s' % (dom, p['datei'])
+    size = (site / 'assets/pins' / p['datei']).stat().st_size
+    items.append(
+        '<item><title>%s</title><link>%s</link><guid isPermaLink="false">%s</guid>'
+        '<pubDate>%s</pubDate><description>%s</description>'
+        '<enclosure url="%s" length="%d" type="image/jpeg"/>'
+        '<media:content url="%s" medium="image" type="image/jpeg" width="1000" height="1500"/></item>'
+        % (e(p['titel']), e(p['link']), e(p['datei']), rfc(p['datum']),
+           e('<img src="%s" alt="%s"><p>%s</p>' % (img, e(p['titel']), e(p['text']))),
+           img, size, img))
+xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+       '<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel>'
+       '<title>%s Pins</title><link>%s/</link><description>Neue Pins</description><language>de-DE</language>%s'
+       '</channel></rss>\n') % (e(dom.split('//')[1]), dom, ''.join(items))
+(site / 'pins.xml').write_text(xml)
+print(len(pins), 'Pins ->', site / 'pins.xml')
