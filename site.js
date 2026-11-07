@@ -103,3 +103,13 @@ window.__MOTION={reveal:'.card,.item,.hub a,.rows a,ol.steps>li,.tbl,.note,.res>
     if(C.extra)C.extra(io);
   });
 })();
+
+/* Black-Friday-Leiste: erscheint bis Cyber Monday (30.11.2026), danach automatisch weg. Kann geschlossen werden. */
+(()=>{try{if(Date.now()>=Date.parse('2026-12-01T00:00:00+01:00')||/black-friday/.test(location.pathname)||localStorage.getItem('bf26')==='x')return}catch(e){}
+const h=document.getElementById('sh');if(!h)return;
+const n=Date.now(),bf=Date.parse('2026-11-27T00:00:00+01:00'),d=Math.ceil((bf-n)/864e5);
+const t=d>1?'Black Friday in '+d+' Tagen':d===1?'Morgen ist Black Friday':n<Date.parse('2026-11-28T00:00:00+01:00')?'Heute ist Black Friday':'Black Week bis Cyber Monday';
+const b=document.createElement('div');b.className='bfbar';
+b.innerHTML='<a href="/black-friday.html"><b>'+t+'</b><span class="bfx"> · echte Angebote erkennen</span> <span aria-hidden="true">→</span></a><button type="button" aria-label="Black-Friday-Hinweis schließen">✕</button>';
+b.querySelector('button').addEventListener('click',()=>{b.remove();try{localStorage.setItem('bf26','x')}catch(e){}});
+h.appendChild(b)})();
