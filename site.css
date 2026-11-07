@@ -156,3 +156,4 @@ main>section.ln.in::before{transform:scaleX(1);opacity:.85}
 .bfbar a b{font-weight:700}.bfbar .bfx{color:#f5f5f7}
 .bfbar button{flex:none;width:40px;height:36px;border:0;background:none;color:#f5f5f7;font-size:1rem;cursor:pointer}
 @media (max-width:420px){.bfbar .bfx{display:none}}
+@media (max-width:760px){.bf-on .hero .ill,.bf-on .hero .bfbig{top:102px!important}}

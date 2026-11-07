@@ -112,4 +112,4 @@ const t=d>1?'Black Friday in '+d+' Tagen':d===1?'Morgen ist Black Friday':n<Date
 const b=document.createElement('div');b.className='bfbar';
 b.innerHTML='<a href="/black-friday.html"><b>'+t+'</b><span class="bfx"> · echte Angebote erkennen</span> <span aria-hidden="true">→</span></a><button type="button" aria-label="Black-Friday-Hinweis schließen">✕</button>';
 b.querySelector('button').addEventListener('click',()=>{b.remove();try{localStorage.setItem('bf26','x')}catch(e){}});
-h.appendChild(b)})();
+h.appendChild(b);document.documentElement.classList.add('bf-on');b.querySelector('button').addEventListener('click',()=>document.documentElement.classList.remove('bf-on'))})();
