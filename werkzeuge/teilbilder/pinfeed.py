@@ -2,11 +2,16 @@
 """RSS-Feed für Pinterest (automatisch veröffentlichen).
 Aufruf: python3 pinfeed.py <site-ordner> <https://domain>
 Liest <site>/assets/pins/pins.json (Liste: datei, titel, text, link, datum JJJJ-MM-TT),
-schreibt <site>/pins.xml. Neueste zuerst. Bilder liegen in <site>/assets/pins/."""
+schreibt <site>/pins.xml. Nur Pins mit datum <= heute (Berlin) kommen in den Feed:
+so werden im Voraus eingeplante Pins Tag für Tag freigegeben. Neueste zuerst.
+Bilder liegen in <site>/assets/pins/. Täglich einmal laufen lassen und pushen."""
 import json, sys, pathlib, datetime, email.utils
 from xml.sax.saxutils import escape as e
 site, dom = pathlib.Path(sys.argv[1]), sys.argv[2].rstrip('/')
-pins = json.load(open(site / 'assets/pins/pins.json'))
+from zoneinfo import ZoneInfo
+heute = datetime.datetime.now(ZoneInfo('Europe/Berlin')).strftime('%Y-%m-%d')
+alle = json.load(open(site / 'assets/pins/pins.json'))
+pins = [p for p in alle if p['datum'] <= heute]
 pins.sort(key=lambda p: p['datum'], reverse=True)
 def rfc(d):
     t = datetime.datetime.strptime(d, '%Y-%m-%d').replace(hour=9, tzinfo=datetime.timezone.utc)
@@ -28,4 +33,4 @@ xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
        '<title>%s Pins</title><link>%s/</link><description>Neue Pins</description><language>de-DE</language>%s'
        '</channel></rss>\n') % (e(dom.split('//')[1]), dom, ''.join(items))
 (site / 'pins.xml').write_text(xml)
-print(len(pins), 'Pins ->', site / 'pins.xml')
+print(len(pins), 'von', len(alle), 'Pins freigegeben ->', site / 'pins.xml')
