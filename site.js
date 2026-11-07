@@ -113,3 +113,16 @@ const b=document.createElement('div');b.className='bfbar';
 b.innerHTML='<a href="/black-friday.html"><b>'+t+'</b><span class="bfx"> · echte Angebote erkennen</span> <span aria-hidden="true">→</span></a><button type="button" aria-label="Black-Friday-Hinweis schließen">✕</button>';
 b.querySelector('button').addEventListener('click',()=>{b.remove();try{localStorage.setItem('bf26','x')}catch(e){}});
 h.appendChild(b);document.documentElement.classList.add('bf-on');b.querySelector('button').addEventListener('click',()=>document.documentElement.classList.remove('bf-on'))})();
+
+/* Suche im Menü (Index: /suche.json, wird beim Öffnen geladen) */
+(()=>{const top=document.querySelector('#sh-sheet .sh-top');if(!top)return;
+const w=document.createElement('div');w.className='sq';w.setAttribute('role','search');
+w.innerHTML='<label class="vh" for="sq-in">Ratgeber durchsuchen</label><input id="sq-in" type="search" placeholder="Suchen, z. B. Kühlschrank" autocomplete="off" enterkeyhint="search"><ul id="sq-out" aria-live="polite"></ul>';
+top.insertAdjacentElement('afterend',w);
+const inp=w.querySelector('input'),out=w.querySelector('ul');let idx=null;
+const norm=s=>s.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss');
+const load=()=>idx?Promise.resolve(idx):fetch('/suche.json').then(r=>r.json()).then(j=>(idx=j.map(e=>Object.assign(e,{n:norm(e.t+' '+e.d+' '+e.k)}))));
+inp.addEventListener('focus',load,{once:true});
+inp.addEventListener('input',()=>{const q=norm(inp.value.trim());if(q.length<2){out.innerHTML='';return}
+load().then(L=>{const ws=q.split(/\s+/);const r=L.filter(e=>ws.every(x=>e.n.includes(x))).sort((a,b)=>(norm(b.t).includes(ws[0])?1:0)-(norm(a.t).includes(ws[0])?1:0)).slice(0,8);
+out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&lt;')+'</b><small>'+e.d.slice(0,90).replace(/</g,'&lt;')+'…</small></a></li>').join(''):'<li class="none">Nichts gefunden. Probier ein anderes Wort.</li>'})});})();

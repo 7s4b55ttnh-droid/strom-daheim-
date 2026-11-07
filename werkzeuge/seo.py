@@ -28,6 +28,23 @@ KURZ = {
 }
 SKIP_LD = {'impressum.html', 'datenschutz.html', '404.html', 'index.html'}
 LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n?', re.S)
+def toc(main):
+    """Inhaltsverzeichnis mit Lesezeit für den Kasten „Kurz gesagt“."""
+    items = []
+    for sid, body in re.findall(r'<section[^>]*\bid="([^"]+)"[^>]*>(.*?)</section>', main, re.S):
+        if sid in ('quellen', 'kurz-gesagt'):
+            continue
+        m = re.search(r'<h2[^>]*>(.*?)</h2>', body, re.S)
+        if m:
+            items.append((sid, re.sub(r'<[^>]+>', '', m.group(1)).strip().rstrip('.')))
+    if len(items) < 3:
+        return ''
+    words = len(re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', main, flags=re.S).split())
+    mins = max(1, round(words / 200))
+    lis = ''.join('<li><a href="#%s">%s</a></li>' % (i, t) for i, t in items)
+    return '<details class="toc"><summary><span>Inhalt</span><span class="toc-t">%d Min. Lesezeit</span></summary><ol>%s</ol></details>' % (mins, lis)
+
+
 KG_RE = re.compile(r'<section class="kurz-s">.*?</section>\n', re.S)
 
 
@@ -73,7 +90,7 @@ def run():
         # Kasten „Kurz gesagt“ vor dem ersten Abschnitt
         s = KG_RE.sub('', s)
         if name in KURZ:
-            box = ('<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>%s</p></div></div></section>\n' % KURZ[name])
+            box = ('<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>%s</p></div>%s</div></section>\n' % (KURZ[name], toc(main)))
             i = s.index('<section', s.index('<main'))
             s = s[:i] + box + s[i:]
         h1 = text(re.search(r'<h1[^>]*>(.*?)</h1>', main, re.S).group(1))
