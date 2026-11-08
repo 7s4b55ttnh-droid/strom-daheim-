@@ -32,6 +32,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/weihnachtsbeleuchtung.html', '🎄', 'Weihnachtsbeleuchtung', 'Stromkosten, LED, Sicherheit', 'weihnachtsbeleuchtung'),
         ('/kochen.html', '🍳', 'Kochen mit wenig Strom', 'Deckel, Wasserkocher, Induktion', 'kochen'),
         ('/kuehlschrank.html', '🧊', 'Kühlschrank richtig einstellen', '7 Grad, Abtauen, Dichtung', 'kuehlschrank'),
+        ('/waesche-trocknen.html', '🧺', 'Wäsche trocknen im Winter', 'Trockner-Kosten, ohne Schimmel', 'waesche-trocknen'),
         ('/black-friday.html', '🏷️', 'Black Friday 2026', 'Echte Angebote erkennen', 'black-friday'),
         ('/#ratgeber', '📋', 'Anmelden, Mieten, Tarif', 'Kurz erklärt', None)]
 CUR = ' aria-current="page"'
