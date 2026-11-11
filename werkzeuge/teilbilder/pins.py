@@ -20,6 +20,7 @@ js='''const {chromium}=require('playwright');const fs=require('fs');(async()=>{c
 for(const [s,d] of JSON.parse(fs.readFileSync('/tmp/teilbilder/pins.json'))){await p.goto('file://'+s);await p.waitForTimeout(200);await p.screenshot({path:d.replace('.jpg','.png')})}await b.close()})();'''
 open('/tmp/teilbilder/pins.js','w').write(js);subprocess.run(['node','/tmp/teilbilder/pins.js'],check=True)
 from PIL import Image
+sys.path.insert(0,os.path.join(os.path.dirname(os.path.abspath(__file__)),'..'));from ki_stempel import stempel
 for _,d in jobs:
-    pp=d.replace('.jpg','.png');Image.open(pp).convert('RGB').save(d,quality=86,optimize=True,progressive=True);os.remove(pp)
+    pp=d.replace('.jpg','.png');stempel(pp,d,86);os.remove(pp)  # KI-Marke oben rechts + XMP-Kennzeichnung
 print(len(jobs))

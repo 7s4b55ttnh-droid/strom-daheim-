@@ -194,3 +194,25 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
     if(!told){told=1;say('Gemerkt: '+fm(v)+' ct gilt jetzt in allen Rechnern')}},80)}
   addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
 })();
+
+/* KI-Kennzeichnung (seit 11.11.2026, Pflicht): kleine Marke "KI-generiert" unten rechts auf jedem Foto aus assets/.
+   Läuft automatisch für alle Seiten und neue Bilder. Die Marke sitzt am sichtbaren Bildrand, auch wenn das Foto beschnitten ist.
+   Zwei Bilder im selben Rahmen (Vorher/Nachher-Regler) bekommen nur eine Marke. Nicht entfernen. */
+(function(){
+  var RX=/(^|\/)assets\/[^\/]+\.(jpe?g|webp|png)(\?|$)/i,list=[];
+  function box(im){var a=im.parentElement;if(a&&a.tagName==='PICTURE')a=a.parentElement;return a}
+  function put(m){var a=m.__a,im=m.__i,ar=a.getBoundingClientRect(),ir=im.getBoundingClientRect();
+    if(!ir.width||!ar.width){m.hidden=true;return}m.hidden=false;
+    m.classList.toggle('k',Math.min(ir.right,ar.right)-Math.max(ir.left,ar.left)<300);
+    m.style.right=(Math.max(0,ar.right-ir.right)-a.clientLeft+8)+'px';m.style.bottom=(Math.max(0,ar.bottom-ir.bottom)-a.clientTop+8)+'px'}
+  function mark(im){if(im.__ki)return;var s=im.getAttribute('src')||'';if(!RX.test(s))return;im.__ki=1;
+    var a=box(im);if(!a||a.querySelector(':scope>.ki-marke'))return;
+    if(getComputedStyle(a).position==='static')a.style.position='relative';
+    var m=document.createElement('span');m.className='ki-marke';m.textContent='KI-generiert';m.setAttribute('aria-hidden','true');
+    m.__a=a;m.__i=im;a.appendChild(m);list.push(m);put(m);
+    if(window.ResizeObserver){var ro=new ResizeObserver(function(){put(m)});ro.observe(a);ro.observe(im)}
+    im.addEventListener('load',function(){put(m)})}
+  function all(){document.querySelectorAll('img').forEach(mark)}
+  all();addEventListener('load',function(){all();list.forEach(put)});
+  if(window.MutationObserver)new MutationObserver(all).observe(document.body,{childList:true,subtree:true});
+})();

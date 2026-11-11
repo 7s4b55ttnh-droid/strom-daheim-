@@ -2,6 +2,7 @@ Teilen-Bilder (1200x630) für beide Seiten erzeugen:
   mkdir -p /tmp/teilbilder && cd werkzeuge/teilbilder
   python3 make.py strom && python3 make.py stil
   node shoot.js /tmp/teilbilder/strom.json /tmp/teilbilder/stil.json
-  python3 -c "import json,os;from PIL import Image;[ (Image.open(d.replace('.jpg','.png')).convert('RGB').save(d,quality=84,optimize=True,progressive=True),os.remove(d.replace('.jpg','.png'))) for s in ['strom','stil'] for _,d in json.load(open('/tmp/teilbilder/%s.json'%s))]"
+  python3 -c "import json,os,sys;sys.path.insert(0,'..');from ki_stempel import stempel;[ (stempel(d.replace('.jpg','.png'),d,84),os.remove(d.replace('.jpg','.png'))) for s in ['strom','stil'] for _,d in json.load(open('/tmp/teilbilder/%s.json'%s))]"
+  (stempel setzt die Marke "KI-generiert" oben rechts und die maschinenlesbare KI-Kennzeichnung. Pflicht für alle Teilen-Bilder und Pins.)
 Danach Strom: og:image auf assets/og/<seite>.jpg setzen (neue Seiten), dann python3 werkzeuge/seo.py.
 Stil: build.py nimmt assets/og/<key>.jpg automatisch, einfach neu bauen.
