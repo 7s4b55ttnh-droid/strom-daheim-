@@ -166,6 +166,54 @@ footer p{max-width:72ch;margin:0 0 10px}footer a{color:var(--mut);text-decoratio
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 @media(max-width:900px){.rows{grid-template-columns:1fr}.ctlwrap{grid-template-columns:1fr}}
 @media(max-width:520px){.num{grid-template-columns:1fr}.kp{grid-template-columns:1fr 1fr}.stage{border-radius:22px}}
+
+/* ===== Seit 11.11.2026 ===== */
+/* Live-Sonne im Start-Bild: Bogen von Sonnenauf- bis -untergang (heute, Mitte Deutschlands), die Sonne steht an ihrer echten Stelle,
+   daneben die Leistung, die ein Balkonkraftwerk bei klarem Himmel gerade liefern würde. Rechnung im Skript unten. */
+.sunb{position:absolute;z-index:2;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .6s;pointer-events:none;color:#f5f5f7}
+.sunb.on{opacity:1}
+.sunb svg{display:block;width:100%;height:124px;overflow:visible}
+.sb-h{stroke:rgba(245,245,247,.26);stroke-width:1}
+.sb-a{fill:none;stroke:rgba(245,245,247,.55);stroke-width:1.6;stroke-dasharray:.1 6;stroke-linecap:round}
+.sb-p{fill:none;stroke:#ffb81c;stroke-width:2.6;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,184,28,.65))}
+.sb-g{fill:#ffb81c;opacity:.3;filter:blur(5px);transform-box:fill-box;transform-origin:center;animation:sbg 3.4s ease-in-out infinite}
+.sb-s{fill:#ffd978}
+.sb-w{font-size:17px;font-weight:700;fill:#fff;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:rgba(0,0,0,.5);stroke-width:3px;stroke-linejoin:round}
+.sb-t{font-size:11px;fill:rgba(245,245,247,.72);font-variant-numeric:tabular-nums}
+.sunb p{margin:4px auto 0;max-width:1100px;padding:0 max(24px,env(safe-area-inset-left,0px));font-size:.82rem;line-height:1.38;color:rgba(245,245,247,.8);text-shadow:0 1px 12px rgba(0,0,0,.85)}
+.sunb p b{color:#fff;font-weight:700}
+@keyframes sbg{50%{opacity:.55;transform:scale(1.35)}}
+.scene.first .hint{display:none}
+@media(max-height:580px){.sunb{display:none}}
+@media(max-width:600px) and (max-height:700px){.scene.first .cap.top{top:15vh}.scene.first .cap.top p{margin-top:12px}.herobtns{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.sunb{display:none}}
+
+/* Ratgeber-Galerie: Suchfeld und Themen-Filter, darunter Fotokarten. Neue Kachel: siehe Kommentar im HTML. */
+.hubf{display:grid;gap:12px;max-width:820px;margin:0 auto clamp(20px,3vw,32px)}
+.hubf input{width:100%;height:50px;border-radius:999px;border:1px solid color-mix(in srgb,var(--line) 80%,transparent);background:var(--pan) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a9aa0' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 18px 50%/18px no-repeat;color:var(--ink);font:inherit;font-size:1rem;padding:0 20px 0 48px;-webkit-appearance:none;appearance:none}
+.hubf input::placeholder{color:var(--mut)}
+.hubc{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px;margin:0 -2px;justify-content:safe center}
+.hubc::-webkit-scrollbar{display:none}
+.hubc button{flex:none;height:40px;padding:0 16px;border-radius:999px;border:1px solid color-mix(in srgb,var(--line) 80%,transparent);background:var(--pan);color:var(--ink);font-size:.9rem;font-weight:600;white-space:nowrap;transition:background .18s,color .18s,border-color .18s,transform .12s}
+.hubc button:active{transform:scale(.96)}
+.hubc button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#alles .hub{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){#alles .hub{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.hub a.wide,.hub a.wide.half{grid-column:auto;display:flex;flex-direction:column;gap:0;padding:0;overflow:hidden}
+.hub a.wide .ic.th{width:100%;height:auto;aspect-ratio:3/2;border-radius:0;border:0;display:block;background:#0d0d0d}
+.hub a.wide .ic.th img{display:block;width:100%;height:100%;object-fit:cover;object-position:62% 50%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.hub a.wide>div{padding:14px 16px 18px}
+.hub a.wide>div>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+@media(hover:hover){.hub a.wide:hover{transform:none}.hub a.wide:hover .ic.th img{transform:scale(1.05)}}
+.hub a[hidden]{display:none!important}
+.hubn{grid-column:1/-1;text-align:center;color:var(--mut);padding:28px 0 8px}
+.hub a:not(.wide){display:flex;align-items:center;gap:12px;padding:14px 16px}
+.hub a:not(.wide) .ic{margin:0;font-size:1.35rem;flex:none}
+.hub a:not(.wide) b{margin:0;font-size:.95rem}
+.hub a:not(.wide)>span:not(.ic){display:none}
+@media(max-width:900px){.hub a.wide>div{padding:11px 12px 14px}.hub a.wide b{font-size:.94rem}.hub a.wide>div>span{font-size:.8rem;line-height:1.4;-webkit-line-clamp:2}.hub .new{font-size:.6rem;padding:1px 6px;margin-left:4px}
+.hubc{justify-content:flex-start;margin:0 -20px;padding:2px 20px}.hub a:not(.wide){padding:12px}.hub a:not(.wide) b{font-size:.88rem}}
+::view-transition-group(*){animation-duration:.32s}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script></head><body>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Muss ich ein Balkonkraftwerk anmelden?","acceptedAnswer":{"@type":"Answer","text":"Ja, im Marktstammdatenregister der Bundesnetzagentur, innerhalb eines Monats nach Inbetriebnahme. Eine zusätzliche Meldung beim Netzbetreiber ist bei Einhaltung der Grenzen (800 W Wechselrichter, 2.000 W Module) und reinem Eigenverbrauch nicht mehr nötig."}},{"@type":"Question","name":"Wie viel Leistung darf ein Balkonkraftwerk haben?","acceptedAnswer":{"@type":"Answer","text":"Der Wechselrichter höchstens 800 Watt, die Module zusammen höchstens 2.000 Watt."}},{"@type":"Question","name":"Lohnt sich ein Speicher am Balkonkraftwerk?","acceptedAnswer":{"@type":"Answer","text":"Bei kleinen Anlagen mit zwei Modulen meist nicht: Der zusätzliche Eigenverbrauch bringt nur wenige Dutzend Euro pro Jahr, der Speicher kostet 200 bis 400 Euro pro kWh. Bei vier Modulen und hohem Abendverbrauch kann er sich rechnen."}}]}</script>
@@ -179,6 +227,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
   <div class="cap top" data-from="0" data-to="0.55"><span class="eyebrow">Strom-Daheim</span><h1>Dein Strom.<br>Dein Balkon.</h1><p>Balkonkraftwerk, Wallbox, E-Auto und Stromsparen. Verständlich gerechnet, mit geprüften Quellen.</p><div class="herobtns"><a class="scbtn" href="#rechner-sektion">Ersparnis berechnen</a><a class="scbtn ghost" href="#alles">Alle Ratgeber</a></div></div>
   <div class="cap bot" data-from="0.5" data-to="1"><h2>Zwei Module.<br>Rund 700 kWh im Jahr.</h2><p>Was mittags vom Dach kommt, muss in der Wohnung ankommen. Darum geht es auf dieser Seite.</p><a class="scbtn" href="/anleitung-balkonkraftwerk.html">Montage-Anleitung</a></div>
   <div class="hint" data-from="0" data-to="0.2">Scrollen</div>
+<div class="sunb" id="sunb" data-from="0" data-to="0.42" hidden><svg id="sb-svg" aria-hidden="true" focusable="false"><line class="sb-h" id="sb-h"/><path class="sb-a" id="sb-a"/><path class="sb-p" id="sb-p"/><circle class="sb-g" id="sb-g" r="22"/><circle class="sb-s" id="sb-s" r="7"/><text class="sb-w" id="sb-w"></text><text class="sb-t" id="sb-r"></text><text class="sb-t" id="sb-e"></text></svg><p id="sb-x"></p></div>
 </div></div>
 
 <div class="scene" id="s2"><div class="pin">
@@ -207,30 +256,38 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}
 
 <section id="alles"><div class="wrap">
 <div class="head center"><span class="eyebrow">Alle Ratgeber</span><h2>Wobei können wir dir helfen?</h2></div>
+<div class="hubf" id="hubf"><input type="search" id="hubq" placeholder="Ratgeber suchen, zum Beispiel Kühlschrank" aria-label="Ratgeber durchsuchen" autocomplete="off" enterkeyhint="search">
+<div class="hubc" role="group" aria-label="Nach Thema filtern"><button type="button" aria-pressed="true" data-f="">Alle</button><button type="button" aria-pressed="false" data-f="solar">Balkon und Solar</button><button type="button" aria-pressed="false" data-f="auto">E-Auto</button><button type="button" aria-pressed="false" data-f="haushalt">Haushalt</button><button type="button" aria-pressed="false" data-f="heizen">Heizen und Klima</button><button type="button" aria-pressed="false" data-f="tarif">Tarif und Zähler</button></div></div>
 <div class="hub">
-<a href="#rechner"><span class="ic">☀️</span><b>Lohnt sich ein Balkonkraftwerk?</b><span>Rechner mit deinen Zahlen</span></a>
-<a href="/anleitung-balkonkraftwerk.html"><span class="ic">🔧</span><b>Balkonkraftwerk montieren</b><span>8 Schritte, Einkaufsliste, neue Norm</span></a>
-<a href="#vergleich"><span class="ic">⚖️</span><b>Welches Set kaufen?</b><span>4 geprüfte Komplettsets</span></a>
-<a href="#speicher"><span class="ic">🔋</span><b>Lohnt sich ein Speicher?</b><span>Zwei Rechenbeispiele</span></a>
-<a href="/e-auto.html"><span class="ic">🚗</span><b>Was kostet mein E-Auto?</b><span>Ladekosten-Rechner</span></a>
-<a href="/anleitung-wallbox.html"><span class="ic">🔌</span><b>Wallbox installieren</b><span>Schritte, Kosten, Förderung</span></a>
-<a href="/stromfresser.html"><span class="ic">💡</span><b>Stromfresser finden <em class="new">Neu</em></b><span>Vergleich und Geräte-Rechner</span></a>
-<a href="#ratgeber"><span class="ic">📋</span><b>Anmelden, Mieten, Tarif</b><span>Kurz erklärt</span></a>
-<a class="wide" href="/black-friday.html"><span class="ic th bf-t" aria-hidden="true"><b>BLACK</b><b>FRIDAY</b></span><div><b>Black Friday 2026 <em class="new">Neu</em></b><span>Echte Angebote am 30-Tage-Preis erkennen und vorher rechnen, ob sich das Gerät lohnt.</span></div></a>
-<a class="wide half" href="/kuehlschrank.html"><span class="ic th ill-t"><svg class="ill" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><rect x="130" y="20" width="140" height="270" rx="14"/><path d="M130 110h140"/><path class="t" d="M250 50v40M250 130v60"/><circle class="a" cx="300" cy="200" r="34"/><path class="g" d="M300 176v34M300 210l-14 10M300 210l14 10"/><path class="t" d="M60 120l20 0M70 110l0 20M63 113l14 14M77 113l-14 14"/><path class="t" d="M150 250h100"/></svg></span><div><b>Kühlschrank einstellen</b><span>7 Grad, Eis weg, Dichtung prüfen: fünf Checks gegen hohen Verbrauch.</span></div></a><a class="wide half" href="/backen.html"><span class="ic th"><img src="assets/backen-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Plätzchen backen mit wenig Strom</b><span>Was der Backofen in der Weihnachtsbäckerei kostet, mit Rechner und 7 Spartipps.</span></div></a><a class="wide half" href="/weihnachten-strom.html"><span class="ic th"><img src="assets/weihnachten-strom-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Stromkosten an Weihnachten <em class="new">Neu</em></b><span>Was Backofen, Spülmaschine, Fernseher und Lichterketten an den Feiertagen kosten, mit Rechner.</span></div></a><a class="wide half" href="/spuelmaschine.html"><span class="ic th"><img src="assets/spuelmaschine-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Spülmaschine oder Handwäsche <em class="new">Neu</em></b><span>Was ein Spülgang kostet, warum Eco am sparsamsten ist und Tipps fürs Festessen.</span></div></a>
-<a class="wide half" href="/waesche-trocknen.html"><span class="ic th"><img src="assets/waesche-trocknen-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Wäsche trocknen im Winter</b><span>Was der Trockner kostet und wie du auf dem Wäscheständer ohne Schimmel trocknest.</span></div></a>
-<a class="wide half" href="/kochen.html"><span class="ic th ill-t"><svg class="ill" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M60 250h280"/><rect x="110" y="150" width="180" height="90" rx="14"/><path d="M110 170H86M290 170h24"/><path class="a" d="M120 150q80-34 160 0"/><path class="t" d="M200 116v-10"/><circle class="t" cx="200" cy="102" r="6"/><path class="g" d="M160 90c-10-16 10-26 0-42M200 80c-10-16 10-26 0-42M240 90c-10-16 10-26 0-42"/><path class="t" d="M120 262h40M240 262h40"/></svg></span><div><b>Kochen mit wenig Strom <em class="new">Neu</em></b><span>Deckel, Wasserkocher, Restwärme und welches Kochfeld am wenigsten braucht.</span></div></a>
-<a class="wide half" href="/weihnachtsbeleuchtung.html"><span class="ic th"><img src="assets/weihnachtsbeleuchtung-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Weihnachtsbeleuchtung <em class="new">Neu</em></b><span>Was Lichterketten kosten, warum LED und Zeitschaltuhr sich lohnen und was draußen sicher ist.</span></div></a>
-<a class="wide half" href="/lueften.html"><span class="ic th"><img src="assets/lueften-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Richtig lüften <em class="new">Neu</em></b><span>Wie lange lüften, welche Luftfeuchte passt und ob deine Wand zu feucht wird.</span></div></a>
-<a class="wide half" href="/heizluefter.html"><span class="ic th"><img src="assets/heizluefter-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Heizlüfter und Elektroheizung <em class="new">Neu</em></b><span>Was Heizen mit Strom kostet, wann es sinnvoll ist und wie es sicher bleibt.</span></div></a>
-<a class="wide half" href="/klimageraet.html"><span class="ic th"><img src="assets/klimageraet-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Klimagerät <em class="new">Neu</em></b><span>Mobil oder Split, was es kostet und was es im Sommer an Strom braucht.</span></div></a>
-<a class="wide half" href="/pv-anlage.html"><span class="ic th"><img src="assets/pv-anlage-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Solaranlage aufs Dach <em class="new">Neu</em></b><span>Kosten, Ertrag, Rechner und was die EEG-Reform 2027 für neue Anlagen bedeutet.</span></div></a>
-<a class="wide half" href="/smart-meter.html"><span class="ic th"><img src="assets/smart-meter-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Smart Meter <em class="new">Neu</em></b><span>Wer ihn bekommen muss, was er kostet und was er bringt.</span></div></a>
-<a class="wide half" href="/energielabel.html"><span class="ic th"><img src="assets/energielabel-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Energielabel und sparsame Geräte <em class="new">Neu</em></b><span>Was A bis G bedeutet und ob sich ein neuer Kühlschrank lohnt.</span></div></a>
-<a class="wide half" href="/waermepumpe.html"><span class="ic th"><img src="assets/waermepumpe-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Wärmepumpe <em class="new">Neu</em></b><span>Was sie im Jahr kostet, wie viel Förderung du bekommst und ob dein Haus passt.</span></div></a>
-<a class="wide half" href="/solar-laden.html"><span class="ic th"><img src="assets/solar-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>E-Auto mit Solarstrom laden <em class="new">Neu</em></b><span>Wie Überschussladen funktioniert und was es dir im Jahr spart.</span></div></a>
-<a class="wide half" href="/stromtarif.html"><span class="ic th"><img src="assets/home-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Stromtarif wechseln</b><span>Rechne aus, was der Wechsel aus der Grundversorgung bringt und ob sich ein dynamischer Tarif für dich lohnt.</span></div></a>
-<a class="wide" href="/powerstation.html"><span class="ic th"><img src="assets/notstrom-m.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span><div><b>Powerstation und Notstrom</b><span>Welche Größe du für Stromausfall, Camping und Garten brauchst. Mit Rechner, drei Empfehlungen und Vorsorge-Liste.</span></div></a>
+<a href="#rechner" data-k="solar"><span class="ic">☀️</span><b>Lohnt sich ein Balkonkraftwerk?</b><span>Rechner mit deinen Zahlen</span></a>
+<a href="#vergleich" data-k="solar"><span class="ic">⚖️</span><b>Welches Set kaufen?</b><span>4 geprüfte Komplettsets</span></a>
+<a href="#speicher" data-k="solar"><span class="ic">🔋</span><b>Lohnt sich ein Speicher?</b><span>Zwei Rechenbeispiele</span></a>
+<a href="#ratgeber" data-k="solar tarif"><span class="ic">📋</span><b>Anmelden, Mieten, Tarif</b><span>Kurz erklärt</span></a>
+<a class="wide" href="/anleitung-balkonkraftwerk.html" data-k="solar"><span class="ic th"><img src="assets/hero-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Balkonkraftwerk montieren</b><span>8 Schritte, Einkaufsliste, neue Norm</span></div></a>
+<a class="wide" href="/e-auto.html" data-k="auto"><span class="ic th"><img src="assets/ev-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Was kostet mein E-Auto?</b><span>Ladekosten-Rechner</span></div></a>
+<a class="wide" href="/anleitung-wallbox.html" data-k="auto"><span class="ic th"><img src="assets/wallbox-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Wallbox installieren</b><span>Schritte, Kosten, Förderung</span></div></a>
+<a class="wide" href="/stromfresser.html" data-k="haushalt"><span class="ic th"><img src="assets/stromfresser-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Stromfresser finden <em class="new">Neu</em></b><span>Vergleich und Geräte-Rechner</span></div></a>
+<!-- NEUE RATGEBER-KACHEL direkt unter dieser Zeile einfügen. Muster: <a class="wide" href="/seite.html" data-k="haushalt"><span class="ic th"><img src="assets/seite-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Titel <em class="new">Neu</em></b><span>Ein Satz</span></div></a>  data-k: solar, auto, haushalt, heizen, tarif (auch mehrere, mit Leerzeichen). assets/seite-t.webp = Titelfoto auf 560 px Breite (WebP). -->
+<a class="wide" href="/black-friday.html" data-k="haushalt solar"><span class="ic th"><img src="assets/black-friday-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Black Friday 2026 <em class="new">Neu</em></b><span>Echte Angebote am 30-Tage-Preis erkennen und vorher rechnen, ob sich das Gerät lohnt.</span></div></a>
+<a class="wide" href="/kuehlschrank.html" data-k="haushalt"><span class="ic th"><img src="assets/kuehlschrank-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Kühlschrank einstellen</b><span>7 Grad, Eis weg, Dichtung prüfen: fünf Checks gegen hohen Verbrauch.</span></div></a>
+<a class="wide" href="/backen.html" data-k="haushalt"><span class="ic th"><img src="assets/backen-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Plätzchen backen mit wenig Strom</b><span>Was der Backofen in der Weihnachtsbäckerei kostet, mit Rechner und 7 Spartipps.</span></div></a>
+<a class="wide" href="/weihnachten-strom.html" data-k="haushalt"><span class="ic th"><img src="assets/weihnachten-strom-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Stromkosten an Weihnachten <em class="new">Neu</em></b><span>Was Backofen, Spülmaschine, Fernseher und Lichterketten an den Feiertagen kosten, mit Rechner.</span></div></a>
+<a class="wide" href="/spuelmaschine.html" data-k="haushalt"><span class="ic th"><img src="assets/spuelmaschine-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Spülmaschine oder Handwäsche <em class="new">Neu</em></b><span>Was ein Spülgang kostet, warum Eco am sparsamsten ist und Tipps fürs Festessen.</span></div></a>
+<a class="wide" href="/waesche-trocknen.html" data-k="haushalt heizen"><span class="ic th"><img src="assets/waesche-trocknen-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Wäsche trocknen im Winter</b><span>Was der Trockner kostet und wie du auf dem Wäscheständer ohne Schimmel trocknest.</span></div></a>
+<a class="wide" href="/kochen.html" data-k="haushalt"><span class="ic th"><img src="assets/kochen-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Kochen mit wenig Strom <em class="new">Neu</em></b><span>Deckel, Wasserkocher, Restwärme und welches Kochfeld am wenigsten braucht.</span></div></a>
+<a class="wide" href="/weihnachtsbeleuchtung.html" data-k="haushalt"><span class="ic th"><img src="assets/weihnachtsbeleuchtung-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Weihnachtsbeleuchtung <em class="new">Neu</em></b><span>Was Lichterketten kosten, warum LED und Zeitschaltuhr sich lohnen und was draußen sicher ist.</span></div></a>
+<a class="wide" href="/lueften.html" data-k="heizen"><span class="ic th"><img src="assets/lueften-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Richtig lüften <em class="new">Neu</em></b><span>Wie lange lüften, welche Luftfeuchte passt und ob deine Wand zu feucht wird.</span></div></a>
+<a class="wide" href="/heizluefter.html" data-k="heizen"><span class="ic th"><img src="assets/heizluefter-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Heizlüfter und Elektroheizung <em class="new">Neu</em></b><span>Was Heizen mit Strom kostet, wann es sinnvoll ist und wie es sicher bleibt.</span></div></a>
+<a class="wide" href="/klimageraet.html" data-k="heizen"><span class="ic th"><img src="assets/klimageraet-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Klimagerät <em class="new">Neu</em></b><span>Mobil oder Split, was es kostet und was es im Sommer an Strom braucht.</span></div></a>
+<a class="wide" href="/pv-anlage.html" data-k="solar"><span class="ic th"><img src="assets/pv-anlage-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Solaranlage aufs Dach <em class="new">Neu</em></b><span>Kosten, Ertrag, Rechner und was die EEG-Reform 2027 für neue Anlagen bedeutet.</span></div></a>
+<a class="wide" href="/smart-meter.html" data-k="tarif"><span class="ic th"><img src="assets/smart-meter-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Smart Meter <em class="new">Neu</em></b><span>Wer ihn bekommen muss, was er kostet und was er bringt.</span></div></a>
+<a class="wide" href="/energielabel.html" data-k="haushalt"><span class="ic th"><img src="assets/energielabel-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Energielabel und sparsame Geräte <em class="new">Neu</em></b><span>Was A bis G bedeutet und ob sich ein neuer Kühlschrank lohnt.</span></div></a>
+<a class="wide" href="/waermepumpe.html" data-k="heizen"><span class="ic th"><img src="assets/waermepumpe-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Wärmepumpe <em class="new">Neu</em></b><span>Was sie im Jahr kostet, wie viel Förderung du bekommst und ob dein Haus passt.</span></div></a>
+<a class="wide" href="/solar-laden.html" data-k="auto solar"><span class="ic th"><img src="assets/solar-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>E-Auto mit Solarstrom laden <em class="new">Neu</em></b><span>Wie Überschussladen funktioniert und was es dir im Jahr spart.</span></div></a>
+<a class="wide" href="/stromtarif.html" data-k="tarif"><span class="ic th"><img src="assets/home-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Stromtarif wechseln</b><span>Rechne aus, was der Wechsel aus der Grundversorgung bringt und ob sich ein dynamischer Tarif für dich lohnt.</span></div></a>
+<a class="wide" href="/powerstation.html" data-k="solar"><span class="ic th"><img src="assets/notstrom-t.webp" alt="" width="560" height="315" loading="lazy" decoding="async"></span><div><b>Powerstation und Notstrom</b><span>Welche Größe du für Stromausfall, Camping oder Garten brauchst</span></div></a>
+<p class="hubn" id="hubn" hidden>Dazu haben wir noch nichts. Probier ein anderes Wort oder wähle „Alle“.</p>
+</div></a>
 </div>
 </div></section>
 
@@ -518,5 +575,82 @@ function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(na
 var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
 send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+<script>
+/* ===== Seit 11.11.2026 ===== */
+/* Live-Sonne im Start-Bild. Sonnenstand nach den üblichen Näherungsformeln (Mitte Deutschlands: 51° Nord, 10° Ost),
+   Leistung als Modell für klaren Himmel: zwei Module mit zusammen 860 Wp, Süd, 30° geneigt, 15 % Verluste, bei 800 W gedeckelt.
+   Das ist ein Richtwert für "heute, wenn keine Wolke da wäre", kein Messwert. */
+(()=>{
+const box=document.getElementById('sunb');if(!box||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+const $=id=>document.getElementById(id),R=Math.PI/180,LAT=51*R,LON=10,H0=-.833*R;
+function pos(ms){const n=ms/864e5+2440587.5-2451545,L=(280.46+.9856474*n)%360,g=((357.528+.9856003*n)%360)*R,
+  lam=(L+1.915*Math.sin(g)+.02*Math.sin(2*g))*R,eps=(23.439-4e-7*n)*R,
+  ra=Math.atan2(Math.cos(eps)*Math.sin(lam),Math.cos(lam)),dec=Math.asin(Math.sin(eps)*Math.sin(lam)),
+  ha=(((18.697374558+24.06570982441908*n)%24)*15+LON)*R-ra,
+  e=Math.asin(Math.sin(LAT)*Math.sin(dec)+Math.cos(LAT)*Math.cos(dec)*Math.cos(ha)),
+  az=Math.atan2(Math.sin(ha),Math.cos(ha)*Math.sin(LAT)-Math.tan(dec)*Math.cos(LAT));
+  return[e,az]}
+function watt(ms){const[e,a]=pos(ms);if(e<=0)return 0;
+  const am=1/(Math.sin(e)+.50572*Math.pow(e/R+6.07995,-1.6364)),dni=1353*Math.pow(.7,Math.pow(am,.678)),T=30*R,
+  ci=Math.max(0,Math.sin(e)*Math.cos(T)+Math.cos(e)*Math.sin(T)*Math.cos(a));
+  return Math.min(800,.86*.85*(dni*ci+.1*dni*(1+Math.cos(T))/2))}
+const tf=new Intl.DateTimeFormat('de-DE',{timeZone:'Europe/Berlin',hour:'2-digit',minute:'2-digit'});
+const hm=ms=>tf.format(ms),bh=ms=>{const p=hm(ms).split(':');return +p[0]+p[1]/60};
+let D,first=true;
+function day(){const now=Math.floor(Date.now()/6e4)*6e4,m0=now-Math.round(bh(now)*60)*6e4;
+  let rise=null,set=null,rise2=null,wh=0,pe=pos(m0)[0];const pts=[];
+  for(let i=1;i<=2880;i++){const t=m0+i*6e4,e=pos(t)[0];
+    if(pe<=H0&&e>H0){if(i<=1440){if(rise===null)rise=t}else if(rise2===null)rise2=t}
+    if(pe>H0&&e<=H0&&i<=1440&&set===null)set=t;
+    if(i<=1440){wh+=watt(t)/60;if(i%10===0&&e>0)pts.push([i/60,e])}
+    pe=e}
+  D={m0,now,rise,set,rise2,wh,pts}}
+function draw(f){if(!D||D.rise===null||D.set===null)return;
+  const W=box.clientWidth,pad=Math.max(24,(W-1100)/2+24),X=h=>pad+(h-4)/18*(W-2*pad),Y=e=>100-84*Math.pow(Math.max(0,e/R)/62.4,.7),
+    hr=(D.rise-D.m0)/36e5,hs=(D.set-D.m0)/36e5,P=[[hr,0],...D.pts.filter(p=>p[0]>hr&&p[0]<hs),[hs,0]],
+    path=a=>a.map((p,i)=>(i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join(''),A=(el,o)=>{for(const k in o)el.setAttribute(k,o[k])};
+  $('sb-svg').setAttribute('viewBox','0 0 '+W+' 124');
+  A($('sb-h'),{x1:pad,x2:W-pad,y1:100,y2:100});$('sb-a').setAttribute('d',path(P));
+  A($('sb-r'),{x:X(hr),y:117,'text-anchor':'middle'});$('sb-r').textContent=hm(D.rise);
+  A($('sb-e'),{x:X(hs),y:117,'text-anchor':'middle'});$('sb-e').textContent=hm(D.set);
+  const up=D.now>D.rise&&D.now<D.set;
+  ['sb-p','sb-g','sb-s','sb-w'].forEach(i=>$(i).style.display=up?'':'none');
+  if(!up)return;
+  const t=D.rise+(D.now-D.rise)*f,h=(t-D.m0)/36e5,e=Math.max(0,pos(t)[0]),x=X(h),y=Y(e),w=Math.round(watt(t)/10)*10;
+  $('sb-p').setAttribute('d',path(P.filter(p=>p[0]<h).concat([[h,e]])));
+  A($('sb-g'),{cx:x,cy:y});A($('sb-s'),{cx:x,cy:y});
+  A($('sb-w'),{x:Math.min(W-pad-22,Math.max(pad+22,x)),y:y-20,'text-anchor':'middle'});$('sb-w').textContent=w+' W'}
+function text(){const w=Math.round(watt(D.now)/10)*10,k=(D.wh/1000).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1});let s;
+  if(D.now<=D.rise)s='<b>Noch ist es dunkel.</b> Ab '+hm(D.rise)+' Uhr liefert der Balkon wieder Strom, heute bei klarem Himmel bis zu '+k+' kWh.';
+  else if(D.now>=D.set)s='<b>Die Sonne ist seit '+hm(D.set)+' Uhr weg.</b> Morgen ab '+hm(D.rise2)+' Uhr liefert der Balkon wieder Strom.';
+  else if(w<20)s='<b>Die Sonne steht gerade sehr tief.</b> Heute sind bei klarem Himmel bis zu '+k+' kWh drin.';
+  else s='<b>Jetzt rund '+w+' Watt</b> liefern zwei Module bei klarem Himmel, heute bis zu '+k+' kWh.';
+  $('sb-x').innerHTML=s+' Modellrechnung für einen Südbalkon in der Mitte Deutschlands.'}
+function tick(){day();text();
+  if(first){first=false;box.hidden=false;const t0=performance.now();
+    (function a(n){const p=Math.min(1,(n-t0)/1500);draw(1-Math.pow(1-p,3));if(p<1)requestAnimationFrame(a)})(t0)}
+  else draw(1)}
+try{tick();setInterval(tick,6e4);addEventListener('resize',()=>draw(1),{passive:true})}catch(e){box.hidden=true}
+})();
+
+/* Ratgeber-Galerie: Suchfeld und Themen-Filter. Kacheln tragen data-k="solar auto haushalt heizen tarif" (eins oder mehrere). */
+(()=>{
+const hub=document.querySelector('#alles .hub'),bar=document.getElementById('hubf');if(!hub||!bar)return;
+const T=[...hub.querySelectorAll('a')],inp=bar.querySelector('input'),B=[...bar.querySelectorAll('button')],none=document.getElementById('hubn');
+const norm=s=>s.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/­/g,'');
+T.forEach(a=>a.__n=norm(a.textContent+' '+(a.dataset.w||'')));
+let f='';
+function apply(){const q=norm(inp.value.trim()).split(/\s+/).filter(Boolean);let n=0;
+  T.forEach(a=>{const ok=(!f||(' '+(a.dataset.k||'')+' ').includes(' '+f+' '))&&q.every(w=>a.__n.includes(w));a.hidden=!ok;if(ok)n++});
+  none.hidden=n>0}
+function go(){if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches){apply();return}
+  T.forEach((a,i)=>a.style.viewTransitionName='hk'+i);
+  const done=()=>T.forEach(a=>a.style.viewTransitionName='');
+  try{document.startViewTransition(apply).finished.then(done,done)}catch(e){done();apply()}}
+B.forEach(b=>b.addEventListener('click',()=>{f=b.dataset.f||'';B.forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));go()}));
+inp.addEventListener('input',apply);
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'){const a=T.find(x=>!x.hidden);if(a&&inp.value.trim())a.focus()}});
+})();
 </script>
 </body></html>

@@ -179,3 +179,25 @@ main>section.ln.in::before{transform:scaleX(1);opacity:.85}
 .sq ul{list-style:none;margin:8px 0 0;padding:0}.sq li a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:inherit}.sq li a:hover,.sq li a:focus{background:var(--pan)}
 .sq li b{display:block}.sq li small{opacity:.7}.sq .none{padding:10px 12px;opacity:.7}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ===== Seit 11.11.2026: Seitenübergänge. Seiten blenden weich ineinander; das angetippte Kachelbild wächst zum Titelbild.
+   Greift nur in Browsern mit View Transitions, alle anderen wechseln wie bisher. Steuerung in site.js. ===== */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.26s}
+.hero{view-transition-name:vt-hero}
+.sh{view-transition-name:vt-head}
+::view-transition-group(vt-hero){animation-duration:.48s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+::view-transition-old(vt-hero),::view-transition-new(vt-hero){height:100%;object-fit:cover}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* Zusatzfoto zwischen zwei Abschnitten: <figure class="fig"><picture>…</picture><figcaption>…</figcaption></figure> */
+.fig{margin:clamp(30px,5vw,56px) auto;max-width:900px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.fig picture{display:block;border-radius:24px;overflow:hidden;background:#0d0d0d}
+.fig img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.fig figcaption{margin-top:12px;font-size:.88rem;line-height:1.45;color:var(--mut);text-align:center;text-wrap:balance}
+@media(max-width:600px){.fig picture{border-radius:18px}}
+@media print{.fig{display:none}}
+/* Knöpfe geben beim Drücken leicht nach */
+.scbtn,.btn,.chips button{transition:transform .12s ease}
+.scbtn:active,.btn:active,.chips button:active{transform:scale(.97)}
+@media(prefers-reduced-motion:reduce){.scbtn,.btn,.chips button{transition:none}.scbtn:active,.btn:active,.chips button:active{transform:none}}

@@ -56,6 +56,7 @@
   var toastEl=null,toastT=0;
   function toast(msg){if(!toastEl){toastEl=d.createElement('div');toastEl.className='toast';toastEl.setAttribute('role','status');d.body.appendChild(toastEl)}
     toastEl.textContent=msg;toastEl.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('on')},2600)}
+  window.__toast=toast;
 
   /* Teilen: Text aus dem Ergebnis-Element plus Link zur Seite */
   d.addEventListener('click',function(e){
@@ -77,7 +78,7 @@
 })();
 
 /* Bewegung: Auswahl für Strom-Daheim */
-window.__MOTION={reveal:'.card,.item,.hub a,.rows a,ol.steps>li,.tbl,.note,.res>div,.mods',count:'.opt .kw,.res b',
+window.__MOTION={reveal:'.card,.item,.hub a,.rows a,ol.steps>li,.tbl,.note,.res>div,.mods',count:'.opt .kw,.res b',tick:'.res b,.kpi b,#k1,#k2,#k3,#k4',
  extra:function(io){var H=innerHeight,A=[].filter.call(document.querySelectorAll('main>section:not(.scene)'),function(s){return s.getBoundingClientRect().top>=H});A.forEach(function(s){s.classList.add('ln');io.observe(s)})}};
 /* Bewegung: Inhalte gleiten beim Scrollen sanft ins Bild, Ergebniszahlen zählen einmal hoch.
    Aus bei „Bewegung reduzieren“. Was beim Laden schon sichtbar ist, bleibt ruhig (schnelles Laden). */
@@ -87,7 +88,7 @@ window.__MOTION={reveal:'.card,.item,.hub a,.rows a,ol.steps>li,.tbl,.note,.res>
   function ready(f){d.readyState==='loading'?d.addEventListener('DOMContentLoaded',f):f()}
   function count(el){var t=el.textContent,m=t.match(/^(\D*?)(\d{1,3}(?:\.\d{3})+|\d+)(,\d+)?(\D*)$/);
     if(!m||/[–-]/.test(t))return;var dec=m[3]?m[3].length-1:0,v=parseFloat((m[2]+(m[3]||'')).replace(/\./g,'').replace(',','.'));
-    if(!(v>0))return;var t0=performance.now(),last=t;
+    if(!(v>0))return;var t0=performance.now(),last=t;el.__c=t0+900;
     (function step(n){if(el.textContent!==last)return;var p=Math.min(1,(n-t0)/700),e=1-Math.pow(1-p,3);
       last=m[1]+(v*e).toLocaleString('de-DE',{minimumFractionDigits:dec,maximumFractionDigits:dec})+m[4];if(p>=1)last=t;el.textContent=last;if(p<1)requestAnimationFrame(step)})(t0)}
   ready(function(){
@@ -126,3 +127,70 @@ inp.addEventListener('focus',load,{once:true});
 inp.addEventListener('input',()=>{const q=norm(inp.value.trim());if(q.length<2){out.innerHTML='';return}
 load().then(L=>{const ws=q.split(/\s+/);const r=L.filter(e=>ws.every(x=>e.n.includes(x))).sort((a,b)=>(norm(b.t).includes(ws[0])?1:0)-(norm(a.t).includes(ws[0])?1:0)).slice(0,8);
 out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&lt;')+'</b><small>'+e.d.slice(0,90).replace(/</g,'&lt;')+'…</small></a></li>').join(''):'<li class="none">Nichts gefunden. Probier ein anderes Wort.</li>'})});})();
+
+/* ===== Seit 11.11.2026 ===== */
+/* Seitenübergang: Seiten blenden weich ineinander, das angetippte Kachelbild wächst zum Titelbild der Zielseite
+   (View Transitions; Browser ohne diese Technik wechseln wie bisher). Regeln dazu in site.css. */
+(function(){
+  if(!('onpagereveal' in window)||!window.CSS||!CSS.supports('view-transition-name','x'))return;
+  var d=document,cur=null,HS=window.__VTHERO||'.hero';
+  function hero(){return d.querySelector(HS)}
+  function clear(){if(cur){cur.style.viewTransitionName='';cur=null}}
+  function thumb(a){return a.querySelector('.ic.th,picture,img')}
+  function mark(el){clear();var h=hero();if(h)h.style.viewTransitionName='none';el.style.viewTransitionName='vt-hero';cur=el}
+  d.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(!a||a.target||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.origin!==location.origin||a.pathname===location.pathname)return;
+    var h=hero();if(h&&h.contains(a))return;
+    var t=thumb(a);if(t)mark(t);else clear();
+  },true);
+  addEventListener('pagereveal',function(e){
+    var h=hero();if(h)h.style.viewTransitionName='';
+    if(!e.viewTransition){clear();return}
+    if(!h){var f=window.navigation&&navigation.activation&&navigation.activation.from;
+      if(f){try{var p=new URL(f.url).pathname,L=d.querySelectorAll('a[href="'+p+'"],a[href="'+p.slice(1)+'"]');
+        for(var i=0;i<L.length;i++){var t=thumb(L[i]);if(!t)continue;var r=t.getBoundingClientRect();
+          if(r.width>0&&r.bottom>0&&r.top<innerHeight){mark(t);break}}}catch(x){}}}
+    e.viewTransition.finished.then(clear,clear);
+  });
+})();
+
+/* Vorladen: Der Browser holt eine Seite schon, wenn man den Finger auf den Link legt oder mit der Maus darüber bleibt (wo vorhanden). */
+(function(){try{if(!(HTMLScriptElement.supports&&HTMLScriptElement.supports('speculationrules')))return;
+  var s=document.createElement('script');s.type='speculationrules';
+  s.textContent=JSON.stringify({prefetch:[{where:{and:[{href_matches:'/*'},{not:{href_matches:'/*.xml'}},{not:{href_matches:'/*.json'}}]},eagerness:'moderate'}]});
+  document.head.appendChild(s)}catch(e){}})();
+
+/* Rechner-Ergebnisse leuchten kurz in der Akzentfarbe auf, wenn sie sich durch eine Eingabe ändern. */
+(function(){
+  if(!('MutationObserver' in window)||!Element.prototype.animate||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var sel=(window.__MOTION&&window.__MOTION.tick)||'.res b';
+  addEventListener('load',function(){setTimeout(function(){
+    var root=document.documentElement,V=(window.__MOTION&&window.__MOTION.tickVar)||'--sun';
+    var mo=new MutationObserver(function(ms){var seen=[],now=performance.now();ms.forEach(function(m){
+      var el=m.target.nodeType===1?m.target:m.target.parentElement;el=el&&el.closest(sel);
+      if(!el||seen.indexOf(el)>=0||(el.__c||0)>now)return;seen.push(el);
+      var c=getComputedStyle(root).getPropertyValue(V).trim();if(!c)return;
+      if(el.__tk)el.__tk.cancel();el.__tk=el.animate([{color:c},{color:c,offset:.3},{}],{duration:800,easing:'ease-out'})})});
+    [].forEach.call(document.querySelectorAll(sel),function(el){mo.observe(el,{childList:true,characterData:true,subtree:true})});
+  },1500)});
+})();
+
+/* Mein Strompreis: Wer in einem Rechner seinen Preis einträgt, findet ihn in allen anderen Rechnern wieder.
+   Gespeichert nur im Browser (localStorage "sp"), nichts wird übertragen. Gilt für Felder mit aria-label "Strompreis in …". */
+(function(){
+  var d=document,K='sp',busy=0,told=0,last=null;
+  function F(){return [].slice.call(d.querySelectorAll('input.vin[aria-label^="Strompreis in"]'))}
+  function num(v){v=parseFloat(String(v==null?'':v).replace(',','.'));return v>=5&&v<=150?Math.round(v*100)/100:null}
+  function get(){try{return num(localStorage.getItem(K))}catch(e){return null}}
+  function fm(v){return String(v).replace('.',',')}
+  function say(m){if(window.__toast)window.__toast(m)}
+  function apply(){var v=get(),f=F();if(!f.length)return;
+    if(v!=null){busy=1;var ch=0;f.forEach(function(x){if(num(x.value)!==v){x.value=fm(v);x.dispatchEvent(new Event('input',{bubbles:true}));x.dispatchEvent(new Event('change',{bubbles:true}));ch=1}});busy=0;
+      if(ch)say('Gerechnet wird mit deinem Strompreis: '+fm(v)+' ct')}
+    last=num(f[0].value)}
+  function watch(){if(busy)return;setTimeout(function(){var f=F();if(!f.length)return;var v=num(f[0].value);if(v==null||v===last)return;last=v;
+    try{localStorage.setItem(K,v)}catch(e){return}
+    if(!told){told=1;say('Gemerkt: '+fm(v)+' ct gilt jetzt in allen Rechnern')}},80)}
+  addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
+})();
