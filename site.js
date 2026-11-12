@@ -195,20 +195,26 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
 })();
 
-/* KI-Kennzeichnung (seit 11.11.2026, Pflicht): kleine Marke "KI-generiert" unten rechts auf jedem Foto aus assets/.
-   Läuft automatisch für alle Seiten und neue Bilder. Die Marke sitzt am sichtbaren Bildrand, auch wenn das Foto beschnitten ist.
-   Zwei Bilder im selben Rahmen (Vorher/Nachher-Regler) bekommen nur eine Marke. Nicht entfernen. */
+/* KI-Kennzeichnung (seit 11.11.2026, Pflicht, Wunsch des Inhabers: dezent, aber klar). Läuft automatisch für alle Fotos aus assets/:
+   - Foto in einer Link-Kachel (Galerie): keine Marke aufs Bild, sondern EINE Zeile über der Galerie (.ki-hinweis).
+   - Foto in <figure> mit <figcaption>: Zusatz am Ende der Bildunterschrift (.ki-cap).
+   - Alle anderen (Titelbild, Vorher/Nachher, Szenen): kleine Marke "Mit KI erstellt" in der Bildecke (.ki-marke).
+   Nicht entfernen. Fotos immer als <img src="assets/..."> einbinden, nie als CSS-Hintergrund. */
 (function(){
-  var RX=/(^|\/)assets\/[^\/]+\.(jpe?g|webp|png)(\?|$)/i,list=[];
+  var RX=/(^|\/)assets\/[^\/]+\.(jpe?g|webp|png)(\?|$)/i,list=[],T='Mit KI erstellt',G='Fotos: Beispielbilder, mit Hilfe von KI erstellt.',C='Beispielbild, mit Hilfe von KI erstellt.';
   function box(im){var a=im.parentElement;if(a&&a.tagName==='PICTURE')a=a.parentElement;return a}
   function put(m){var a=m.__a,im=m.__i,ar=a.getBoundingClientRect(),ir=im.getBoundingClientRect();
     if(!ir.width||!ar.width){m.hidden=true;return}m.hidden=false;
-    m.classList.toggle('k',Math.min(ir.right,ar.right)-Math.max(ir.left,ar.left)<300);
     m.style.right=(Math.max(0,ar.right-ir.right)-a.clientLeft+8)+'px';m.style.bottom=(Math.max(0,ar.bottom-ir.bottom)-a.clientTop+8)+'px'}
   function mark(im){if(im.__ki)return;var s=im.getAttribute('src')||'';if(!RX.test(s))return;im.__ki=1;
+    var card=im.closest('a'),fig=im.closest('figure');
+    if(card&&card.parentElement){var g=card.parentElement,p=g.previousElementSibling;
+      if(!(p&&p.classList.contains('ki-hinweis'))){var h=document.createElement('p');h.className='ki-hinweis';h.textContent=G;g.parentNode.insertBefore(h,g)}return}
+    var fc=fig&&fig.querySelector('figcaption');
+    if(fc){if(!fc.querySelector('.ki-cap')){var c=document.createElement('span');c.className='ki-cap';c.textContent=(fc.textContent.trim()?' ':'')+C;fc.appendChild(c)}return}
     var a=box(im);if(!a||a.querySelector(':scope>.ki-marke'))return;
     if(getComputedStyle(a).position==='static')a.style.position='relative';
-    var m=document.createElement('span');m.className='ki-marke';m.textContent='KI-generiert';m.setAttribute('aria-hidden','true');
+    var m=document.createElement('span');m.className='ki-marke';m.textContent=T;
     m.__a=a;m.__i=im;a.appendChild(m);list.push(m);put(m);
     if(window.ResizeObserver){var ro=new ResizeObserver(function(){put(m)});ro.observe(a);ro.observe(im)}
     im.addEventListener('load',function(){put(m)})}

@@ -13,7 +13,7 @@ Die Fotos werden je nach Bildschirm beschnitten, eine eingebrannte Ecke wäre of
 import sys
 from PIL import Image, ImageDraw, ImageFont
 
-TEXT = 'KI-generiert'
+TEXT = 'Mit KI erstellt'
 MERKER = 'trainedAlgorithmicMedia'
 XMP = ('<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>'
        '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">'
