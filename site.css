@@ -237,3 +237,21 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 .res[data-vs].vs-off .vs{display:none}
 @media (prefers-reduced-motion:reduce){.res .vs i{transition:none}}
 @media print{.res>div.hi::before,.res .vs{display:none}}
+
+/* Abschluss-Karte (Design-Agent 13.11.2026, Agentur-Modus): Die zwei Knöpfe am Seitenende (.wrap.read > .cta) werden
+   eine Karte mit einem klaren Hauptknopf; der zweite Weg ist ein ruhiger Textlink. Kicker "Dein nächster Schritt" setzt site.js. */
+.wrap.read>.cta{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:8px;padding:26px 26px 24px;border-radius:24px;border:1px solid color-mix(in srgb,var(--sun) 32%,var(--line));background:radial-gradient(130% 160% at 0% 0%,color-mix(in srgb,var(--sun) 15%,transparent),transparent 58%),var(--pan,var(--soft));overflow:hidden}
+.wrap.read>.cta .cta-k{flex:1 0 100%;margin:0 0 2px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.wrap.read>.cta .btn:not(.sec){display:inline-flex;align-items:center;gap:10px;padding:15px 24px;font-size:1.04rem;background:var(--sun);color:#111;box-shadow:0 10px 30px -12px color-mix(in srgb,var(--sun) 70%,transparent)}
+.wrap.read>.cta .btn:not(.sec)::after{content:"";width:16px;height:16px;flex:none;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .2s}
+.wrap.read>.cta .btn:not(.sec):hover::after{transform:translateX(3px)}
+.wrap.read>.cta .btn.sec{display:inline-block;background:none;padding:10px 2px;border-radius:0;color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:color-mix(in srgb,var(--ink) 40%,transparent)}
+.wrap.read>.cta .btn.sec:hover{text-decoration-color:var(--sun);opacity:1}
+@media (max-width:560px){.wrap.read>.cta{padding:22px 20px 18px}.wrap.read>.cta .btn:not(.sec){flex:1 0 100%;justify-content:center}.wrap.read>.cta .btn.sec{margin:0 auto}}
+@media (prefers-reduced-motion:reduce){.wrap.read>.cta .btn:not(.sec)::after{transition:none}}
+@media print{.wrap.read>.cta{display:none}}
+
+/* Einkaufslisten-Symbole (Design-Agent 13.11.2026): bunte Emojis in .item .ic als ruhige, einheitliche Kachel in Sonnengelb-Ton. */
+.item .ic{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;font-size:1.3rem;line-height:1;background:color-mix(in srgb,var(--sun) 13%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sun) 26%,transparent);filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-12deg) contrast(1.05)}
+.item:hover .ic{background:color-mix(in srgb,var(--sun) 22%,transparent)}
+@media print{.item .ic{filter:none}}

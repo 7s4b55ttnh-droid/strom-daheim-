@@ -241,3 +241,6 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
     if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();upd()}},{threshold:.3});io.observe(box)}else upd();
   });
 })();
+
+/* Abschluss-Karte (Design-Agent 13.11.2026): Kicker über den Knöpfen am Seitenende. */
+(function(){[].forEach.call(document.querySelectorAll('.wrap.read>.cta'),function(c){if(c.querySelector('.cta-k'))return;var p=document.createElement('p');p.className='cta-k';p.textContent='Dein nächster Schritt';c.insertBefore(p,c.firstChild)})})();
