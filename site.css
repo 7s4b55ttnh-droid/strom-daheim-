@@ -221,4 +221,4 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 @media print{.ki-marke{background:#fff;color:#000;border:1px solid #000}}
 
 .ki-hinweis{margin:0 0 10px;font-size:.8rem;line-height:1.4;color:var(--mut)}
-.ki-cap{opacity:.85}
+.ki-cap{font-style:italic}

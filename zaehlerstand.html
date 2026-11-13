@@ -1,0 +1,391 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="p:domain_verify" content="ad440d6123f283fdf603af68f7587653"/>
+<title>Zählerstand ablesen zum Jahreswechsel: so geht’s, mit Abschlag-Rechner – Strom-Daheim</title><meta property="og:title" content="Zählerstand ablesen zum Jahreswechsel: so geht’s, mit Abschlag-Rechner – Strom-Daheim"><meta property="og:type" content="article"><meta property="og:description" content="Welche Zahl gilt beim Stromzähler, was bedeuten 1.8.0 und 2.8.0, wie meldest du den Stand zum Jahreswechsel? Mit Rechner: Reicht dein Abschlag?">
+<meta name="description" content="Welche Zahl gilt beim Stromzähler, was bedeuten 1.8.0 und 2.8.0, wie meldest du den Stand zum Jahreswechsel? Mit Rechner: Reicht dein Abschlag?">
+<link rel="canonical" href="https://strom-daheim.de/zaehlerstand.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/og/zaehlerstand.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% 50%;filter:brightness(.9);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Bild-Band in der Mitte */
+.pic{position:relative;min-height:74vh;min-height:74svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden;padding:0}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 100%)}
+.pic .wrap{position:relative;z-index:2;padding-block:96px 52px}
+.pic .eyebrow{color:rgba(245,245,247,.75);margin-bottom:12px}
+.pic h2{color:#fff;max-width:17ch}
+.pic p{color:rgba(245,245,247,.86);font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:42ch;margin-top:14px;line-height:1.4}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid4 .opt .kw{font-size:clamp(1.5rem,2.2vw,1.85rem)}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(1.9rem,4.4vw,2.5rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.opt .ic{display:block;font-size:1.6rem;margin-bottom:10px}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+.card.match{outline:2px solid var(--ok);outline-offset:-2px}
+.mt{display:none!important;margin-top:14px}.card.match .mt{display:inline-block!important}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note>div>b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Merkmals-Karten */
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.crit .card{display:flex;gap:14px;align-items:flex-start}
+.crit .ic{font-size:1.5rem;line-height:1.2;flex:none;width:32px;text-align:center}
+.crit h3{margin:2px 0 6px;font-size:1.08rem}
+.crit p{margin:0;color:var(--mut);font-size:.96rem}
+.crit p b{color:var(--ink);font-weight:600}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.band .item{background:var(--soft);border-color:transparent}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed;border-color:var(--line)}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .tbl{background:var(--soft);box-shadow:none;border:0}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:first-child{color:var(--mut);font-size:.86rem;min-width:150px}
+td b{display:block;font-weight:600;letter-spacing:-.01em;margin-bottom:2px;color:var(--ink);font-size:.98rem}
+td:last-child{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+td .btn{padding:10px 16px;font-size:.88rem}
+.tsub{display:block;color:var(--mut);font-size:.84rem;margin-top:2px}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--pan);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.q{display:grid;gap:4px}
+.qb{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.qh{display:flex;gap:12px;align-items:center}
+.qh b{display:block;font-size:1.05rem;letter-spacing:-.01em}.qh span{display:block;font-size:.84rem;color:var(--mut)}
+.qh .qn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.chips button{padding:8px 13px;border-radius:999px;background:var(--soft);color:var(--ink);font-size:.86rem;font-weight:500;border:1px solid transparent}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chips button:hover{border-color:var(--line)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.dev button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 10px;border-radius:14px;background:var(--pan);color:var(--ink);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-size:.86rem;font-weight:500;line-height:1.2;text-align:left}
+.dev button:hover{border-color:var(--sky)}
+.dev button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dev .e{font-size:1.15rem;flex:none}
+.dlh{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.dl{display:grid;gap:8px}
+.dr{display:grid;grid-template-columns:1fr auto auto;gap:2px 8px;align-items:center;background:var(--pan);border-radius:16px;padding:8px 6px 10px 14px}
+.dr .n{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.96rem;min-width:0}
+.dr .wh{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.dr .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--mut);font-size:1.4rem;line-height:1}
+.dr .x:hover{background:var(--soft);color:var(--ink)}
+.dr .ip{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;color:var(--mut)}
+.dr .ip label{display:inline-flex;align-items:baseline;gap:5px;margin:0;font-weight:400;font-size:.9rem}
+.dr .vin{font-size:1.08rem;width:4.6ch}
+.dr small{grid-column:1/-1;font-size:.82rem;color:var(--mut);line-height:1.35;margin-top:4px;padding-right:8px}
+.empty{font-size:.92rem;color:var(--mut);margin:12px 0 0}
+.help{border:0;margin-top:4px}.help summary{padding:6px 0;font-size:.88rem;font-weight:500;color:var(--sky);justify-content:flex-start}
+.help summary:after{display:none}.help summary:before{content:"ⓘ";margin-right:6px}
+.help p{font-size:.9rem;color:var(--mut);margin:4px 0 0;max-width:none}
+.more{border-top:0;border-bottom:0!important}.more>summary{font-size:.95rem;padding:4px 0 16px;color:var(--sky)}
+.more>summary:after{width:24px;height:24px}
+.hint{font-size:.84rem;color:var(--mut);margin:6px 0 0}
+.out{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px)}
+.verdict p{font-size:1.1rem;line-height:1.45;margin:8px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:16px 18px}
+.res b{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}.res .hi span{color:var(--ink)}
+.res .hi b{font-size:clamp(1.35rem,3vw,1.8rem)}
+.res .hi a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.res .hi.neg{background:color-mix(in srgb,var(--warn) 18%,var(--soft))}
+.mods h3{font-size:1rem;margin:0 0 2px}
+.mods>p{font-size:.84rem;color:var(--mut);margin:0 0 6px}
+.mrow{display:grid;gap:6px;padding:12px 0 0;margin-top:10px;border-top:1px solid var(--line)}
+.mrow .tp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem}
+.mrow .tp b{font-weight:600}
+.mrow .tp em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mtr{height:10px;border-radius:5px;background:var(--pan);overflow:hidden}
+.mtr i{display:block;height:100%;width:0;border-radius:5px;background:var(--mut);transition:width .3s}
+.mrow.ok .mtr i{background:var(--ok)}.mrow.bad .mtr i{background:var(--warn)}
+.mrow .st{font-size:.84rem;color:var(--mut)}
+.mrow .st:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:7px;vertical-align:1px}
+.mrow.ok .st:before{background:var(--ok)}.mrow.bad .st:before{background:var(--warn)}
+.rec{display:none;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--ok);border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.mrow.fit .rec{display:inline-block}
+@media(max-width:900px){.out{position:static}}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr}.dev{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.dev{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.grid4 .opt .kw{font-size:2rem}.hero img{object-position:90% 50%}.pic img{object-position:80% 50%}.items,.crit,.grid4{grid-template-columns:1fr}.dev{grid-template-columns:1fr 1fr}.hero{min-height:70svh}.pic{min-height:68svh}}
+/* Seite */
+.hero.noimg{min-height:0;background:radial-gradient(120% 90% at 85% 0%,#2a2416 0%,#000 60%)}.hero.noimg:after{display:none}.hero.noimg .wrap{padding-block:clamp(110px,16vw,170px) clamp(48px,7vw,80px)}
+.crit .ic.n{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:1rem;font-weight:700;line-height:1;margin-top:2px}
+.calc>*{min-width:0}
+.more .qh{margin-top:4px}
+.tbl td:last-child{text-align:left;white-space:normal}
+@media(max-width:640px){.hero img{object-position:72% 50%}}.tbl td:first-child{min-width:120px}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script>
+
+
+
+
+
+
+<script type="application/ld+json" id="ld">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Zählerstand ablesen zum Jahreswechsel", "name": "Zählerstand ablesen zum Jahreswechsel: so geht’s, mit Abschlag-Rechner – Strom-Daheim", "description": "Welche Zahl gilt beim Stromzähler, was bedeuten 1.8.0 und 2.8.0, wie meldest du den Stand zum Jahreswechsel? Mit Rechner: Reicht dein Abschlag?", "inLanguage": "de-DE", "url": "https://strom-daheim.de/zaehlerstand.html", "mainEntityOfPage": "https://strom-daheim.de/zaehlerstand.html", "author": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "publisher": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "image": "https://strom-daheim.de/assets/og/zaehlerstand.jpg", "dateModified": "2026-11-13", "abstract": "Abgelesen wird die Zahl vor dem Komma, beim digitalen Zähler der Wert hinter 1.8.0; 2.8.0 ist die Einspeisung. Ändert sich der Preis zum 1. Januar, darf der Grundversorger den Verbrauch sonst zeitanteilig schätzen, darum lohnt ein eigener Stand mit Foto. Aus zwei Zählerständen zeigt der Rechner, ob der monatliche Abschlag reicht."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Welche Zahl ist der Zählerstand?", "acceptedAnswer": {"@type": "Answer", "text": "Beim Drehscheibenzähler die Zahl vor dem Komma, mit Nullen am Anfang, ohne die meist rote Nachkommastelle. Beim digitalen Zähler der Wert hinter der Kennzahl 1.8.0, ebenfalls ohne Nachkommastellen."}}, {"@type": "Question", "name": "Muss ich den Zählerstand zum Jahreswechsel melden?", "acceptedAnswer": {"@type": "Answer", "text": "Eine allgemeine Pflicht zum Stichtag gibt es nicht. Ändert sich aber der Preis zum 1. Januar, darf der Grundversorger den Verbrauch sonst zeitanteilig schätzen. Mit deinem eigenen Stand und einem Foto hast du einen echten Wert."}}, {"@type": "Question", "name": "Brauche ich für den digitalen Zähler eine PIN?", "acceptedAnswer": {"@type": "Answer", "text": "Für den Zählerstand nicht. Die vierstellige PIN, die du beim Messstellenbetreiber erfragst, braucht es nur, um gespeicherte Verbrauchswerte für Tag, Woche, Monat und Jahr im Display anzuzeigen."}}, {"@type": "Question", "name": "Was mache ich bei einer geschätzten Rechnung?", "acceptedAnswer": {"@type": "Answer", "text": "Prüfe, ob die Schätzung zulässig war, etwa weil kein Zugang zum Zähler bestand und du keinen Stand gemeldet hast. Sonst reich deinen abgelesenen Stand mit Foto nach und verlange eine korrigierte Rechnung."}}, {"@type": "Question", "name": "Was ist 2.8.0 auf meinem Zähler?", "acceptedAnswer": {"@type": "Answer", "text": "Die Strommenge, die du ins Netz eingespeist hast, etwa mit Solaranlage oder Balkonkraftwerk. Sie steht nur auf Zweirichtungszählern und ist die Grundlage für die Einspeisevergütung."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Strom-Daheim", "item": "https://strom-daheim.de/"}, {"@type": "ListItem", "position": 2, "name": "Zählerstand ablesen zum Jahreswechsel", "item": "https://strom-daheim.de/zaehlerstand.html"}]}]}</script>
+</head><body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 19 36h11l-3 18 18-27H34z"/></svg><span>Strom-Daheim</span></a><nav class="sh-links" aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="/powerstation.html">Notstrom</a></nav><button class="sh-ic" id="th" type="button" aria-label="Hell oder dunkel umschalten"><svg class="th-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="th-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button><button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menü</span></button></div></header>
+<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in"><div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber"><a href="/#rechner-sektion"><span class="i" aria-hidden="true">☀️</span><span><b>Lohnt sich ein Balkonkraftwerk?</b><small>Rechner mit deinen Zahlen</small></span></a><a href="/anleitung-balkonkraftwerk.html"><span class="i" aria-hidden="true">🔧</span><span><b>Balkonkraftwerk montieren</b><small>8 Schritte und Einkaufsliste</small></span></a><a href="/#vergleich"><span class="i" aria-hidden="true">⚖️</span><span><b>Welches Set kaufen?</b><small>4 geprüfte Komplettsets</small></span></a><a href="/#speicher"><span class="i" aria-hidden="true">🔋</span><span><b>Lohnt sich ein Speicher?</b><small>Zwei Rechenbeispiele</small></span></a><a href="/e-auto.html"><span class="i" aria-hidden="true">🚗</span><span><b>Was kostet mein E-Auto?</b><small>Ladekosten-Rechner</small></span></a><a href="/anleitung-wallbox.html"><span class="i" aria-hidden="true">🔌</span><span><b>Wallbox installieren</b><small>Schritte, Kosten, Förderung</small></span></a><a href="/powerstation.html"><span class="i" aria-hidden="true">🔦</span><span><b>Powerstation und Notstrom</b><small>Größen-Rechner und Vorsorge-Liste</small></span></a><a href="/stromfresser.html"><span class="i" aria-hidden="true">💡</span><span><b>Stromfresser finden</b><small>Verbrauch vergleichen, Geräte-Rechner</small></span></a><a href="/stromtarif.html"><span class="i" aria-hidden="true">💶</span><span><b>Stromtarif wechseln</b><small>Wechsel-Rechner, dynamischer Tarif</small></span></a><a href="/waermepumpe.html"><span class="i" aria-hidden="true">♨️</span><span><b>Wärmepumpe</b><small>Kosten, Förderung, Altbau</small></span></a><a href="/solar-laden.html"><span class="i" aria-hidden="true">🌞</span><span><b>E-Auto mit Solarstrom laden</b><small>Überschussladen und Rechner</small></span></a><a href="/pv-anlage.html"><span class="i" aria-hidden="true">🏠</span><span><b>Solaranlage aufs Dach</b><small>Kosten, Ertrag, EEG-Reform</small></span></a><a href="/energielabel.html"><span class="i" aria-hidden="true">🏷️</span><span><b>Energielabel und sparsame Geräte</b><small>Label lesen, Tausch-Rechner</small></span></a><a href="/smart-meter.html"><span class="i" aria-hidden="true">📟</span><span><b>Smart Meter</b><small>Pflicht, Kosten, Nutzen</small></span></a><a href="/klimageraet.html"><span class="i" aria-hidden="true">❄️</span><span><b>Klimagerät</b><small>Mobil oder Split, Stromkosten</small></span></a><a href="/heizluefter.html"><span class="i" aria-hidden="true">🔥</span><span><b>Heizlüfter und Elektroheizung</b><small>Stromkosten, Sicherheit</small></span></a><a href="/lueften.html"><span class="i" aria-hidden="true">🪟</span><span><b>Richtig lüften, Schimmel vermeiden</b><small>Wand-Check, Luftfeuchte</small></span></a><a href="/weihnachtsbeleuchtung.html"><span class="i" aria-hidden="true">🎄</span><span><b>Weihnachtsbeleuchtung</b><small>Stromkosten, LED, Sicherheit</small></span></a><a href="/kochen.html"><span class="i" aria-hidden="true">🍳</span><span><b>Kochen mit wenig Strom</b><small>Deckel, Wasserkocher, Induktion</small></span></a><a href="/kuehlschrank.html"><span class="i" aria-hidden="true">🧊</span><span><b>Kühlschrank richtig einstellen</b><small>7 Grad, Abtauen, Dichtung</small></span></a><a href="/waesche-trocknen.html"><span class="i" aria-hidden="true">🧺</span><span><b>Wäsche trocknen im Winter</b><small>Trockner-Kosten, ohne Schimmel</small></span></a><a href="/backen.html"><span class="i" aria-hidden="true">🍪</span><span><b>Plätzchen backen mit wenig Strom</b><small>Backofen-Rechner, Umluft, Restwärme</small></span></a><a href="/spuelmaschine.html"><span class="i" aria-hidden="true">🍽️</span><span><b>Spülmaschine oder Handwäsche</b><small>Eco-Programm, Kosten-Rechner</small></span></a><a href="/waschmaschine.html"><span class="i" aria-hidden="true">🫧</span><span><b>Waschmaschine sparsam nutzen</b><small>40 statt 60 Grad, Spar-Rechner</small></span></a><a href="/zaehlerstand.html" aria-current="page"><span class="i" aria-hidden="true">🔢</span><span><b>Zählerstand ablesen</b><small>Kennzahlen, Abschlag-Rechner</small></span></a><a href="/weihnachten-strom.html"><span class="i" aria-hidden="true">🎁</span><span><b>Stromkosten an Weihnachten</b><small>Feiertags-Rechner, Spartipps</small></span></a><a href="/black-friday.html"><span class="i" aria-hidden="true">🏷️</span><span><b>Black Friday 2026</b><small>Echte Angebote erkennen</small></span></a><a href="/#ratgeber"><span class="i" aria-hidden="true">📋</span><span><b>Anmelden, Mieten, Tarif</b><small>Kurz erklärt</small></span></a></nav><div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div><p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></div>
+<main id="main">
+<div class="hero">
+  <picture><source type="image/webp" srcset="assets/zaehlerstand-m.webp 960w, assets/zaehlerstand.webp 1672w" sizes="100vw"><img src="assets/zaehlerstand.jpg" srcset="assets/zaehlerstand-m.jpg 960w, assets/zaehlerstand.jpg 1672w" sizes="100vw" alt="Geöffneter Zählerschrank im dunklen Kellerflur, darin ein digitaler und ein älterer Drehscheiben-Stromzähler im Schein einer Taschenlampe" fetchpriority="high"></picture>
+  <div class="wrap">
+    <span class="eyebrow">Ratgeber · Stand 13. November 2026</span>
+    <h1>Zählerstand ablesen zum Jahreswechsel</h1>
+    <p>Welche Zahl gilt, wie du sie meldest und ob dein Abschlag reicht. Für alte und digitale Zähler, mit Rechner gegen die Nachzahlung.</p>
+    <div class="jump"><a class="pri" href="#rechner">Abschlag prüfen</a><a href="#zaehler">Welcher Zähler?</a><a href="#ablesen">So liest du ab</a></div>
+  </div>
+</div>
+
+<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>Abgelesen wird die Zahl vor dem Komma, beim digitalen Zähler der Wert hinter 1.8.0; 2.8.0 ist die Einspeisung. Ändert sich der Preis zum 1.&nbsp;Januar, darf der Grundversorger den Verbrauch sonst zeitanteilig schätzen, darum lohnt ein eigener Stand mit Foto. Aus zwei Zählerständen zeigt der Rechner, ob der monatliche Abschlag reicht.</p></div><details class="toc"><summary><span>Inhalt</span><span class="toc-t">6 Min. Lesezeit</span></summary><ol><li><a href="#warum">Vier Gründe für den Blick in den Zählerschrank</a></li><li><a href="#zaehler">Welcher Zähler hängt bei dir?</a></li><li><a href="#ablesen">So liest du richtig ab</a></li><li><a href="#kennzahlen">Was die Kennzahlen bedeuten</a></li><li><a href="#rechner">Reicht dein Abschlag?</a></li><li><a href="#melden">Melden, prüfen, widersprechen</a></li><li><a href="#einkauf">Was beim Ablesen hilft</a></li><li><a href="#fragen">Kurz beantwortet</a></li></ol></details></div></section>
+<section id="warum"><div class="wrap">
+<div class="head"><span class="eyebrow">Warum jetzt</span><h2>Vier Gründe für den Blick in den Zählerschrank.</h2><p class="lede">Die Verbraucherzentrale rät, Strom- und Gaszähler mindestens einmal im Jahr abzulesen und die Werte zu notieren. Der Jahreswechsel ist dafür ein guter Tag.</p></div>
+<div class="crit">
+  <div class="card"><span class="ic n" aria-hidden="true">1</span><div><h3>Neue Preise ab 1.&nbsp;Januar</h3><p>Ändert sich der Preis mitten im Abrechnungsjahr, darf der Grundversorger den Verbrauch pauschal zeitanteilig aufteilen. Das ist eine Schätzung. Mit deinem eigenen Zählerstand vom Stichtag hast du einen echten Wert.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">2</span><div><h3>Schätzungen vermeiden</h3><p>Rechnungen nach Schätzwerten können zu hohen Nachzahlungen führen. Ob geschätzt wurde, steht oft nur in einer Fußnote bei den Zählerständen.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">3</span><div><h3>Abschlag prüfen</h3><p>Mit zwei Zählerständen siehst du, ob dein monatlicher Abschlag zum Verbrauch passt. Der <a href="#rechner">Rechner unten</a> macht das in einer Minute.</p></div></div>
+  <div class="card"><span class="ic n" aria-hidden="true">4</span><div><h3>Verbrauch vergleichen</h3><p>Wer die Stände festhält, sieht, ob der Verbrauch steigt. Wie du im Vergleich liegst, zeigt die Seite <a href="/stromfresser.html">Stromfresser finden</a>.</p></div></div>
+</div>
+</div></section>
+
+<section class="band" id="zaehler"><div class="wrap">
+<div class="head"><span class="eyebrow">Zählertypen</span><h2>Welcher Zähler hängt bei dir?</h2><p class="lede">Drei Arten sind in Haushalten üblich. Die moderne Messeinrichtung ersetzt die alten Drehscheibenzähler laut Verbraucherzentrale schrittweise bis 2032.</p></div>
+<div class="grid3">
+  <div class="card opt"><b class="t">Drehscheibenzähler</b><span class="kw">Rollen</span><span class="sub">Ferraris-Zähler, analog</span><p>Eine Scheibe dreht sich, darüber laufen Zahlenrollen. Abgelesen wird die Zahl vor dem Komma; die Nachkommastelle ist meist rot.</p></div>
+  <div class="card opt"><b class="t">Moderne Messeinrichtung</b><span class="kw">1.8.0</span><span class="sub">digitaler Zähler ohne Funk</span><p>Das Display wechselt alle paar Sekunden. Abgelesen wird der Wert hinter der Kennzahl 1.8.0. Er sendet nichts, du liest selbst ab.</p></div>
+  <div class="card opt"><b class="t">Intelligentes Messsystem</b><span class="kw">sendet</span><span class="sub">Smart Meter mit Gateway</span><p>Digitaler Zähler plus Kommunikationsmodul. Nur er übermittelt die Werte automatisch. Mehr dazu auf der Seite <a href="/smart-meter.html">Smart Meter</a>.</p></div>
+</div>
+</div></section>
+
+<section id="ablesen"><div class="wrap read">
+<div class="head"><span class="eyebrow">Schritt für Schritt</span><h2>So liest du richtig ab.</h2></div>
+<ol class="steps">
+<li><div><div class="who du">Du · 1 Minute</div><h3>Den richtigen Zähler finden</h3>
+<p>Im Mehrfamilienhaus hängen oft viele Zähler nebeneinander. Vergleiche die Zählernummer auf dem Gerät mit der auf deiner letzten Rechnung. Sie steht meist über oder neben dem Barcode und ändert sich nie.</p></div></li>
+<li><div><div class="who du">Du · 1 Minute</div><h3>Nur die Zahl vor dem Komma notieren</h3>
+<p>Nullen am Anfang gehören dazu, die Nachkommastelle nicht. Steht dort 012345,6, gilt 012345. Wer die rote Stelle mitschreibt, meldet einen zehnmal so hohen Stand.</p></div></li>
+<li><div><div class="who du">Du · 1 Minute</div><h3>Beim digitalen Zähler die Kennzahl abwarten</h3>
+<p>Warte, bis 1.8.0 im Display steht, und lies die Zahl dahinter ab. Für den Zählerstand brauchst du keine PIN. Die PIN brauchst du nur, um gespeicherte Verbrauchswerte per Taschenlampe abzurufen.</p></div></li>
+<li><div><div class="who du">Du · 1 Minute</div><h3>Foto mit Datum machen</h3>
+<p>Ein Foto vom Zähler samt Zählernummer ist dein Beleg. Notiere zusätzlich Datum und Stand an einem festen Ort, etwa in einem Heft oder einer Tabelle.</p></div></li>
+<li><div><div class="who du">Du · 5 Minuten</div><h3>Melden und später prüfen</h3>
+<p>Melde den Stand über Portal, App oder Antwortkarte deines Versorgers oder Netzbetreibers. Prüfe in der nächsten Rechnung, ob dein Wert übernommen wurde.</p></div></li>
+</ol>
+</div></section>
+
+<section class="band" id="kennzahlen"><div class="wrap">
+<div class="head"><span class="eyebrow">Digitale Zähler</span><h2>Was die Kennzahlen bedeuten.</h2><p class="lede">Die Zahlen vor dem Wert heißen OBIS-Kennzahlen. Für die meisten Haushalte zählt nur die erste Zeile.</p></div>
+<div class="tbl cards"><table>
+<thead><tr><th>Kennzahl</th><th>Bedeutung</th><th>Wann wichtig</th></tr></thead>
+<tbody>
+<tr><td data-l="Kennzahl"><b>1.8.0</b>Bezug gesamt</td><td data-l="Bedeutung">Strom, den du aus dem Netz bezogen hast</td><td data-l="Wann wichtig">immer, bei einem Tarif der Abrechnungswert</td></tr>
+<tr><td data-l="Kennzahl"><b>1.8.1</b>Hochtarif</td><td data-l="Bedeutung">Bezug in der Tarifzeit tagsüber</td><td data-l="Wann wichtig">nur bei Tag- und Nachttarif</td></tr>
+<tr><td data-l="Kennzahl"><b>1.8.2</b>Niedertarif</td><td data-l="Bedeutung">Bezug in der Tarifzeit nachts</td><td data-l="Wann wichtig">nur bei Tag- und Nachttarif</td></tr>
+<tr><td data-l="Kennzahl"><b>2.8.0</b>Einspeisung</td><td data-l="Bedeutung">Strom, den du ins Netz geschickt hast</td><td data-l="Wann wichtig">mit Solaranlage oder Balkonkraftwerk am Zweirichtungszähler</td></tr>
+</tbody></table></div>
+<p class="hint" style="margin-top:14px">Zeigt dein Zähler bei Tag- und Nachttarif keine Summe, rechne 1.8.1 und 1.8.2 zusammen. Gibt es zwei getrennte Zähler, etwa für Haushalt und Heizung, lies beide ab.</p>
+</div></section>
+
+<figure class="fig"><picture><source type="image/webp" srcset="assets/zaehlerstand-2-m.webp 800w, assets/zaehlerstand-2.webp 1440w" sizes="(max-width:900px) 100vw, 860px"><img src="assets/zaehlerstand-2.jpg" srcset="assets/zaehlerstand-2-m.jpg 800w, assets/zaehlerstand-2.jpg 1440w" sizes="(max-width:900px) 100vw, 860px" alt="Aufgeschlagenes Notizheft mit Bleistift, Smartphone, Teetasse und Taschenlampe auf einem Holztisch im Lampenlicht" width="1440" height="960" loading="lazy" decoding="async"></picture><figcaption>Ein festes Heft oder eine Tabelle für Datum und Zählerstand reicht, um den Verbrauch über Jahre zu verfolgen.</figcaption></figure>
+<section id="rechner"><div class="wrap">
+<div class="head"><span class="eyebrow">Rechner</span><h2>Reicht dein Abschlag?</h2><p class="lede">Trag zwei Zählerstände und die Tage dazwischen ein. Der Rechner rechnet aufs Jahr hoch und vergleicht mit deinem Abschlag. Die Werte bleiben nur in deinem Browser.</p></div>
+<div class="calc">
+  <div class="card q">
+    <div class="qb">
+      <div class="qh"><span class="qn">1</span><div><b>Früherer Zählerstand</b><span>Zum Beispiel von der letzten Rechnung</span></div><span class="vbox"><input class="vin" id="z_a" type="text" inputmode="decimal" autocomplete="off" aria-label="Früherer Zählerstand in Kilowattstunden"><span class="vu">kWh</span></span></div>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">2</span><div><b>Heutiger Zählerstand</b><span>Zahl vor dem Komma, bei digitalen Zählern 1.8.0</span></div><span class="vbox"><input class="vin" id="z_b" type="text" inputmode="decimal" autocomplete="off" aria-label="Heutiger Zählerstand in Kilowattstunden"><span class="vu">kWh</span></span></div>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">3</span><div><b>Tage dazwischen</b><span>Ein Monat 30, ein Vierteljahr 91, ein Jahr 365</span></div><span class="vbox"><input class="vin" id="z_d" type="text" inputmode="decimal" autocomplete="off" aria-label="Tage zwischen den Ablesungen"><span class="vu">Tage</span></span></div>
+      <div class="chips" data-for="d"><button type="button" data-v="30">1 Monat</button><button type="button" data-v="91">3 Monate</button><button type="button" data-v="182">6 Monate</button><button type="button" data-v="365">1 Jahr</button></div>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">4</span><div><b>Dein Arbeitspreis</b><span>Steht auf Rechnung oder Preisschreiben</span></div><span class="vbox"><input class="vin" id="z_p" type="text" inputmode="decimal" autocomplete="off" aria-label="Strompreis in Cent pro Kilowattstunde"><span class="vu">ct/kWh</span></span></div>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">5</span><div><b>Grundpreis</b><span>Fester Betrag pro Monat</span></div><span class="vbox"><input class="vin" id="z_g" type="text" inputmode="decimal" autocomplete="off" aria-label="Grundpreis in Euro pro Monat"><span class="vu">€/Monat</span></span></div>
+    </div>
+    <div class="qb" style="margin-bottom:0;border-bottom:0">
+      <div class="qh"><span class="qn">6</span><div><b>Dein Abschlag</b><span>Was monatlich abgebucht wird</span></div><span class="vbox"><input class="vin" id="z_m" type="text" inputmode="decimal" autocomplete="off" aria-label="Abschlag in Euro pro Monat"><span class="vu">€/Monat</span></span></div>
+    </div>
+  </div>
+  <div class="out">
+    <div class="verdict card"><span class="eyebrow">Dein Ergebnis</span><p id="ztxt" aria-live="polite"></p></div>
+    <div class="res">
+      <div><b id="z1"></b><span>Verbrauch aufs Jahr</span></div>
+      <div><b id="z2"></b><span>Stromkosten im Jahr</span></div>
+      <div class="hi"><b id="z3"></b><span>Nachzahlung pro Jahr</span></div>
+    </div>
+    <div class="acts" style="margin-top:0"><button class="abtn" type="button" data-share="ztxt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div>
+    <details class="help"><summary>So rechnen wir</summary><p>Verbrauch = heutiger minus früherer Stand, geteilt durch die Tage, mal 365. Kosten im Jahr = Verbrauch mal Arbeitspreis plus zwölfmal Grundpreis, so wie die Verbraucherzentrale den passenden Abschlag erklärt. Verglichen wird mit zwölf Abschlägen. Im Winter brauchen die meisten Haushalte mehr Strom als im Sommer: Eine Hochrechnung aus Wintermonaten fällt eher zu hoch aus, eine aus Sommermonaten eher zu niedrig. Am genauesten ist ein ganzes Jahr.</p></details>
+  </div>
+</div>
+<div class="read" style="margin-top:28px"><div class="note"><span class="ic" aria-hidden="true">💡</span><div><b>Abschlag passt nicht?</b><p>Fordere beim Versorger eine Anpassung. Kürze den Abschlag nicht eigenmächtig, sonst drohen Verzug und Zinsen. Ein Guthaben kannst du laut Verbraucherzentrale sofort ausgezahlt verlangen; spätestens mit dem nächsten Abschlag muss es verrechnet werden.</p></div></div></div>
+</div></section>
+
+<section class="band" id="melden"><div class="wrap read">
+<div class="head"><span class="eyebrow">Nach dem Ablesen</span><h2>Melden, prüfen, widersprechen.</h2></div>
+<p>In manchen Regionen schickt der Netzbetreiber noch einmal im Jahr jemanden zum Ablesen. Häufig musst du den Stand aber selbst melden, per Antwortkarte, Online-Portal oder App. Nur ein intelligentes Messsystem übermittelt die Werte von allein.</p>
+<p>Prüfe in der Jahresrechnung, ob neben deinen Zählerständen „abgelesen“, „Kundenablesung“ oder „geschätzt“ steht. Schätzungen müssen hervorgehoben und begründet werden; auf Wunsch muss der Anbieter sie in Textform erklären. Vergleiche die Stände mit deinen Notizen und Fotos, die Preise mit Vertrag oder Preisschreiben.</p>
+<p>Weicht etwas deutlich ab, melde dich beim Netzbetreiber und fordere den Versorger zur Korrektur auf, am besten schriftlich mit Kunden- und Rechnungsnummer. Steigt der Preis zum 1.&nbsp;Januar, prüfe den Wechsel: Die Seite <a href="/stromtarif.html">Stromtarif wechseln</a> zeigt Fristen und einen Wechsel-Rechner.</p>
+</div></section>
+
+<section id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Einkaufsliste</span><h2>Was beim Ablesen hilft.</h2><p class="lede">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span></p></div>
+<div class="items">
+  <a class="item" href="https://www.amazon.de/s?k=Stirnlampe+LED&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🔦</span><div><b>Stirnlampe</b><span>Licht im dunklen Zählerschrank, beide Hände frei</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Taschenlampe+LED+klein&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">💡</span><div><b>Kleine Taschenlampe</b><span>Für PIN und Verbrauchswerte am digitalen Zähler</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=IR+Lesekopf+Stromz%C3%A4hler&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">📡</span><div><b>Infrarot-Lesekopf</b><span>Liest die Schnittstelle digitaler Zähler aus, Zähler muss passen</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Strommessger%C3%A4t+Steckdose&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">📟</span><div><b>Strommessgerät</b><span>Findet heraus, welches Gerät den Zählerstand treibt</span></div><span class="go">Ansehen →</span></a>
+</div>
+</div></section>
+
+<section class="band" id="fragen"><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Welche Zahl ist der Zählerstand?</summary><div><p>Beim Drehscheibenzähler die Zahl vor dem Komma, mit Nullen am Anfang, ohne die meist rote Nachkommastelle. Beim digitalen Zähler der Wert hinter der Kennzahl 1.8.0, ebenfalls ohne Nachkommastellen.</p></div></details>
+<details><summary>Muss ich den Zählerstand zum Jahreswechsel melden?</summary><div><p>Eine allgemeine Pflicht zum Stichtag gibt es nicht. Ändert sich aber der Preis zum 1.&nbsp;Januar, darf der Grundversorger den Verbrauch sonst zeitanteilig schätzen. Mit deinem eigenen Stand und einem Foto hast du einen echten Wert.</p></div></details>
+<details><summary>Brauche ich für den digitalen Zähler eine PIN?</summary><div><p>Für den Zählerstand nicht. Die vierstellige PIN, die du beim Messstellenbetreiber erfragst, braucht es nur, um gespeicherte Verbrauchswerte für Tag, Woche, Monat und Jahr im Display anzuzeigen.</p></div></details>
+<details><summary>Was mache ich bei einer geschätzten Rechnung?</summary><div><p>Prüfe, ob die Schätzung zulässig war, etwa weil kein Zugang zum Zähler bestand und du keinen Stand gemeldet hast. Sonst reich deinen abgelesenen Stand mit Foto nach und verlange eine korrigierte Rechnung.</p></div></details>
+<details><summary>Was ist 2.8.0 auf meinem Zähler?</summary><div><p>Die Strommenge, die du ins Netz eingespeist hast, etwa mit Solaranlage oder Balkonkraftwerk. Sie steht nur auf Zweirichtungszählern und ist die Grundlage für die Einspeisevergütung.</p></div></details>
+</div></section>
+
+<section><div class="wrap read">
+<div class="cta"><a class="btn" href="#rechner">Abschlag prüfen</a><a class="btn sec" href="/stromtarif.html">Tarif vergleichen</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>Verbraucherzentrale Brandenburg: Strom- und Gaszähler ablesen, Meldung vom 22.12.2025 <a href="https://www.l-iz.de/melder/wortmelder/2025/12/boese-ueberraschungen-vermeiden-strom-und-gaszaehler-ablesen-641915" target="_blank" rel="noopener">l-iz.de</a></li>
+<li>Verbraucherzentrale NRW: Stimmen Rechnung und Abschläge für Strom oder Gas? (Stand 14.03.2025) <a href="https://www.verbraucherzentrale.nrw/wissen/energie/probleme-mit-vertraegen-und-rechnungen/stimmen-rechnung-und-abschlaege-fuer-strom-oder-gas-23268" target="_blank" rel="noopener">verbraucherzentrale.nrw</a></li>
+<li>Verbraucherzentrale: Stromzähler, analog und digital, vernetzt und intelligent (Stand 07.08.2026) <a href="https://www.verbraucherzentrale.de/wissen/energie/preise-tarife-anbieterwechsel/stromzaehler-analog-und-digital-vernetzt-und-intelligent-38447" target="_blank" rel="noopener">verbraucherzentrale.de</a></li>
+<li>ENTEGA: Stromzähler richtig ablesen <a href="https://www.entega.de/ratgeber/strom/stromzaehler/stromzaehler-richtig-ablesen/" target="_blank" rel="noopener">entega.de</a></li>
+<li>Vattenfall: Zweirichtungszähler ablesen <a href="https://www.vattenfall.de/infowelt-energie/strom-ratgeber/zweirichtungszaehler-richtig-ablesen" target="_blank" rel="noopener">vattenfall.de</a></li>
+</ol><p style="margin-top:12px">Allgemeine Informationen ohne Gewähr, keine Rechtsberatung. Geprüft am 13.11.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<nav class="fl fc" aria-label="Alle Seiten"><div><p class="fc-h">Solar und Balkon</p><a href="/">Balkonkraftwerk-Rechner</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/pv-anlage.html">Solaranlage aufs Dach</a><a href="/powerstation.html">Powerstation und Notstrom</a></div><div><p class="fc-h">E-Auto</p><a href="/e-auto.html">E-Auto laden</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/solar-laden.html">Mit Solarstrom laden</a></div><div><p class="fc-h">Haushalt</p><a href="/stromfresser.html">Stromfresser finden</a><a href="/energielabel.html">Energielabel</a><a href="/kochen.html">Kochen mit wenig Strom</a><a href="/kuehlschrank.html">Kühlschrank einstellen</a><a href="/spuelmaschine.html">Spülmaschine</a><a href="/waschmaschine.html">Waschmaschine</a><a href="/waesche-trocknen.html">Wäsche trocknen</a><a href="/backen.html">Plätzchen backen</a><a href="/weihnachtsbeleuchtung.html">Weihnachtsbeleuchtung</a><a href="/weihnachten-strom.html">Stromkosten an Weihnachten</a><a href="/black-friday.html">Black Friday</a></div><div><p class="fc-h">Heizen und Lüften</p><a href="/waermepumpe.html">Wärmepumpe</a><a href="/heizluefter.html">Heizlüfter</a><a href="/klimageraet.html">Klimagerät</a><a href="/lueften.html">Richtig lüften</a></div><div><p class="fc-h">Tarif und Zähler</p><a href="/stromtarif.html">Stromtarif wechseln</a><a href="/smart-meter.html">Smart Meter</a><a href="/zaehlerstand.html" aria-current="page">Zählerstand ablesen</a></div><div><p class="fc-h">Strom-Daheim</p><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://stil-daheim.de/">Schwesterseite Stil-Daheim</a></div></nav><p class="fc-c">© 2026 Strom-Daheim</p>
+</div></footer>
+<script>
+/* Zählerstand-Rechner. Werte bleiben nur in deinem Browser. */
+(()=>{const $=i=>document.getElementById(i),
+  f=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d}),
+  num=v=>{let s=String(v).trim().replace(/\s|kwh|ct|€|tage|\/monat/gi,'');if(!s)return NaN;if(s.includes(',')){s=s.replace(/\./g,'').replace(',','.')}else if(/^\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'')}return /^-?\d*\.?\d+$/.test(s)?parseFloat(s):NaN};
+const S={a:12345,b:12985,d:91,p:32,g:12,m:75},L={a:[0,9999999],b:[0,9999999],d:[1,1000],p:[5,100],g:[0,60],m:[0,1000]},IN=['a','b','d','p','g','m'];
+try{const x=JSON.parse(localStorage.getItem('zaehler')||'null');if(x)for(const k in L)if(x[k]>=L[k][0]&&x[k]<=L[k][1])S[k]=x[k]}catch(e){}
+const fv=k=>(k==='a'||k==='b')?f(S[k],0):f(S[k],S[k]%1?2:0);
+IN.forEach(k=>{const n=$('z_'+k),[a,b]=L[k];
+  n.addEventListener('input',()=>{const v=num(n.value);if(v>=a&&v<=b){S[k]=v;up()}});
+  n.addEventListener('change',()=>{let v=num(n.value);if(!isFinite(v))v=S[k];S[k]=Math.min(b,Math.max(a,v));up();n.value=fv(k)})});
+document.querySelectorAll('.chips[data-for] button').forEach(b=>b.addEventListener('click',()=>{S[b.parentNode.dataset.for]=+b.dataset.v;up()}));
+function up(){IN.forEach(k=>{const n=$('z_'+k);if(document.activeElement!==n)n.value=fv(k)});
+  document.querySelectorAll('.chips[data-for] button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.v===S[b.parentNode.dataset.for]));
+  const hi=$('z3').parentNode,v=S.b-S.a;
+  if(v<0){$('z1').textContent='–';$('z2').textContent='–';$('z3').textContent='–';hi.classList.remove('neg');
+    $('ztxt').textContent='Der heutige Stand ist kleiner als der frühere. Sind die Werte vertauscht, oder wurde der Zähler getauscht? Dann zählt der neue Zähler wieder von vorn.';
+    try{localStorage.setItem('zaehler',JSON.stringify(S))}catch(e){}return}
+  const y=v/S.d*365,k=y*S.p/100+S.g*12,ab=S.m*12,diff=k-ab,mon=k/12;
+  $('z1').textContent=f(y)+' kWh';$('z2').textContent=f(k)+' €';
+  hi.classList.toggle('neg',diff<0);
+  $('z3').textContent=f(Math.abs(diff))+' €';
+  hi.querySelector('span').textContent=diff<0?'Guthaben pro Jahr':'Nachzahlung pro Jahr';
+  let t=`Du hast in ${f(S.d)} Tagen ${f(v)} kWh verbraucht, rund ${f(v/S.d,1)} kWh am Tag. Aufs Jahr gerechnet sind das etwa ${f(y)} kWh und ${f(k)} € Stromkosten, also rund ${f(mon)} € im Monat.`;
+  if(Math.abs(diff)<S.m*0.5)t+=` Dein Abschlag von ${f(S.m)} € passt ungefähr.`;
+  else if(diff>0)t+=` Mit ${f(S.m)} € Abschlag fehlen dir rund ${f(diff)} € im Jahr. Ein Abschlag von etwa ${f(Math.ceil(mon))} € würde reichen.`;
+  else t+=` Mit ${f(S.m)} € Abschlag zahlst du rund ${f(-diff)} € im Jahr zu viel. Etwa ${f(Math.ceil(mon))} € würden reichen.`;
+  if(S.d<300)t+=' Im Winter ist der Verbrauch meist höher als im Sommer, die Hochrechnung ist nur ein Anhaltspunkt.';
+  $('ztxt').textContent=t;
+  try{localStorage.setItem('zaehler',JSON.stringify(S))}catch(e){}}
+up();})();
+</script>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>

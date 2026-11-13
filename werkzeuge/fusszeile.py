@@ -20,7 +20,7 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
     '/black-friday.html': 'Black Friday',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
-    '/stromtarif.html': 'Stromtarif wechseln', '/smart-meter.html': 'Smart Meter',
+    '/stromtarif.html': 'Stromtarif wechseln', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen',
 }
 EXTRA = {'/': 'solar'}  # Seiten ohne eigene Kachel
 

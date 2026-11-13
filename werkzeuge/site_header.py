@@ -36,6 +36,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/backen.html', '🍪', 'Plätzchen backen mit wenig Strom', 'Backofen-Rechner, Umluft, Restwärme', 'backen'),
         ('/spuelmaschine.html', '🍽️', 'Spülmaschine oder Handwäsche', 'Eco-Programm, Kosten-Rechner', 'spuelmaschine'),
         ('/waschmaschine.html', '🫧', 'Waschmaschine sparsam nutzen', '40 statt 60 Grad, Spar-Rechner', 'waschmaschine'),
+        ('/zaehlerstand.html', '🔢', 'Zählerstand ablesen', 'Kennzahlen, Abschlag-Rechner', 'zaehlerstand'),
         ('/weihnachten-strom.html', '🎁', 'Stromkosten an Weihnachten', 'Feiertags-Rechner, Spartipps', 'weihnachten-strom'),
         ('/black-friday.html', '🏷️', 'Black Friday 2026', 'Echte Angebote erkennen', 'black-friday'),
         ('/#ratgeber', '📋', 'Anmelden, Mieten, Tarif', 'Kurz erklärt', None)]
