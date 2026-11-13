@@ -72,6 +72,20 @@ await p.evaluate(()=>localStorage.clear());
 await p.goto(U+'?p=20095&n=3&wp=400&a=45&t=70&s=1&v=2500&w=2&z=1&b=1&ct=38.5&c=600');await p.waitForTimeout(1000);
 const tx=await T('bp-txt');ok(tx.includes('Hamburg')&&tx.includes('3 Module')&&tx.includes('1.200 Wp')&&tx.includes('Südwesten')&&tx.includes('70 Grad')&&tx.includes('38,5 ct')&&tx.includes('1 kWh Speicher'),'Geteilte Adresse stellt alles her: '+tx.slice(0,170));
 ok(await p.evaluate(()=>document.querySelector('#bp-cap button[data-v="600"]').getAttribute('aria-pressed')==='true'),'600-W-Wechselrichter übernommen');
+// mit Speicher zeigt das Tagesdiagramm, was die Module liefern, und den Füllstand
+ok((await T('bp-leg-pv')).includes('Strom der Module')&&(await T('bp-leg-self')).includes('aus dem Speicher'),'Legende mit Speicher: '+await T('bp-leg-pv')+' / '+await T('bp-leg-self'));
+ok(/Die Module liefern .* kWh\. Du nutzt/.test(await T('bp-day-t')),'Tagessatz mit Speicher: '+await T('bp-day-t'));
+ok(await p.evaluate(()=>document.querySelectorAll('#bp-tab-d thead th').length)===5,'Tagestabelle mit Spalte Speicher');
+ok((await T('bp-txt')).includes('Verlust im Speicher'),'Satz nennt den Speicherverlust');
+await p.evaluate(()=>document.getElementById('bp-chart-d').scrollIntoView({block:'center',behavior:'instant'}));await p.waitForTimeout(500);
+{const r=await (await p.$('#bp-chart-d rect.bp-hit')).boundingBox();await p.touchscreen.tap(r.x+r.width*0.8,r.y+r.height*0.4);await p.waitForTimeout(300);
+ok(await p.evaluate(()=>{const t=document.querySelector('#bp-chart-d .bp-tip');return t&&!t.hidden&&/Speicher gefüllt/.test(t.textContent)}),'Tippen im Tagesdiagramm zeigt Füllstand: '+await p.evaluate(()=>document.querySelector('#bp-chart-d .bp-tip').textContent));
+ok(await p.evaluate(()=>getComputedStyle(document.querySelector('#bp-chart-d rect.bp-hit')).outlineStyle==='none'),'kein Rahmen ums Diagramm nach dem Tippen');}
+// Link ohne Speicher darf den gemerkten Speicher nicht übernehmen
+await p.goto(U+'?p=20095&n=2&wp=450&a=0&t=90&s=0&v=1900&w=1&ct=32');await p.waitForTimeout(1000);
+{const t2=await T('bp-txt');ok(!t2.includes('Speicher')&&t2.includes('2 Module'),'Link ohne Speicher rechnet ohne Speicher: '+t2.slice(0,110));
+ok(await p.evaluate(()=>document.querySelector('#bp-cap button[data-v="800"]').getAttribute('aria-pressed')==='true'),'Link ohne Angabe: 800 W');
+ok((await T('bp-leg-pv')).trim()==='Solarstrom','Legende ohne Speicher: '+await T('bp-leg-pv'));}
 // gemerkter Strompreis aus anderen Rechnern
 await p.evaluate(()=>{localStorage.clear();localStorage.setItem('sp','41.5')});await p.goto(U);await p.waitForTimeout(1400);
 ok((await p.inputValue('#bp-ct'))==='41,5'&&(await T('bp-txt')).includes('41,5 ct'),'Gemerkter Strompreis gilt: '+await p.inputValue('#bp-ct'));

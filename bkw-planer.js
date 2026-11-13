@@ -182,7 +182,8 @@
 
   /* ---------- Jahressimulation ----------
      cfg: {groups:[{wp,tilt,azim}], shade:{horizon,sky}, cap (W), kwh, base, presence, shift,
-           bat:{kwh, sensor}, keep: Stundenwerte zurückgeben}
+           bat:{kwh, sensor}, keep: Stundenwerte zurückgeben (pv = was aus der Steckdose kommt, gen = was die Module liefern,
+           self = selbst genutzt, bat = davon aus dem Speicher, soc = Füllstand in Wh, load = mittlerer Verbrauch)}
      Ergebnis in kWh: y und m[12] mit pv (am Stecker nutzbar), self, feed, clip (abgeregelt), loss (Speicherverluste). */
   var DC_LOSS = 0.055, ETA_INV = 0.955;       /* Verluste vor dem Wechselrichter (Schmutz, Kabel, Toleranz) und im Wechselrichter: zusammen rund 10 % */
   var ETA_C = 0.94, ETA_D = 0.90;             /* Speicher laden und entladen (kleine Leistungen entlädt er mit schlechterem Wirkungsgrad) */
@@ -200,10 +201,10 @@
     var sensor = bat ? bat.sensor !== false : false, pset = bat && !sensor ? (bat.set || H.base + STANDBY) : 0;
     var buf = new Float64Array(12), M = [], mi = 0, mEnd = MDAYS[0] * 24;
     for (i = 0; i < 12; i++) M.push({ pv: 0, self: 0, feed: 0, clip: 0, loss: 0, load: 0, pot: 0 });
-    var keep = cfg.keep ? { pv: new Float32Array(n), self: new Float32Array(n), load: new Float32Array(n), soc: new Float32Array(n) } : null;
+    var keep = cfg.keep ? { pv: new Float32Array(n), self: new Float32Array(n), load: new Float32Array(n), soc: new Float32Array(n), gen: new Float32Array(n), bat: new Float32Array(n) } : null;
     for (h = 0; h < n; h++) {
       if (h >= mEnd) { mi++; mEnd += MDAYS[mi] * 24; }
-      var Pdc = dc[h], mm = M[mi], self = 0, feed = 0, clip = 0, k;
+      var Pdc = dc[h], mm = M[mi], self = 0, feed = 0, clip = 0, fromBat = 0, k;
       var Lm = states(H, h, bat ? STANDBY : 0, buf);
       mm.load += Lm; mm.pot += Pdc * ETA_INV;
       if (!bat) {
@@ -224,7 +225,7 @@
         var out = dis * ETA_D * ETA_INV, left = surplus - chg;
         feed = Math.max(0, Math.min(left * ETA_INV, cap - direct));
         clip = left * ETA_INV - feed;
-        self = direct + out * REG; feed += out * (1 - REG);
+        self = direct + out * REG; feed += out * (1 - REG); fromBat = out * REG;
       } else {
         /* Speicher ohne Messgerät: gibt rund um die Uhr eine feste Leistung ab (hier die Grundlast) */
         var pv = Math.min(Pdc * ETA_INV, cap), outAc;
@@ -238,10 +239,10 @@
           soc -= di; outAc = pv + di * ETA_D * ETA_INV;
         }
         for (k = 0; k < 12; k += 2) self += buf[k] * Math.min(outAc, buf[k + 1]);
-        feed = outAc - self;
+        feed = outAc - self; if (outAc > pv) fromBat = self * (outAc - pv) / outAc;
       }
       mm.self += self; mm.feed += feed; mm.clip += clip; mm.pv += self + feed;
-      if (keep) { keep.pv[h] = self + feed; keep.self[h] = self; keep.load[h] = Lm; keep.soc[h] = soc; }
+      if (keep) { keep.pv[h] = self + feed; keep.self[h] = self; keep.load[h] = Lm; keep.soc[h] = soc; keep.gen[h] = Pdc * ETA_INV; keep.bat[h] = fromBat; }
     }
     var y = { pv: 0, self: 0, feed: 0, clip: 0, loss: 0, load: 0, pot: 0 };
     for (i = 0; i < 12; i++) {
@@ -320,9 +321,12 @@
   }
   try { take(JSON.parse(localStorage.getItem('bkwp') || 'null')); } catch (e) { }
   (function () {            /* Adresse mit Angaben (geteiltes Ergebnis) geht vor */
-    var q = new URLSearchParams(location.search), o = {}, map = { p: 'plz', n: 'n', wp: 'wp', a: 'dir', t: 'tilt', s: 'shade', v: 'kwh', w: 'pres', z: 'shift', b: 'bat', ct: 'ct', k: 'cost', g: 'base', c: 'cap' }, any = 0;
-    for (var a in map) if (q.has(a)) { o[map[a]] = q.get(a); any = 1; }
-    if (any) { S.cost = null; S.base = null; take(o); }
+    var q = new URLSearchParams(location.search), o = {}, map = { p: 'plz', n: 'n', wp: 'wp', a: 'dir', t: 'tilt', s: 'shade', v: 'kwh', w: 'pres', z: 'shift', b: 'bat', m: 'sensor', ct: 'ct', k: 'cost', g: 'base', c: 'cap' }, any = 0, a;
+    for (a in map) if (q.has(a)) { o[map[a]] = q.get(a); any = 1; }
+    if (any) {              /* was im Link fehlt, gilt als Standard und nicht als das, was zuletzt auf diesem Gerät stand */
+      for (a in map) if (map[a] !== 'plz' && map[a] !== 'ct') S[map[a]] = DEF[map[a]];
+      take(o);
+    }
   })();
 
   /* ---------- Hilfen ---------- */
@@ -503,8 +507,9 @@
     var q = new URLSearchParams();
     if (S.plz) q.set('p', S.plz);
     q.set('n', S.n); q.set('wp', S.wp); q.set('a', S.dir); q.set('t', S.tilt); q.set('s', S.shade); q.set('v', S.kwh); q.set('w', S.pres);
-    if (S.shift) q.set('z', 1); if (S.bat) q.set('b', S.bat); q.set('ct', Math.round(S.ct * 100) / 100);
-    if (S.cost != null) q.set('k', S.cost); if (S.base != null) q.set('g', S.base); if (S.cap !== 800) q.set('c', S.cap);
+    if (S.shift) q.set('z', 1); if (S.bat) q.set('b', S.bat); if (S.bat && !S.sensor) q.set('m', 0); q.set('ct', Math.round(S.ct * 100) / 100);
+    var ownPrices = S.pmod !== DEF.pmod || S.pinv !== DEF.pinv || S.pbat !== DEF.pbat || S.pel !== DEF.pel;   /* eigene Richtpreise reisen als fertiger Preis mit */
+    if (S.cost != null || ownPrices) q.set('k', shown('cost')); if (S.base != null) q.set('g', S.base); if (S.cap !== 800) q.set('c', S.cap);
     shareUrl = location.origin + location.pathname + '?' + q.toString() + '#planer';
   }
   var shareUrl = location.href;
@@ -525,7 +530,7 @@
     $('bp-k-aut').textContent = Math.round(Math.max(0, y.autark) * 100) + ' %';
     /* Satz */
     var name = data.name, t = (reg ? 'Region ' + name : 'Beispiel für die Mitte Deutschlands') + ': ' + (S.n === 1 ? 'Ein Modul' : S.n + ' Module') + ' mit zusammen ' + f(wpTotal()) + ' Wp, ' + dirText() + ', ' + tiltText() + (S.bat > 0 ? ', mit ' + f(S.bat, S.bat % 1 ? 1 : 0) + ' kWh Speicher' : '') + '. ';
-    t += 'Das bringt rund ' + f(r10(y.pv)) + ' kWh Solarstrom im Jahr. Davon nutzt du etwa ' + f(r10(y.self)) + ' kWh selbst (' + Math.round(y.share * 100) + ' %) und sparst bei ' + String(Math.round(S.ct * 100) / 100).replace('.', ',') + ' ct rund ' + f(Math.round(mny.y1)) + ' € im Jahr. ';
+    t += 'Das bringt rund ' + f(r10(y.pv)) + ' kWh Solarstrom im Jahr' + (S.bat > 0 && y.loss >= 10 ? ', rund ' + f(r10(y.loss)) + ' kWh Verlust im Speicher schon abgezogen' : '') + '. Davon nutzt du etwa ' + f(r10(y.self)) + ' kWh selbst (' + Math.round(y.share * 100) + ' %) und sparst bei ' + String(Math.round(S.ct * 100) / 100).replace('.', ',') + ' ct rund ' + f(Math.round(mny.y1)) + ' € im Jahr. ';
     t += mny.pay <= 30 ? 'Bei ' + f(cost) + ' € Anschaffung ist die Anlage nach etwa ' + f(mny.pay, 1) + ' Jahren bezahlt.' : 'So rechnet sich die Anlage kaum: Prüf Ausrichtung, Schatten und Preis.';
     $('bp-txt').textContent = t;
     var mb = $('bp-mini-t'); if (mb) { mb.textContent = '≈ ' + f(Math.round(mny.y1)) + ' € im Jahr'; $('bp-mini-s').textContent = mny.pay <= 30 ? 'bezahlt nach ' + f(mny.pay, 1) + ' Jahren' : 'rechnet sich so nicht'; }
@@ -548,6 +553,7 @@
   }
   function hideTip() { tip.hidden = true; }
   function nice(max, n) { var raw = max / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p, s = m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10; return s * p; }
+  function leg(id, txt) { var e = $(id); if (e && e.lastChild) e.lastChild.nodeValue = txt; }
   function table(id, head, rows) {
     var t = $(id); if (!t) return; t.textContent = '';
     var tr = el('tr'); head.forEach(function (h) { tr.appendChild(el('th', { scope: 'col' }, h)); }); var th = el('thead'); th.appendChild(tr); t.appendChild(th);
@@ -612,17 +618,19 @@
   function drawDay(res) {
     var host = $('bp-chart-d'); if (!host || !res.hourly) return;
     var W = Math.max(280, host.clientWidth), Hh = 230, L = 38, R = 10, T = 22, B = 26, pw = W - L - R, ph = Hh - T - B;
-    var day = pickDay(res), K = res.hourly, off = (data.off || 0), tz = day >= 87 && day < 298 ? 2 : 1, pts = [], max = 0, i;
+    var day = pickDay(res), K = res.hourly, off = (data.off || 0), tz = day >= 87 && day < 298 ? 2 : 1, pts = [], max = 0, i, bat = S.bat > 0, capWh = S.bat * 900;
     for (i = -3; i <= 24; i++) {
       var h = day * 24 + i; if (h < 0 || h >= 8760) continue;
       var lt = i + off + tz; if (lt < -0.5 || lt > 24.5) continue;
-      pts.push({ t: lt, pv: K.pv[h], self: K.self[h], load: K.load[h], h: h });
-      max = Math.max(max, K.pv[h], Math.min(K.load[h], 1500));
+      /* Mit Speicher zeigt die Linie, was die Module liefern: Was aus der Steckdose kommt, folgt dann dem Verbrauch und nicht der Sonne */
+      var pvh = bat ? K.gen[h] : K.pv[h];
+      pts.push({ t: lt, pv: pvh, self: K.self[h], load: K.load[h], bat: bat ? K.bat[h] : 0, soc: bat ? Math.min(1, K.soc[h] / capWh) : 0, h: h });
+      max = Math.max(max, pvh, K.self[h], Math.min(K.load[h], 1500));
     }
     var capLine = S.cap, step = nice(Math.max(max, capLine * (max > capLine * 0.6 ? 1.05 : 0.5), 100), 4), top = Math.ceil(Math.max(max, max > capLine * 0.6 ? capLine : 0) / step) * step || step;
     function X(t) { return L + Math.min(24, Math.max(0, t)) / 24 * pw; }
     function Y(v) { return T + ph - Math.min(v, top) / top * ph; }
-    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + Hh, width: W, height: Hh, role: 'group', 'aria-label': 'Tagesverlauf an einem ' + (S.sky ? 'sonnigen' : 'trüben') + ' Tag im ' + MON[S.mon] + ': Solarstrom, selbst genutzter Anteil und mittlerer Verbrauch in Watt' });
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + Hh, width: W, height: Hh, role: 'group', 'aria-label': 'Tagesverlauf an einem ' + (S.sky ? 'sonnigen' : 'trüben') + ' Tag im ' + MON[S.mon] + ': ' + (bat ? 'Strom der Module, selbst genutzter Strom direkt und aus dem Speicher' : 'Solarstrom, selbst genutzter Anteil') + ' und mittlerer Verbrauch in Watt' });
     for (var v = 0; v <= top + 1e-6; v += step) { var gy = Y(v); svg.appendChild(el('line', { x1: L, x2: W - R, y1: gy, y2: gy, 'class': v ? 'bp-grid' : 'bp-axis' })); svg.appendChild(el('text', { x: L - 6, y: gy + 4, 'text-anchor': 'end', 'class': 'bp-tick' }, f(v))); }
     svg.appendChild(el('text', { x: L - 6, y: 10, 'text-anchor': 'end', 'class': 'bp-tick' }, 'Watt'));
     [0, 6, 12, 18, 24].forEach(function (hh) { svg.appendChild(el('text', { x: X(hh), y: Hh - 8, 'text-anchor': hh === 0 ? 'start' : hh === 24 ? 'end' : 'middle', 'class': 'bp-tick' }, pw < 330 && hh !== 24 ? String(hh) : hh + ' Uhr')); });
@@ -655,7 +663,8 @@
       cross.setAttribute('x1', x); cross.setAttribute('x2', x); cross.style.display = '';
       dots[0].setAttribute('cx', x); dots[0].setAttribute('cy', Y(p.pv)); dots[1].setAttribute('cx', x); dots[1].setAttribute('cy', Y(p.load)); dots.forEach(function (c) { c.style.display = ''; });
       var hh = Math.floor(p.t + 1e-6), mm = Math.round((p.t - hh) * 60);
-      showTip(host, x, Math.min(Y(p.pv), Y(p.load)), [[f(Math.round(p.pv)) + ' W', 'Solarstrom', 'bp-k-pv'], [f(Math.round(p.self)) + ' W', 'davon selbst genutzt', 'bp-f-self'], [f(Math.round(p.load)) + ' W', 'Verbrauch im Mittel', 'bp-k-load']], hh + ':' + (mm < 10 ? '0' : '') + mm + ' Uhr');
+      var rows = bat ? [[f(Math.round(p.pv)) + ' W', 'liefern die Module', 'bp-k-pv'], [f(Math.round(p.self)) + ' W', 'nutzt du selbst', 'bp-f-self'], [f(Math.round(p.load)) + ' W', 'Verbrauch im Mittel', 'bp-k-load'], [Math.round(p.soc * 100) + ' %', 'Speicher gefüllt']] : [[f(Math.round(p.pv)) + ' W', 'Solarstrom', 'bp-k-pv'], [f(Math.round(p.self)) + ' W', 'davon selbst genutzt', 'bp-f-self'], [f(Math.round(p.load)) + ' W', 'Verbrauch im Mittel', 'bp-k-load']];
+      showTip(host, x, Math.min(Y(p.pv), Y(p.load), Y(p.self)), rows, hh + ':' + (mm < 10 ? '0' : '') + mm + ' Uhr');
     }
     function near(e) { var r = svg.getBoundingClientRect(), t = (e.clientX - r.left - L) / pw * 24, b = 0, bd = 99; pts.forEach(function (p, j) { var dd = Math.abs(p.t - t); if (dd < bd) { bd = dd; b = j; } }); showAt(b); }
     function off2() { cross.style.display = 'none'; dots.forEach(function (c) { c.style.display = 'none'; }); hideTip(); }
@@ -664,9 +673,11 @@
     hit.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { showAt(cur + 1); e.preventDefault(); } else if (e.key === 'ArrowLeft') { showAt(cur - 1); e.preventDefault(); } });
     svg.appendChild(hit);
     var old = host.querySelector('svg'); if (old) host.replaceChild(svg, old); else host.insertBefore(svg, host.firstChild);
-    var sum = 0, sf = 0; pts.forEach(function (p) { if (p.t >= 0 && p.t <= 24) { sum += p.pv; sf += p.self; } });
-    $('bp-day-t').textContent = (S.sky ? 'Sonniger' : 'Trüber') + ' Tag im ' + MON[S.mon] + ': ' + f(sum / 1000, 1) + ' kWh Solarstrom, davon ' + f(sf / 1000, 1) + ' kWh selbst genutzt.';
-    table('bp-tab-d', ['Uhrzeit', 'Solarstrom (W)', 'Selbst genutzt (W)', 'Verbrauch im Mittel (W)'], pts.filter(function (p) { return p.t >= 0 && p.t <= 24; }).map(function (p) { var hh = Math.floor(p.t + 1e-6), mm = Math.round((p.t - hh) * 60); return [hh + ':' + (mm < 10 ? '0' : '') + mm, f(Math.round(p.pv)), f(Math.round(p.self)), f(Math.round(p.load))]; }));
+    var sum = 0, sf = 0, sb = 0; pts.forEach(function (p) { if (p.t >= 0 && p.t <= 24) { sum += p.pv; sf += p.self; sb += p.bat; } });
+    var head = (S.sky ? 'Sonniger' : 'Trüber') + ' Tag im ' + MON[S.mon] + ': ';
+    $('bp-day-t').textContent = bat ? head + 'Die Module liefern ' + f(sum / 1000, 1) + ' kWh. Du nutzt ' + f(sf / 1000, 1) + ' kWh selbst' + (sb >= 50 ? ', davon ' + f(sb / 1000, 1) + ' kWh aus dem Speicher.' : '. Der Speicher wird an so einem Tag kaum voll.') : head + f(sum / 1000, 1) + ' kWh Solarstrom, davon ' + f(sf / 1000, 1) + ' kWh selbst genutzt.';
+    leg('bp-leg-pv', bat ? 'Strom der Module' : 'Solarstrom'); leg('bp-leg-self', bat ? 'selbst genutzt, direkt oder aus dem Speicher' : 'davon selbst genutzt');
+    table('bp-tab-d', ['Uhrzeit', bat ? 'Module liefern (W)' : 'Solarstrom (W)', 'Selbst genutzt (W)', 'Verbrauch im Mittel (W)'].concat(bat ? ['Speicher gefüllt'] : []), pts.filter(function (p) { return p.t >= 0 && p.t <= 24; }).map(function (p) { var hh = Math.floor(p.t + 1e-6), mm = Math.round((p.t - hh) * 60), r = [hh + ':' + (mm < 10 ? '0' : '') + mm, f(Math.round(p.pv)), f(Math.round(p.self)), f(Math.round(p.load))]; if (bat) r.push(Math.round(p.soc * 100) + ' %'); return r; }));
   }
 
   /* ---------- Vergleich: Was wäre, wenn? ---------- */

@@ -263,7 +263,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 .bp-axis{stroke:var(--v-axis);stroke-width:1}
 .bp-tick{fill:var(--mut);font-size:11px;font-variant-numeric:tabular-nums}
 .bp-lab{fill:var(--ink);font-size:12px;font-weight:600}
-.bp-hit{fill:transparent;cursor:crosshair}
+.bp-hit{fill:transparent;cursor:crosshair;outline:none}
 .bp-col{outline:none}
 .bp-col:hover path,.bp-col:focus path{filter:brightness(1.18)}
 .bp-col:focus-visible .bp-hit{stroke:var(--sky);stroke-width:2}
@@ -449,7 +449,7 @@ rect.bp-hit:focus-visible{stroke:var(--sky);stroke-width:2}
     <p id="bp-day-t">Solarstrom und Verbrauch über den Tag.</p>
     <div class="chips" id="bp-mon" role="group" aria-label="Monat" style="margin-top:0"><button type="button" data-v="2">März</button><button type="button" data-v="5">Juni</button><button type="button" data-v="8">September</button><button type="button" data-v="11">Dezember</button></div>
     <div class="chips" id="bp-sky" role="group" aria-label="Wetter"><button type="button" data-v="1">Sonniger Tag</button><button type="button" data-v="0">Trüber Tag</button></div>
-    <div class="bp-leg" style="margin-top:10px"><span><i class="ln bp-k-pv"></i>Solarstrom</span><span><i class="bp-f-self"></i>davon selbst genutzt</span><span><i class="ln bp-k-load"></i>Verbrauch im Mittel</span></div>
+    <div class="bp-leg" style="margin-top:10px"><span id="bp-leg-pv"><i class="ln bp-k-pv"></i>Solarstrom</span><span id="bp-leg-self"><i class="bp-f-self"></i>davon selbst genutzt</span><span><i class="ln bp-k-load"></i>Verbrauch im Mittel</span></div>
     <div class="bp-chart" id="bp-chart-d"></div>
     <details class="help"><summary>Als Tabelle zeigen</summary><div class="tbl"><table id="bp-tab-d"></table></div></details>
   </div>
