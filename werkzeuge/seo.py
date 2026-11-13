@@ -7,6 +7,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://strom-daheim.de'
 NAME = 'Strom-Daheim'
 KURZ = {
+    'balkonkraftwerk-planer.html': 'Der Planer rechnet mit den Sonnendaten deiner Region aus, was ein Balkonkraftwerk an deinem Balkon bringt: Zwei Module mit zusammen 900&nbsp;Wp liefern senkrecht an einem Südbalkon je nach Region etwa 650 bis 780&nbsp;kWh im Jahr, schräg aufgestellt 900 bis 1.110&nbsp;kWh. Geld spart nur der Teil, den du selbst nutzt; wie viel das bei deinem Verbrauch ist und ob sich ein Speicher lohnt, zeigt der Vergleich.',
     'anleitung-balkonkraftwerk.html': 'Ein Balkonkraftwerk mit höchstens 960&nbsp;Watt Modulleistung und 800&nbsp;Watt Wechselrichter darf in die normale Haushaltssteckdose, die Montage schaffst du an einem Nachmittag. Danach meldest du es innerhalb eines Monats im Marktstammdatenregister an; zur Miete brauchst du für Brüstung oder Fassade die Zustimmung des Vermieters, die er nicht grundlos verweigern darf.',
     'e-auto.html': 'Zuhause laden kostet etwa 5 bis 8&nbsp;€ pro 100&nbsp;km, an öffentlichen Säulen zahlst du meist deutlich mehr (39 bis 89&nbsp;ct pro kWh). Für regelmäßiges Laden ist eine Wallbox mit 11&nbsp;kW sicherer und schneller als die Haushaltssteckdose.',
     'anleitung-wallbox.html': 'Eine Wallbox kostet mit Einbau im Standardfall etwa 800 bis 2.200&nbsp;€, anschließen darf sie nur ein eingetragener Elektrofachbetrieb. Sie wird beim Netzbetreiber angemeldet, und als steuerbare Verbrauchseinrichtung nach §&nbsp;14a sparst du etwa 110 bis 190&nbsp;€ Netzentgelt im Jahr.',

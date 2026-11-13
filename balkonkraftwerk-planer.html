@@ -1,0 +1,538 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><script>try{var t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}</script><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="p:domain_verify" content="ad440d6123f283fdf603af68f7587653"/>
+<title>Balkonkraftwerk-Planer: Ertrag und Ersparnis für deinen Balkon – Strom-Daheim</title><meta property="og:title" content="Balkonkraftwerk-Planer: Ertrag und Ersparnis für deinen Balkon – Strom-Daheim"><meta property="og:type" content="article"><meta property="og:description" content="Postleitzahl, Ausrichtung und Verbrauch eingeben: Der Planer rechnet mit den Sonnendaten deiner Region aus, wie viel Strom ein Balkonkraftwerk bringt, was du sparst und ob sich ein Speicher lohnt.">
+<meta name="description" content="Postleitzahl, Ausrichtung und Verbrauch eingeben: Der Planer rechnet mit den Sonnendaten deiner Region aus, wie viel Strom ein Balkonkraftwerk bringt, was du sparst und ob sich ein Speicher lohnt.">
+<link rel="canonical" href="https://strom-daheim.de/balkonkraftwerk-planer.html">
+<meta property="og:image" content="https://strom-daheim.de/assets/og/balkonkraftwerk-planer.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="theme-color" content="#000000">
+<style>
+/* Unterseiten-Layout: dunkle Bild-Bühne oben, darunter Lesespalte mit Karten. Gleiche Tokens wie die Startseite. */
+:root{--bg:#000;--pan:#141416;--soft:#1e1e21;--ink:#f5f5f7;--mut:#9a9aa0;--line:#2a2a2e;--sun:#ffb81c;--sky:#4f8cff;--ok:#3ec47f;--warn:#ff9f43;--shadow:0 20px 60px rgba(0,0,0,.6);box-sizing:border-box;color-scheme:dark}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}}
+:root[data-theme="light"]{--bg:#f5f5f7;--pan:#fff;--soft:#e8e8ed;--ink:#1d1d1f;--mut:#5c5c61;--line:#d2d2d7;--sun:#f5a300;--sky:#1f5fc6;--ok:#17784a;--warn:#a34800;--shadow:0 10px 40px rgba(0,0,0,.08);color-scheme:light}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:#000}
+a{color:var(--sky);text-decoration:none}a:hover{text-decoration:underline}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h3{font-size:1.2rem;letter-spacing:-.015em;line-height:1.25}
+p{margin:0 0 14px}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.read{max-width:720px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.lede{font-size:clamp(1.1rem,2.4vw,1.4rem);line-height:1.4;color:var(--mut);max-width:44ch}
+section{padding-block:clamp(56px,8vw,104px)}
+.band{background:var(--pan)}
+.head{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,44px)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+/* Bild-Bühne */
+.hero{position:relative;min-height:78vh;min-height:78svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% 50%;filter:brightness(.9);animation:kb 18s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.hero img{animation:none}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-block:120px 56px}
+.hero .eyebrow{color:rgba(245,245,247,.75);margin-bottom:14px}
+.hero h1{color:#fff;max-width:16ch}
+.hero p{color:rgba(245,245,247,.84);font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:40ch;margin-top:16px;line-height:1.4}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.jump a{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:600;font-size:.9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.jump a.pri{background:#f5f5f7;color:#000}
+.jump a:hover{text-decoration:none;opacity:.88}
+/* Bild-Band in der Mitte */
+.pic{position:relative;min-height:74vh;min-height:74svh;display:flex;align-items:flex-end;background:#000;color:#f5f5f7;overflow:hidden;padding:0}
+.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 100%)}
+.pic .wrap{position:relative;z-index:2;padding-block:96px 52px}
+.pic .eyebrow{color:rgba(245,245,247,.75);margin-bottom:12px}
+.pic h2{color:#fff;max-width:17ch}
+.pic p{color:rgba(245,245,247,.86);font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:42ch;margin-top:14px;line-height:1.4}
+/* Karten & Raster */
+.card{background:var(--pan);border-radius:24px;padding:clamp(20px,3vw,30px);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .card{background:var(--soft);box-shadow:none;border:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.grid4 .opt .kw{font-size:clamp(1.5rem,2.2vw,1.85rem)}
+.opt b.t{display:block;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:4px}
+.opt .kw{display:block;font-size:clamp(1.9rem,4.4vw,2.5rem);font-weight:700;letter-spacing:-.04em;line-height:1;margin:14px 0 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt .sub{display:block;font-size:.86rem;color:var(--mut);margin-bottom:12px}
+.opt p{font-size:.96rem;color:var(--mut);margin:0}
+.opt .ic{display:block;font-size:1.6rem;margin-bottom:10px}
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 9px;border:1px solid currentColor}
+.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.mut{color:var(--mut)}
+.card.match{outline:2px solid var(--ok);outline-offset:-2px}
+.mt{display:none!important;margin-top:14px}.card.match .mt{display:inline-block!important}
+/* Hinweisbox */
+.note{display:flex;gap:14px;align-items:flex-start;background:color-mix(in srgb,var(--warn) 14%,var(--pan));border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);border-radius:18px;padding:18px 20px;margin:0 0 22px;font-size:1rem}
+.note .ic{font-size:1.4rem;line-height:1.2;flex:none}
+.note>div>b{display:block;margin-bottom:2px}
+.note p{margin:0}
+/* Merkmals-Karten */
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.crit .card{display:flex;gap:14px;align-items:flex-start}
+.crit .ic{font-size:1.5rem;line-height:1.2;flex:none;width:32px;text-align:center}
+.crit h3{margin:2px 0 6px;font-size:1.08rem}
+.crit p{margin:0;color:var(--mut);font-size:.96rem}
+.crit p b{color:var(--ink);font-weight:600}
+/* Einkaufsliste */
+.shop h3{margin:30px 0 4px;font-size:1.3rem}.shop h3:first-child{margin-top:0}
+.shop .why{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.item{display:flex;gap:14px;align-items:center;background:var(--pan);border-radius:18px;padding:14px 16px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink)}
+.band .item{background:var(--soft);border-color:transparent}
+.item:hover{text-decoration:none;border-color:var(--sky)}
+.item .ic{font-size:1.5rem;flex:none;width:36px;text-align:center}
+.item b{display:block;font-size:.98rem;font-weight:600;letter-spacing:-.01em}
+.item span{display:block;font-size:.84rem;color:var(--mut);line-height:1.35}
+.item .go{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;color:var(--sky);white-space:nowrap}
+.item.pro{border-style:dashed;border-color:var(--line)}
+.item.pro .go{color:var(--warn)}
+/* Tabelle */
+.tbl{overflow-x:auto;border-radius:20px;background:var(--pan);box-shadow:var(--shadow);border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.band .tbl{background:var(--soft);box-shadow:none;border:0}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+td:first-child{color:var(--mut);font-size:.86rem;min-width:150px}
+td b{display:block;font-weight:600;letter-spacing:-.01em;margin-bottom:2px;color:var(--ink);font-size:.98rem}
+td:last-child{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn:hover{text-decoration:none;opacity:.86}
+td .btn{padding:10px 16px;font-size:.88rem}
+.tsub{display:block;color:var(--mut);font-size:.84rem;margin-top:2px}
+/* Checkliste */
+.ck{display:grid;gap:2px}
+.ck label{display:flex;gap:12px;padding:12px 4px;font-size:1rem;align-items:flex-start;border-bottom:1px solid var(--line);cursor:pointer}
+.ck input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--ok)}
+.ckbar{height:6px;background:var(--pan);border-radius:3px;overflow:hidden;margin:6px 0 14px}.ckbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+/* Rechner */
+.calc{display:grid;grid-template-columns:1.12fr .88fr;gap:24px;align-items:start}
+.calc label{display:block;font-size:.95rem;font-weight:500;margin-bottom:14px}
+input[type=range]{width:100%;accent-color:var(--sky);height:32px;margin:6px 0 0}
+.q{display:grid;gap:4px}
+.qb{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.qh{display:flex;gap:12px;align-items:center}
+.qh b{display:block;font-size:1.05rem;letter-spacing:-.01em}.qh span{display:block;font-size:.84rem;color:var(--mut)}
+.qh .qn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.chips button{padding:8px 13px;border-radius:999px;background:var(--soft);color:var(--ink);font-size:.86rem;font-weight:500;border:1px solid transparent}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chips button:hover{border-color:var(--line)}
+.dev{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.dev button{display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 10px;border-radius:14px;background:var(--pan);color:var(--ink);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-size:.86rem;font-weight:500;line-height:1.2;text-align:left}
+.dev button:hover{border-color:var(--sky)}
+.dev button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dev .e{font-size:1.15rem;flex:none}
+.dlh{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px}
+.dl{display:grid;gap:8px}
+.dr{display:grid;grid-template-columns:1fr auto auto;gap:2px 8px;align-items:center;background:var(--pan);border-radius:16px;padding:8px 6px 10px 14px}
+.dr .n{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.96rem;min-width:0}
+.dr .wh{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.dr .x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--mut);font-size:1.4rem;line-height:1}
+.dr .x:hover{background:var(--soft);color:var(--ink)}
+.dr .ip{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;color:var(--mut)}
+.dr .ip label{display:inline-flex;align-items:baseline;gap:5px;margin:0;font-weight:400;font-size:.9rem}
+.dr .vin{font-size:1.08rem;width:4.6ch}
+.dr small{grid-column:1/-1;font-size:.82rem;color:var(--mut);line-height:1.35;margin-top:4px;padding-right:8px}
+.empty{font-size:.92rem;color:var(--mut);margin:12px 0 0}
+.help{border:0;margin-top:4px}.help summary{padding:6px 0;font-size:.88rem;font-weight:500;color:var(--sky);justify-content:flex-start}
+.help summary:after{display:none}.help summary:before{content:"ⓘ";margin-right:6px}
+.help p{font-size:.9rem;color:var(--mut);margin:4px 0 0;max-width:none}
+.more{border-top:0;border-bottom:0!important}.more>summary{font-size:.95rem;padding:4px 0 16px;color:var(--sky)}
+.more>summary:after{width:24px;height:24px}
+.hint{font-size:.84rem;color:var(--mut);margin:6px 0 0}
+.out{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px)}
+.verdict p{font-size:1.1rem;line-height:1.45;margin:8px 0 0}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res div{background:var(--soft);border-radius:18px;padding:16px 18px}
+.res b{display:block;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.res span{font-size:.85rem;color:var(--mut);line-height:1.3;display:block}
+.res .hi{grid-column:1/-1;background:color-mix(in srgb,var(--ok) 16%,var(--soft))}.res .hi span{color:var(--ink)}
+.res .hi b{font-size:clamp(1.35rem,3vw,1.8rem)}
+.res .hi a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.res .hi.neg{background:color-mix(in srgb,var(--warn) 18%,var(--soft))}
+.mods h3{font-size:1rem;margin:0 0 2px}
+.mods>p{font-size:.84rem;color:var(--mut);margin:0 0 6px}
+.mrow{display:grid;gap:6px;padding:12px 0 0;margin-top:10px;border-top:1px solid var(--line)}
+.mrow .tp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.92rem}
+.mrow .tp b{font-weight:600}
+.mrow .tp em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mtr{height:10px;border-radius:5px;background:var(--pan);overflow:hidden}
+.mtr i{display:block;height:100%;width:0;border-radius:5px;background:var(--mut);transition:width .3s}
+.mrow.ok .mtr i{background:var(--ok)}.mrow.bad .mtr i{background:var(--warn)}
+.mrow .st{font-size:.84rem;color:var(--mut)}
+.mrow .st:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:7px;vertical-align:1px}
+.mrow.ok .st:before{background:var(--ok)}.mrow.bad .st:before{background:var(--warn)}
+.rec{display:none;font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--bg);background:var(--ok);border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.mrow.fit .rec{display:inline-block}
+@media(max-width:900px){.out{position:static}}
+/* FAQ */
+details{border-top:1px solid var(--line)}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:20px 0;font-size:1.12rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--mut);font-weight:400}
+details[open] summary:after{content:"–"}
+details>div{padding:0 0 20px}details>div p{max-width:62ch}
+.src{font-size:.86rem;color:var(--mut)}.src ol{padding-left:18px;margin:8px 0 0}.src li{margin:6px 0}.src a{color:var(--mut);word-break:break-word;text-decoration:underline}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+footer{padding:44px 0 52px;font-size:.84rem;color:var(--mut);line-height:1.55;border-top:1px solid var(--line)}
+footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
+footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+@media(max-width:1000px){.grid4{grid-template-columns:1fr 1fr}.dev{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.dev{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.grid4 .opt .kw{font-size:2rem}.hero img{object-position:90% 50%}.pic img{object-position:80% 50%}.items,.crit,.grid4{grid-template-columns:1fr}.dev{grid-template-columns:1fr 1fr}.hero{min-height:70svh}.pic{min-height:68svh}}
+/* Seite: Balkonkraftwerk-Planer */
+.hero{min-height:62vh;min-height:62svh}
+.hero img{object-position:50% 55%}
+@media(max-width:640px){.hero img{object-position:66% 50%}}
+.calc>*{min-width:0}
+.more .qh{margin-top:4px}
+/* Farben der Diagramme: Sonnengelb für selbst genutzten Solarstrom, Grau für das, was ins Netz geht, Blau für den Verbrauch.
+   Für Farbfehlsichtige geprüft; im hellen Modus trägt die Beschriftung und die Tabelle mit, weil Gelb dort wenig Kontrast hat. */
+.bp{--v-solar:#c98500;--v-feed:#6a6a72;--v-clip:#3f3f45;--v-load:#4f8cff;--v-grid:#2e2e32;--v-axis:#47474d;--v-surf:var(--soft)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .bp{--v-solar:#e09600;--v-feed:#a3a3ac;--v-clip:#cdcdd4;--v-load:#1f5fc6;--v-grid:#d9d9de;--v-axis:#b6b6be}}
+:root[data-theme="light"] .bp{--v-solar:#e09600;--v-feed:#a3a3ac;--v-clip:#cdcdd4;--v-load:#1f5fc6;--v-grid:#d9d9de;--v-axis:#b6b6be}
+.bp .card.q{padding-bottom:clamp(14px,2vw,22px)}
+.bp .qb:last-of-type{margin-bottom:0;border-bottom:0;padding-bottom:6px}
+.bp .chips button:disabled{opacity:.4;cursor:not-allowed}
+.bp-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:10px;font-size:.92rem}
+.bp-row b{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.bp-note{font-size:.86rem;color:var(--mut);margin:8px 0 0;line-height:1.4}
+.bp-reg{font-size:.95rem;margin:12px 0 0;font-weight:500}
+.bp-reg.bad{color:var(--warn)}
+.bp-sun{height:8px;border-radius:4px;background:color-mix(in srgb,var(--v-solar) 24%,var(--pan));overflow:hidden;margin:10px 0 6px}
+.bp-sun i{display:block;height:100%;width:14%;border-radius:4px;background:var(--v-solar);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){.bp-sun i{transition:none}}
+/* Kompass und Neigung */
+.bp-dirw{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;align-items:center;margin-top:12px}
+.bp-dirw .chips{margin:0}
+#bp-comp{width:150px;height:150px;display:block;touch-action:none;cursor:grab;border-radius:50%;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+#bp-comp:active{cursor:grabbing}
+#bp-comp:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+#bp-comp .c-ring{fill:var(--pan);stroke:var(--line);stroke-width:1.5}
+#bp-comp .c-sun{fill:none;stroke:var(--v-solar);stroke-width:7;stroke-linecap:round;opacity:.55}
+#bp-comp .c-t{fill:var(--mut);font-size:16px;font-weight:600;text-anchor:middle}
+#bp-comp .c-t.s{fill:var(--ink)}
+#bp-comp .c-arm{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round}
+#bp-comp .c-mod{fill:var(--ink)}
+#bp-comp .c-hub{fill:var(--ink)}
+#bp-comp #bp-ow{display:none}
+#bp-comp.ow #bp-needle{display:none}
+#bp-comp.ow #bp-ow{display:block}
+.bp-tiltw{display:grid;grid-template-columns:104px 1fr;gap:6px 18px;align-items:center;margin-top:12px}
+.bp-tiltw svg{width:104px;height:80px;display:block}
+.bp-tiltw .t-g{stroke:var(--line);stroke-width:2;stroke-linecap:round;fill:none}
+.bp-tiltw .t-m{stroke:var(--ink);stroke-width:5;stroke-linecap:round}
+.bp-tiltw .t-s{fill:var(--v-solar)}
+.bp-tiltw .t-r{stroke:var(--v-solar);stroke-width:2;stroke-linecap:round;opacity:.7}
+.bp .bp-ck{display:flex;gap:12px;align-items:flex-start;margin:14px 0 0;font-size:.95rem;font-weight:500;cursor:pointer;line-height:1.35}
+.bp-ck input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--ok)}
+.bp-ck small{display:block;font-weight:400;color:var(--mut);font-size:.84rem}
+.bp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-top:12px}
+.bp-grid2 label{margin:0;font-size:.86rem;font-weight:500;color:var(--mut);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.bp-grid2 .vin{font-size:1.05rem;width:5ch}
+.bp-link{font-size:.84rem;font-weight:600;color:var(--sky);padding:0;margin-left:6px}
+/* Ergebnis */
+.bp .res .hi{grid-column:1/-1}
+.bp .res b{font-variant-numeric:normal}
+.bp-wait .out,.bp-wait .bp-wide{opacity:.55;transition:opacity .2s}
+.bp-viz{padding:clamp(18px,2.6vw,26px)}
+.bp-viz h3{font-size:1.08rem;margin:0 0 4px}
+.bp-viz>p{font-size:.88rem;color:var(--mut);margin:0 0 10px;line-height:1.4}
+.bp-leg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.84rem;color:var(--mut);margin:0 0 6px}
+.bp-leg span{display:inline-flex;align-items:center;gap:7px}
+.bp-leg [hidden]{display:none}
+.bp-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;flex:none}
+.bp-leg i.ln{height:0;width:16px;border-top:2px solid;border-radius:0;background:none!important}
+.bp-chart{position:relative;min-height:230px}
+.bp-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.bp-f-self{fill:var(--v-solar);background:var(--v-solar)}
+.bp-f-feed{fill:var(--v-feed);background:var(--v-feed)}
+.bp-f-clip{fill:var(--v-clip);background:var(--v-clip)}
+.bp-k-pv{background:var(--v-solar);border-color:var(--v-solar)}
+.bp-k-load{background:var(--v-load);border-color:var(--v-load)}
+.bp-leg i.bp-k-pv{border-top-color:var(--v-solar)}.bp-leg i.bp-k-load{border-top-color:var(--v-load)}
+.bp-grid{stroke:var(--v-grid);stroke-width:1}
+.bp-axis{stroke:var(--v-axis);stroke-width:1}
+.bp-tick{fill:var(--mut);font-size:11px;font-variant-numeric:tabular-nums}
+.bp-lab{fill:var(--ink);font-size:12px;font-weight:600}
+.bp-hit{fill:transparent;cursor:crosshair}
+.bp-col{outline:none}
+.bp-col:hover path,.bp-col:focus path{filter:brightness(1.18)}
+.bp-col:focus-visible .bp-hit{stroke:var(--sky);stroke-width:2}
+.bp-a-pv{fill:var(--v-feed);opacity:.22}
+.bp-a-self{fill:var(--v-solar);opacity:.5}
+.bp-l-pv{fill:none;stroke:var(--v-solar);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.bp-l-load{fill:none;stroke:var(--v-load);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.bp-cap{stroke:var(--mut);stroke-width:1}
+.bp-cross{stroke:var(--mut);stroke-width:1}
+.bp-d-pv{fill:var(--v-solar);stroke:var(--v-surf);stroke-width:2}
+.bp-d-load{fill:var(--v-load);stroke:var(--v-surf);stroke-width:2}
+rect.bp-hit:focus-visible{stroke:var(--sky);stroke-width:2}
+.bp-tip{position:absolute;z-index:5;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:12px;padding:9px 12px;font-size:.82rem;line-height:1.4;white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,.28)}
+.bp-tip b{display:block;font-size:.74rem;font-weight:600;opacity:.7;margin-bottom:2px}
+.bp-tip span{display:flex;align-items:center;gap:6px}
+.bp-tip strong{font-weight:700;font-variant-numeric:tabular-nums}
+.bp-tip i{display:inline-block;width:10px;height:3px;border-radius:2px;flex:none}
+.bp-viz details.help .tbl{margin-top:8px;box-shadow:none;border-radius:14px;max-height:320px;overflow:auto}
+.bp-viz table{font-size:.86rem}
+.bp-viz th,.bp-viz td{padding:8px 10px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.bp-viz tbody th,.bp-viz thead th:first-child{text-align:left}
+.bp-viz tbody th{font-size:.86rem;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:500}
+.bp-viz tbody tr:last-child th,.bp-viz tbody tr:last-child td{font-weight:700}
+#bp-tab-d tbody tr:last-child th,#bp-tab-d tbody tr:last-child td{font-weight:inherit}
+.bp-wide{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px;align-items:start}
+.bp-wide>*{min-width:0}
+/* Vergleich */
+.bp-var{display:grid;gap:8px;margin-top:6px}
+.bp-vr{display:grid;gap:6px;width:100%;text-align:left;padding:12px 14px;border-radius:16px;background:var(--pan);border:1px solid transparent;color:var(--ink)}
+.bp-vr:hover{border-color:var(--line)}
+.bp-vr.cur{border-color:var(--ink)}
+.bp-vr .tp{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.95rem}
+.bp-vr .tp b{font-weight:600}
+.bp-vr .tp em{font-style:normal;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bp-vr .mtr{display:block;height:8px;border-radius:4px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden}
+.bp-vr .mtr i{display:block;height:100%;border-radius:4px;background:var(--v-feed)}
+.bp-vr.cur .mtr i{background:var(--v-solar)}
+.bp-vr .st{font-size:.82rem;color:var(--mut);line-height:1.35}
+.bp-vr .rec,.bp-vr .you{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:999px;padding:2px 7px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.bp-vr .rec{color:var(--bg);background:var(--ok)}
+.bp-vr .rec.alt{color:var(--ink);background:color-mix(in srgb,var(--ok) 24%,transparent)}
+.bp-vr .you{color:var(--ink);border:1px solid currentColor}
+/* kleine Ergebnis-Leiste am Handy */
+.bp-mini{position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:calc(max(16px,env(safe-area-inset-right,0px)) + 56px);bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:54;display:none;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:8px 10px 8px 16px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:.9rem;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.3);text-align:left}
+.bp-mini .tx{display:grid;line-height:1.2;min-width:0}
+.bp-mini .tx b{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp-mini .tx small{font-size:.76rem;font-weight:500;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp-mini .go{flex:none;font-size:.78rem;font-weight:600;background:color-mix(in srgb,var(--bg) 16%,transparent);border-radius:999px;padding:6px 10px}
+@media(max-width:900px){.bp-mini.on{display:flex}.bp-wide{grid-template-columns:1fr}}
+@media(max-width:520px){.bp-dirw{grid-template-columns:1fr;justify-items:center}.bp-dirw .chips{justify-content:center}.bp-dirw .bp-note{text-align:center}.bp-grid2{grid-template-columns:1fr}}
+.items>*{min-width:0}.item>div{min-width:0}
+@media(max-width:380px){.item .go{display:none}}
+@media print{.bp-mini{display:none!important}}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script><script src="/bkw-planer.js" defer></script>
+<script type="application/ld+json" id="ld">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Was bringt ein Balkonkraftwerk an deinem Balkon?", "name": "Balkonkraftwerk-Planer: Ertrag und Ersparnis für deinen Balkon – Strom-Daheim", "description": "Postleitzahl, Ausrichtung und Verbrauch eingeben: Der Planer rechnet mit den Sonnendaten deiner Region aus, wie viel Strom ein Balkonkraftwerk bringt, was du sparst und ob sich ein Speicher lohnt.", "inLanguage": "de-DE", "url": "https://strom-daheim.de/balkonkraftwerk-planer.html", "mainEntityOfPage": "https://strom-daheim.de/balkonkraftwerk-planer.html", "author": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "publisher": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "image": "https://strom-daheim.de/assets/og/balkonkraftwerk-planer.jpg", "dateModified": "2026-11-13", "abstract": "Der Planer rechnet mit den Sonnendaten deiner Region aus, was ein Balkonkraftwerk an deinem Balkon bringt: Zwei Module mit zusammen 900 Wp liefern senkrecht an einem Südbalkon je nach Region etwa 650 bis 780 kWh im Jahr, schräg aufgestellt 900 bis 1.110 kWh. Geld spart nur der Teil, den du selbst nutzt; wie viel das bei deinem Verbrauch ist und ob sich ein Speicher lohnt, zeigt der Vergleich."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wie genau ist der Planer?", "acceptedAnswer": {"@type": "Answer", "text": "Der Ertrag stimmt für ein typisches Jahr gut: In 112 Vergleichen mit dem Rechner PVGIS der Europäischen Kommission lag er im Mittel 0,8 % daneben, höchstens 6 %. Ein einzelnes Jahr kann aber 10 % sonniger oder trüber sein. Unsicherer ist der Eigenverbrauch, denn er hängt an deinem Tagesablauf. Nimm das Ergebnis als ehrliche Schätzung."}}, {"@type": "Question", "name": "Woher kommen die Sonnendaten?", "acceptedAnswer": {"@type": "Answer", "text": "Aus PVGIS, der Datenbank der Europäischen Kommission. Sie beruht auf Satellitenmessungen der Jahre 2005 bis 2023. Wir haben Deutschland in 95 Regionen nach den ersten beiden Ziffern der Postleitzahl geteilt und für jede ein typisches Jahr mit Stundenwerten gespeichert."}}, {"@type": "Question", "name": "Warum nutze ich nur einen Teil des Stroms selbst?", "acceptedAnswer": {"@type": "Answer", "text": "Weil die Module mittags am meisten liefern und viele Haushalte dann wenig verbrauchen. Was gerade niemand braucht, fließt ohne Vergütung ins Netz. Mehr nutzt du, wenn Wasch- und Spülmaschine mittags laufen. Probier den Haken bei Frage 6 aus."}}, {"@type": "Question", "name": "Lohnt sich ein Speicher?", "acceptedAnswer": {"@type": "Answer", "text": "Das hängt an deinem Verbrauch und am Preis. Wähl bei Frage 7 eine Größe und sieh im Vergleich „Was wäre, wenn?“, wie sich der Gewinn nach 15 Jahren ändert. Bei zwei Modulen und kleinem Verbrauch bleibt oft wenig für den Speicher übrig. Mehr dazu im Speicher-Ratgeber ."}}, {"@type": "Question", "name": "Was bringt Ost und West statt Süd?", "acceptedAnswer": {"@type": "Answer", "text": "Übers Jahr weniger Strom, dafür morgens und abends mehr und mittags weniger. Das passt oft besser zum Verbrauch. Stell bei Frage 3 „Ost + West“ ein und vergleiche, wie viel du selbst nutzt."}}, {"@type": "Question", "name": "Mein Balkon zeigt nach Norden. Lohnt sich das?", "acceptedAnswer": {"@type": "Answer", "text": "Selten. Senkrecht nach Norden kommt nur etwa ein Viertel des Ertrags eines Südbalkons an. Rechne es mit deinen Zahlen nach. Flach aufgestellt auf einem Dach oder einer Terrasse sieht es deutlich besser aus."}}, {"@type": "Question", "name": "Wird meine Postleitzahl gespeichert?", "acceptedAnswer": {"@type": "Answer", "text": "Nur in deinem Browser, damit du beim nächsten Besuch nicht alles neu eingeben musst. Geladen wird allein die Datei mit den Sonnendaten deiner Region, erkennbar an den ersten beiden Ziffern."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Strom-Daheim", "item": "https://strom-daheim.de/"}, {"@type": "ListItem", "position": 2, "name": "Was bringt ein Balkonkraftwerk an deinem Balkon?", "item": "https://strom-daheim.de/balkonkraftwerk-planer.html"}]}]}</script>
+</head><body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 10 19 36h11l-3 18 18-27H34z"/></svg><span>Strom-Daheim</span></a><nav class="sh-links" aria-label="Hauptmenü"><a href="/">Balkonkraftwerk</a><a href="/anleitung-balkonkraftwerk.html">Montage</a><a href="/e-auto.html">E-Auto</a><a href="/anleitung-wallbox.html">Wallbox</a><a href="/powerstation.html">Notstrom</a></nav><button class="sh-ic" id="th" type="button" aria-label="Hell oder dunkel umschalten"><svg class="th-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="th-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button><button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menü</span></button></div></header>
+<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in"><div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber"><a href="/#rechner-sektion"><span class="i" aria-hidden="true">☀️</span><span><b>Lohnt sich ein Balkonkraftwerk?</b><small>Rechner mit deinen Zahlen</small></span></a><a href="/balkonkraftwerk-planer.html" aria-current="page"><span class="i" aria-hidden="true">🧭</span><span><b>Balkonkraftwerk-Planer</b><small>Ertrag für deinen Balkon, mit Postleitzahl</small></span></a><a href="/anleitung-balkonkraftwerk.html"><span class="i" aria-hidden="true">🔧</span><span><b>Balkonkraftwerk montieren</b><small>8 Schritte und Einkaufsliste</small></span></a><a href="/#vergleich"><span class="i" aria-hidden="true">⚖️</span><span><b>Welches Set kaufen?</b><small>4 geprüfte Komplettsets</small></span></a><a href="/#speicher"><span class="i" aria-hidden="true">🔋</span><span><b>Lohnt sich ein Speicher?</b><small>Zwei Rechenbeispiele</small></span></a><a href="/e-auto.html"><span class="i" aria-hidden="true">🚗</span><span><b>Was kostet mein E-Auto?</b><small>Ladekosten-Rechner</small></span></a><a href="/anleitung-wallbox.html"><span class="i" aria-hidden="true">🔌</span><span><b>Wallbox installieren</b><small>Schritte, Kosten, Förderung</small></span></a><a href="/powerstation.html"><span class="i" aria-hidden="true">🔦</span><span><b>Powerstation und Notstrom</b><small>Größen-Rechner und Vorsorge-Liste</small></span></a><a href="/stromfresser.html"><span class="i" aria-hidden="true">💡</span><span><b>Stromfresser finden</b><small>Verbrauch vergleichen, Geräte-Rechner</small></span></a><a href="/stromtarif.html"><span class="i" aria-hidden="true">💶</span><span><b>Stromtarif wechseln</b><small>Wechsel-Rechner, dynamischer Tarif</small></span></a><a href="/waermepumpe.html"><span class="i" aria-hidden="true">♨️</span><span><b>Wärmepumpe</b><small>Kosten, Förderung, Altbau</small></span></a><a href="/solar-laden.html"><span class="i" aria-hidden="true">🌞</span><span><b>E-Auto mit Solarstrom laden</b><small>Überschussladen und Rechner</small></span></a><a href="/pv-anlage.html"><span class="i" aria-hidden="true">🏠</span><span><b>Solaranlage aufs Dach</b><small>Kosten, Ertrag, EEG-Reform</small></span></a><a href="/energielabel.html"><span class="i" aria-hidden="true">🏷️</span><span><b>Energielabel und sparsame Geräte</b><small>Label lesen, Tausch-Rechner</small></span></a><a href="/smart-meter.html"><span class="i" aria-hidden="true">📟</span><span><b>Smart Meter</b><small>Pflicht, Kosten, Nutzen</small></span></a><a href="/klimageraet.html"><span class="i" aria-hidden="true">❄️</span><span><b>Klimagerät</b><small>Mobil oder Split, Stromkosten</small></span></a><a href="/heizluefter.html"><span class="i" aria-hidden="true">🔥</span><span><b>Heizlüfter und Elektroheizung</b><small>Stromkosten, Sicherheit</small></span></a><a href="/lueften.html"><span class="i" aria-hidden="true">🪟</span><span><b>Richtig lüften, Schimmel vermeiden</b><small>Wand-Check, Luftfeuchte</small></span></a><a href="/weihnachtsbeleuchtung.html"><span class="i" aria-hidden="true">🎄</span><span><b>Weihnachtsbeleuchtung</b><small>Stromkosten, LED, Sicherheit</small></span></a><a href="/kochen.html"><span class="i" aria-hidden="true">🍳</span><span><b>Kochen mit wenig Strom</b><small>Deckel, Wasserkocher, Induktion</small></span></a><a href="/kuehlschrank.html"><span class="i" aria-hidden="true">🧊</span><span><b>Kühlschrank richtig einstellen</b><small>7 Grad, Abtauen, Dichtung</small></span></a><a href="/waesche-trocknen.html"><span class="i" aria-hidden="true">🧺</span><span><b>Wäsche trocknen im Winter</b><small>Trockner-Kosten, ohne Schimmel</small></span></a><a href="/backen.html"><span class="i" aria-hidden="true">🍪</span><span><b>Plätzchen backen mit wenig Strom</b><small>Backofen-Rechner, Umluft, Restwärme</small></span></a><a href="/spuelmaschine.html"><span class="i" aria-hidden="true">🍽️</span><span><b>Spülmaschine oder Handwäsche</b><small>Eco-Programm, Kosten-Rechner</small></span></a><a href="/waschmaschine.html"><span class="i" aria-hidden="true">🫧</span><span><b>Waschmaschine sparsam nutzen</b><small>40 statt 60 Grad, Spar-Rechner</small></span></a><a href="/zaehlerstand.html"><span class="i" aria-hidden="true">🔢</span><span><b>Zählerstand ablesen</b><small>Kennzahlen, Abschlag-Rechner</small></span></a><a href="/weihnachten-strom.html"><span class="i" aria-hidden="true">🎁</span><span><b>Stromkosten an Weihnachten</b><small>Feiertags-Rechner, Spartipps</small></span></a><a href="/black-friday.html"><span class="i" aria-hidden="true">🏷️</span><span><b>Black Friday 2026</b><small>Echte Angebote erkennen</small></span></a><a href="/#ratgeber"><span class="i" aria-hidden="true">📋</span><span><b>Anmelden, Mieten, Tarif</b><small>Kurz erklärt</small></span></a></nav><div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div><p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p></div></div>
+<main id="main">
+<div class="hero">
+  <picture><source type="image/webp" srcset="assets/balkonkraftwerk-planer-m.webp 960w, assets/balkonkraftwerk-planer.webp 1672w" sizes="100vw"><img src="assets/balkonkraftwerk-planer.jpg" srcset="assets/balkonkraftwerk-planer-m.jpg 960w, assets/balkonkraftwerk-planer.jpg 1672w" sizes="100vw" alt="Balkon eines Mehrfamilienhauses mit zwei schwarzen Solarmodulen am Geländer im warmen Abendlicht" fetchpriority="high"></picture>
+  <div class="wrap">
+    <span class="eyebrow">Planer · Stand 13. November 2026</span>
+    <h1>Was bringt ein Balkonkraftwerk an deinem Balkon?</h1>
+    <p>Postleitzahl, Ausrichtung und Verbrauch eingeben. Der Planer rechnet mit den Sonnendaten deiner Region.</p>
+    <div class="jump"><a class="pri" href="#planer">Planer starten</a><a href="#regeln">Was erlaubt ist</a><a href="#fragen">Häufige Fragen</a></div>
+  </div>
+</div>
+
+<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>Der Planer rechnet mit den Sonnendaten deiner Region aus, was ein Balkonkraftwerk an deinem Balkon bringt: Zwei Module mit zusammen 900&nbsp;Wp liefern senkrecht an einem Südbalkon je nach Region etwa 650 bis 780&nbsp;kWh im Jahr, schräg aufgestellt 900 bis 1.110&nbsp;kWh. Geld spart nur der Teil, den du selbst nutzt; wie viel das bei deinem Verbrauch ist und ob sich ein Speicher lohnt, zeigt der Vergleich.</p></div><details class="toc"><summary><span>Inhalt</span><span class="toc-t">7 Min. Lesezeit</span></summary><ol><li><a href="#planer">Dein Balkon, deine Zahlen</a></li><li><a href="#lesen">So liest du das Ergebnis</a></li><li><a href="#regeln">Was erlaubt ist</a></li><li><a href="#einkauf">Passend zu deinem Ergebnis</a></li><li><a href="#fragen">Kurz beantwortet</a></li></ol></details></div></section>
+<section class="band bp" id="planer"><div class="wrap">
+<div class="head"><span class="eyebrow">Planer</span><h2>Dein Balkon, deine Zahlen.</h2><p class="lede">Acht kurze Angaben. Das Ergebnis ändert sich sofort mit.</p></div>
+<div class="calc">
+  <div class="card q" id="bp-in">
+    <div class="qb">
+      <div class="qh"><span class="qn">1</span><div><b>Wo wohnst du?</b><span>Postleitzahl, für die Sonne in deiner Region</span></div><span class="vbox"><input class="vin wide" id="bp-plz" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="PLZ" aria-label="Postleitzahl" aria-describedby="bp-reg"></span></div>
+      <p class="bp-reg" id="bp-reg" aria-live="polite"></p>
+      <div class="bp-sun" aria-hidden="true"><i id="bp-sun-i"></i></div>
+      <p class="bp-note" id="bp-sun-t"></p>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">2</span><div><b>Wie viele Module?</b><span>Zwei sind Standard</span></div></div>
+      <div class="chips" id="bp-n" role="group" aria-label="Anzahl der Module"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button></div>
+      <div class="qh" style="margin-top:12px"><div><b>Leistung je Modul</b><span>Steht auf dem Datenblatt, meist 400 bis 500</span></div><span class="vbox"><input class="vin" id="bp-wp" type="text" inputmode="numeric" autocomplete="off" aria-label="Leistung je Modul in Watt Peak"><span class="vu">Wp</span></span></div>
+      <input type="range" id="bp-wp-r" min="250" max="550" step="5" value="450" aria-label="Leistung je Modul in Watt Peak">
+      <div class="bp-row"><span>Zusammen <b id="bp-wp-sum"></b></span><span class="pill ok" id="bp-wp-st"></span></div>
+      <p class="bp-note" id="bp-wp-t"></p>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">3</span><div><b>Wohin zeigen die Module?</b><span>Dreh den Kompass oder tipp eine Richtung an</span></div></div>
+      <div class="bp-dirw">
+        <svg id="bp-comp" viewBox="0 0 200 200" role="slider" tabindex="0" aria-label="Ausrichtung der Module" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="0" aria-valuetext="Süden">
+          <circle class="c-ring" cx="100" cy="100" r="72"/>
+          <path class="c-sun" d="M172 100A72 72 0 0 1 28 100"/>
+          <text class="c-t" x="100" y="19">N</text><text class="c-t" x="189" y="105">O</text><text class="c-t s" x="100" y="196">S</text><text class="c-t" x="11" y="105">W</text>
+          <g id="bp-needle" transform="rotate(180 100 100)"><path class="c-arm" d="M100 100V52"/><rect class="c-mod" x="74" y="38" width="52" height="13" rx="4"/></g>
+          <g id="bp-ow"><rect class="c-mod" x="149" y="74" width="13" height="52" rx="4"/><rect class="c-mod" x="38" y="74" width="13" height="52" rx="4"/><path class="c-arm" d="M52 100H148"/></g>
+          <circle class="c-hub" cx="100" cy="100" r="5"/>
+        </svg>
+        <div>
+          <div class="chips" id="bp-dir" role="group" aria-label="Ausrichtung"><button type="button" data-v="-90">Ost</button><button type="button" data-v="-45">Südost</button><button type="button" data-v="0">Süd</button><button type="button" data-v="45">Südwest</button><button type="button" data-v="90">West</button><button type="button" data-v="180">Nord</button><button type="button" data-v="ow">Ost + West</button></div>
+          <p class="bp-note" id="bp-dir-t" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">4</span><div><b>Wie sind sie montiert?</b><span>Neigung gegen den Boden</span></div><span class="vbox"><input class="vin" id="bp-tilt" type="text" inputmode="numeric" autocomplete="off" aria-label="Neigung in Grad"><span class="vu">°</span></span></div>
+      <div class="bp-tiltw">
+        <svg viewBox="0 0 130 100" aria-hidden="true"><circle class="t-s" cx="114" cy="16" r="9"/><path class="t-r" d="M101 27 93 35M106 34 99 41"/><path class="t-g" d="M8 88h114"/><g id="bp-tilt-m"><path class="t-m" d="M86 84V28"/></g></svg>
+        <div>
+          <div class="chips" id="bp-tiltc" role="group" aria-label="Montage"><button type="button" data-v="90">Senkrecht am Geländer</button><button type="button" data-v="70">Schräg am Geländer</button><button type="button" data-v="30">Aufgeständert</button><button type="button" data-v="10">Fast flach</button></div>
+        </div>
+      </div>
+      <input type="range" id="bp-tilt-r" min="0" max="90" step="5" value="90" aria-label="Neigung in Grad">
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">5</span><div><b>Liegt Schatten auf den Modulen?</b><span>Häuser, Bäume, der Balkon gegenüber</span></div></div>
+      <div class="chips" id="bp-shade" role="group" aria-label="Schatten"><button type="button" data-v="0">Frei</button><button type="button" data-v="1">Etwas</button><button type="button" data-v="2">Viel</button></div>
+      <p class="bp-note" id="bp-shade-t" aria-live="polite"></p>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">6</span><div><b>Wie viel Strom brauchst du?</b><span>kWh im Jahr, steht auf der Rechnung</span></div><span class="vbox"><input class="vin wide" id="bp-kwh" type="text" inputmode="numeric" autocomplete="off" aria-label="Stromverbrauch in Kilowattstunden pro Jahr"><span class="vu">kWh</span></span></div>
+      <div class="chips" id="bp-kwhc" role="group" aria-label="Haushalt"><button type="button" data-v="1300">1 Person</button><button type="button" data-v="1900">2 Personen</button><button type="button" data-v="2500">3 Personen</button><button type="button" data-v="2900">4 Personen</button></div>
+      <input type="range" id="bp-kwh-r" min="600" max="8000" step="50" value="1900" aria-label="Stromverbrauch in Kilowattstunden pro Jahr">
+      <div class="qh" style="margin-top:14px"><div><b>Wer ist tagsüber zu Hause?</b><span>An einem normalen Werktag</span></div></div>
+      <div class="chips" id="bp-pres" role="group" aria-label="Anwesenheit tagsüber"><button type="button" data-v="0">Niemand</button><button type="button" data-v="1">Teils</button><button type="button" data-v="2">Meistens</button></div>
+      <label class="bp-ck"><input type="checkbox" id="bp-shift"><span>Wasch- und Spülmaschine laufen mittags<small>Mit Zeitvorwahl oder smarter Steckdose, wenn die Sonne scheint</small></span></label>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">7</span><div><b>Mit Speicher?</b><span>Rettet Mittagsstrom in den Abend</span></div></div>
+      <div class="chips" id="bp-bat" role="group" aria-label="Speicher"><button type="button" data-v="0">Ohne</button><button type="button" data-v="1">1 kWh</button><button type="button" data-v="1.6">1,6 kWh</button><button type="button" data-v="2.7">2,7 kWh</button><button type="button" data-v="5">5 kWh</button></div>
+      <p class="bp-note" id="bp-bat-t"></p>
+    </div>
+    <div class="qb">
+      <div class="qh"><span class="qn">8</span><div><b>Dein Strompreis</b><span>ct pro kWh, Arbeitspreis auf der Rechnung</span></div><span class="vbox"><input class="vin" id="bp-ct" type="text" inputmode="decimal" autocomplete="off" aria-label="Strompreis in Cent pro Kilowattstunde"><span class="vu">ct</span></span></div>
+      <input type="range" id="bp-ct-r" min="15" max="60" step="0.5" value="32" aria-label="Strompreis in Cent pro Kilowattstunde">
+      <div class="qh" style="margin-top:14px"><div><b>Was kostet die Anlage?</b><span>Richtwert, trag den Preis aus deinem Angebot ein<button type="button" class="bp-link" id="bp-cost-reset" hidden>Richtwert</button></span></div><span class="vbox"><input class="vin wide" id="bp-cost" type="text" inputmode="numeric" autocomplete="off" aria-label="Anschaffung in Euro"><span class="vu">€</span></span></div>
+      <input type="range" id="bp-cost-r" min="100" max="4000" step="10" value="350" aria-label="Anschaffung in Euro">
+      <details class="more"><summary>Mehr einstellen: Grundlast, Wechselrichter, Richtpreise</summary>
+        <div class="qh"><div><b>Grundlast</b><span>Was nachts durchläuft. Leer lassen für einen Schätzwert</span></div><span class="vbox"><input class="vin" id="bp-base" type="text" inputmode="numeric" autocomplete="off" aria-label="Grundlast in Watt"><span class="vu">W</span></span></div>
+        <p class="bp-note">So misst du sie: abends den Zählerstand notieren, morgens wieder, den Unterschied durch die Stunden teilen. <a href="/stromfresser.html">Mehr im Ratgeber Stromfresser</a>.</p>
+        <div class="qh" style="margin-top:14px"><div><b>Wechselrichter</b><span>Erlaubt sind höchstens 800 W</span></div></div>
+        <div class="chips" id="bp-cap" role="group" aria-label="Leistung des Wechselrichters"><button type="button" data-v="800">800 W</button><button type="button" data-v="600">600 W (ältere Sets)</button></div>
+        <label class="bp-ck"><input type="checkbox" id="bp-sensor" checked><span>Der Speicher regelt nach dem Zähler<small>Mit Messgerät am Zähler. Ohne gibt er rund um die Uhr nur die Grundlast ab</small></span></label>
+        <div class="qh" style="margin-top:16px"><div><b>Richtpreise für den Vergleich</b><span>In Euro, passe sie an deine Angebote an</span></div></div>
+        <div class="bp-grid2">
+          <label>Je Modul mit Halterung<span class="vbox"><input class="vin" id="bp-pmod" type="text" inputmode="numeric" autocomplete="off" aria-label="Preis je Modul mit Halterung in Euro"><span class="vu">€</span></span></label>
+          <label>Wechselrichter und Kabel<span class="vbox"><input class="vin" id="bp-pinv" type="text" inputmode="numeric" autocomplete="off" aria-label="Preis für Wechselrichter und Kabel in Euro"><span class="vu">€</span></span></label>
+          <label>Speicher je kWh<span class="vbox"><input class="vin" id="bp-pbat" type="text" inputmode="numeric" autocomplete="off" aria-label="Preis des Speichers je Kilowattstunde in Euro"><span class="vu">€</span></span></label>
+          <label>Elektriker (über 960 Wp)<span class="vbox"><input class="vin" id="bp-pel" type="text" inputmode="numeric" autocomplete="off" aria-label="Preis für die Einspeisesteckdose vom Elektriker in Euro"><span class="vu">€</span></span></label>
+        </div>
+        <p class="bp-note">Sets mit zwei Modulen kosten laut homeandsmart (12.11.2026) etwa 200 bis 350&nbsp;€, Speicher laut Verbraucherzentrale Niedersachsen 200 bis 400&nbsp;€ je kWh. Der Elektriker-Preis ist eine Annahme: Hol dir dafür ein Angebot.</p>
+      </details>
+    </div>
+  </div>
+  <div class="out" id="bp-out">
+    <div class="verdict card"><span class="eyebrow">Dein Ergebnis</span><p id="bp-txt" aria-live="polite">Der Planer lädt die Sonnendaten …</p></div>
+    <div class="res" id="bp-res">
+      <div class="hi"><b id="bp-k-eur">–</b><span>sparst du im Jahr</span></div>
+      <div><b id="bp-k-pv">–</b><span>Solarstrom im Jahr</span></div>
+      <div><b id="bp-k-self">–</b><span id="bp-k-share">selbst genutzt</span></div>
+      <div><b id="bp-k-pay">–</b><span>bis die Anlage bezahlt ist</span></div>
+      <div><b id="bp-k-gain">–</b><span>Gewinn nach 15 Jahren</span></div>
+    </div>
+    <p class="hint" style="margin:0">Die Anlage deckt <b id="bp-k-aut">–</b> deines Stromverbrauchs.</p>
+    <p class="hint" id="bp-clip" style="margin:0" hidden></p>
+    <div class="acts" style="margin-top:0"><button class="abtn" type="button" id="bp-share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div>
+    <div class="card bp-viz">
+      <h3>Monat für Monat</h3>
+      <p>So verteilt sich dein Solarstrom über das Jahr.</p>
+      <div class="bp-leg"><span><i class="bp-f-self"></i>Selbst genutzt</span><span><i class="bp-f-feed"></i>Ins Netz, ohne Vergütung</span><span id="bp-leg-clip" hidden><i class="bp-f-clip"></i>Abgeregelt</span></div>
+      <div class="bp-chart" id="bp-chart-m"></div>
+      <details class="help"><summary>Als Tabelle zeigen</summary><div class="tbl"><table id="bp-tab-m"></table></div></details>
+    </div>
+    <details class="help"><summary>So rechnen wir</summary><p>Sonne: Stundenwerte eines typischen Jahres für deine Region aus der Datenbank PVGIS der Europäischen Kommission (Satellitendaten 2005 bis 2023), jeder Monat auf den Mittelwert dieser Jahre gebracht. Daraus rechnen wir für jede Stunde, wie viel Licht bei deiner Ausrichtung und Neigung auf die Module fällt, und ziehen Verluste durch Wärme, flachen Lichteinfall, Schmutz, Kabel und Wechselrichter ab (zusammen rund 10&nbsp;% plus Temperatur). Der Wechselrichter gibt nie mehr ab als seine Grenze. Haushalt: dein Jahresverbrauch verteilt sich nach einem typischen Tagesgang auf Grundlast, mittlere Geräte und starke Geräte wie Herd oder Waschmaschine; selbst genutzt wird, was gleichzeitig mit Solarstrom anfällt. Geld: Ersparnis im ersten Jahr mit deinem Strompreis; für Amortisation und Gewinn steigt der Strompreis um 2&nbsp;% pro Jahr, die Modulleistung sinkt um 0,5&nbsp;% und die Wirkung eines Speichers um 2&nbsp;% pro Jahr. Einspeisung bringt kein Geld. Gegenprobe: Der Ertrag weicht in 112 Vergleichen mit PVGIS im Mittel um 0,8&nbsp;% ab, höchstens um 6&nbsp;%. Ein einzelnes Jahr kann um 10&nbsp;% oder mehr vom typischen Jahr abweichen, und dein Tagesablauf ist nicht der Durchschnitt: Die Zahlen sind eine ehrliche Schätzung, keine Garantie.</p></details>
+  </div>
+</div>
+<div class="bp-wide">
+  <div class="card bp-viz">
+    <h3>Ein Tag im Detail</h3>
+    <p id="bp-day-t">Solarstrom und Verbrauch über den Tag.</p>
+    <div class="chips" id="bp-mon" role="group" aria-label="Monat" style="margin-top:0"><button type="button" data-v="2">März</button><button type="button" data-v="5">Juni</button><button type="button" data-v="8">September</button><button type="button" data-v="11">Dezember</button></div>
+    <div class="chips" id="bp-sky" role="group" aria-label="Wetter"><button type="button" data-v="1">Sonniger Tag</button><button type="button" data-v="0">Trüber Tag</button></div>
+    <div class="bp-leg" style="margin-top:10px"><span><i class="ln bp-k-pv"></i>Solarstrom</span><span><i class="bp-f-self"></i>davon selbst genutzt</span><span><i class="ln bp-k-load"></i>Verbrauch im Mittel</span></div>
+    <div class="bp-chart" id="bp-chart-d"></div>
+    <details class="help"><summary>Als Tabelle zeigen</summary><div class="tbl"><table id="bp-tab-d"></table></div></details>
+  </div>
+  <div class="card bp-viz">
+    <h3>Was wäre, wenn?</h3>
+    <p id="bp-var-t">Der Vergleich rechnet andere Größen mit deinen Angaben durch.</p>
+    <div class="bp-var" id="bp-var" aria-live="polite"></div>
+    <p class="bp-note">Balken: Gewinn nach 15 Jahren, also Ersparnis minus Anschaffung. Gerechnet mit den Richtpreisen aus „Mehr einstellen“; die Preise im Handel ändern sich fast täglich.</p>
+  </div>
+</div>
+</div></section>
+<button type="button" class="bp-mini" id="bp-mini" aria-label="Zum Ergebnis springen"><span class="tx"><b id="bp-mini-t"></b><small id="bp-mini-s"></small></span><span class="go">Ergebnis</span></button>
+
+<section id="lesen"><div class="wrap">
+<div class="head"><span class="eyebrow">Verstehen</span><h2>So liest du das Ergebnis.</h2></div>
+<div class="crit">
+  <div class="card"><span class="ic" aria-hidden="true">☀️</span><div><h3>Solarstrom im Jahr</h3><p>Was am Stecker ankommt. Zwei Module mit zusammen 900&nbsp;Wp liefern senkrecht an einem Südbalkon je nach Region etwa <b>650 bis 780&nbsp;kWh</b>, schräg aufgestellt mit 30&nbsp;° etwa 900 bis 1.110&nbsp;kWh.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🏠</span><div><h3>Selbst genutzt</h3><p>Nur dieser Teil spart Geld. Er hängt an deinem Verbrauch am Tag: Die <b>Grundlast</b> aus Kühlschrank, Router und Standby läuft immer mit, Herd und Waschmaschine nur manchmal.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">⏳</span><div><h3>Bezahlt nach</h3><p>So lange dauert es, bis die Ersparnis den Kaufpreis eingespielt hat. Trag den <b>Preis aus deinem Angebot</b> ein, dann stimmt die Zahl für dich.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">✂️</span><div><h3>Abgeregelt</h3><p>Der Wechselrichter gibt höchstens <b>800&nbsp;W</b> ab. Vier Module erzeugen mittags mehr; der Überschuss geht verloren, wenn ihn kein Speicher aufnimmt.</p></div></div>
+</div>
+</div></section>
+
+<figure class="fig">
+  <picture><source type="image/webp" srcset="assets/balkonkraftwerk-planer-2-m.webp 800w, assets/balkonkraftwerk-planer-2.webp 1440w" sizes="(max-width:940px) 100vw, 900px"><img src="assets/balkonkraftwerk-planer-2.jpg" srcset="assets/balkonkraftwerk-planer-2-m.jpg 800w, assets/balkonkraftwerk-planer-2.jpg 1440w" sizes="(max-width:940px) 100vw, 900px" alt="Zwei Solarmodule, schräg aufgestellt auf einer Dachterrasse, dahinter die tief stehende Sonne" loading="lazy" width="1440" height="960"></picture>
+  <figcaption>Schräg aufgestellt bringen Module übers Jahr deutlich mehr als senkrecht am Geländer. Von November bis Februar liegt die senkrechte Montage vorn.</figcaption>
+</figure>
+
+<section class="band" id="regeln"><div class="wrap">
+<div class="head"><span class="eyebrow">Regeln 2026</span><h2>Was erlaubt ist.</h2><p class="lede">Der Planer hält sich an diese Grenzen und warnt, wenn du sie überschreitest.</p></div>
+<div class="crit">
+  <div class="card"><span class="ic" aria-hidden="true">⚡</span><div><h3>800 Watt am Wechselrichter</h3><p>Mehr darf ein Balkonkraftwerk nicht ins Hausnetz geben. Die Module dürfen zusammen bis zu <b>2.000&nbsp;Wp</b> haben.</p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🔌</span><div><h3>Bis 960 Wp in die normale Steckdose</h3><p>Das regelt seit Dezember 2025 die Norm DIN VDE V 0126-95. Darüber setzt ein <b>Elektriker</b> eine Einspeisesteckdose. <a href="/anleitung-balkonkraftwerk.html">Montage Schritt für Schritt</a></p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">📋</span><div><h3>Anmelden in 20 Minuten</h3><p>Innerhalb eines Monats im <b>Marktstammdatenregister</b>, kostenlos. Den Netzbetreiber musst du nicht extra informieren. <a href="/#ratgeber">So geht die Anmeldung</a></p></div></div>
+  <div class="card"><span class="ic" aria-hidden="true">🏢</span><div><h3>Zur Miete</h3><p>Seit Oktober 2024 kannst du vom Vermieter die <b>Erlaubnis verlangen</b> (§&nbsp;554 BGB). Er darf Auflagen zur Befestigung machen. <a href="/#ratgeber">Was der Vermieter darf</a></p></div></div>
+</div>
+</div></section>
+
+<section id="einkauf"><div class="wrap">
+<div class="head"><span class="eyebrow">Nächster Schritt</span><h2>Passend zu deinem Ergebnis.</h2><p class="lede">Erst die Ratgeber, dann die Suche. Die Amazon-Links führen zu einer Suche.<span class="tag">Anzeige</span></p></div>
+<div class="items">
+  <a class="item" href="/#vergleich"><span class="ic" aria-hidden="true">⚖️</span><div><b>Vier geprüfte Komplettsets</b><span>Mit Modulen, Wechselrichter und für wen sie passen</span></div><span class="go">Zum Vergleich →</span></a>
+  <a class="item" href="/#speicher"><span class="ic" aria-hidden="true">🔋</span><div><b>Lohnt sich ein Speicher?</b><span>Kosten, Verluste und zwei Rechenbeispiele</span></div><span class="go">Zum Ratgeber →</span></a>
+  <a class="item" href="/anleitung-balkonkraftwerk.html"><span class="ic" aria-hidden="true">🔧</span><div><b>Balkonkraftwerk montieren</b><span>Acht Schritte und die Einkaufsliste</span></div><span class="go">Zur Anleitung →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Balkonkraftwerk+800W+Komplettset+2+Module&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">☀️</span><div><b>Sets mit zwei Modulen</b><span>800&nbsp;W Wechselrichter, bis 960&nbsp;Wp für die normale Steckdose</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Balkonkraftwerk+Speicher&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🔋</span><div><b>Speicher für Balkonkraftwerke</b><span>Achte auf nutzbare kWh und ein Messgerät für den Zähler</span></div><span class="go">Ansehen →</span></a>
+  <a class="item" href="https://www.amazon.de/s?k=Strommessger%C3%A4t+Steckdose&amp;tag=stromdaheim-21" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">📟</span><div><b>Strommessgerät</b><span>Zeigt, was Kühlschrank und Standby wirklich ziehen</span></div><span class="go">Ansehen →</span></a>
+</div>
+</div></section>
+
+<section class="band" id="fragen"><div class="wrap read">
+<div class="head"><span class="eyebrow">Häufige Fragen</span><h2>Kurz beantwortet.</h2></div>
+<details><summary>Wie genau ist der Planer?</summary><div><p>Der Ertrag stimmt für ein typisches Jahr gut: In 112 Vergleichen mit dem Rechner PVGIS der Europäischen Kommission lag er im Mittel 0,8&nbsp;% daneben, höchstens 6&nbsp;%. Ein einzelnes Jahr kann aber 10&nbsp;% sonniger oder trüber sein. Unsicherer ist der Eigenverbrauch, denn er hängt an deinem Tagesablauf. Nimm das Ergebnis als ehrliche Schätzung.</p></div></details>
+<details><summary>Woher kommen die Sonnendaten?</summary><div><p>Aus PVGIS, der Datenbank der Europäischen Kommission. Sie beruht auf Satellitenmessungen der Jahre 2005 bis 2023. Wir haben Deutschland in 95 Regionen nach den ersten beiden Ziffern der Postleitzahl geteilt und für jede ein typisches Jahr mit Stundenwerten gespeichert.</p></div></details>
+<details><summary>Warum nutze ich nur einen Teil des Stroms selbst?</summary><div><p>Weil die Module mittags am meisten liefern und viele Haushalte dann wenig verbrauchen. Was gerade niemand braucht, fließt ohne Vergütung ins Netz. Mehr nutzt du, wenn Wasch- und Spülmaschine mittags laufen. Probier den Haken bei Frage 6 aus.</p></div></details>
+<details><summary>Lohnt sich ein Speicher?</summary><div><p>Das hängt an deinem Verbrauch und am Preis. Wähl bei Frage 7 eine Größe und sieh im Vergleich „Was wäre, wenn?“, wie sich der Gewinn nach 15 Jahren ändert. Bei zwei Modulen und kleinem Verbrauch bleibt oft wenig für den Speicher übrig. Mehr dazu im <a href="/#speicher">Speicher-Ratgeber</a>.</p></div></details>
+<details><summary>Was bringt Ost und West statt Süd?</summary><div><p>Übers Jahr weniger Strom, dafür morgens und abends mehr und mittags weniger. Das passt oft besser zum Verbrauch. Stell bei Frage 3 „Ost + West“ ein und vergleiche, wie viel du selbst nutzt.</p></div></details>
+<details><summary>Mein Balkon zeigt nach Norden. Lohnt sich das?</summary><div><p>Selten. Senkrecht nach Norden kommt nur etwa ein Viertel des Ertrags eines Südbalkons an. Rechne es mit deinen Zahlen nach. Flach aufgestellt auf einem Dach oder einer Terrasse sieht es deutlich besser aus.</p></div></details>
+<details><summary>Wird meine Postleitzahl gespeichert?</summary><div><p>Nur in deinem Browser, damit du beim nächsten Besuch nicht alles neu eingeben musst. Geladen wird allein die Datei mit den Sonnendaten deiner Region, erkennbar an den ersten beiden Ziffern.</p></div></details>
+</div></section>
+
+<section><div class="wrap read">
+<div class="cta"><a class="btn" href="#planer">Planer starten</a><a class="btn sec" href="/#vergleich">Sets vergleichen</a></div>
+<div class="src" style="margin-top:32px"><b>Quellen</b><ol>
+<li>Europäische Kommission, Gemeinsame Forschungsstelle: PVGIS, Datenbank PVGIS-SARAH3, Jahre 2005 bis 2023 (abgerufen am 13.11.2026) <a href="https://re.jrc.ec.europa.eu/pvg_tools/de/" target="_blank" rel="noopener">re.jrc.ec.europa.eu</a></li>
+<li>co2online: Stromspiegel für Deutschland 2025, Vergleichswerte für Wohnungen <a href="https://mieterbund.de/app/uploads/2025/05/stromspiegel-flyer-2025-web.pdf" target="_blank" rel="noopener">mieterbund.de (PDF)</a></li>
+<li>homeandsmart: Balkonkraftwerk und Speicher, Kosten auf einen Blick (12.11.2026) <a href="https://www.homeandsmart.de/balkonkraftwerke-kosten" target="_blank" rel="noopener">homeandsmart.de</a></li>
+<li>Verbraucherzentrale Niedersachsen: Batteriespeicher für Balkonkraftwerke: Lohnt sich das? (Stand 01.07.2026) <a href="https://www.verbraucherzentrale-niedersachsen.de/wissen/energie/erneuerbare-energien/batteriespeicher-fuer-balkonkraftwerke-lohnt-sich-das-123659" target="_blank" rel="noopener">verbraucherzentrale-niedersachsen.de</a></li>
+<li>homeandsmart: Balkonkraftwerk anmelden 2026 (aktualisiert 02.04.2026) <a href="https://www.homeandsmart.de/balkonkraftwerk-anmeldung-047037" target="_blank" rel="noopener">homeandsmart.de</a></li>
+<li>HTW Berlin: Stecker-Solar-Simulator, zum Vergleichen <a href="https://solar.htw-berlin.de/rechner/stecker-solar-simulator/" target="_blank" rel="noopener">solar.htw-berlin.de</a></li>
+</ol><p style="margin-top:12px">Sonnendaten: PVGIS © Europäische Union, 2001–2026. Modellrechnung von Strom-Daheim, keine Beratung im Einzelfall. Geprüft am 13.11.2026.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>
+<nav class="fl fc" aria-label="Alle Seiten"><div><p class="fc-h">Solar und Balkon</p><a href="/">Balkonkraftwerk-Rechner</a><a href="/balkonkraftwerk-planer.html" aria-current="page">Balkonkraftwerk-Planer</a><a href="/anleitung-balkonkraftwerk.html">Balkonkraftwerk montieren</a><a href="/pv-anlage.html">Solaranlage aufs Dach</a><a href="/powerstation.html">Powerstation und Notstrom</a></div><div><p class="fc-h">E-Auto</p><a href="/e-auto.html">E-Auto laden</a><a href="/anleitung-wallbox.html">Wallbox-Anleitung</a><a href="/solar-laden.html">Mit Solarstrom laden</a></div><div><p class="fc-h">Haushalt</p><a href="/stromfresser.html">Stromfresser finden</a><a href="/energielabel.html">Energielabel</a><a href="/kochen.html">Kochen mit wenig Strom</a><a href="/kuehlschrank.html">Kühlschrank einstellen</a><a href="/spuelmaschine.html">Spülmaschine</a><a href="/waschmaschine.html">Waschmaschine</a><a href="/waesche-trocknen.html">Wäsche trocknen</a><a href="/backen.html">Plätzchen backen</a><a href="/weihnachtsbeleuchtung.html">Weihnachtsbeleuchtung</a><a href="/weihnachten-strom.html">Stromkosten an Weihnachten</a><a href="/black-friday.html">Black Friday</a></div><div><p class="fc-h">Heizen und Lüften</p><a href="/waermepumpe.html">Wärmepumpe</a><a href="/heizluefter.html">Heizlüfter</a><a href="/klimageraet.html">Klimagerät</a><a href="/lueften.html">Richtig lüften</a></div><div><p class="fc-h">Tarif und Zähler</p><a href="/stromtarif.html">Stromtarif wechseln</a><a href="/smart-meter.html">Smart Meter</a><a href="/zaehlerstand.html">Zählerstand ablesen</a></div><div><p class="fc-h">Strom-Daheim</p><a href="/so-arbeiten-wir.html">So arbeiten wir</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="https://stil-daheim.de/">Schwesterseite Stil-Daheim</a></div></nav><p class="fc-c">© 2026 Strom-Daheim</p>
+</div></footer>
+<script>
+/* Besucherzähler: GoatCounter ohne Cookies, ohne Fremdskript. Zählt Seitenaufrufe und Klicks auf Partnerlinks. */
+(function(){if(location.hostname!=='strom-daheim.de')return;var E='https://stromdaheim.goatcounter.com/count';
+function send(q){var u=E+'?'+q+'&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(e){}}new Image().src=u}
+var e=encodeURIComponent;send('p='+e(location.pathname)+'&t='+e(document.title)+'&r='+e(document.referrer));
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href*="amazon.de"]');if(!a)return;var m=a.href.match(/[?&]k=([^&]+)/),l=m?decodeURIComponent(m[1].replace(/\+/g,' ')):(a.textContent||'amazon').trim().slice(0,60);
+send('p='+e('amazon: '+l)+'&t='+e('Klick von '+location.pathname)+'&e=true')},true)})();
+</script>
+</body></html>

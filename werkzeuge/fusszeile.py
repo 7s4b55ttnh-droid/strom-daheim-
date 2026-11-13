@@ -12,7 +12,7 @@ import re, pathlib, html as H
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SPALTEN = [('solar', 'Solar und Balkon'), ('auto', 'E-Auto'), ('haushalt', 'Haushalt'), ('heizen', 'Heizen und Lüften'), ('tarif', 'Tarif und Zähler')]
 TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
-    '/': 'Balkonkraftwerk-Rechner', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/pv-anlage.html': 'Solaranlage aufs Dach',
+    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/pv-anlage.html': 'Solaranlage aufs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
     '/stromfresser.html': 'Stromfresser finden', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',

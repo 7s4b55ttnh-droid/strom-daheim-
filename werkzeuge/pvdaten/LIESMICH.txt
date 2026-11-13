@@ -1,0 +1,37 @@
+Sonnendaten für den Balkonkraftwerk-Planer (balkonkraftwerk-planer.html, Rechenkern und Oberfläche in /bkw-planer.js)
+
+Was liegt wo
+  assets/pv/<NN>.json   eine Datei je PLZ-Region (NN = erste zwei Ziffern), rund 35 kB: typisches Jahr mit 8760 Stundenwerten
+                        (g = Globalstrahlung, f = Anteil Himmelslicht, t = Lufttemperatur, je ein Byte, Base64), dazu Ort, Wind, Jahressumme.
+  werkzeuge/pvdaten/    regionen.py (95 Regionen mit Name und Koordinaten), holen.py (lädt Rohdaten von PVGIS),
+                        kodieren.py und alle.py (bauen die Dateien), gegenprobe.js und referenz.json (Prüfung gegen PVGIS).
+  werkzeuge/planer-test.js   Bedientest der Seite mit Playwright (Handy mit Touch, Desktop mit Maus und Tastatur).
+
+Quelle und Lizenz
+  PVGIS 5.3 der Europäischen Kommission (Gemeinsame Forschungsstelle), Datenbank PVGIS-SARAH3, Jahre 2005 bis 2023.
+  Nutzung frei mit Quellenangabe: "PVGIS © Europäische Union". Die Angabe steht auf der Seite bei den Quellen und muss dort bleiben.
+
+Daten neu bauen (nur nötig, wenn PVGIS neue Jahre liefert oder eine Region dazukommt)
+  cd werkzeuge/pvdaten && python3 holen.py && python3 alle.py && node gegenprobe.js
+  Für die Gegenprobe gelten die gespeicherten Referenzwerte; bei neuen PVGIS-Jahren die Werte in referenz.json neu abrufen
+  (PVcalc, loss=10, usehorizon=0, pvtechchoice=crystSi, mountingplace=free).
+
+Prüfen nach jeder Änderung an bkw-planer.js oder der Seite
+  node werkzeuge/pvdaten/gegenprobe.js          (Ertrag gegen PVGIS: im Mittel unter 1,5 %, größte Abweichung unter 8 %)
+  node werkzeuge/planer-test.js                 (lokaler Server auf Port 8765 im Ordner der Website nötig: python3 -m http.server 8765)
+
+So rechnet der Planer (Kurzfassung, Einzelheiten als Kommentare in bkw-planer.js)
+  Sonne: Stundenwerte des typischen Jahres, jeder Monat auf die Mittelwerte 2005 bis 2023 gebracht (direkt und diffus getrennt).
+  Fläche: Himmelslicht nach Muneer wie in PVGIS, Bodenreflexion 20 %, Reflexionsverluste nach Martin und Ruiz.
+  Modul: Wirkungsgrad nach Huld (kristallines Silizium), Modultemperatur nach Faiman mit dem Wind der Region.
+  Verluste: 5,5 % vor dem Wechselrichter, 4,5 % im Wechselrichter, Grenze 800 W (oder 600 W).
+  Haushalt: Jahresverbrauch = Grundlast (3,8 % des Jahresverbrauchs in Watt, überschreibbar) + mittlere Geräte + starke Geräte (2.000 W),
+            verteilt nach Tagesgang (werktags je nach Anwesenheit, Wochenende eigen). Selbst genutzt wird der Erwartungswert von min(Solar, Last).
+  Speicher: 90 % nutzbar, laden 94 %, entladen 90 %, 4 % Regelverlust, 4 W Eigenverbrauch; ohne Messgerät gibt er nur die Grundlast ab.
+  Geld: Strompreis +2 % pro Jahr, Module -0,5 %, Speicherwirkung -2 % pro Jahr; Betrachtung 15 Jahre; Einspeisung ohne Vergütung.
+
+Was Agenten nicht ändern, ohne neu zu prüfen
+  Die Zahlen im Abschnitt "So liest du das Ergebnis", in "Kurz gesagt" (werkzeuge/seo.py) und in den Fragen stammen aus dem Rechenkern.
+  Wer den Rechenkern oder die Daten ändert, rechnet sie neu nach und passt die Texte an.
+  Richtpreise (Modul 125 €, Wechselrichter 100 €, Speicher 300 €/kWh, Elektriker 200 €) stehen als DEF in bkw-planer.js und im Hinweistext der Seite;
+  sonntags vom Prüf-Agenten mit den Quellen der Seite abgleichen.
