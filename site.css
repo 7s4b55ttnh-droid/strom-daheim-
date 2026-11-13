@@ -222,3 +222,18 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 
 .ki-hinweis{margin:0 0 10px;font-size:.8rem;line-height:1.4;color:var(--mut)}
 .ki-cap{font-style:italic}
+
+/* Ergebnis-Karte (Design-Agent 13.11.2026): Das Hauptergebnis eines Rechners (.res > .hi) ist die größte Zahl der Seite,
+   mit Akzentkante. Vergleichsbalken unter zwei Ergebnissen, wenn die .res das Attribut data-vs trägt (site.js). */
+.res>div.hi{position:relative;overflow:hidden;padding:22px 22px 20px 26px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--ok) 22%,var(--soft)),color-mix(in srgb,var(--ok) 8%,var(--soft)) 70%)}
+.res>div.hi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--ok)}
+.res>div.hi b{font-size:clamp(2.5rem,9vw,3.5rem);letter-spacing:-.04em;margin-bottom:6px}
+.res>div.hi span{font-size:1rem;font-weight:600;color:var(--ink);line-height:1.35}
+.res>div.hi.neg{background:linear-gradient(135deg,color-mix(in srgb,var(--warn) 22%,var(--soft)),color-mix(in srgb,var(--warn) 8%,var(--soft)) 70%)}
+.res>div.hi.neg::before{background:var(--warn)}
+.res .vs{display:block;height:8px;margin-top:12px;border-radius:4px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden}
+.res .vs i{display:block;height:100%;width:0;border-radius:4px;background:color-mix(in srgb,var(--ink) 42%,transparent);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.res .vs.lead i{background:var(--sun)}
+.res[data-vs].vs-off .vs{display:none}
+@media (prefers-reduced-motion:reduce){.res .vs i{transition:none}}
+@media print{.res>div.hi::before,.res .vs{display:none}}

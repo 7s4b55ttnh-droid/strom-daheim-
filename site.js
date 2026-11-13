@@ -222,3 +222,22 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   all();addEventListener('load',function(){all();list.forEach(put)});
   if(window.MutationObserver)new MutationObserver(all).observe(document.body,{childList:true,subtree:true});
 })();
+
+/* Vergleichsbalken (Design-Agent 13.11.2026): In .res[data-vs] bekommen die ersten beiden Ergebnisse je einen Balken,
+   Länge im Verhältnis der beiden Zahlen. Nur wenn beide dieselbe Einheit haben; der größere Betrag ist sonnengelb.
+   Rein optisch (aria-hidden), die Zahlen stehen daneben. */
+(function(){
+  var d=document,boxes=[].slice.call(d.querySelectorAll('.res[data-vs]'));if(!boxes.length)return;
+  function parse(t){t=String(t||'').replace(/ /g,' ').trim();var m=t.match(/^[^\d-]*(-?[\d.]+(?:,\d+)?)\s*(.*)$/);if(!m)return null;
+    var v=parseFloat(m[1].replace(/\./g,'').replace(',','.'));return isNaN(v)?null:{v:Math.abs(v),u:m[2].trim()}}
+  boxes.forEach(function(box){
+    var items=[].slice.call(box.children).filter(function(c){return c.querySelector('b')&&!c.classList.contains('hi')}).slice(0,2);
+    if(items.length<2)return;
+    var bars=items.map(function(it){var s=d.createElement('span');s.className='vs';s.setAttribute('aria-hidden','true');s.appendChild(d.createElement('i'));it.appendChild(s);return s});
+    function upd(){var a=parse(items[0].querySelector('b').textContent),b=parse(items[1].querySelector('b').textContent);
+      var ok=a&&b&&a.u===b.u&&(a.v>0||b.v>0);box.classList.toggle('vs-off',!ok);if(!ok)return;
+      var mx=Math.max(a.v,b.v);[a,b].forEach(function(x,i){bars[i].firstChild.style.width=(x.v/mx*100).toFixed(1)+'%';bars[i].classList.toggle('lead',x.v===mx&&a.v!==b.v)})}
+    var mo=new MutationObserver(upd);items.forEach(function(it){mo.observe(it.querySelector('b'),{childList:true,characterData:true,subtree:true})});
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();upd()}},{threshold:.3});io.observe(box)}else upd();
+  });
+})();
