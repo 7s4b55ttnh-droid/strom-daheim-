@@ -43,6 +43,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/waschmaschine.html', '🫧', 'Waschmaschine sparsam nutzen', '40 statt 60 Grad, Spar-Rechner', 'waschmaschine'),
         ('/durchlauferhitzer.html', '🚿', 'Durchlauferhitzer', 'Duschkosten-Rechner, Sparkopf', 'durchlauferhitzer'),
         ('/zaehlerstand.html', '🔢', 'Zählerstand ablesen', 'Kennzahlen, Abschlag-Rechner', 'zaehlerstand'),
+        ('/lexikon.html', '📖', 'Lexikon', 'Strom-Begriffe einfach erklärt', 'lexikon'),
         ('/weihnachten-strom.html', '🎁', 'Stromkosten an Weihnachten', 'Feiertags-Rechner, Spartipps', 'weihnachten-strom'),
         ('/black-friday.html', '🏷️', 'Black Friday 2026', 'Echte Angebote erkennen', 'black-friday'),
         ('/#ratgeber', '📋', 'Anmelden, Mieten, Tarif', 'Kurz erklärt', None)]

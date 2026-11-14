@@ -186,7 +186,7 @@ def region(plz, kopf_html, fuss_html, goat):
         {'@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': 1, 'name': 'Strom-Daheim', 'item': SITE + '/'},
                                                         {'@type': 'ListItem', 'position': 2, 'name': 'Solar-Atlas', 'item': SITE + '/solar-atlas.html'},
                                                         {'@type': 'ListItem', 'position': 3, 'name': r['name'], 'item': u}]}]}
-    head = head.replace('</head>', '<script type="application/ld+json" id="ld">%s</script>\n</head>' % json.dumps(ld, ensure_ascii=False).replace('</', '<\\/'), 1)
+    head += '\n<script type="application/ld+json" id="ld">%s</script>' % json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')
     dm = (r['dach'] / MEAN['dach'] - 1) * 100
     vergleich = 'so viel wie im Schnitt aller Regionen' if abs(dm) < 0.5 else '%s&nbsp;%% %s als im Schnitt aller Regionen' % (z(abs(dm)) if abs(dm) >= 1 else '1', 'mehr' if dm > 0 else 'weniger')
     tab = ''.join('<tr><th scope="row">%d° geneigt</th>%s</tr>' % (A['neigung'][i], ''.join('<td%s>%s</td>' % (' class="mx"' if v == max(max(x) for x in r['tab']) else '', z(v)) for v in row)) for i, row in enumerate(r['tab']))

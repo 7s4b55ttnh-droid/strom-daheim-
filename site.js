@@ -253,6 +253,41 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
 })();
 
+/* Lexikon im Text: Fachbegriffe in Absätzen und Listen werden gepunktet unterstrichen; Antippen zeigt die Erklärung in einem Satz.
+   Daten: /assets/lexikon.json (aus werkzeuge/lexikon.json, gebaut von werkzeuge/lexikon.py). Jeder Begriff höchstens einmal je Seite,
+   höchstens 8 je Seite, nicht in Links, Überschriften, Knöpfen, Rechnern. Abschalten für einen Bereich: Attribut data-nolx. */
+(function(){
+  var d=document;if(d.documentElement.classList.contains('emb')||/^\/lexikon(\/|\.html)/.test(location.pathname))return;
+  var pop=null,cur=null;
+  function close(){if(pop){pop.hidden=true}if(cur){cur.setAttribute('aria-expanded','false');cur=null}}
+  function open(el){
+    if(cur===el){close();return}close();
+    if(!pop){pop=d.createElement('div');pop.className='lx-pop';pop.id='lx-pop';pop.setAttribute('role','tooltip');d.body.appendChild(pop)}
+    var t=el.__lx;pop.innerHTML='<b></b><p></p><a>Mehr im Lexikon</a>';pop.firstChild.textContent=t.n;pop.children[1].textContent=t.k;pop.lastChild.href=t.u;
+    pop.hidden=false;cur=el;el.setAttribute('aria-expanded','true');
+    var r=el.getBoundingClientRect(),w=Math.min(340,innerWidth-24);pop.style.width=w+'px';
+    var x=Math.max(12,Math.min(innerWidth-w-12,r.left+r.width/2-w/2)),h=pop.offsetHeight,up=r.bottom+h+14>innerHeight&&r.top-h-10>60;
+    pop.style.left=(x+scrollX)+'px';pop.style.top=(up?r.top+scrollY-h-10:r.bottom+scrollY+10)+'px'}
+  function mark(L){
+    var rx,by={},words=[];
+    L.forEach(function(t){if(t.l&&t.l.indexOf(location.pathname)>=0)return;t.w.forEach(function(w){by[w.toLowerCase()]=t;words.push(w)})});
+    if(!words.length)return;words.sort(function(a,b){return b.length-a.length});
+    try{rx=new RegExp('(?<![A-Za-zÄÖÜäöüß0-9-])('+words.map(function(w){return w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')(?![A-Za-zÄÖÜäöüß0-9-])')}catch(e){return}
+    var main=d.querySelector('main');if(!main)return;
+    var tw=d.createTreeWalker(main,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentElement;
+      if(!p||!p.closest('p,li')||p.closest('a,button,h1,h2,h3,h4,label,summary,figcaption,.lx,.calc,.res,.hero,.kurz,.note,.cta,.chips,table,nav,script,style,[data-nolx],[hidden]'))return NodeFilter.FILTER_REJECT;
+      return n.nodeValue.length>3?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}}),nodes=[],n,done={},cnt=0;
+    while((n=tw.nextNode()))nodes.push(n);
+    for(var i=0;i<nodes.length&&cnt<8;i++){var m=rx.exec(nodes[i].nodeValue);if(!m)continue;var t=by[m[1].toLowerCase()];if(!t||done[t.u])continue;done[t.u]=1;cnt++;
+      var mid=nodes[i].splitText(m.index);mid.splitText(m[1].length);var sp=d.createElement('span');sp.className='lx';sp.tabIndex=0;sp.setAttribute('role','button');sp.setAttribute('aria-expanded','false');sp.setAttribute('aria-controls','lx-pop');sp.__lx=t;
+      mid.parentNode.replaceChild(sp,mid);sp.appendChild(mid)}
+    if(!cnt)return;
+    d.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('.lx');if(el){open(el);return}if(pop&&!pop.hidden&&!e.target.closest('.lx-pop'))close()});
+    d.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){var c=cur;close();c.focus()}else if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('lx')){e.preventDefault();open(e.target)}});
+    addEventListener('resize',close)}
+  addEventListener('load',function(){setTimeout(function(){fetch('/assets/lexikon.json').then(function(r){return r.ok?r.json():[]}).then(mark).catch(function(){})},400)});
+})();
+
 /* KI-Kennzeichnung (seit 11.11.2026, Pflicht, Wunsch des Inhabers: dezent, aber klar). Läuft automatisch für alle Fotos aus assets/:
    - Foto in einer Link-Kachel (Galerie): keine Marke aufs Bild, sondern EINE Zeile über der Galerie (.ki-hinweis).
    - Foto in <figure> mit <figcaption>: Zusatz am Ende der Bildunterschrift (.ki-cap).

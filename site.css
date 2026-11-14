@@ -282,3 +282,15 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 .mz-b .mz-ok{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .mz-b .mz-del{margin-left:auto;border-color:transparent;color:var(--mut);text-decoration:underline}
 @media print{.mz-bar{display:none}}
+
+/* Lexikon im Text (site.js): gepunktet unterstrichener Begriff und Erklärung beim Antippen */
+.lx{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;text-decoration-color:var(--sun,#b8860b);cursor:help;border-radius:3px}
+.lx:hover,.lx[aria-expanded="true"]{background:color-mix(in srgb,var(--sun,#ffb81c) 20%,transparent)}
+.lx:focus-visible{outline:2px solid var(--sun,#ffb81c);outline-offset:2px}
+.lx-pop{position:absolute;z-index:60;box-sizing:border-box;background:var(--ink);color:var(--bg);border-radius:14px;padding:14px 16px;font-size:.92rem;line-height:1.45;box-shadow:0 14px 40px rgba(0,0,0,.35);animation:lx-in .16s ease-out}
+.lx-pop[hidden]{display:none}
+.lx-pop b{display:block;margin-bottom:4px}.lx-pop p{margin:0 0 8px}
+.lx-pop a{color:inherit;font-weight:600;text-decoration:underline}
+@keyframes lx-in{from{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.lx-pop{animation:none}}
+@media print{.lx{text-decoration:none}.lx-pop{display:none}}
