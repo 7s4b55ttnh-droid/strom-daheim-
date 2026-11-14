@@ -82,6 +82,8 @@ def kopf(s, name, url):
         s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta property="og:url" content="%s">' % url, s, count=1)
     if not re.search(r'<meta name="robots"', s):      # große Bildvorschau in der Google-Suche und in Discover erlauben
         s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta name="robots" content="max-image-preview:large">', s, count=1)
+    if 'rel="manifest"' not in s:                       # als App installierbar (manifest.webmanifest, sw.js, Anmeldung in site.js)
+        s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<link rel="manifest" href="/manifest.webmanifest">', s, count=1)
     if not re.search(r'<meta property="og:image"', s) and (ROOT / 'assets' / 'og' / 'index.jpg').exists():
         s = re.sub(r'(<meta property="og:url" content="[^"]*">)', lambda k: k.group(1) + '<meta property="og:image" content="%s/assets/og/index.jpg">' % SITE, s, count=1)
     return s, notes

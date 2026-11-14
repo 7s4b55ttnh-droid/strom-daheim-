@@ -95,8 +95,8 @@ def atlas_block():
 
 <section class="band" id="rangliste"><div class="wrap">
 <div class="head"><span class="eyebrow">Rangliste</span><h2>Alle 95 Regionen.</h2><p class="lede">Sortiert nach dem Ertrag eines Süddachs. Dach-Werte in kWh je kWp und Jahr, Balkonkraftwerk mit 900&nbsp;Wp in kWh im Jahr.</p></div>
-<div class="sa-tw"><table class="sa-t" id="sa-tab">%(kopf)s<tbody>%(top)s</tbody></table></div>
-<details class="sa-all"><summary>Alle Regionen zeigen</summary><div class="sa-tw"><table class="sa-t">%(kopf)s<tbody>%(rest)s</tbody></table></div></details>
+<div class="sa-tw" tabindex="0" role="region" aria-label="Tabelle, seitlich verschiebbar"><table class="sa-t" id="sa-tab">%(kopf)s<tbody>%(top)s</tbody></table></div>
+<details class="sa-all"><summary>Alle Regionen zeigen</summary><div class="sa-tw" tabindex="0" role="region" aria-label="Tabelle, seitlich verschiebbar"><table class="sa-t">%(kopf)s<tbody>%(rest)s</tbody></table></div></details>
 <p class="hint" style="margin-top:14px">Eine Region sind alle Postleitzahlen mit denselben ersten zwei Ziffern. Gerechnet wird für ihren größten Ort.</p>
 </div></section>
 
@@ -224,7 +224,7 @@ def region(plz, kopf_html, fuss_html, goat):
 
 <section id="ausrichtung"><div class="wrap">
 <div class="head"><span class="eyebrow">Ausrichtung</span><h2>Was dein Dach daraus macht.</h2><p class="lede">kWh je kWp und Jahr, je nach Himmelsrichtung und Neigung. Der höchste Wert ist markiert.</p></div>
-<div class="sa-tw"><table class="sa-t sa-o"><thead><tr><th scope="col">Neigung</th><th scope="col">Ost</th><th scope="col">Südost</th><th scope="col">Süd</th><th scope="col">Südwest</th><th scope="col">West</th></tr></thead><tbody>%(tab)s</tbody></table></div>
+<div class="sa-tw" tabindex="0" role="region" aria-label="Tabelle, seitlich verschiebbar"><table class="sa-t sa-o"><thead><tr><th scope="col">Neigung</th><th scope="col">Ost</th><th scope="col">Südost</th><th scope="col">Süd</th><th scope="col">Südwest</th><th scope="col">West</th></tr></thead><tbody>%(tab)s</tbody></table></div>
 <p class="hint" style="margin-top:14px">Eine senkrechte Südfassade kommt hier auf %(fass)s&nbsp;kWh je kWp. Ob deine Stadt oder dein Bundesland Solaranlagen fördert, erfährst du bei deiner Kommune.</p>
 </div></section>
 

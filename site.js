@@ -253,6 +253,26 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
 })();
 
+/* Als App: Die Seite lässt sich auf den Startbildschirm legen (manifest.webmanifest). Erst wenn sie von dort geöffnet wird,
+   meldet sich der Helfer sw.js an und legt besuchte Seiten auf dem Gerät ab, damit sie ohne Netz öffnen.
+   In der Fußzeile steht dazu ein Knopf „Als App installieren“ mit kurzer Anleitung. */
+(function(){
+  var d=document,emb=d.documentElement.classList.contains('emb'),app=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true;
+  if(emb)return;
+  if(app){if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});return}
+  var ev=null,dlg=null;addEventListener('beforeinstallprompt',function(e){e.preventDefault();ev=e});
+  function open(){
+    if(ev){ev.prompt();ev=null;return}
+    if(!dlg){dlg=d.createElement('dialog');dlg.className='mz-dlg';dlg.setAttribute('aria-labelledby','app-h');
+      var ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+      dlg.innerHTML='<form method="dialog"><h2 id="app-h">Als App aufs Gerät</h2><p>'+d.title.split(' – ').pop()+' liegt dann wie eine App auf dem Startbildschirm. Seiten, die du geöffnet hast, gehen auch ohne Netz.</p>'
+        +(ios?'<p><b>iPhone und iPad (Safari):</b> unten auf „Teilen“ tippen, dann „Zum Home-Bildschirm“.</p>':'<p><b>Android (Chrome):</b> oben rechts auf die drei Punkte tippen, dann „Zum Startbildschirm hinzufügen“ oder „App installieren“.</p><p><b>iPhone (Safari):</b> auf „Teilen“ tippen, dann „Zum Home-Bildschirm“.</p><p><b>Computer (Chrome, Edge):</b> in der Adresszeile auf das Installieren-Symbol klicken.</p>')
+        +'<div class="mz-b"><button value="ok" class="mz-ok">Verstanden</button></div></form>';
+      d.body.appendChild(dlg);dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()})}
+    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+  addEventListener('load',function(){var f=d.querySelector('footer .wrap');if(!f)return;var p=d.createElement('p');p.className='app-i';p.innerHTML='<button type="button">Als App installieren</button>';f.appendChild(p);p.firstChild.addEventListener('click',open)});
+})();
+
 /* Lexikon im Text: Fachbegriffe in Absätzen und Listen werden gepunktet unterstrichen; Antippen zeigt die Erklärung in einem Satz.
    Daten: /assets/lexikon.json (aus werkzeuge/lexikon.json, gebaut von werkzeuge/lexikon.py). Jeder Begriff höchstens einmal je Seite,
    höchstens 8 je Seite, nicht in Links, Überschriften, Knöpfen, Rechnern. Abschalten für einen Bereich: Attribut data-nolx. */

@@ -294,3 +294,8 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 @keyframes lx-in{from{opacity:0;transform:translateY(4px)}}
 @media (prefers-reduced-motion:reduce){.lx-pop{animation:none}}
 @media print{.lx{text-decoration:none}.lx-pop{display:none}}
+
+/* Knopf „Als App installieren“ in der Fußzeile (site.js) */
+.app-i{margin:14px 0 0}.app-i button{font:inherit;font-size:.86rem;font-weight:600;padding:9px 16px;min-height:44px;border-radius:999px;border:1px solid var(--line);background:none;color:inherit;cursor:pointer}
+.app-i button:hover{border-color:currentColor}
+@media print{.app-i{display:none}}
