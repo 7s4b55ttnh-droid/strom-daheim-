@@ -7,12 +7,13 @@ Die Spalte einer Seite kommt aus der Ratgeber-Galerie der Startseite: erstes The
 NEUE SEITE: Kachel mit data-k auf der Startseite einfügen, hier in TEXTE einen kurzen Linktext ergänzen,
 dann  python3 werkzeuge/fusszeile.py  ausführen. Fehlt der Text, nimmt das Skript den Titel aus der Kachel.
 """
-import re, pathlib, html as H
+import re, sys, pathlib, html as H
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / 'werkzeuge'))
 SPALTEN = [('solar', 'Solar und Balkon'), ('auto', 'E-Auto'), ('haushalt', 'Haushalt'), ('heizen', 'Heizen und Lüften'), ('tarif', 'Tarif und Zähler')]
 TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
-    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/pv-anlage.html': 'Solaranlage aufs Dach',
+    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/pv-anlage.html': 'Solaranlage aufs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
     '/stromfresser.html': 'Stromfresser finden', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
@@ -65,6 +66,11 @@ def main():
         if k and new != t:
             f.write_text(new); n += 1
     print('Fußzeile erneuert in', n, 'Seiten')
+    try:                                   # Regionen-Seiten des Solar-Atlas tragen dasselbe Menü und dieselbe Fußzeile
+        import solaratlas
+        solaratlas.main()
+    except Exception as e:
+        print('Solar-Atlas nicht erneuert:', e)
 
 
 if __name__ == '__main__':

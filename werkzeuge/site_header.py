@@ -14,6 +14,7 @@ NAV = [('/', 'Balkonkraftwerk', 'index'), ('/anleitung-balkonkraftwerk.html', 'M
        ('/powerstation.html', 'Notstrom', 'powerstation')]
 GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rechner mit deinen Zahlen', None),
         ('/balkonkraftwerk-planer.html', '🧭', 'Balkonkraftwerk-Planer', 'Ertrag für deinen Balkon, mit Postleitzahl', 'balkonkraftwerk-planer'),
+        ('/solar-atlas.html', '🗺️', 'Solar-Atlas', 'Solarertrag in 95 Regionen, mit Karte', 'solar-atlas'),
         ('/anleitung-balkonkraftwerk.html', '🔧', 'Balkonkraftwerk montieren', '8 Schritte und Einkaufsliste', 'anleitung-balkonkraftwerk'),
         ('/#vergleich', '⚖️', 'Welches Set kaufen?', '4 geprüfte Komplettsets', None),
         ('/#speicher', '🔋', 'Lohnt sich ein Speicher?', 'Zwei Rechenbeispiele', None),

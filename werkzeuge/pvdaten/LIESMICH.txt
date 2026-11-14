@@ -35,3 +35,13 @@ Was Agenten nicht ändern, ohne neu zu prüfen
   Wer den Rechenkern oder die Daten ändert, rechnet sie neu nach und passt die Texte an.
   Richtpreise (Modul 125 €, Wechselrichter 100 €, Speicher 300 €/kWh, Elektriker 200 €) stehen als DEF in bkw-planer.js und im Hinweistext der Seite;
   sonntags vom Prüf-Agenten mit den Quellen der Seite abgleichen.
+
+Solar-Atlas (solar-atlas.html und 95 Seiten in solar/)
+  node werkzeuge/pvdaten/atlas.js          rechnet atlas.json: je Region Dach Süd 35°, Ost/West 15°, Südfassade, Balkonkraftwerk 900 Wp
+                                           senkrecht und 30°, Monatswerte, Tabelle Neigung mal Himmelsrichtung
+  python3 werkzeuge/solaratlas.py          baut daraus den Daten-Teil von solar-atlas.html und alle Seiten in solar/ neu
+                                           (läuft auch am Ende von werkzeuge/fusszeile.py, damit Menü und Fußzeile dort stimmen)
+  node werkzeuge/atlas-test.js             prüft Karte, Suche und alle 95 Seiten gegen atlas.json
+  atlas_karte.json                         Flächen der Karte (jede Fläche gehört zum nächstgelegenen Rechenort), Umriss nach Natural Earth
+                                           (gemeinfrei). Nur neu bauen, wenn sich die Rechenorte in regionen.py ändern.
+  Die Seiten in solar/ nie von Hand ändern, Text und Aufbau stehen in werkzeuge/solaratlas.py.

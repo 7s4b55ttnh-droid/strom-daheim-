@@ -255,3 +255,12 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 .item .ic{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;font-size:1.3rem;line-height:1;background:color-mix(in srgb,var(--sun) 13%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sun) 26%,transparent);filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-12deg) contrast(1.05)}
 .item:hover .ic{background:color-mix(in srgb,var(--sun) 22%,transparent)}
 @media print{.item .ic{filter:none}}
+
+/* Einbett-Modus (?einbetten=1, siehe site.js): nur das Werkzeug */
+.emb body>*:not(main):not(script):not(style){display:none!important}
+.emb main>*:not(.emb-keep){display:none!important}
+.emb body{background:var(--bg)}
+.emb .emb-keep{padding-block:14px 10px!important;margin:0!important;min-height:0!important}
+.emb a[href*="amazon."],.emb [data-print],.emb .emb-no{display:none!important}
+.emb-cr{font-size:.82rem;opacity:.75;margin:14px 0 0;text-align:right}
+.emb-cr a{text-decoration:underline}
