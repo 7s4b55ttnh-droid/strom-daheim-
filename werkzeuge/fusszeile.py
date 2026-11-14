@@ -16,7 +16,7 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
     '/stromfresser.html': 'Stromfresser finden', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
-    '/kuehlschrank.html': 'Kühlschrank einstellen', '/spuelmaschine.html': 'Spülmaschine', '/waschmaschine.html': 'Waschmaschine', '/waesche-trocknen.html': 'Wäsche trocknen',
+    '/kuehlschrank.html': 'Kühlschrank einstellen', '/spuelmaschine.html': 'Spülmaschine', '/waschmaschine.html': 'Waschmaschine', '/waesche-trocknen.html': 'Wäsche trocknen', '/durchlauferhitzer.html': 'Durchlauferhitzer',
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
     '/black-friday.html': 'Black Friday',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
