@@ -6,7 +6,7 @@
   if (!$('sp-chart')) return;
   var NS = 'http://www.w3.org/2000/svg', MWST = 1.19;
   var WT = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], WTL = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-  var D = null, S = { day: 0, mode: 0, dur: 2, kwh: 1, fix: 20, sel: -1 }, NOW, DAYS = [], WIN = null;
+  var D = null, S = { day: 0, mode: 0, dur: 2, kwh: 1, fix: 20, sel: -1, dl: null, dev: '' }, NOW, DAYS = [], WIN = null;
 
   function berlin() {
     var o = {};
@@ -45,6 +45,7 @@
         if (j && (f[i + j].day * 24 + f[i + j].h) !== (f[i + j - 1].day * 24 + f[i + j - 1].h) + 1) ok = false;
       }
       if (!ok) continue;
+      if (S.dl != null && f[i].day * 24 + f[i].h + n > S.dl) continue;
       if (!best || sum / n < best.avg - 1e-9) best = { i: i, avg: sum / n, a: f[i], n: n };
       if (!worst || sum / n > worst.avg + 1e-9) worst = { i: i, avg: sum / n, a: f[i], n: n };
     }
@@ -149,13 +150,15 @@
     var w = windows(S.dur), b = w.best;
     WIN = null;
     if (!b) {
-      $('sp-r-win').textContent = 'Zu spät für heute'; $('sp-r-wt').textContent = 'Für ' + S.dur + ' Stunden am Stück reichen die bekannten Preise nicht mehr. Am Nachmittag kommen die Preise für morgen.';
+      $('sp-ics').disabled = true;
+      if (S.dl != null) { $('sp-r-win').textContent = 'Das wird zu knapp'; $('sp-r-wt').textContent = 'Bis ' + dlText(S.dl) + ' passt kein Fenster von ' + S.dur + (S.dur === 1 ? ' Stunde' : ' Stunden') + ' mehr. Wähle eine spätere Uhrzeit oder „egal“.'; }
+      else { $('sp-r-win').textContent = 'Zu spät für heute'; $('sp-r-wt').textContent = 'Für ' + S.dur + ' Stunden am Stück reichen die bekannten Preise nicht mehr. Am Nachmittag kommen die Preise für morgen.'; }
       ['p', 'max', 'eur', 'now'].forEach(function (k) { $('sp-r-' + k).textContent = '–'; });
       return;
     }
-    b.n = S.dur; w.worst.n = S.dur; WIN = b;
+    b.n = S.dur; w.worst.n = S.dur; WIN = b; $('sp-ics').disabled = false;
     $('sp-r-win').textContent = when(b).replace(/^./, function (c) { return c.toUpperCase(); });
-    $('sp-r-wt').textContent = 'günstigstes Zeitfenster für ' + S.dur + (S.dur === 1 ? ' Stunde' : ' Stunden') + (w.len > 24 - NOW.h ? ', heute und morgen geprüft' : ', bis Mitternacht geprüft');
+    $('sp-r-wt').textContent = 'günstigstes Zeitfenster für ' + S.dur + (S.dur === 1 ? ' Stunde' : ' Stunden') + (S.dl != null ? ', fertig bis ' + dlText(S.dl) : w.len > 24 - NOW.h ? ', heute und morgen geprüft' : ', bis Mitternacht geprüft');
     $('sp-r-p').textContent = num(end(b.avg), 1) + ' ct'; $('sp-r-pt').textContent = 'Endpreis pro kWh im Fenster (Börse ' + num(b.avg, 1) + ' ct)';
     $('sp-r-max').textContent = num(end(w.worst.avg), 1) + ' ct'; $('sp-r-maxt').textContent = 'im teuersten Fenster, ' + when(w.worst);
     var diff = (w.worst.avg - b.avg) * MWST * S.kwh / 100;
@@ -164,6 +167,29 @@
     $('sp-r-now').textContent = dn < 0.005 ? 'Jetzt starten' : num(dn, 2) + ' €';
     $('sp-r-nowt').textContent = dn < 0.005 ? 'Das günstigste Fenster beginnt jetzt.' : 'sparst du gegenüber sofort starten';
   }
+
+  function dlText(x) { return (x >= 48 ? 'übermorgen ' : x >= 24 ? 'morgen ' : 'heute ') + (x % 24) + ' Uhr'; }
+  /* Berliner Ortszeit in UTC umrechnen, damit der Kalendereintrag in jedem Programm stimmt */
+  function utc(date, h) {
+    var y = +date.slice(0, 4), m = +date.slice(5, 7) - 1, dd = +date.slice(8, 10), off, t, o;
+    for (off = 1; off <= 2; off++) {
+      t = new Date(Date.UTC(y, m, dd, h - off)); o = {};
+      new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', day: '2-digit', hour: '2-digit', hourCycle: 'h23' }).formatToParts(t).forEach(function (p) { o[p.type] = p.value; });
+      if (+o.hour === h % 24 && +o.day === new Date(Date.UTC(y, m, dd, h)).getUTCDate()) return t;
+    }
+    return new Date(Date.UTC(y, m, dd, h - 1));
+  }
+  function stamp(t) { return t.toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z'; }
+  function ics() {
+    if (!WIN) return '';
+    var date = plus(NOW.d, WIN.a.day), a = utc(date, WIN.a.h), b = new Date(a.getTime() + WIN.n * 3600000), was = S.dev || 'Gerät';
+    var txt = 'Günstigstes Zeitfenster laut Strom-Daheim: ' + when(WIN) + ', Endpreis rund ' + num(end(WIN.avg), 1) + ' ct pro kWh (Börse ' + num(WIN.avg, 1) + ' ct). Preise: Bundesnetzagentur | SMARD.de. https://strom-daheim.de/strompreis-heute.html';
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Strom-Daheim//Geraete-Planer//DE', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT',
+      'UID:' + stamp(a) + '-' + WIN.n + '@strom-daheim.de', 'DTSTAMP:' + stamp(new Date()), 'DTSTART:' + stamp(a), 'DTEND:' + stamp(b),
+      'SUMMARY:' + was + ' starten (günstiger Strom)', 'DESCRIPTION:' + txt.replace(/([,;])/g, '\\$1'),
+      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + was + ' starten', 'TRIGGER:-PT10M', 'END:VALARM', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n') + '\r\n';
+  }
+  window.__spIcs = ics;
 
   function render() {
     calc(); drawChart(); drawTable();
@@ -187,14 +213,28 @@
     $('sp-t1').onclick = function () { if (DAYS[1]) { S.day = 1; S.sel = -1; press(['sp-t0', 'sp-t1'], 1); render(); } };
     $('sp-m0').onclick = function () { S.mode = 0; press(['sp-m0', 'sp-m1'], 0); render(); };
     $('sp-m1').onclick = function () { S.mode = 1; press(['sp-m0', 'sp-m1'], 1); render(); };
-    $('sp-dur').onclick = function (e) {
-      var b = e.target.closest('button'); if (!b) return; S.dur = +b.dataset.h;
-      [].forEach.call(this.children, function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
-      render();
-      if (WIN && DAYS[WIN.a.day] && WIN.a.day !== S.day) { S.day = WIN.a.day; press(['sp-t0', 'sp-t1'], S.day); render(); }
+    function follow() { if (WIN && DAYS[WIN.a.day] && WIN.a.day !== S.day) { S.day = WIN.a.day; press(['sp-t0', 'sp-t1'], S.day); render(); } }
+    function dur(h) { S.dur = h; [].forEach.call($('sp-dur').children, function (c) { c.setAttribute('aria-pressed', +c.dataset.h === h ? 'true' : 'false'); }); }
+    function dev(b) { S.dev = b ? b.dataset.n : ''; [].forEach.call($('sp-dev').children, function (c) { c.setAttribute('aria-pressed', (b ? c === b : !c.dataset.n) ? 'true' : 'false'); }); }
+    $('sp-dev').onclick = function (e) {
+      var b = e.target.closest('button'); if (!b) return; dev(b);
+      if (b.dataset.h) { dur(+b.dataset.h); $('sp-kwh').value = b.dataset.k; }
+      render(); follow();
     };
-    $('sp-kwhc').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; $('sp-kwh').value = b.dataset.k; render(); };
-    $('sp-kwh').oninput = render; $('sp-fix').oninput = function () { render(); if (D.tage[NOW.d]) drawHero(); };
+    $('sp-dur').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; dur(+b.dataset.h); dev(null); render(); follow(); };
+    $('sp-kwhc').onclick = function (e) { var b = e.target.closest('button'); if (!b) return; $('sp-kwh').value = b.dataset.k; dev(null); render(); };
+    /* Auswahl „fertig bis“: jede volle Stunde, zu der noch ein Fenster enden kann */
+    (function () {
+      var f = future(), sel = $('sp-dl'), i, x;
+      for (i = 1; i < f.length; i++) { x = f[i].day * 24 + f[i].h + 1; var o = document.createElement('option'); o.value = x; o.textContent = dlText(x); sel.appendChild(o); }
+      sel.onchange = function () { S.dl = sel.value ? +sel.value : null; render(); follow(); };
+    })();
+    $('sp-ics').onclick = function () {
+      var t = ics(); if (!t) return;
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([t], { type: 'text/calendar;charset=utf-8' })); a.download = 'strom-daheim-start.ics';
+      document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+    };
+    $('sp-kwh').oninput = function () { dev(null); render(); }; $('sp-fix').oninput = function () { render(); if (D.tage[NOW.d]) drawHero(); };
     var box = $('sp-chart');
     box.addEventListener('pointermove', function (e) { tip(hourAt(e)); });
     box.addEventListener('pointerdown', function (e) { tip(hourAt(e)); });

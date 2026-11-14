@@ -190,22 +190,66 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   },1500)});
 })();
 
-/* Mein Strompreis: Wer in einem Rechner seinen Preis einträgt, findet ihn in allen anderen Rechnern wieder.
-   Gespeichert nur im Browser (localStorage "sp"), nichts wird übertragen. Gilt für Felder mit aria-label "Strompreis in …". */
+/* Mein Zuhause: Postleitzahl, Jahresverbrauch und Strompreis einmal eintragen, dann stehen sie in allen Rechnern.
+   Gespeichert nur im Browser (localStorage "mzp", "mzk", "sp"), nichts wird übertragen. Erkannt werden:
+   Strompreis = input.vin mit aria-label "Strompreis in …", Verbrauch = aria-label "Jahresverbrauch in Kilowattstunden" oder
+   "Stromverbrauch (des Haushalts) in Kilowattstunden …", Postleitzahl = input mit id "…-plz".
+   Ein geteilter Link (Adresse mit ?…) gewinnt gegen das Profil. window.MZ = {get,set,clear} nutzt auch start.html. */
 (function(){
-  var d=document,K='sp',busy=0,told=0,last=null;
-  function F(){return [].slice.call(d.querySelectorAll('input.vin[aria-label^="Strompreis in"]'))}
-  function num(v){v=parseFloat(String(v==null?'':v).replace(',','.'));return v>=5&&v<=150?Math.round(v*100)/100:null}
-  function get(){try{return num(localStorage.getItem(K))}catch(e){return null}}
-  function fm(v){return String(v).replace('.',',')}
+  var d=document,busy=0,told=0,last={},bar=null;
+  var KX=/^(Jahresverbrauch|Stromverbrauch( des Haushalts)?) in Kilowattstunden/;
+  function q(s){return [].slice.call(d.querySelectorAll(s))}
+  function tsd(v){return String(v).replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+  var T={
+    plz:{k:'mzp',f:function(){return q('input[id$="-plz"]')},p:function(v){v=String(v==null?'':v).trim();return /^\d{5}$/.test(v)?v:null},s:String,n:String},
+    kwh:{k:'mzk',f:function(){return q('input.vin').filter(function(x){return KX.test(x.getAttribute('aria-label')||'')})},
+      p:function(v){v=String(v==null?'':v).trim();if(/^\d{1,2}\.\d{3}$/.test(v))v=v.replace('.','');v=parseFloat(v.replace(',','.'));return v>=300&&v<=40000?Math.round(v):null},s:String,n:function(v){return tsd(v)+' kWh'}},
+    ct:{k:'sp',f:function(){return q('input.vin[aria-label^="Strompreis in"]')},p:function(v){v=parseFloat(String(v==null?'':v).replace(',','.'));return v>=5&&v<=150?Math.round(v*100)/100:null},
+      s:function(v){return String(v).replace('.',',')},n:function(v){return String(v).replace('.',',')+' ct'}}
+  },ORD=['plz','kwh','ct'];
+  function get(k){try{return T[k].p(localStorage.getItem(T[k].k))}catch(e){return null}}
+  function all(){var o={};ORD.forEach(function(k){o[k]=get(k)});return o}
+  function put(k,v){v=T[k].p(v);try{if(v==null)localStorage.removeItem(T[k].k);else localStorage.setItem(T[k].k,v)}catch(e){return false}return true}
   function say(m){if(window.__toast)window.__toast(m)}
-  function apply(){var v=get(),f=F();if(!f.length)return;
-    if(v!=null){busy=1;var ch=0;f.forEach(function(x){if(num(x.value)!==v){x.value=fm(v);x.dispatchEvent(new Event('input',{bubbles:true}));x.dispatchEvent(new Event('change',{bubbles:true}));ch=1}});busy=0;
-      if(ch)say('Gerechnet wird mit deinem Strompreis: '+fm(v)+' ct')}
-    last=num(f[0].value)}
-  function watch(){if(busy)return;setTimeout(function(){var f=F();if(!f.length)return;var v=num(f[0].value);if(v==null||v===last)return;last=v;
-    try{localStorage.setItem(K,v)}catch(e){return}
-    if(!told){told=1;say('Gemerkt: '+fm(v)+' ct gilt jetzt in allen Rechnern')}},80)}
+  function text(){var o=all();return ORD.filter(function(k){return o[k]!=null}).map(function(k){return T[k].n(o[k])}).join(' · ')}
+  function shared(){return /[?&](p|v|ct|k|b)=/.test(location.search)}
+  function apply(quiet){var ch=0,sh=shared();busy=1;
+    ORD.forEach(function(k){var v=get(k),f=T[k].f();if(!f.length)return;
+      if(v!=null&&!(sh&&k!=='ct'))f.forEach(function(x){if(T[k].p(x.value)!==v){x.value=T[k].s(v);x.dispatchEvent(new Event('input',{bubbles:true}));x.dispatchEvent(new Event('change',{bubbles:true}));ch=1}});
+      last[k]=T[k].p(f[0].value)});
+    busy=0;if(ch&&!quiet)say('Gerechnet wird mit deinem Zuhause: '+text());draw()}
+  function watch(){if(busy)return;setTimeout(function(){var sv=0;
+    ORD.forEach(function(k){var f=T[k].f();if(!f.length)return;var v=T[k].p(f[0].value);if(v==null||v===last[k])return;last[k]=v;if(put(k,v))sv=k});
+    if(sv){draw();if(!told){told=1;say('Gemerkt: '+T[sv].n(get(sv))+' gilt jetzt in allen Rechnern')}}},80)}
+  function fields(){var n=[];ORD.forEach(function(k){n=n.concat(T[k].f())});return n}
+  function draw(){
+    if(d.documentElement.classList.contains('emb'))return;
+    var t=text(),f=fields();
+    if(!t||!f.length){if(bar){bar.remove();bar=null}return}
+    if(!bar){f.sort(function(a,b){return a.compareDocumentPosition(b)&2?1:-1});
+      var host=f[0].closest('.calc')||f[0].closest('.card')||f[0].parentElement;if(!host||!host.parentNode)return;
+      bar=d.createElement('div');bar.className='mz-bar';bar.innerHTML='<span class="mz-t"><b>Mein Zuhause</b><span></span></span><button type="button" class="mz-e">Ändern</button>';
+      host.parentNode.insertBefore(bar,host);bar.querySelector('.mz-e').addEventListener('click',edit)}
+    bar.querySelector('.mz-t span').textContent=t}
+  var dlg=null;
+  function edit(){
+    if(!dlg){dlg=d.createElement('dialog');dlg.className='mz-dlg';dlg.setAttribute('aria-labelledby','mz-h');
+      dlg.innerHTML='<form method="dialog"><h2 id="mz-h">Mein Zuhause</h2><p>Diese drei Angaben stehen danach in allen Rechnern. Sie bleiben in deinem Browser und werden nicht übertragen.</p>'
+        +'<label>Postleitzahl<input name="plz" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="z. B. 34117"></label>'
+        +'<label>Stromverbrauch im Jahr (kWh)<input name="kwh" inputmode="numeric" autocomplete="off" placeholder="z. B. 3500"></label>'
+        +'<label>Strompreis (Cent pro kWh)<input name="ct" inputmode="decimal" autocomplete="off" placeholder="z. B. 32"></label>'
+        +'<p class="mz-err" role="alert" hidden></p><div class="mz-b"><button value="ok" class="mz-ok">Speichern</button><button value="x" type="button" class="mz-x">Abbrechen</button><button value="del" type="button" class="mz-del">Alles löschen</button></div></form>';
+      d.body.appendChild(dlg);
+      dlg.querySelector('.mz-x').onclick=function(){dlg.close()};
+      dlg.querySelector('.mz-del').onclick=function(){ORD.forEach(function(k){put(k,null)});dlg.close();draw();say('Mein Zuhause gelöscht')};
+      dlg.querySelector('form').addEventListener('submit',function(e){var bad=[],fm=this;
+        ORD.forEach(function(k){var raw=fm.elements[k].value.trim();if(raw&&T[k].p(raw)==null)bad.push(k==='plz'?'Postleitzahl (5 Ziffern)':k==='kwh'?'Verbrauch (300 bis 40.000 kWh)':'Strompreis (5 bis 150 Cent)')});
+        var er=dlg.querySelector('.mz-err');if(bad.length){e.preventDefault();er.hidden=false;er.textContent='Bitte prüfen: '+bad.join(', ')+'.';return}
+        er.hidden=true;ORD.forEach(function(k){put(k,fm.elements[k].value.trim()||null)});setTimeout(function(){apply(1);say(text()?'Gespeichert: '+text():'Mein Zuhause ist leer')},0)});
+      dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()})}
+    var o=all();ORD.forEach(function(k){dlg.querySelector('[name='+k+']').value=o[k]==null?'':T[k].s(o[k])});dlg.querySelector('.mz-err').hidden=true;
+    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+  window.MZ={get:all,set:function(o){ORD.forEach(function(k){if(k in o)put(k,o[k])});apply(1)},clear:function(){ORD.forEach(function(k){put(k,null)});draw()},edit:edit,text:text};
   addEventListener('load',function(){setTimeout(function(){apply();d.addEventListener('input',watch,true);d.addEventListener('change',watch,true);d.addEventListener('click',watch,true)},60)});
 })();
 
