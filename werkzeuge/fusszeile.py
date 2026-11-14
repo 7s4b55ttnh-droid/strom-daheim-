@@ -21,7 +21,7 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
     '/black-friday.html': 'Black Friday',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
-    '/stromtarif.html': 'Stromtarif wechseln', '/strompreis-heute.html': 'Strompreis heute', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
+    '/stromtarif.html': 'Stromtarif wechseln', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
 }
 EXTRA = {'/': 'solar'}  # Seiten ohne eigene Kachel
 
@@ -76,6 +76,11 @@ def main():
         lexikon.main()
     except Exception as e:
         print('Lexikon nicht erneuert:', e)
+    try:                                   # Monatsseiten des Strompreis-Archivs ebenso
+        import preisarchiv
+        preisarchiv.seiten()
+    except Exception as e:
+        print('Strompreis-Archiv nicht erneuert:', e)
 
 
 if __name__ == '__main__':

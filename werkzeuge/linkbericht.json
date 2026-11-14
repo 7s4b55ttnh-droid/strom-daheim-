@@ -1,0 +1,12 @@
+{
+ "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
+ "geprueft": 248,
+ "unklar": 10,
+ "tot": [],
+ "verdacht": [
+  "https://wohnglueck.de/artikel/flur-einrichten-gestalten-tipps-24101",
+  "https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/stromverbrauch-kuehlschrank/",
+  "https://www.verband-wohneigentum.de/bv-oberfranken/downloadmime/233969/%27Natur+im+Garten%27+Gartentipp+-+Zimmerpflanzen+im+Winter+pflegen.pdf"
+ ],
+ "stand": "2026-11-14"
+}

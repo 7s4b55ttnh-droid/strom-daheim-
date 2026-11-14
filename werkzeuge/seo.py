@@ -82,6 +82,8 @@ def kopf(s, name, url):
         s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta property="og:url" content="%s">' % url, s, count=1)
     if not re.search(r'<meta name="robots"', s):      # große Bildvorschau in der Google-Suche und in Discover erlauben
         s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta name="robots" content="max-image-preview:large">', s, count=1)
+    if 'href="/feed.xml"' not in s:                    # RSS-Feed mit den neuesten Ratgebern
+        s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<link rel="alternate" type="application/rss+xml" title="%s: neue Ratgeber" href="/feed.xml">' % NAME, s, count=1)
     if 'rel="manifest"' not in s:                       # als App installierbar (manifest.webmanifest, sw.js, Anmeldung in site.js)
         s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<link rel="manifest" href="/manifest.webmanifest">', s, count=1)
     if not re.search(r'<meta property="og:image"', s) and (ROOT / 'assets' / 'og' / 'index.jpg').exists():
@@ -133,6 +135,28 @@ def faqs(main):
             if q and a:
                 out.append({'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}})
     return out
+
+
+def feed(erst):
+    """feed.xml: die 30 neuesten Seiten als RSS, für Feed-Leser und Dienste, die neue Ratgeber abholen. Schreibt sich bei jedem Lauf neu."""
+    import email.utils, datetime
+    aus = {'impressum.html', 'datenschutz.html', '404.html', 'einbetten.html', 'index.html'}; items = []
+    for name, tag in erst.items():
+        f = ROOT / name
+        if name in aus or not f.exists():
+            continue
+        s = f.read_text(encoding='utf-8'); t = re.search(r'<title>(.*?)</title>', s, re.S); d = re.search(r'<meta property="og:description" content="([^"]*)">', s) or re.search(r'<meta name="description" content="([^"]*)">', s)
+        if t:
+            items.append((tag, name, html.unescape(t.group(1)).replace(' – ' + NAME, ''), html.unescape(d.group(1)) if d else ''))
+    items.sort(reverse=True); x = lambda v: html.escape(v, quote=False)
+    body = ''.join('<item><title>%s</title><link>%s/%s</link><guid isPermaLink="true">%s/%s</guid><pubDate>%s</pubDate><description>%s</description></item>'
+                   % (x(t), SITE, n, SITE, n, email.utils.format_datetime(datetime.datetime.fromisoformat(tag + 'T08:00:00+01:00')), x(d)) for tag, n, t, d in items[:30])
+    neu = ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>%s: neue Ratgeber und Rechner</title><link>%s/</link>'
+           '<description>Neue Ratgeber und Rechner rund um Strom zuhause.</description><language>de-DE</language><atom:link href="%s/feed.xml" rel="self" type="application/rss+xml"/>%s</channel></rss>\n' % (NAME, SITE, SITE, body))
+    z = ROOT / 'feed.xml'
+    if not z.exists() or z.read_text(encoding='utf-8') != neu:
+        z.write_text(neu, encoding='utf-8')
+    print('feed.xml', min(30, len(items)), 'Einträge')
 
 
 def run():
@@ -201,6 +225,7 @@ def run():
         f.write_text(s, encoding='utf-8')
         print('ok', name, 'Fragen:', len(q), 'Kurz:', name in KURZ)
     ERST.write_text(json.dumps(erst, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
+    feed(erst)
     # llms.txt: Übersicht für KI-Assistenten
     lines = ['# %s' % NAME, '',
              '> Ratgeber-Website zu Strom zuhause in Deutschland: Balkonkraftwerk, Wallbox, E-Auto laden, Wärmepumpe, Stromtarif, Stromsparen und Notstrom. Mit Rechnern, Quellen und Prüfdatum. Finanziert über gekennzeichnete Amazon-Partnerlinks.', '',

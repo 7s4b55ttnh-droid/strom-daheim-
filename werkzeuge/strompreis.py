@@ -10,6 +10,7 @@ Suchmaschinen) und das Datum der Seite in sitemap.xml. Läuft mehrmals täglich 
 Agenten müssen nichts tun. Liefert SMARD nichts, bleibt alles, wie es ist (Fehlercode 0, damit der Lauf nicht rot wird).
 """
 import json, re, sys, pathlib, datetime, urllib.request
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -60,6 +61,12 @@ def main():
     except Exception as e:                      # SMARD nicht erreichbar: nichts ändern
         print('SMARD nicht erreichbar:', e)
         return 0
+    try:                                        # Strompreis-Archiv: Tage merken, Monatsseiten und CSV neu schreiben
+        import preisarchiv
+        preisarchiv.merken(tage)
+        preisarchiv.seiten()
+    except Exception as e:
+        print('Strompreis-Archiv nicht erneuert:', e)
     jetzt = datetime.datetime.now(TZ)
     heute = jetzt.date().isoformat()
     morgen = (jetzt.date() + datetime.timedelta(days=1)).isoformat()
