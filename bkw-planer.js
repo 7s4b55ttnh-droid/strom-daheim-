@@ -182,6 +182,7 @@
 
   /* ---------- Jahressimulation ----------
      cfg: {groups:[{wp,tilt,azim}], shade:{horizon,sky}, cap (W), kwh, base, presence, shift,
+           extra: zusätzliche feste Last je Stunde in W (Float32Array mit 8760 Werten, etwa Wärmepumpe und E-Auto im Solar-Rechner),
            bat:{kwh, sensor}, keep: Stundenwerte zurückgeben (pv = was aus der Steckdose kommt, gen = was die Module liefern,
            self = selbst genutzt, bat = davon aus dem Speicher, soc = Füllstand in Wh, load = mittlerer Verbrauch)}
      Ergebnis in kWh: y und m[12] mit pv (am Stecker nutzbar), self, feed, clip (abgeregelt), loss (Speicherverluste). */
@@ -205,7 +206,7 @@
     for (h = 0; h < n; h++) {
       if (h >= mEnd) { mi++; mEnd += MDAYS[mi] * 24; }
       var Pdc = dc[h], mm = M[mi], self = 0, feed = 0, clip = 0, fromBat = 0, k;
-      var Lm = states(H, h, bat ? STANDBY : 0, buf);
+      var Lm = states(H, h, (bat ? STANDBY : 0) + (cfg.extra ? cfg.extra[h] : 0), buf);
       mm.load += Lm; mm.pot += Pdc * ETA_INV;
       if (!bat) {
         if (Pdc > 0) {
