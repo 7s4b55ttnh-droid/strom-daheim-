@@ -1,7 +1,13 @@
-"""Strom-Daheim: strukturierte Daten (JSON-LD), Kasten „Kurz gesagt“ und llms.txt.
+"""Strom-Daheim: strukturierte Daten (JSON-LD), Kasten „Kurz gesagt“, Kopfangaben für Suchmaschinen und llms.txt.
 Aufruf im Repository-Ordner: python3 werkzeuge/seo.py
-Neue Seite: Eintrag in KURZ ergänzen (zwei Sätze, nur Fakten, die auf der Seite stehen) und das Skript erneut ausführen."""
-import re, json, html, pathlib
+Neue Seite: Eintrag in KURZ ergänzen (zwei Sätze, nur Fakten, die auf der Seite stehen) und das Skript erneut ausführen.
+
+Kopfangaben (seit 14.11.2026): Das Skript ergänzt og:url, kürzt eine zu lange Beschreibung im Suchergebnis auf ganze Sätze
+bis 160 Zeichen (og:description behält den vollen Text) und meldet Titel, die ohne „ – Strom-Daheim“ länger als 60 Zeichen sind.
+Solche Titel bitte von Hand kürzen: Das wichtigste Suchwort steht vorn. Außerdem: große Bildvorschau für Google erlauben
+(robots max-image-preview:large), Tag der ersten Veröffentlichung merken (werkzeuge/erstdatum.json, trägt sich selbst ein),
+Angaben zur Website auf der Startseite (WebSite) und Titel und Beschreibung in suche.json nachziehen."""
+import re, json, html, pathlib, datetime
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://strom-daheim.de'
@@ -36,6 +42,46 @@ KURZ = {
 }
 SKIP_LD = {'impressum.html', 'datenschutz.html', '404.html', 'index.html'}
 LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n?', re.S)
+SITE_RE = re.compile(r'<script type="application/ld\+json" id="ld-site">.*?</script>\n?', re.S)
+ERST = ROOT / 'werkzeuge' / 'erstdatum.json'      # Tag der ersten Veröffentlichung je Seite, für datePublished
+def kurz_desc(d, mx=160, mn=90):
+    """Beschreibung fürs Suchergebnis: höchstens mx Zeichen, an einer Satzgrenze gekürzt. Geht das nicht, bleibt sie, wie sie ist."""
+    if len(d) <= mx:
+        return d
+    out = ''
+    for part in re.split(r'(?<=[.!?])\s+', d):
+        if len(out) + len(part) + (1 if out else 0) > mx:
+            break
+        out = (out + ' ' + part).strip()
+    return out if len(out) >= mn else d
+
+
+def kopf(s, name, url):
+    """og:url ergänzen, Beschreibung kürzen, fehlende og-Angaben nachtragen. Gibt den neuen Seitentext und Hinweise zurück."""
+    notes = []
+    title = html.unescape(re.search(r'<title>(.*?)</title>', s).group(1))
+    core = title.replace(' – ' + NAME, '')
+    if len(core) > 60:
+        notes.append('Titel ohne Marke %d Zeichen (höchstens 60): %s' % (len(core), core))
+    m = re.search(r'<meta name="description" content="([^"]*)">', s)
+    if m:
+        full = html.unescape(m.group(1))
+        if not re.search(r'<meta property="og:description"', s):
+            s = s.replace(m.group(0), m.group(0) + '<meta property="og:description" content="%s">' % html.escape(full, quote=True), 1)
+        short = kurz_desc(full)
+        if short != full:
+            s = s.replace(m.group(0), '<meta name="description" content="%s">' % html.escape(short, quote=True), 1)
+        elif len(full) > 160:
+            notes.append('Beschreibung %d Zeichen, erster Satz zu lang zum Kürzen' % len(full))
+    if not re.search(r'<meta property="og:url"', s):
+        s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta property="og:url" content="%s">' % url, s, count=1)
+    if not re.search(r'<meta name="robots"', s):      # große Bildvorschau in der Google-Suche und in Discover erlauben
+        s = re.sub(r'(<link rel="canonical" href="[^"]*">)', lambda k: k.group(1) + '<meta name="robots" content="max-image-preview:large">', s, count=1)
+    if not re.search(r'<meta property="og:image"', s) and (ROOT / 'assets' / 'og' / 'index.jpg').exists():
+        s = re.sub(r'(<meta property="og:url" content="[^"]*">)', lambda k: k.group(1) + '<meta property="og:image" content="%s/assets/og/index.jpg">' % SITE, s, count=1)
+    return s, notes
+
+
 def toc(main):
     """Inhaltsverzeichnis mit Lesezeit für den Kasten „Kurz gesagt“."""
     items = []
@@ -84,6 +130,7 @@ def faqs(main):
 
 def run():
     llms = []
+    erst = json.loads(ERST.read_text(encoding='utf-8')) if ERST.exists() else {}
     for f in sorted(ROOT.glob('*.html')):
         s = f.read_text(encoding='utf-8')
         name = f.name
@@ -91,7 +138,21 @@ def run():
         desc = meta(s, 'description')
         url = SITE + ('/' if name == 'index.html' else '/' + name)
         if name not in {'impressum.html', 'datenschutz.html', '404.html'}:
-            llms.append((name, html.unescape(title).replace(' – ' + NAME, ''), desc, url))
+            llms.append((name, html.unescape(title).replace(' – ' + NAME, ''), meta(s, 'og:description') or desc, url))
+            s2, notes = kopf(s, name, url)
+            if s2 != s:
+                s = s2
+                f.write_text(s, encoding='utf-8')
+            for n in notes:
+                print('HINWEIS', name, n)
+            desc = meta(s, 'description')
+        if name == 'index.html':                      # Startseite: sagt Google, wie die Website heißt
+            org = {'@type': 'Organization', 'name': NAME, 'url': SITE + '/', 'logo': SITE + '/apple-touch-icon.png'}
+            site = {'@context': 'https://schema.org', '@graph': [{'@type': 'WebSite', 'name': NAME, 'url': SITE + '/', 'inLanguage': 'de-DE',
+                                                                   'description': desc, 'publisher': org}]}
+            s = SITE_RE.sub('', s)
+            s = s.replace('</head>', '<script type="application/ld+json" id="ld-site">%s</script>\n</head>' % json.dumps(site, ensure_ascii=False).replace('</', '<\\/'), 1)
+            f.write_text(s, encoding='utf-8')
         if name in SKIP_LD:
             continue
         main = s[s.index('<main'):s.index('</main>')]
@@ -109,11 +170,18 @@ def run():
         img = meta(s, 'og:image')
         if img:
             art['image'] = img
+        if name not in erst:                          # neue Seite: heute zum ersten Mal gesehen
+            erst[name] = day or datetime.date.today().isoformat()
+        art['datePublished'] = erst[name]
         if day:
-            art['dateModified'] = day
+            art['dateModified'] = max(day, erst[name])
         if name in KURZ:
             art['abstract'] = text(KURZ[name])
         graph = [art]
+        if name == 'balkonkraftwerk-planer.html':     # der Planer ist ein Werkzeug, das sagen wir Suchmaschinen dazu
+            graph.append({'@type': 'WebApplication', 'name': 'Balkonkraftwerk-Planer von ' + NAME, 'url': url, 'applicationCategory': 'UtilitiesApplication',
+                          'operatingSystem': 'Alle, läuft im Browser', 'inLanguage': 'de-DE', 'isAccessibleForFree': True,
+                          'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'}, 'description': desc})
         q = faqs(main)
         if q:
             graph.append({'@type': 'FAQPage', 'mainEntity': q})
@@ -125,6 +193,7 @@ def run():
         s = s.replace('</head>', '<script type="application/ld+json" id="ld">%s</script>\n</head>' % ld, 1)
         f.write_text(s, encoding='utf-8')
         print('ok', name, 'Fragen:', len(q), 'Kurz:', name in KURZ)
+    ERST.write_text(json.dumps(erst, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
     # llms.txt: Übersicht für KI-Assistenten
     lines = ['# %s' % NAME, '',
              '> Ratgeber-Website zu Strom zuhause in Deutschland: Balkonkraftwerk, Wallbox, E-Auto laden, Wärmepumpe, Stromtarif, Stromsparen und Notstrom. Mit Rechnern, Quellen und Prüfdatum. Finanziert über gekennzeichnete Amazon-Partnerlinks.', '',
@@ -133,6 +202,20 @@ def run():
         lines.append('- [%s](%s): %s' % (t, u, d))
     (ROOT / 'llms.txt').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     print('llms.txt', len(llms), 'Seiten')
+    # suche.json: Titel und Beschreibung folgen der Seite, die Stichwörter (k) bleiben von Hand gepflegt
+    sj = ROOT / 'suche.json'
+    if sj.exists():
+        idx = json.loads(sj.read_text(encoding='utf-8'))
+        by = {e['u']: e for e in idx}
+        for name, t, d, u in llms:
+            key = '/' if name == 'index.html' else '/' + name
+            e = by.get(key)
+            if e is None:
+                print('HINWEIS', name, 'fehlt in suche.json (Eintrag mit u, t, d und Stichwörtern k ergänzen)')
+            elif key != '/':
+                e['t'], e['d'] = t, d
+        sj.write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+        print('suche.json', len(idx), 'Einträge')
 
 
 if __name__ == '__main__':
