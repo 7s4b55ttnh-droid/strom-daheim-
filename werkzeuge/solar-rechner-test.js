@@ -45,6 +45,24 @@ let bad = 0; const ok = (c, t) => { console.log((c ? 'ok ' : 'FEHLER ') + t); if
   ok((await q.textContent('#sr-pay-t')) === (await p.textContent('#sr-pay-t')) && (await q.textContent('#sr-aut')) === (await p.textContent('#sr-aut')), 'geteilter Link zeigt dasselbe Ergebnis');
   ok(await q.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Handy: kein seitliches Scrollen');
   await q.fill('#sr-plz', '00999'); await q.waitForTimeout(300); ok((await q.textContent('#sr-reg')).includes('kennen wir nicht'), 'unbekannte Postleitzahl: verständliche Meldung');
+  // Ein Tag mit deiner Anlage
+  const dy = await q.evaluate(() => fetch('/assets/pv/34.json').then(r => r.json()).then(file => { const data = BKW.decode(file), s = Object.assign({}, SR.state(), { plz: '34117', kwp: 8, ev: 0, wp: 0, kwh: 3500 });
+    const out = {}; for (const [m, bat] of [[5, 0], [11, 0], [5, 10]]) { const d = SR.day(data, s, bat, m), R = SR.result(data, s, bat).m[m], sum = a => a.reduce((x, v) => x + v, 0) / 1000;
+      out[m + '_' + bat] = { gen: sum(d.gen), load: sum(d.load), bal: sum(d.direct) + sum(d.bat) + sum(d.grid), mload: R.load / (m === 5 ? 30 : 31), mself: R.self / (m === 5 ? 30 : 31), self: sum(d.direct) + sum(d.bat), grid: sum(d.grid), socMax: Math.max(...d.soc), night: d.gen[1] + d.gen[2] }; }
+    return out; }));
+  const J = dy['5_0'], Dz = dy['11_0'], Jb = dy['5_10'];
+  ok(near(J.load, J.mload, 0.3) && near(J.self, J.mself, 0.3), 'Durchschnittstag passt zum Monat: Verbrauch ' + J.load.toFixed(1) + ' und Eigenverbrauch ' + J.self.toFixed(1) + ' kWh je Tag');
+  ok(near(J.bal, J.load, 0.05) && near(Jb.bal, Jb.load, 0.05), 'Tagesbilanz geht auf: direkt + Speicher + Netz = Verbrauch');
+  ok(J.gen > Dz.gen * 4 && J.night === 0, 'Juni liefert ein Vielfaches vom Dezember, nachts nichts (' + J.gen.toFixed(1) + ' zu ' + Dz.gen.toFixed(1) + ' kWh)');
+  ok(Jb.grid < J.grid * 0.5 && Jb.socMax > 80 && Jb.socMax <= 100.01, 'mit Speicher im Juni deutlich weniger Netzstrom, Speicher wird voll (' + Math.round(Jb.socMax) + ' %)');
+  await q.goto(U); await q.waitForFunction(() => document.getElementById('sr-day-sub').textContent.includes('kWh'), null, { timeout: 10000 });
+  await q.evaluate(() => { const r = document.getElementById('sr-day-t'); r.value = 13; r.dispatchEvent(new Event('input', { bubbles: true })); });
+  ok((await q.textContent('#sr-d-h')) === '13:00 Uhr' && /kW|W/.test(await q.textContent('#sr-d-pv')), 'Schieber zeigt Uhrzeit und Leistung: ' + await q.textContent('#sr-d-pv'));
+  await q.click('#sr-day-m button[data-m="11"]'); await q.waitForTimeout(200);
+  ok((await q.textContent('#sr-day-sub')).includes('Dezember'), 'Monat wählen zeichnet den Dezember');
+  const h0 = await q.textContent('#sr-d-h'); await q.click('#sr-day-play'); await q.waitForTimeout(900);
+  ok((await q.getAttribute('#sr-day-play', 'aria-pressed')) === 'true' && (await q.textContent('#sr-d-h')) !== h0, 'Abspielen läuft');
+  await q.click('#sr-day-play'); ok((await q.getAttribute('#sr-day-play', 'aria-pressed')) === 'false', 'Anhalten stoppt');
   ok(e.length + e2.length === 0, 'keine Skriptfehler ' + e.concat(e2).join('|'));
   await b.close(); console.log(bad ? '\n' + bad + ' FEHLER' : '\nALLE TESTS BESTANDEN'); process.exit(bad ? 1 : 0);
 })();

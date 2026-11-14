@@ -218,6 +218,34 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 .sr-leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 4px 4px;font-size:.82rem;color:var(--mut)}
 .sr-leg span{display:inline-flex;align-items:center;gap:7px}
 .sr-leg i{width:12px;height:12px;border-radius:3px;background:var(--sun)}.sr-leg .f{background:color-mix(in srgb,var(--sun) 38%,var(--pan))}.sr-leg .l{height:3px;border-radius:2px;background:var(--sky)}
+.sr-day-sub{margin:-4px 0 6px;font-size:.9rem;color:var(--mut)}
+.sr-day .chips{margin:8px 0 12px}
+.sr-day-chart{min-height:200px}
+.sr-day-chart svg{display:block;width:100%;height:auto;overflow:visible}
+.sr-day-chart text{font:500 11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:var(--mut)}
+.sr-day-chart .g{stroke:var(--line)}
+.sr-day-chart .ga{fill:color-mix(in srgb,var(--sun) 30%,var(--pan))}.sr-day-chart .gl{fill:none;stroke:var(--sun);stroke-width:2;stroke-linejoin:round}
+.sr-day-chart .da{fill:var(--sun)}
+.sr-day-chart .l{fill:none;stroke:var(--sky);stroke-width:2;stroke-linejoin:round}
+.sr-day-chart .dim{opacity:.28}
+.sr-day-chart .cur{stroke:var(--ink);stroke-width:1.5}
+.sr-day-chart .dot{stroke:var(--pan);stroke-width:2}
+.sr-day-chart .sunp{fill:none;stroke:var(--line);stroke-dasharray:2 5}
+.sr-day-chart .sun{fill:var(--sun)}.sr-day-chart .moon{fill:var(--mut)}
+.sr-leg .dg{background:color-mix(in srgb,var(--sun) 30%,var(--pan));border:1.5px solid var(--sun);box-sizing:border-box}.sr-leg .dd{background:var(--sun)}
+.sr-day-ctl{display:flex;align-items:center;gap:12px;margin:12px 0 4px}
+.sr-day-play{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:.92rem;padding:10px 16px 10px 12px;min-height:44px;border-radius:999px;border:0;background:var(--ink);color:var(--bg);cursor:pointer;flex:none}
+.sr-day-play svg{width:18px;height:18px;fill:currentColor}
+.sr-day-play .pa,.sr-day-play[aria-pressed="true"] .pl{display:none}.sr-day-play[aria-pressed="true"] .pa{display:block}
+.sr-day-ctl input{flex:1;min-width:0;accent-color:var(--sun);height:44px}
+.sr-day-read{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 4px}
+.sr-day-read>div{background:var(--soft);border-radius:12px;padding:10px 12px;min-width:0}
+.sr-day-read>div[hidden]{display:none}
+.sr-day-read b{display:block;font-size:1.15rem;font-variant-numeric:tabular-nums}
+.sr-day-read span{font-size:.8rem;color:var(--mut)}
+.sr-day-read>div:first-child{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;background:none;padding:0 2px}
+.sr-day-bar{display:block;height:6px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.sr-day-bar i{display:block;height:100%;width:0;background:var(--ok);border-radius:3px}
 .sr-var{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:.92rem}
 .sr-var th,.sr-var td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line)}
 .sr-var th:first-child,.sr-var td:first-child{text-align:left}
@@ -323,6 +351,23 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
     <div class="sr-card">
       <h3>Speicher im Vergleich</h3>
       <div class="sr-tw"><table class="sr-var"><thead><tr><th scope="col">Speicher</th><th scope="col">vom Dach</th><th scope="col">Nutzen pro Jahr</th><th scope="col">Kosten</th><th scope="col">bezahlt nach</th></tr></thead><tbody id="sr-var"></tbody></table></div>
+    </div>
+    <div class="sr-card sr-day" id="sr-day">
+      <h3>Ein Tag mit deiner Anlage</h3>
+      <p class="sr-day-sub" id="sr-day-sub">Ein Durchschnittstag, Stunde für Stunde.</p>
+      <div class="chips" id="sr-day-m" role="group" aria-label="Monat wählen"><button type="button" data-m="5" aria-pressed="true">Juni</button><button type="button" data-m="2" aria-pressed="false">März</button><button type="button" data-m="11" aria-pressed="false">Dezember</button></div>
+      <div class="sr-day-chart" id="sr-day-chart" role="img" aria-label="Solarstrom und Verbrauch über einen Tag"></div>
+      <div class="sr-leg" aria-hidden="true"><span><i class="dg"></i>Solarstrom vom Dach</span><span><i class="dd"></i>davon direkt genutzt</span><span><i class="l"></i>dein Verbrauch</span></div>
+      <div class="sr-day-ctl"><button type="button" class="sr-day-play" id="sr-day-play" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="pl" d="M8 5v14l11-7z"/><path class="pa" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><span>Abspielen</span></button>
+        <input type="range" id="sr-day-t" min="0" max="24" step="0.05" value="12" aria-label="Uhrzeit"></div>
+      <div class="sr-day-read" id="sr-day-read">
+        <div><b id="sr-d-h">12 Uhr</b><span>Uhrzeit</span></div>
+        <div><b id="sr-d-pv">–</b><span>liefert das Dach</span></div>
+        <div><b id="sr-d-ld">–</b><span>braucht das Haus</span></div>
+        <div><b id="sr-d-nt">–</b><span id="sr-d-ntt">Netz</span></div>
+        <div id="sr-d-bw" hidden><b id="sr-d-bt">–</b><span>Speicher gefüllt</span><i class="sr-day-bar"><i id="sr-d-bb"></i></i></div>
+      </div>
+      <p class="hint">Gemittelt über alle Tage des Monats. Einzelne Tage weichen stark ab: Ein klarer Tag bringt deutlich mehr, ein trüber deutlich weniger.</p>
     </div>
     <div class="acts" style="margin-top:14px"><button class="abtn" type="button" id="sr-share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Ergebnis teilen</button></div>
   </div>

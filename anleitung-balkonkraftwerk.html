@@ -128,6 +128,35 @@ footer p{max-width:72ch}footer a{color:var(--mut);text-decoration:underline}
 footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 @media(max-width:900px){.grid3{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
 @media(max-width:640px){.grid2,.items{grid-template-columns:1fr}ol.steps>li{grid-template-columns:1fr;padding:20px}ol.steps>li:before{grid-row:auto;margin-bottom:6px}.hero{min-height:70svh}}
+
+/* Der Weg des Stroms: Bild bleibt stehen, Schritte scrollen vorbei (Skript am Abschnittsende) */
+.flow .fl{display:grid;gap:0 44px;align-items:start}
+.flow .fl-stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);z-index:2;background:var(--bg);padding:6px 0 10px;margin:0 -4px}
+.flow .fl-stage svg{display:block;width:100%;height:auto;max-height:44vh;margin:0 auto;overflow:visible}
+.flow .fl-steps{list-style:none;margin:0;padding:0;counter-reset:fl}
+.flow .fl-steps li{counter-increment:fl;position:relative;margin:0 0 14px;padding:18px 18px 18px 62px;border:1.5px solid var(--line);border-radius:18px;background:var(--pan);transition:border-color .3s,opacity .3s}
+.flow .fl-steps li::before{content:counter(fl);position:absolute;left:16px;top:18px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--soft);color:var(--ink);transition:background .3s,color .3s}
+.flow .fl-steps h3{margin:0 0 4px;font-size:1.1rem}.flow .fl-steps p{margin:0;font-size:.98rem;color:var(--mut)}
+.flow.js .fl-steps li{opacity:.55}
+.flow.js .fl-steps li.on{opacity:1;border-color:var(--sun)}
+.flow.js .fl-steps li.on::before{background:var(--sun);color:#000}
+@media (min-width:900px){.flow .fl{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}.flow .fl-stage{top:120px;background:none;padding:0}.flow .fl-stage svg{max-height:70vh}.flow.js .fl-steps li{margin-bottom:9vh;min-height:20vh}.flow.js .fl-steps li:last-child{margin-bottom:0}}
+@media (max-width:899px){.flow.js .fl-steps li{margin-bottom:22vh}.flow.js .fl-steps li:last-child{margin-bottom:8vh}}
+.fl-svg .o{stroke:var(--mut);stroke-width:2.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.fl-svg .w{fill:var(--pan);stroke:var(--mut);stroke-width:2.5;stroke-linejoin:round}
+.fl-svg .it{fill:var(--soft);stroke:var(--mut);stroke-width:2;stroke-linejoin:round;transition:fill .4s,stroke .4s}
+.fl-svg .pv{fill:#1f5fc6;stroke:#9ec1ff;stroke-width:2}
+.fl-svg .sun{fill:var(--sun)}.fl-svg .ray{stroke:var(--sun);stroke-width:3;stroke-linecap:round}
+.fl-svg .f{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:var(--line);transition:stroke .4s}
+.fl-svg .lb{font:600 11px system-ui,-apple-system,"Segoe UI",sans-serif;fill:var(--mut)}
+.fl-svg[data-s] .f.act{stroke:var(--sun);stroke-dasharray:3 9;animation:fl-run 1s linear infinite}
+.fl-svg[data-s] .f.act.net{stroke:var(--sky)}
+.fl-svg[data-s] .f.done{stroke:color-mix(in srgb,var(--sun) 55%,var(--line))}
+.fl-svg[data-s] .it.act{fill:color-mix(in srgb,var(--sun) 35%,var(--pan));stroke:var(--sun)}
+.fl-svg:not([data-s]) .f{stroke:var(--sun)}.fl-svg:not([data-s]) .f.net{stroke:var(--sky)}
+@keyframes fl-run{to{stroke-dashoffset:-24}}
+@media (prefers-reduced-motion:reduce){.fl-svg[data-s] .f.act{animation:none}.flow .fl-steps li,.flow .fl-steps li::before{transition:none}}
+@media print{.flow .fl-stage{position:static}.flow.js .fl-steps li{opacity:1;margin-bottom:14px;min-height:0}}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script><script type="application/ld+json" id="ld">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Balkonkraftwerk montieren. An einem Nachmittag.", "name": "Balkonkraftwerk montieren: Anleitung und Einkaufsliste – Strom-Daheim", "description": "Balkonkraftwerk selbst montieren in 8 Schritten: Platz wählen, Steckdose prüfen, Halterung, Module, Wechselrichter, Anmeldung.", "inLanguage": "de-DE", "url": "https://strom-daheim.de/anleitung-balkonkraftwerk.html", "mainEntityOfPage": "https://strom-daheim.de/anleitung-balkonkraftwerk.html", "author": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "publisher": {"@type": "Organization", "name": "Strom-Daheim", "url": "https://strom-daheim.de/"}, "image": "https://strom-daheim.de/assets/og/anleitung-balkonkraftwerk.jpg", "datePublished": "2026-10-25", "dateModified": "2026-10-25", "abstract": "Ein Balkonkraftwerk mit höchstens 960 Watt Modulleistung und 800 Watt Wechselrichter darf in die normale Haushaltssteckdose, die Montage schaffst du an einem Nachmittag. Danach meldest du es innerhalb eines Monats im Marktstammdatenregister an; zur Miete brauchst du für Brüstung oder Fassade die Zustimmung des Vermieters, die er nicht grundlos verweigern darf."}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Darf ich das Balkonkraftwerk wirklich selbst anschließen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, wenn die Module zusammen höchstens 960 Watt haben, der Wechselrichter höchstens 800 Watt einspeist und das Gerät für den Anschluss an die Haushaltssteckdose zugelassen ist. Das regelt die Norm DIN VDE V 0126-95 seit Dezember 2025."}}, {"@type": "Question", "name": "Ich habe vier Module. Was jetzt?", "acceptedAnswer": {"@type": "Answer", "text": "Montieren darfst du sie selbst. Für den Anschluss brauchst du dann eine spezielle Einspeisesteckdose oder einen eigenen Stromkreis, und den macht ein Elektriker. Die Grenze von 800 Watt am Wechselrichter gilt weiter."}}, {"@type": "Question", "name": "Brauche ich eine Wieland-Steckdose?", "acceptedAnswer": {"@type": "Answer", "text": "Für Anlagen bis 960 Wp nicht mehr. Die normale Schuko-Steckdose reicht, wenn sie geerdet ist und das Gerät die Schutzanforderungen der Norm erfüllt."}}, {"@type": "Question", "name": "Was passiert, wenn ein Modul herunterfällt?", "acceptedAnswer": {"@type": "Answer", "text": "Dann haftest du. Meist zahlt die Privathaftpflicht, aber frag vorher nach, ob Balkonkraftwerke im Tarif eingeschlossen sind. Eine Halterung nach Herstellerangabe und regelmäßiges Nachziehen der Schrauben, etwa nach Stürmen, sind die beste Vorsorge."}}, {"@type": "Question", "name": "Lohnt sich ein Speicher dazu?", "acceptedAnswer": {"@type": "Answer", "text": "Bei zwei Modulen meist nicht. Die Rechnung dazu steht im Speicher-Ratgeber ."}}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Strom-Daheim", "item": "https://strom-daheim.de/"}, {"@type": "ListItem", "position": 2, "name": "Balkonkraftwerk montieren. An einem Nachmittag.", "item": "https://strom-daheim.de/anleitung-balkonkraftwerk.html"}]}]}</script>
 </head><body>
@@ -145,7 +174,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
   </div>
 </div>
 
-<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>Ein Balkonkraftwerk mit höchstens 960&nbsp;Watt Modulleistung und 800&nbsp;Watt Wechselrichter darf in die normale Haushaltssteckdose, die Montage schaffst du an einem Nachmittag. Danach meldest du es innerhalb eines Monats im Marktstammdatenregister an; zur Miete brauchst du für Brüstung oder Fassade die Zustimmung des Vermieters, die er nicht grundlos verweigern darf.</p></div><details class="toc"><summary><span>Inhalt</span><span class="toc-t">7 Min. Lesezeit</span></summary><ol><li><a href="#schritte">So kommt die Sonne in die Steckdose</a></li><li><a href="#einkauf">Vom Set bis zum Kabelbinder</a></li><li><a href="#checkliste">Hast du an alles gedacht?</a></li><li><a href="#fragen">Kurz beantwortet</a></li></ol></details></div></section>
+<section class="kurz-s"><div class="wrap read"><div class="kurz" id="kurz-gesagt"><b>Kurz gesagt</b><p>Ein Balkonkraftwerk mit höchstens 960&nbsp;Watt Modulleistung und 800&nbsp;Watt Wechselrichter darf in die normale Haushaltssteckdose, die Montage schaffst du an einem Nachmittag. Danach meldest du es innerhalb eines Monats im Marktstammdatenregister an; zur Miete brauchst du für Brüstung oder Fassade die Zustimmung des Vermieters, die er nicht grundlos verweigern darf.</p></div><details class="toc"><summary><span>Inhalt</span><span class="toc-t">8 Min. Lesezeit</span></summary><ol><li><a href="#strom-weg">Der Weg des Stroms</a></li><li><a href="#schritte">So kommt die Sonne in die Steckdose</a></li><li><a href="#einkauf">Vom Set bis zum Kabelbinder</a></li><li><a href="#checkliste">Hast du an alles gedacht?</a></li><li><a href="#fragen">Kurz beantwortet</a></li></ol></details></div></section>
 <section id="regeln"><div class="wrap read">
 <div class="note"><span class="ic">🔌</span><div><b>Einstecken darfst du selbst. Aber nicht jede Größe.</b><p>Seit Dezember 2025 gilt die Norm DIN VDE V 0126-95. Danach darf ein Balkonkraftwerk in die normale Haushaltssteckdose, wenn die Module zusammen höchstens <b>960 Watt</b> haben und der Wechselrichter höchstens <b>800 Watt</b> einspeist. Für mehr Modulleistung, bis 2.000 Watt, brauchst du eine spezielle Einspeisesteckdose oder einen eigenen Stromkreis – das macht ein Elektriker.</p></div></div>
 <div class="grid3">
@@ -155,6 +184,49 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 </div>
 <p class="src" style="margin-top:14px">Quelle: Verbraucherzentrale Hamburg, Neue Norm für Balkonkraftwerke (30.01.2026).</p>
 <p style="margin-top:26px">Bevor du kaufst: Wie viel Strom dein Balkon liefert und nach wie vielen Jahren die Anlage bezahlt ist, rechnet der <a href="/balkonkraftwerk-planer.html">Balkonkraftwerk-Planer</a> mit deiner Postleitzahl aus.</p>
+</div></section>
+
+<section id="strom-weg" class="flow"><div class="wrap">
+<div class="head"><span class="eyebrow">Verstehen</span><h2>Der Weg des Stroms.</h2><p class="lede">Bevor du schraubst: So kommt der Strom vom Modul zu deinem Kühlschrank.</p></div>
+<div class="fl">
+<div class="fl-stage"><svg class="fl-svg" id="fl-svg" viewBox="0 0 400 290" role="img" aria-label="Schema: Sonne, Solarmodul am Balkon, Wechselrichter, Steckdose, Geräte im Haus, Zähler und öffentliches Netz">
+<circle class="sun" cx="52" cy="46" r="20"/><path class="ray" d="M52 14v-8M52 86v-8M20 46h-8M92 46h-8M29 23l-6-6M81 75l-6-6M29 69l-6 6M75 23l6-6"/>
+<path class="f" data-f="1" d="M68 62 104 116"/>
+<path class="w" d="M150 112 244 52l94 60v158H150z"/><path class="o" d="M138 120 244 52l106 68"/>
+<path class="o" d="M112 196h38M112 196v-44M112 152h38" /><path class="o" d="M112 174h38" opacity=".5"/>
+<path class="pv" d="M98 112l12-2v82l-12 2z"/><path class="o" d="M98 139l12-2M98 166l12-2" stroke="#9ec1ff" opacity=".9"/>
+<rect class="it" data-i="2" x="118" y="160" width="20" height="14" rx="3"/>
+<path class="f" data-f="2" d="M110 150c8 4 10 8 18 10"/>
+<path class="f" data-f="3" d="M138 167h34v36"/>
+<g class="it" data-i="3"><circle cx="172" cy="212" r="10"/></g><circle cx="168" cy="212" r="1.8" fill="var(--mut)"/><circle cx="176" cy="212" r="1.8" fill="var(--mut)"/>
+<path class="f" data-f="4" d="M182 212h126M214 212v-14M258 212v-44M292 212v18"/>
+<rect class="it" data-i="4" x="200" y="150" width="28" height="48" rx="3"/><path class="o" d="M200 168h28M206 158v4M206 176v8" stroke-width="2"/>
+<g class="it" data-i="4"><path d="M246 168h24l-5-22h-14z"/></g><path class="o" d="M258 168v-6" stroke-width="2"/>
+<rect class="it" data-i="4" x="278" y="230" width="28" height="30" rx="3"/><circle class="o" cx="292" cy="247" r="8" stroke-width="2"/>
+<rect class="it" data-i="5" x="308" y="196" width="22" height="30" rx="3"/><path class="o" d="M313 204h12M313 211h12" stroke-width="2"/>
+<path class="f net" data-f="5" d="M330 212h34"/>
+<path class="o" d="M372 270V150M360 270l12-120 12 120M362 170h20M358 190h28M366 236h12M364 254h16"/>
+<text class="lb" x="52" y="104" text-anchor="middle">Sonne</text><text class="lb" x="104" y="210" text-anchor="middle">Modul</text><text class="lb" x="156" y="138">Wechselrichter</text>
+<text class="lb" x="172" y="238" text-anchor="middle">Steckdose</text><text class="lb" x="319" y="188" text-anchor="middle">Zähler</text><text class="lb" x="372" y="142" text-anchor="middle">Netz</text>
+</svg></div>
+<ol class="fl-steps" id="fl-steps">
+<li data-s="1"><h3>Licht wird Strom</h3><p>Die Module machen aus Sonnenlicht Gleichstrom. Je direkter die Sonne auf die Fläche scheint, desto mehr kommt heraus.</p></li>
+<li data-s="2"><h3>Der Wechselrichter wandelt um</h3><p>Er macht aus dem Gleichstrom Wechselstrom, wie er in deiner Wohnung fließt. Mehr als 800 Watt gibt er nicht ab.</p></li>
+<li data-s="3"><h3>Durch die Steckdose ins Hausnetz</h3><p>Über den Stecker fließt der Strom in deinen Stromkreis und verteilt sich von dort in der Wohnung.</p></li>
+<li data-s="4"><h3>Deine Geräte nehmen ihn zuerst</h3><p>Strom nimmt den kürzesten Weg. Kühlschrank, Router und alles, was gerade läuft, bekommen zuerst den Solarstrom. In dieser Zeit zählt dein Zähler weniger.</p></li>
+<li data-s="5"><h3>Der Rest geht ins Netz</h3><p>Liefert das Modul mehr, als du gerade brauchst, fließt der Überschuss durch den Zähler ins öffentliche Netz. Brauchst du mehr, kommt der Rest wie gewohnt von dort.</p></li>
+</ol>
+</div>
+<script>
+(function(){var sec=document.getElementById('strom-weg'),svg=document.getElementById('fl-svg'),st=[].slice.call(document.querySelectorAll('#fl-steps li'));
+ if(!sec||!('IntersectionObserver' in window))return;sec.classList.add('js');
+ function set(n){svg.setAttribute('data-s',n);st.forEach(function(li){li.classList.toggle('on',+li.dataset.s===n)});
+  [].forEach.call(svg.querySelectorAll('[data-f]'),function(f){var k=+f.dataset.f;f.classList.toggle('act',k===n);f.classList.toggle('done',k<n)});
+  [].forEach.call(svg.querySelectorAll('[data-i]'),function(f){f.classList.toggle('act',+f.dataset.i===n)})}
+ var vis={};var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.dataset.s]=e.isIntersecting});
+  var on=st.filter(function(li){return vis[li.dataset.s]});if(on.length)set(+on[on.length-1].dataset.s)},{rootMargin:'-55% 0px -25% 0px'});
+ st.forEach(function(li){io.observe(li)});set(1)})();
+</script>
 </div></section>
 
 <section class="band" id="schritte"><div class="wrap read">
