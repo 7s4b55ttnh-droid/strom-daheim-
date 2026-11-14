@@ -1,0 +1,31 @@
+name: Strompreise holen
+# Holt die Börsenstrompreise (SMARD, Bundesnetzagentur) für strompreis-heute.html.
+# Morgens für den neuen Tag, nachmittags mehrmals, weil dann die Preise für morgen erscheinen. Zeiten in UTC.
+on:
+  schedule:
+    - cron: '17 4,11,12,13,14,16,19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: strompreis
+  cancel-in-progress: false
+jobs:
+  preise:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preise holen
+        run: python3 werkzeuge/strompreis.py
+      - name: Hochladen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "nichts neu"; exit 0; fi
+          git config user.name "Strompreis-Abruf"
+          git config user.email "noreply@github.com"
+          git add assets/strompreis.json strompreis-heute.html sitemap.xml
+          git commit -m "Strompreise aktualisiert"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break || sleep 20; done
+          gh api -X POST repos/${{ github.repository }}/pages/builds || true

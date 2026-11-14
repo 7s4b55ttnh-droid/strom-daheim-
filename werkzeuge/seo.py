@@ -13,6 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://strom-daheim.de'
 NAME = 'Strom-Daheim'
 KURZ = {
+    'strompreis-heute.html': 'Die Seite zeigt den Börsenstrompreis für Deutschland Stunde für Stunde und sucht das günstigste Zeitfenster für Waschmaschine, Spülmaschine oder E-Auto. Wichtig ist das nur mit einem dynamischen Tarif: Auf den Börsenpreis kommen in jeder Stunde Netzentgelt, Steuern und Umlagen.',
     'balkonkraftwerk-planer.html': 'Der Planer rechnet mit den Sonnendaten deiner Region aus, was ein Balkonkraftwerk an deinem Balkon bringt: Zwei Module mit zusammen 900&nbsp;Wp liefern senkrecht an einem Südbalkon je nach Region etwa 650 bis 780&nbsp;kWh im Jahr, schräg aufgestellt 900 bis 1.110&nbsp;kWh. Geld spart nur der Teil, den du selbst nutzt; wie viel das bei deinem Verbrauch ist und ob sich ein Speicher lohnt, zeigt der Vergleich.',
     'anleitung-balkonkraftwerk.html': 'Ein Balkonkraftwerk mit höchstens 960&nbsp;Watt Modulleistung und 800&nbsp;Watt Wechselrichter darf in die normale Haushaltssteckdose, die Montage schaffst du an einem Nachmittag. Danach meldest du es innerhalb eines Monats im Marktstammdatenregister an; zur Miete brauchst du für Brüstung oder Fassade die Zustimmung des Vermieters, die er nicht grundlos verweigern darf.',
     'e-auto.html': 'Zuhause laden kostet etwa 5 bis 8&nbsp;€ pro 100&nbsp;km, an öffentlichen Säulen zahlst du meist deutlich mehr (39 bis 89&nbsp;ct pro kWh). Für regelmäßiges Laden ist eine Wallbox mit 11&nbsp;kW sicherer und schneller als die Haushaltssteckdose.',
@@ -40,6 +41,7 @@ KURZ = {
     'smart-meter.html': 'Einen Smart Meter musst du ab 6.000&nbsp;kWh Jahresverbrauch, mit einem steuerbaren Gerät nach §&nbsp;14a oder mit einer Solaranlage über 7&nbsp;kW bekommen, im Haushalt kostet er dann höchstens 40 bis 50&nbsp;€ im Jahr. Alle anderen bekommen bis 2032 einen digitalen Zähler für höchstens 25&nbsp;€ im Jahr und können einen Smart Meter freiwillig für 100&nbsp;€ einmalig und 30&nbsp;€ im Jahr bestellen.',
     'solar-laden.html': 'Mit PV-Überschussladen lädst du dein E-Auto mit Solarstrom, der 6 bis 14&nbsp;ct pro kWh kostet statt rund 37&nbsp;ct aus dem Netz. Dafür braucht es eine Dachanlage ab etwa 6 bis 10&nbsp;kWp und mindestens rund 1,4&nbsp;kW Überschuss. Ein Balkonkraftwerk mit 800&nbsp;W reicht dafür nicht.',
 }
+WERKZEUGE = {'balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', 'strompreis-heute.html': 'Strompreis heute'}     # Seite -> Name des Werkzeugs (bekommt zusätzlich WebApplication)
 SKIP_LD = {'impressum.html', 'datenschutz.html', '404.html', 'index.html'}
 LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n?', re.S)
 SITE_RE = re.compile(r'<script type="application/ld\+json" id="ld-site">.*?</script>\n?', re.S)
@@ -178,8 +180,8 @@ def run():
         if name in KURZ:
             art['abstract'] = text(KURZ[name])
         graph = [art]
-        if name == 'balkonkraftwerk-planer.html':     # der Planer ist ein Werkzeug, das sagen wir Suchmaschinen dazu
-            graph.append({'@type': 'WebApplication', 'name': 'Balkonkraftwerk-Planer von ' + NAME, 'url': url, 'applicationCategory': 'UtilitiesApplication',
+        if name in WERKZEUGE:                         # Planer und Rechner-Seiten sind Werkzeuge, das sagen wir Suchmaschinen dazu
+            graph.append({'@type': 'WebApplication', 'name': WERKZEUGE[name] + ' von ' + NAME, 'url': url, 'applicationCategory': 'UtilitiesApplication',
                           'operatingSystem': 'Alle, läuft im Browser', 'inLanguage': 'de-DE', 'isAccessibleForFree': True,
                           'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'}, 'description': desc})
         q = faqs(main)
