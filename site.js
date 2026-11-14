@@ -12,7 +12,11 @@
     if(ek){root.classList.add('emb');
       var ec=d.createElement('p');ec.className='emb-cr';
       ec.innerHTML='Ein Werkzeug von <a href="'+location.origin+location.pathname+'">Strom-Daheim</a>';ek.appendChild(ec);
-      $$('.emb-keep a[href]').forEach(function(a){if(a.getAttribute('href').charAt(0)!=='#'){a.target='_blank';a.rel='noopener'}})}
+      $$('.emb-keep a[href]').forEach(function(a){if(a.getAttribute('href').charAt(0)!=='#'){a.target='_blank';a.rel='noopener'}})
+      d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(a&&a.getAttribute('href').charAt(0)!=='#'){a.target='_blank';a.rel='noopener'}},true)
+      /* Höhe an die einbettende Seite melden, damit sie den Rahmen anpassen kann (Schnipsel auf einbetten.html) */
+      var eh=0,es=function(){var h=Math.ceil(d.documentElement.scrollHeight);if(h!==eh){eh=h;try{parent.postMessage({daheimHoehe:h},'*')}catch(x){}}};
+      if(window.parent!==window){es();addEventListener('load',es);if(window.ResizeObserver)new ResizeObserver(es).observe(d.body);else setInterval(es,800)}}
   }
 
   /* Zahlenfelder: Ein Feld vom Typ number verschluckt das deutsche Komma (aus 17,5 wird 175).
