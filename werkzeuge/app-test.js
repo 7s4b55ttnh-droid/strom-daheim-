@@ -7,11 +7,11 @@ let bad = 0; const ok = (c, t) => { console.log((c ? 'ok   ' : 'FEHLER ') + t); 
   const b = await chromium.launch(), ctx = await b.newContext({ viewport: { width: 390, height: 844 } }), p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(BASE + '/'); await p.waitForTimeout(600);
   const href = await p.getAttribute('link[rel=manifest]', 'href'); ok(!!href, 'Startseite verlinkt das Manifest');
-  const man = await (await p.request.get(new URL(href, BASE + '/').href)).json();
+  const man = await p.evaluate(u => fetch(u).then(r => r.json()), new URL(href, BASE + '/').href);
   ok(man.name && man.display === 'standalone' && man.icons.length >= 3 && man.icons.some(i => i.purpose === 'maskable'), 'Manifest vollständig: ' + man.name);
-  let miss = 0; for (const i of man.icons) { const r = await p.request.get(new URL(i.src, BASE + '/').href); if (r.status() !== 200 || !/png/.test(r.headers()['content-type'] || '')) miss++; }
+  let miss = 0; for (const i of man.icons) { const r = await p.evaluate(u => fetch(u).then(r => [r.status, r.headers.get('content-type') || '']), new URL(i.src, BASE + '/').href); if (r[0] !== 200 || !/png/.test(r[1])) miss++; }
   ok(miss === 0, 'alle App-Symbole sind da');
-  for (const s of man.shortcuts || []) if ((await p.request.get(new URL(s.url, BASE + '/').href)).status() !== 200) ok(false, 'Kurzbefehl ' + s.url);
+  for (const s of man.shortcuts || []) if ((await p.evaluate(u => fetch(u).then(r => r.status), new URL(s.url, BASE + '/').href)) !== 200) ok(false, 'Kurzbefehl ' + s.url);
   ok(await p.evaluate(() => navigator.serviceWorker.getRegistrations().then(r => r.length === 0)), 'im Browser meldet sich der Helfer nicht an (nur in der installierten App)');
   ok(await p.locator('footer .app-i button').count() === 1, 'Knopf „Als App installieren“ in der Fußzeile');
   await p.click('footer .app-i button'); await p.waitForTimeout(200); ok(await p.isVisible('dialog[open] #app-h'), 'Knopf zeigt die Anleitung'); await p.keyboard.press('Escape');

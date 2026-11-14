@@ -9,11 +9,11 @@ let bad = 0; const ok = (c, t) => { console.log((c ? 'ok   ' : 'FEHLER ') + t); 
   ok(await p.locator('.lx-grid a').count() === D.length, 'Übersicht zeigt alle ' + D.length + ' Begriffe');
   await p.fill('#lx-find', 'wechselr'); ok(await p.locator('.lx-grid a:visible').count() >= 1 && await p.locator('.lx-grid a:visible').count() < 6, 'Suche filtert');
   await p.fill('#lx-find', 'xyzxyz'); ok(await p.isVisible('#lx-none'), 'Suche ohne Treffer: Hinweis');
-  let miss = 0, dead = 0;
+  let miss = 0, dead = 0; const seen = {}, get = u => p.evaluate(u => fetch(u).then(r => r.ok ? r.text() : null).catch(() => null), u);   // Abruf im Browser, damit er denselben Weg nimmt wie die Seite
   for (const t of D) {
-    const r = await p.request.get(BASE + '/lexikon/' + t.slug + '.html'); if (r.status() !== 200) { miss++; continue; }
-    const h = await r.text(); if (!h.includes('"DefinedTerm"') || !h.includes('<h1>')) miss++;
-    for (const m of h.matchAll(/class="lx-links">(.*?)<\/div>/gs)) for (const a of m[1].matchAll(/href="([^"#]+)/g)) { if ((await p.request.get(BASE + a[1])).status() !== 200) dead++; }
+    const h = await get(BASE + '/lexikon/' + t.slug + '.html'); if (h === null) { miss++; continue; }
+    if (!h.includes('"DefinedTerm"') || !h.includes('<h1>')) miss++;
+    for (const m of h.matchAll(/class="lx-links">(.*?)<\/div>/gs)) for (const a of m[1].matchAll(/href="([^"#]+)/g)) { if (!seen[a[1]]) seen[a[1]] = (await get(BASE + a[1])) === null ? 'tot' : 'ok'; if (seen[a[1]] === 'tot') dead++; }
   }
   ok(miss === 0, 'jede Begriffsseite ist da, mit Überschrift und Auszeichnung'); ok(dead === 0, 'alle Links der Begriffsseiten gehen');
   await p.goto(BASE + '/lexikon/kilowatt-peak.html'); await p.waitForTimeout(400);

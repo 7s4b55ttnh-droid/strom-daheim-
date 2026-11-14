@@ -21,7 +21,7 @@ let bad = 0; const ok = (c, t) => { console.log((c ? 'ok   ' : 'FEHLER ') + t); 
   ok(titles.length <= 6, 'höchstens 6 Schritte');
   ok(await p.evaluate(() => localStorage.getItem('mzp') === '97274' && localStorage.getItem('mzk') === '4500' && localStorage.getItem('sp') === '33'), 'Zahlen stehen im Profil „Mein Zuhause“');
   const links = await p.locator('#wl-list a').evaluateAll(a => a.map(x => x.getAttribute('href').split('#')[0]));
-  for (const l of [...new Set(links)]) { const r = await p.request.get(BASE + l); if (r.status() !== 200) ok(false, 'Link ' + l + ' → ' + r.status()); }
+  for (const l of [...new Set(links)]) { const st = await p.evaluate(u => fetch(u).then(r => r.status), BASE + l); if (st !== 200) ok(false, 'Link ' + l + ' → ' + st); }
   ok(true, links.length + ' Links im Plan geprüft');
   if (SHOT) await p.screenshot({ path: SHOT, fullPage: true });
   await p.reload(); await p.waitForTimeout(500);
