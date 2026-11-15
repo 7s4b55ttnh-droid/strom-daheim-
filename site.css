@@ -299,3 +299,6 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 .app-i{margin:14px 0 0}.app-i button{font:inherit;font-size:.86rem;font-weight:600;padding:9px 16px;min-height:44px;border-radius:999px;border:1px solid var(--line);background:none;color:inherit;cursor:pointer}
 .app-i button:hover{border-color:currentColor}
 @media print{.app-i{display:none}}
+
+/* Lexikon: lange Begriffe im Titel umbrechen statt seitlich zu scrollen (Prüf-Agent 15.11.2026) */
+.lxh h1{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
