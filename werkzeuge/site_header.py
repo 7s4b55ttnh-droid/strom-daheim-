@@ -50,6 +50,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/durchlauferhitzer.html', '🚿', 'Durchlauferhitzer', 'Duschkosten-Rechner, Sparkopf', 'durchlauferhitzer'),
         ('/zaehlerstand.html', '🔢', 'Zählerstand ablesen', 'Kennzahlen, Abschlag-Rechner', 'zaehlerstand'),
         ('/led-lampen.html', '💡', 'LED-Lampen', 'Lumen statt Watt, Spar-Rechner', 'led-lampen'),
+        ('/strompreise-2027.html', '📆', 'Strompreise 2027', 'Erhöhung zum 1. Januar, Fristen, Rechner', 'strompreise-2027'),
         ('/lexikon.html', '📖', 'Lexikon', 'Strom-Begriffe einfach erklärt', 'lexikon'),
         ('/weihnachten-strom.html', '🎁', 'Stromkosten an Weihnachten', 'Feiertags-Rechner, Spartipps', 'weihnachten-strom'),
         ('/black-friday.html', '🏷️', 'Black Friday 2026', 'Echte Angebote erkennen', 'black-friday'),

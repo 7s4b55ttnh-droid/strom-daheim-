@@ -21,7 +21,7 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
     '/black-friday.html': 'Black Friday',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
-    '/stromtarif.html': 'Stromtarif wechseln', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-morgen.html': 'Strompreis morgen', '/strompreis-ampel.html': 'Strompreis-Ampel', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
+    '/stromtarif.html': 'Stromtarif wechseln', '/strompreise-2027.html': 'Strompreise 2027', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-morgen.html': 'Strompreis morgen', '/strompreis-ampel.html': 'Strompreis-Ampel', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
 }
 EXTRA = {'/': 'solar', '/stromkosten.html': 'haushalt', '/strompreis-ampel.html': 'tarif', '/strompreis-morgen.html': 'tarif',  # Seiten ohne eigene Kachel in der Ratgeber-Galerie (Rechner stehen auf der Startseite in der Reihe „Rechner“)
          '/balkonkraftwerk-planer.html': 'solar', '/was-lohnt-sich.html': 'solar', '/solar-atlas.html': 'solar', '/solar-rechner.html': 'solar',
