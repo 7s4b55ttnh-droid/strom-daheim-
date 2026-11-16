@@ -302,3 +302,25 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 
 /* Lexikon: lange Begriffe im Titel umbrechen statt seitlich zu scrollen (Prüf-Agent 15.11.2026) */
 .lxh h1{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+
+/* Menü seit 16.11.2026: Einstieg, Rechner als Karten, Ratgeber nach Thema (auf dem Handy aufklappbar), Nachschlagen */
+.sh-sheet-in{max-width:980px}
+.sh-go{display:flex;align-items:center;gap:16px;margin:14px 0 4px;padding:16px 20px;border-radius:18px;background:var(--ink);color:var(--bg);text-decoration:none}
+.sh-go:hover{text-decoration:none;opacity:.92}.sh-go span{flex:1}.sh-go b{display:block;font-size:1.05rem;letter-spacing:-.01em}.sh-go small{display:block;font-size:.84rem;opacity:.72;margin-top:2px}.sh-go i{font-style:normal;font-size:1.3rem}
+.sh-go[aria-current]{outline:2px solid var(--sun);outline-offset:2px}
+.sh-sheet .sh-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sh-cols{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px 22px;align-items:start}
+.sh-d summary{list-style:none;font-weight:650;font-size:.95rem;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:6px;cursor:default}
+.sh-d summary::-webkit-details-marker{display:none}
+.sh-d a,.sh-more a{display:block;padding:7px 0;font-size:.93rem;line-height:1.3;color:var(--ink);text-decoration:none}
+.sh-d a:hover,.sh-more a:hover{text-decoration:underline}
+.sh-d a[aria-current],.sh-more a[aria-current]{font-weight:650;box-shadow:inset 3px 0 0 var(--sun);padding-left:10px}
+.sh-more{display:flex;flex-wrap:wrap;gap:0 26px}
+@media (max-width:860px){.sh-sheet .sh-grid{grid-template-columns:1fr 1fr}.sh-cols{grid-template-columns:1fr;gap:0}
+ .sh-d{border-bottom:1px solid var(--line)}.sh-d summary{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:0 2px;border:0;margin:0;cursor:pointer;font-size:1rem}
+ .sh-d summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--mut);border-bottom:2px solid var(--mut);transform:rotate(45deg);transition:transform .2s;margin-right:6px}
+ .sh-d[open] summary::after{transform:rotate(-135deg)}.sh-d>div{padding:0 2px 12px}.sh-d a{padding:10px 0;font-size:1rem}.sh-more a{padding:10px 0;font-size:1rem}}
+@media (max-width:480px){.sh-sheet .sh-grid{grid-template-columns:1fr}.sh-sheet .sh-grid a{min-height:56px;padding:10px 14px}}
+#sh-sheet .sh-d summary::after{content:none}
+@media (max-width:860px){#sh-sheet .sh-d summary::after{content:"";flex:none;width:9px;height:9px;border:0;border-right:2px solid var(--mut);border-bottom:2px solid var(--mut);border-radius:0;background:none;transform:rotate(45deg);transition:transform .2s;margin:0 8px 4px 0}
+ #sh-sheet .sh-d[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}}

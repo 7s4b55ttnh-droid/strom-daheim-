@@ -129,6 +129,11 @@ b.innerHTML='<a href="/black-friday.html"><b>'+t+'</b><span class="bfx"> · echt
 b.querySelector('button').addEventListener('click',()=>{b.remove();try{localStorage.setItem('bf26','x')}catch(e){}});
 h.appendChild(b);document.documentElement.classList.add('bf-on');b.querySelector('button').addEventListener('click',()=>document.documentElement.classList.remove('bf-on'))})();
 
+/* Menü: Themenlisten sind auf breiten Bildschirmen immer offen, auf dem Handy aufklappbar (offen ist das Thema der aktuellen Seite) */
+(()=>{const D=[...document.querySelectorAll('#sh-sheet .sh-d')];if(!D.length)return;const mq=matchMedia('(min-width:861px)');
+const set=()=>D.forEach(d=>{if(mq.matches){d.open=true;d.querySelector('summary').tabIndex=-1}else{d.querySelector('summary').tabIndex=0;if(!d.querySelector('[aria-current]')&&d.__auto!==0)d.open=false}});
+D.forEach(d=>d.querySelector('summary').addEventListener('click',e=>{if(mq.matches)e.preventDefault();else d.__auto=0}));set();mq.addEventListener&&mq.addEventListener('change',set)})();
+
 /* Suche im Menü (Index: /suche.json, wird beim Öffnen geladen) */
 (()=>{const top=document.querySelector('#sh-sheet .sh-top');if(!top)return;
 const w=document.createElement('div');w.className='sq';w.setAttribute('role','search');
@@ -322,6 +327,7 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
   function mark(im){if(im.__ki)return;var s=im.getAttribute('src')||'';if(!RX.test(s))return;im.__ki=1;
     var card=im.closest('a'),fig=im.closest('figure');
     if(card&&card.parentElement){var g=card.parentElement,p=g.previousElementSibling;
+      var sec=g.closest('section');if(sec&&sec.querySelector('.ki-hinweis'))return;   /* eine Zeile je Abschnitt genügt */
       if(!(p&&p.classList.contains('ki-hinweis'))){var h=document.createElement('p');h.className='ki-hinweis';h.textContent=G;g.parentNode.insertBefore(h,g)}return}
     var fc=fig&&fig.querySelector('figcaption');
     if(fc){if(!fc.querySelector('.ki-cap')){var c=document.createElement('span');c.className='ki-cap';c.textContent=(fc.textContent.trim()?' ':'')+C;fc.appendChild(c)}return}

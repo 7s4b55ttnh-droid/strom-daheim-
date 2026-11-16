@@ -17,6 +17,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/was-lohnt-sich.html', '🧭', 'Was lohnt sich bei dir?', 'Dein Plan in 5 Fragen', 'was-lohnt-sich'),
         ('/solar-atlas.html', '🗺️', 'Solar-Atlas', 'Solarertrag in 95 Regionen, mit Karte', 'solar-atlas'),
         ('/anleitung-balkonkraftwerk.html', '🔧', 'Balkonkraftwerk montieren', '8 Schritte und Einkaufsliste', 'anleitung-balkonkraftwerk'),
+        ('/balkonkraftwerk-speicher.html', '🔋', 'Balkonkraftwerk mit Speicher', 'Lohnt sich der Akku?', 'balkonkraftwerk-speicher'),
         ('/#vergleich', '⚖️', 'Welches Set kaufen?', '4 geprüfte Komplettsets', None),
         ('/#speicher', '🔋', 'Lohnt sich ein Speicher?', 'Zwei Rechenbeispiele', None),
         ('/e-auto.html', '🚗', 'Was kostet mein E-Auto?', 'Ladekosten-Rechner', 'e-auto'),
@@ -52,10 +53,32 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
 CUR = ' aria-current="page"'
 
 
+# Menü (seit 16.11.2026): oben der Einstieg und die Rechner als Karten, darunter die Ratgeber nach Thema als kurze Listen.
+# Neue Ratgeber wie bisher in GRID eintragen; das Thema kommt aus der Kachel auf der Startseite (data-k) bzw. aus EXTRA in fusszeile.py.
+# Erzeugte Seiten (Lexikon-Begriffe, Regionen, Gerätekosten, Länder, Monate) gehören NICHT ins Menü, nur ihre Sammelseite.
+TOOLS = ['/strompreis-heute.html', '/balkonkraftwerk-planer.html', '/solar-rechner.html', '/solar-atlas.html', '/e-auto.html', '/stromtarif.html']
+NACH = ['/lexikon.html', '/strompreis-archiv.html']
+START = '/was-lohnt-sich.html'
+
+
 def block(page):
+    import fusszeile
+    g = fusszeile.galerie(); kat = {h: k for h, (k, _) in g.items()}; kat.update(fusszeile.EXTRA)
+    by = {h: (t, sub, k) for h, i, t, sub, k in GRID}
     links = ''.join('<a href="%s"%s>%s</a>' % (h, CUR if k == page else '', t) for h, t, k in NAV)
-    grid = ''.join('<a href="%s"%s><span class="i" aria-hidden="true">%s</span><span><b>%s</b><small>%s</small></span></a>'
-                   % (h, CUR if k == page else '', i, t, sub) for h, i, t, sub, k in GRID)
+    cur = lambda h: CUR if by.get(h, ('', '', 0))[2] == page else ''
+    karte = lambda h: '<a href="%s"%s><span><b>%s</b><small>%s</small></span></a>' % (h, cur(h), by[h][0], by[h][1])
+    start = ('<a class="sh-go" href="%s"%s><span><b>%s</b><small>Fünf Fragen, dann dein Plan mit den passenden Rechnern</small></span><i aria-hidden="true">→</i></a>' % (START, cur(START), by[START][0])) if START in by else ''
+    tools = ''.join(karte(h) for h in TOOLS if h in by)
+    fest = set(TOOLS) | set(NACH) | {START}
+    cols = ''
+    for k, lab in fusszeile.SPALTEN:
+        hs = [h for h, i, t, sub, key in GRID if '#' not in h and h not in fest and kat.get(h) == k]
+        if hs:
+            cols += '<details class="sh-d"%s><summary>%s</summary><div>%s</div></details>' % (
+                ' open' if any(by[h][2] == page for h in hs) else '', lab, ''.join('<a href="%s"%s>%s</a>' % (h, cur(h), by[h][0]) for h in hs))
+    rest = [h for h, i, t, sub, key in GRID if '#' not in h and h not in fest and h not in kat]
+    nach = ''.join('<a href="%s"%s>%s</a>' % (h, cur(h), by[h][0]) for h in NACH + rest if h in by) + '<a href="/einbetten.html">Rechner einbetten</a>'
     return ('<a class="skip" href="#main">Zum Inhalt springen</a>\n'
             '<header class="sh" id="sh"><div class="sh-in"><a class="sh-logo" href="/">' + BOLT + '<span>Strom-Daheim</span></a>'
             '<nav class="sh-links" aria-label="Hauptmenü">' + links + '</nav>'
@@ -63,7 +86,10 @@ def block(page):
             '<button class="sh-ic sh-mb" id="sh-mb" type="button" aria-expanded="false" aria-controls="sh-sheet">' + BURGER + '<span>Menü</span></button></div></header>\n'
             '<div class="sh-sheet" id="sh-sheet" hidden role="dialog" aria-modal="true" aria-label="Menü"><div class="sh-sheet-in">'
             '<div class="sh-top"><b>Strom-Daheim</b><button class="sh-ic" id="sh-close" type="button" aria-label="Menü schließen">' + CLOSE + '</button></div>'
-            '<p class="sh-h">Ratgeber und Rechner</p><nav class="sh-grid" aria-label="Alle Ratgeber">' + grid + '</nav>'
+            + start +
+            '<p class="sh-h">Rechner</p><nav class="sh-grid" aria-label="Rechner">' + tools + '</nav>'
+            '<p class="sh-h">Ratgeber</p><nav class="sh-cols" aria-label="Ratgeber nach Thema">' + cols + '</nav>'
+            '<p class="sh-h">Nachschlagen</p><nav class="sh-more" aria-label="Nachschlagen">' + nach + '</nav>'
             '<div id="sh-toc-wrap" hidden><p class="sh-h">Auf dieser Seite</p><nav class="sh-toc" id="sh-toc" aria-label="Auf dieser Seite"></nav></div>'
             '<p class="sh-foot"><a href="/so-arbeiten-wir.html">So arbeiten wir</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></p>'
             '</div></div>\n')

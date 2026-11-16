@@ -13,7 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'werkzeuge'))
 SPALTEN = [('solar', 'Solar und Balkon'), ('auto', 'E-Auto'), ('haushalt', 'Haushalt'), ('heizen', 'Heizen und Lüften'), ('tarif', 'Tarif und Zähler')]
 TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
-    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
+    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/balkonkraftwerk-speicher.html': 'Balkonkraftwerk mit Speicher', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
     '/stromfresser.html': 'Stromfresser finden', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
@@ -23,7 +23,9 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
     '/stromtarif.html': 'Stromtarif wechseln', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
 }
-EXTRA = {'/': 'solar'}  # Seiten ohne eigene Kachel
+EXTRA = {'/': 'solar',  # Seiten ohne eigene Kachel in der Ratgeber-Galerie (Rechner stehen auf der Startseite in der Reihe „Rechner“)
+         '/balkonkraftwerk-planer.html': 'solar', '/was-lohnt-sich.html': 'solar', '/solar-atlas.html': 'solar', '/solar-rechner.html': 'solar',
+         '/e-auto.html': 'auto', '/stromtarif.html': 'tarif', '/strompreis-heute.html': 'tarif', '/strompreis-archiv.html': 'tarif', '/lexikon.html': 'tarif'}
 
 
 def galerie():
@@ -41,7 +43,8 @@ def block(cur):
     g = galerie()
     pages = {h: (k, TEXTE.get(h, t)) for h, (k, t) in g.items()}
     for h, k in EXTRA.items():
-        pages[h] = (k, TEXTE[h])
+        if h in TEXTE and (h == '/' or (ROOT / h.lstrip('/')).exists()):
+            pages[h] = (k, TEXTE[h])
     order = list(TEXTE)
     cols = []
     for k, lab in SPALTEN:
