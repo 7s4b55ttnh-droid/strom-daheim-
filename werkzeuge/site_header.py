@@ -26,6 +26,8 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/stromfresser.html', '💡', 'Stromfresser finden', 'Verbrauch vergleichen, Geräte-Rechner', 'stromfresser'),
         ('/stromtarif.html', '💶', 'Stromtarif wechseln', 'Wechsel-Rechner, dynamischer Tarif', 'stromtarif'),
         ('/strompreis-heute.html', '📈', 'Strompreis heute', 'Börsenpreis je Stunde, günstigste Zeit', 'strompreis-heute'),
+        ('/strompreis-morgen.html', '📅', 'Strompreis morgen', 'Börsenpreis je Stunde für den nächsten Tag', 'strompreis-morgen'),
+        ('/strompreis-ampel.html', '🚦', 'Strompreis-Ampel', 'Gerade günstig oder teuer?', 'strompreis-ampel'),
         ('/strompreis-archiv.html', '🗂️', 'Strompreis-Archiv', 'Börsenpreise Monat für Monat', 'strompreis-archiv'),
         ('/waermepumpe.html', '♨️', 'Wärmepumpe', 'Kosten, Förderung, Altbau', 'waermepumpe'),
         ('/solar-laden.html', '🌞', 'E-Auto mit Solarstrom laden', 'Überschussladen und Rechner', 'solar-laden'),

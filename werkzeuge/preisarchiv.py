@@ -73,7 +73,7 @@ def kennzahlen(tage):
             'tag': [(d, sum(x for x in w if x is not None) / sum(1 for x in w if x is not None), min(x for x in w if x is not None), max(x for x in w if x is not None)) for d, w in tage]}
 
 
-def balken(werte, labels, titel, cls=''):
+def balken(werte, labels, titel, cls='', marke=None):
     """Einfaches Balkendiagramm als SVG. werte: Zahlen, labels: Text je Balken (oder ''), titel: Text je Balken für den Tooltip."""
     n = len(werte); W = 720; H = 250; L = 44; T = 12; B = 26; pw = W - L - 6; ph = H - T - B
     lo = min(0, min(werte)); hi = max(werte); hi = hi if hi > 0 else 1
@@ -91,7 +91,7 @@ def balken(werte, labels, titel, cls=''):
             h = max(1, y0 - yv); d = 'M%.1f %.1fV%.1fq0 %.1f %.1f %.1fh%.1fq%.1f 0 %.1f %.1fV%.1fz' % (x, y0, yv + r, -r, r, -r, w - 2 * r, r, r, r, y0) if h > r else 'M%.1f %.1fh%.1fv%.1fh%.1fz' % (x, y0, w, -h, -w)
         else:
             h = max(1, yv - y0); d = 'M%.1f %.1fh%.1fv%.1fh%.1fz' % (x, y0, w, h, -w)
-        out.append('<path class="b%s" d="%s"><title>%s</title></path>' % (' n' if v < 0 else '', d, html.escape(titel[i])))
+        out.append('<path class="b%s%s" d="%s"><title>%s</title></path>' % (' n' if v < 0 else '', (' ' + marke[i]) if marke and marke[i] else '', d, html.escape(titel[i])))
         if labels[i]:
             out.append('<text x="%.1f" y="%d" text-anchor="middle">%s</text>' % (x + w / 2, H - 8, labels[i]))
     return '<svg class="pa-svg %s" viewBox="0 0 %d %d" role="img" aria-label="%s">%s</svg>' % (cls, W, H, 'Balkendiagramm, die Werte stehen in der Tabelle darunter', ''.join(out))

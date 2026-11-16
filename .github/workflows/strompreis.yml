@@ -3,7 +3,7 @@ name: Strompreise holen
 # Morgens für den neuen Tag, nachmittags mehrmals, weil dann die Preise für morgen erscheinen. Zeiten in UTC.
 on:
   schedule:
-    - cron: '17 4,11,12,13,14,16,19 * * *'
+    - cron: '17 4,11,12,13,14,16,19,23 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -25,7 +25,7 @@ jobs:
           if [ -z "$(git status --porcelain)" ]; then echo "nichts neu"; exit 0; fi
           git config user.name "Strompreis-Abruf"
           git config user.email "noreply@github.com"
-          git add assets/strompreis.json assets/strompreis strompreis strompreis-heute.html strompreis-archiv.html sitemap.xml werkzeuge/preisarchiv
+          git add assets/strompreis.json assets/strompreis strompreis strompreis-heute.html strompreis-morgen.html strompreis-archiv.html sitemap.xml werkzeuge/preisarchiv
           git commit -m "Strompreise aktualisiert"
           for i in 1 2 3; do git pull --rebase origin main && git push && break || sleep 20; done
           gh api -X POST repos/${{ github.repository }}/pages/builds || true

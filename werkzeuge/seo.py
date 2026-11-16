@@ -46,7 +46,7 @@ KURZ = {
     'smart-meter.html': 'Einen Smart Meter musst du ab 6.000&nbsp;kWh Jahresverbrauch, mit einem steuerbaren Gerät nach §&nbsp;14a oder mit einer Solaranlage über 7&nbsp;kW bekommen, im Haushalt kostet er dann höchstens 40 bis 50&nbsp;€ im Jahr. Alle anderen bekommen bis 2032 einen digitalen Zähler für höchstens 25&nbsp;€ im Jahr und können einen Smart Meter freiwillig für 100&nbsp;€ einmalig und 30&nbsp;€ im Jahr bestellen.',
     'solar-laden.html': 'Mit PV-Überschussladen lädst du dein E-Auto mit Solarstrom, der 6 bis 14&nbsp;ct pro kWh kostet statt rund 37&nbsp;ct aus dem Netz. Dafür braucht es eine Dachanlage ab etwa 6 bis 10&nbsp;kWp und mindestens rund 1,4&nbsp;kW Überschuss. Ein Balkonkraftwerk mit 800&nbsp;W reicht dafür nicht.',
 }
-WERKZEUGE = {'balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', 'strompreis-heute.html': 'Strompreis heute', 'solar-atlas.html': 'Solar-Atlas', 'solar-rechner.html': 'Solar-Rechner', 'was-lohnt-sich.html': 'Einstieg in 5 Fragen'}     # Seite -> Name des Werkzeugs (bekommt zusätzlich WebApplication)
+WERKZEUGE = {'balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', 'strompreis-heute.html': 'Strompreis heute', 'solar-atlas.html': 'Solar-Atlas', 'solar-rechner.html': 'Solar-Rechner', 'was-lohnt-sich.html': 'Einstieg in 5 Fragen', 'strompreis-morgen.html': 'Strompreis morgen', 'strompreis-ampel.html': 'Strompreis-Ampel'}     # Seite -> Name des Werkzeugs (bekommt zusätzlich WebApplication)
 SKIP_LD = {'impressum.html', 'datenschutz.html', '404.html', 'index.html'}
 LD_RE = re.compile(r'<script type="application/ld\+json" id="ld">.*?</script>\n?', re.S)
 SITE_RE = re.compile(r'<script type="application/ld\+json" id="ld-site">.*?</script>\n?', re.S)

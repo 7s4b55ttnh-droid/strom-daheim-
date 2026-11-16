@@ -99,6 +99,12 @@ def main():
         x2 = re.sub(r'(<loc>https://strom-daheim\.de/strompreis-heute\.html</loc>\s*<lastmod>)[^<]*', lambda m: m.group(1) + heute, x)
         if x2 != x:
             sm.write_text(x2, encoding='utf-8')
+    try:                                        # Seite „Strompreis morgen“
+        import preismorgen
+        if preismorgen.seite(tage, jetzt):
+            print('strompreis-morgen.html neu geschrieben')
+    except Exception as e:
+        print('Strompreis morgen nicht erneuert:', e)
     print('Preise aktualisiert:' if neu else 'Preise unverändert:', ', '.join(tage))
     return 0
 
