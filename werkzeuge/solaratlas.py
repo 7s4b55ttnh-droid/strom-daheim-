@@ -225,7 +225,7 @@ def region(plz, kopf_html, fuss_html, goat):
 <section id="ausrichtung"><div class="wrap">
 <div class="head"><span class="eyebrow">Ausrichtung</span><h2>Was dein Dach daraus macht.</h2><p class="lede">kWh je kWp und Jahr, je nach Himmelsrichtung und Neigung. Der höchste Wert ist markiert.</p></div>
 <div class="sa-tw" tabindex="0" role="region" aria-label="Tabelle, seitlich verschiebbar"><table class="sa-t sa-o"><thead><tr><th scope="col">Neigung</th><th scope="col">Ost</th><th scope="col">Südost</th><th scope="col">Süd</th><th scope="col">Südwest</th><th scope="col">West</th></tr></thead><tbody>%(tab)s</tbody></table></div>
-<p class="hint" style="margin-top:14px">Eine senkrechte Südfassade kommt hier auf %(fass)s&nbsp;kWh je kWp. Ob deine Stadt oder dein Bundesland Solaranlagen fördert, erfährst du bei deiner Kommune.</p>
+<p class="hint" style="margin-top:14px">Eine senkrechte Südfassade kommt hier auf %(fass)s&nbsp;kWh je kWp. Welche Bundesländer und Städte Balkonkraftwerke bezuschussen, steht unter <a href="/balkonkraftwerk-foerderung.html">Balkonkraftwerk-Förderung</a>. Eine ganze Dachanlage rechnet der <a href="/solar-rechner.html">Solar-Rechner</a> Stunde für Stunde.</p>
 </div></section>
 
 <section class="band" id="nachbarn"><div class="wrap">

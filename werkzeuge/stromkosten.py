@@ -137,7 +137,7 @@ def seite(g, d, kopf, fuss, goat):
 <div class="head"><span class="eyebrow">Sparen</span><h2>So wird es günstiger.</h2></div>
 <ul class="eb-ul">%(tipps)s</ul>
 %(rat)s
-<p>Mit einem <a href="/stromtarif.html#dynamisch">dynamischen Tarif</a> oder eigener Solaranlage zählt auch der Zeitpunkt: Der <a href="/strompreis-heute.html#fenster">Geräte-Planer</a> zeigt die günstigste Startzeit für heute.</p>
+<p>Mit einem <a href="/stromtarif.html#dynamisch">dynamischen Tarif</a> oder eigener Solaranlage zählt auch der Zeitpunkt: Der <a href="/strompreis-heute.html#fenster">Geräte-Planer</a> zeigt die günstigste Startzeit für heute. Ab dem frühen Nachmittag stehen unter <a href="/strompreis-morgen.html">Strompreis morgen</a> schon die Preise für den nächsten Tag.</p>
 </div></section>
 <section id="mehr"><div class="wrap">
 <div class="head"><span class="eyebrow">%(kat)s</span><h2>Zum Vergleich.</h2></div>

@@ -324,3 +324,6 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 #sh-sheet .sh-d summary::after{content:none}
 @media (max-width:860px){#sh-sheet .sh-d summary::after{content:"";flex:none;width:9px;height:9px;border:0;border-right:2px solid var(--mut);border-bottom:2px solid var(--mut);border-radius:0;background:none;transform:rotate(45deg);transition:transform .2s;margin:0 8px 4px 0}
  #sh-sheet .sh-d[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}}
+
+/* Silbentrennung nur bei langen Wörtern, damit kurze Wörter wie „Stücke“ nicht zerrissen werden */
+p,li,dd,td,.lede,h1,h2,h3{hyphenate-limit-chars:11 5 5}
