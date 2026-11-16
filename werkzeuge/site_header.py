@@ -26,6 +26,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/stromfresser.html', '💡', 'Stromfresser finden', 'Verbrauch vergleichen, Geräte-Rechner', 'stromfresser'),
         ('/stromtarif.html', '💶', 'Stromtarif wechseln', 'Wechsel-Rechner, dynamischer Tarif', 'stromtarif'),
         ('/strompreis-heute.html', '📈', 'Strompreis heute', 'Börsenpreis je Stunde, günstigste Zeit', 'strompreis-heute'),
+        ('/stromkosten.html', '🧾', 'Stromkosten je Gerät', 'Rechner und Richtwerte für 42 Geräte', 'stromkosten'),
         ('/strompreis-morgen.html', '📅', 'Strompreis morgen', 'Börsenpreis je Stunde für den nächsten Tag', 'strompreis-morgen'),
         ('/strompreis-ampel.html', '🚦', 'Strompreis-Ampel', 'Gerade günstig oder teuer?', 'strompreis-ampel'),
         ('/strompreis-archiv.html', '🗂️', 'Strompreis-Archiv', 'Börsenpreise Monat für Monat', 'strompreis-archiv'),
@@ -58,7 +59,7 @@ CUR = ' aria-current="page"'
 # Menü (seit 16.11.2026): oben der Einstieg und die Rechner als Karten, darunter die Ratgeber nach Thema als kurze Listen.
 # Neue Ratgeber wie bisher in GRID eintragen; das Thema kommt aus der Kachel auf der Startseite (data-k) bzw. aus EXTRA in fusszeile.py.
 # Erzeugte Seiten (Lexikon-Begriffe, Regionen, Gerätekosten, Länder, Monate) gehören NICHT ins Menü, nur ihre Sammelseite.
-TOOLS = ['/strompreis-heute.html', '/balkonkraftwerk-planer.html', '/solar-rechner.html', '/solar-atlas.html', '/e-auto.html', '/stromtarif.html']
+TOOLS = ['/strompreis-heute.html', '/balkonkraftwerk-planer.html', '/solar-rechner.html', '/solar-atlas.html', '/stromkosten.html', '/e-auto.html']
 NACH = ['/lexikon.html', '/strompreis-archiv.html']
 START = '/was-lohnt-sich.html'
 

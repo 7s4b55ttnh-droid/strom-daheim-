@@ -16,16 +16,16 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/balkonkraftwerk-speicher.html': 'Balkonkraftwerk mit Speicher', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
-    '/stromfresser.html': 'Stromfresser finden', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
+    '/stromfresser.html': 'Stromfresser finden', '/stromkosten.html': 'Stromkosten je Gerät', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
     '/kuehlschrank.html': 'Kühlschrank einstellen', '/spuelmaschine.html': 'Spülmaschine', '/waschmaschine.html': 'Waschmaschine', '/waesche-trocknen.html': 'Wäsche trocknen', '/durchlauferhitzer.html': 'Durchlauferhitzer', '/led-lampen.html': 'LED-Lampen',
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
     '/black-friday.html': 'Black Friday',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften',
     '/stromtarif.html': 'Stromtarif wechseln', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-morgen.html': 'Strompreis morgen', '/strompreis-ampel.html': 'Strompreis-Ampel', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
 }
-EXTRA = {'/': 'solar', '/strompreis-ampel.html': 'tarif', '/strompreis-morgen.html': 'tarif',  # Seiten ohne eigene Kachel in der Ratgeber-Galerie (Rechner stehen auf der Startseite in der Reihe „Rechner“)
+EXTRA = {'/': 'solar', '/stromkosten.html': 'haushalt', '/strompreis-ampel.html': 'tarif', '/strompreis-morgen.html': 'tarif',  # Seiten ohne eigene Kachel in der Ratgeber-Galerie (Rechner stehen auf der Startseite in der Reihe „Rechner“)
          '/balkonkraftwerk-planer.html': 'solar', '/was-lohnt-sich.html': 'solar', '/solar-atlas.html': 'solar', '/solar-rechner.html': 'solar',
-         '/e-auto.html': 'auto', '/stromtarif.html': 'tarif', '/strompreis-heute.html': 'tarif', '/strompreis-archiv.html': 'tarif', '/lexikon.html': 'tarif'}
+         '/e-auto.html': 'auto', '/strompreis-heute.html': 'tarif', '/strompreis-archiv.html': 'tarif', '/lexikon.html': 'tarif'}
 
 
 def galerie():
@@ -79,6 +79,11 @@ def main():
         lexikon.main()
     except Exception as e:
         print('Lexikon nicht erneuert:', e)
+    try:                                   # Geräte-Seiten „Was kostet … an Strom?“
+        import stromkosten
+        stromkosten.main()
+    except Exception as e:
+        print('Stromkosten nicht erneuert:', e)
     try:                                   # Monatsseiten des Strompreis-Archivs ebenso
         import preisarchiv
         preisarchiv.seiten()
