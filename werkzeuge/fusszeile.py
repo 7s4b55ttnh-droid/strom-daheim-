@@ -13,7 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'werkzeuge'))
 SPALTEN = [('solar', 'Solar und Balkon'), ('auto', 'E-Auto'), ('haushalt', 'Haushalt'), ('heizen', 'Heizen und Lüften'), ('tarif', 'Tarif und Zähler')]
 TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
-    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/balkonkraftwerk-speicher.html': 'Balkonkraftwerk mit Speicher', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
+    '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/balkonkraftwerk-speicher.html': 'Balkonkraftwerk mit Speicher', '/balkonkraftwerk-foerderung.html': 'Balkonkraftwerk-Förderung', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
     '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
     '/stromfresser.html': 'Stromfresser finden', '/stromkosten.html': 'Stromkosten je Gerät', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',

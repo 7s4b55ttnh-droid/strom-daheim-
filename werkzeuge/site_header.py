@@ -18,6 +18,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/solar-atlas.html', '🗺️', 'Solar-Atlas', 'Solarertrag in 95 Regionen, mit Karte', 'solar-atlas'),
         ('/anleitung-balkonkraftwerk.html', '🔧', 'Balkonkraftwerk montieren', '8 Schritte und Einkaufsliste', 'anleitung-balkonkraftwerk'),
         ('/balkonkraftwerk-speicher.html', '🔋', 'Balkonkraftwerk mit Speicher', 'Lohnt sich der Akku?', 'balkonkraftwerk-speicher'),
+        ('/balkonkraftwerk-foerderung.html', '💶', 'Balkonkraftwerk-Förderung', 'Stand in allen 16 Bundesländern', 'balkonkraftwerk-foerderung'),
         ('/#vergleich', '⚖️', 'Welches Set kaufen?', '4 geprüfte Komplettsets', None),
         ('/#speicher', '🔋', 'Lohnt sich ein Speicher?', 'Zwei Rechenbeispiele', None),
         ('/e-auto.html', '🚗', 'Was kostet mein E-Auto?', 'Ladekosten-Rechner', 'e-auto'),
