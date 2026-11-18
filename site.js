@@ -363,3 +363,36 @@ out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&l
 
 /* Abschluss-Karte (Design-Agent 13.11.2026): Kicker über den Knöpfen am Seitenende. */
 (function(){[].forEach.call(document.querySelectorAll('.wrap.read>.cta'),function(c){if(c.querySelector('.cta-k'))return;var p=document.createElement('p');p.className='cta-k';p.textContent='Dein nächster Schritt';c.insertBefore(p,c.firstChild)})})();
+
+/* Schritt-Weg (Design-Agent 18.11.2026): Schritte in ol.steps werden beim Vorbeiscrollen markiert (.on, bleibt stehen). */
+(function(){
+  var li=[].slice.call(document.querySelectorAll('main ol.steps>li'));if(!li.length)return;
+  if(!('IntersectionObserver' in window)){li.forEach(function(x){x.classList.add('on')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -42% 0px'});
+  li.forEach(function(x){io.observe(x)});
+})();
+
+/* Quellen mit Etikett (Design-Agent 18.11.2026): 'Name: Titel (Datum) <a>domain</a>' wird zu Etikett, Titel und Link. Text bleibt unverändert. */
+(function(){
+  var d=document;
+  [].forEach.call(d.querySelectorAll('.src'),function(box){
+    var lis=box.querySelectorAll('ol>li');if(!lis.length||box.classList.contains('srcx'))return;
+    box.classList.add('srcx');
+    [].forEach.call(lis,function(li){
+      var as=li.querySelectorAll('a'),last=as[as.length-1],name='';
+      var trail=last&&!(last.nextSibling&&last.nextSibling.textContent.trim());
+      var ft=li.firstChild;
+      if(ft&&ft.nodeType===3){var m=ft.nodeValue.match(/^\s*([^:]{2,45}):\s+/);if(m){name=m[1];ft.nodeValue=ft.nodeValue.slice(m[0].length)}}
+      if(!name&&as.length===1&&trail)name=last.textContent.replace(/\s*\(PDF\)\s*$/,'');
+      var t=d.createElement('span');t.className='sq-t';
+      [].slice.call(li.childNodes).forEach(function(n){if(!(n===last&&trail))t.appendChild(n)});
+      if(name){var c=d.createElement('span');c.className='sq-n';c.textContent=name;li.appendChild(c)}
+      li.appendChild(t);
+      if(last&&trail){last.classList.add('sq-a');li.appendChild(last)}
+    });
+    [].forEach.call(box.querySelectorAll('p'),function(p){
+      var w=d.createTreeWalker(p,4),n;while((n=w.nextNode())){var m=n.nodeValue.match(/Geprüft am\s\d{1,2}\.\s?\d{1,2}\.\s?\d{4}/);
+        if(m){var r=n.splitText(m.index);var rest=r.splitText(m[0].length);if(/^\.\s*$/.test(rest.nodeValue))rest.nodeValue='';var s=d.createElement('span');s.className='sq-chk';r.parentNode.replaceChild(s,r);s.appendChild(r);break}}
+    });
+  });
+})();

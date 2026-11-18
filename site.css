@@ -327,3 +327,36 @@ footer .fc a[aria-current]::before{content:"";display:inline-block;width:6px;hei
 
 /* Silbentrennung nur bei langen Wörtern, damit kurze Wörter wie „Stücke“ nicht zerrissen werden */
 p,li,dd,td,.lede,h1,h2,h3{hyphenate-limit-chars:11 5 5}
+
+/* Schritt-Weg (Design-Agent 18.11.2026): ol.steps auf allen Seiten als verbundener Weg mit sonnengelber Linie; site.js setzt .on beim Vorbeiscrollen. Überschreibt die alten Kartenstile in den Seiten. */
+main ol.steps{list-style:none;margin:0;padding:6px 0 0;display:block;counter-reset:s}
+main ol.steps>li{counter-increment:s;position:relative;display:grid;grid-template-columns:48px minmax(0,1fr);gap:0 20px;margin:0;padding:0 0 36px;background:none;border:0;border-radius:0;box-shadow:none}
+main ol.steps>li>*{grid-column:2;min-width:0}
+main ol.steps>li::before{content:counter(s);grid-column:1;grid-row:1/span 12;align-self:start;position:relative;z-index:1;box-sizing:border-box;width:48px;height:48px;margin:0;border-radius:50%;border:1.5px solid var(--sun);background:var(--bg);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:1.2rem;line-height:1;font-variant-numeric:tabular-nums;transition:background-color .45s,color .45s,box-shadow .45s}
+main ol.steps>li::after{content:"";position:absolute;left:23.25px;top:54px;bottom:6px;width:1.5px;border-radius:1px;background:var(--sun);opacity:.28;transition:opacity .6s}
+main ol.steps>li:last-child{padding-bottom:4px}
+main ol.steps>li:last-child::after{display:none}
+main ol.steps>li.on::before{background:var(--sun);color:#111;box-shadow:0 0 0 6px color-mix(in srgb,var(--sun) 16%,transparent)}
+main ol.steps>li.on::after{opacity:.85}
+main ol.steps>li h3{margin:10px 0 6px}
+main ol.steps>li .who{margin:12px 0 6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+main ol.steps>li .who.du{color:var(--ok)}
+main ol.steps>li .who.pro{color:var(--warn)}
+main ol.steps>li p{margin:0 0 10px}
+main ol.steps>li .who+h3{margin-top:0}
+@media (max-width:640px){main ol.steps>li{grid-template-columns:38px minmax(0,1fr);gap:0 14px;padding:0 0 30px}main ol.steps>li::before{width:38px;height:38px;font-size:1.05rem}main ol.steps>li::after{left:18.25px;top:44px}main ol.steps>li h3{margin-top:7px}main ol.steps>li .who{margin-top:9px}}
+@media (prefers-reduced-motion:reduce){main ol.steps>li::before,main ol.steps>li::after{transition:none}}
+@media print{main ol.steps>li::after{display:none}main ol.steps>li::before{box-shadow:none}}
+
+/* Quellen mit Etikett (Design-Agent 18.11.2026): site.js zerlegt jede Quelle in Name (Etikett), Titel und Link; Prüfdatum als Marke. */
+.srcx ol{list-style:none;padding:0!important;margin:12px 0 0!important;border-top:1px solid var(--line)}
+.srcx li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:0!important;padding:12px 0;border-bottom:1px solid var(--line);line-height:1.45}
+.sq-n{order:1;display:inline-block;max-width:100%;font-size:.76rem;font-weight:650;letter-spacing:.01em;color:var(--ink);background:color-mix(in srgb,var(--sun) 13%,transparent);border:1px solid color-mix(in srgb,var(--sun) 42%,transparent);border-radius:999px;padding:2px 10px;overflow-wrap:anywhere}
+.srcx li>a.sq-a{order:2;margin-left:auto;display:inline-flex;align-items:center;gap:4px;min-height:24px;font-size:.8rem;color:var(--mut);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--mut) 40%,transparent);line-height:1.2}
+.srcx li>a.sq-a::after{content:"↗";font-size:.8em}
+.srcx li>a.sq-a:hover{color:var(--ink)}
+.sq-t{order:3;flex-basis:100%;color:var(--ink);opacity:.86}
+.sq-t a{color:inherit}
+.sq-chk{display:inline-flex;align-items:center;gap:6px;padding:3px 11px 3px 8px;border-radius:999px;font-weight:600;font-size:.82rem;color:var(--ink);background:color-mix(in srgb,var(--ok,#30d158) 14%,transparent);border:1px solid color-mix(in srgb,var(--ok,#30d158) 45%,transparent);white-space:nowrap}
+.sq-chk::before{content:"";width:10px;height:5px;border-left:2px solid var(--ok,#30d158);border-bottom:2px solid var(--ok,#30d158);transform:rotate(-45deg) translate(1px,-1px)}
+@media print{.srcx li>a.sq-a::after{content:none}}
