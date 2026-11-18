@@ -9,6 +9,7 @@ const c=await p.evaluate(()=>({eur:document.querySelector('.mx-out b').textConte
 ok(/^\d+ €$/.test(c.eur)&&/kWh/.test(c.t)&&/p=97274&n=2&a=0&v=2500/.test(c.href)&&c.bild,'Ergebnis für 97274: '+c.eur+' | '+c.href);
 await p.click('.mx-chips[data-k="dir"] button[data-v="180"]');await p.waitForTimeout(900);const nord=await p.evaluate(()=>parseInt(document.querySelector('.mx-out b').textContent));ok(nord<parseInt(c.eur),'Norden bringt weniger ('+nord+' € statt '+c.eur+')');
 const [dl]=await Promise.all([p.waitForEvent('download',{timeout:15000}),p.click('.mx-go [data-b]')]);const fs=require('fs');ok(fs.statSync(await dl.path()).size>30000&&/\.png$/.test(dl.suggestedFilename()),'Schnell-Check als Bild: '+dl.suggestedFilename());if(process.argv[3])await dl.saveAs(process.argv[3]);
+ok(await p.evaluate(()=>{const s=document.querySelector('.mx-go [data-set]');return !s.hidden&&s.getAttribute('href')==='/#vergleich'}),'Schnell-Check führt zu den geprüften Sets');
 await p.click('.mx-x');ok(await p.evaluate(()=>!document.querySelector('dialog.mx-dlg').open),'Dialog schließt');
 await p.goto(B+c.href,{waitUntil:'load'});await p.waitForFunction(()=>/€/.test(document.getElementById('bp-k-eur').textContent),null,{timeout:20000});const pe=await p.evaluate(()=>document.getElementById('bp-k-eur').textContent);
 ok(Math.abs(parseInt(pe)-parseInt(c.eur))<=1,'Planer kommt mit denselben Angaben auf denselben Betrag ('+pe+')');
@@ -22,6 +23,7 @@ const [d2]=await Promise.all([p.waitForEvent('download',{timeout:15000}),p.click
 await p.goto(B+'/stromfresser.html',{waitUntil:'load'});await p.waitForTimeout(800);
 const t=await p.evaluate(()=>{const k=document.querySelector('.mx-t');return k?{n:k.querySelectorAll('option').length,o:k.querySelector('.mx-t-o').textContent,b:document.querySelectorAll('[data-bild]').length}:null});
 ok(t&&t.n>3&&/spart etwa \d+ € im Jahr/.test(t.o)&&/Jahren wieder drin/.test(t.o)&&t.b===2,'Tausch-Rechner rechnet: '+(t&&t.o));
+const kl=await p.evaluate(()=>{const a=document.querySelector('.mx-t-k a');return a?[a.href,a.rel,!!document.querySelector('.mx-anz')]:null});ok(kl&&/amazon\.de\/s\?k=.+&tag=stromdaheim-21$/.test(kl[0])&&/sponsored/.test(kl[1])&&kl[2],'Tausch-Rechner: gekennzeichneter Partnerlink '+(kl&&kl[0]));
 await p.fill('#mx-t-k','9999');await p.waitForTimeout(200);ok(/spart keinen Strom/.test(await p.textContent('.mx-t-o')),'Sparsamer muss es schon sein');
 await p.goto(B+'/solar-rechner.html',{waitUntil:'load'});await p.waitForTimeout(800);ok(await p.locator('[data-bild]').count()>=1,'Solar-Rechner hat „Als Bild speichern“');
 // Weitermachen

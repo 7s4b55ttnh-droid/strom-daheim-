@@ -1,8 +1,11 @@
 {
  "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
- "geprueft": 268,
+ "geprueft": 286,
  "unklar": 11,
  "tot": [],
- "verdacht": [],
- "stand": "2026-11-16"
+ "verdacht": [
+  "https://alpina-farben.de/fileadmin/InterfaceAssets/ti/TI_2132_Alpina_Raumfarbe_186029.pdf",
+  "https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/stromverbrauch-kuehlschrank/"
+ ],
+ "stand": "2026-11-18"
 }

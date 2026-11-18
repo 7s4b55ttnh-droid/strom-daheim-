@@ -47,6 +47,7 @@
 .mx-t-o{margin:14px 0 0;font-weight:600}
 .mx-t small{display:block;margin-top:10px;color:var(--mut,#555);font-size:.84rem}
 
+.mx-t-k{margin:12px 0 0;font-weight:600}.mx-anz{display:inline-block;margin-left:10px;font-size:.72rem;font-weight:600;color:var(--mut,#555);border:1px solid var(--line,#c7c7cc);border-radius:999px;padding:2px 8px;vertical-align:middle}
 /* Weitermachen */
 .mx-w{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;max-width:980px;margin:0 auto 26px}
 .mx-w p{margin:0;font-size:.98rem}
