@@ -1,11 +1,17 @@
 {
  "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
  "geprueft": 286,
- "unklar": 11,
- "tot": [],
- "verdacht": [
-  "https://alpina-farben.de/fileadmin/InterfaceAssets/ti/TI_2132_Alpina_Raumfarbe_186029.pdf",
-  "https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/stromverbrauch-kuehlschrank/"
+ "unklar": 14,
+ "tot": [
+  {
+   "url": "https://alpina-farben.de/fileadmin/InterfaceAssets/ti/TI_2132_Alpina_Raumfarbe_186029.pdf",
+   "grund": "Seite nicht gefunden (404)",
+   "seiten": [
+    "stil-daheim.de/rechner.html"
+   ],
+   "seit": "2026-11-19"
+  }
  ],
- "stand": "2026-11-18"
+ "verdacht": [],
+ "stand": "2026-11-19"
 }
