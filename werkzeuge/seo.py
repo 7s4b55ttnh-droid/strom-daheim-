@@ -258,3 +258,5 @@ def run():
 
 if __name__ == '__main__':
     run()
+    import frag_index   # frag.json: geprüfte Fragen und Antworten aller Seiten für frag.js (Suche und „Noch eine Frage?“)
+    frag_index.main(str(ROOT), ('stromkosten', 'lexikon'))

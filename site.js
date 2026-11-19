@@ -134,18 +134,38 @@ h.appendChild(b);document.documentElement.classList.add('bf-on');b.querySelector
 const set=()=>D.forEach(d=>{if(mq.matches){d.open=true;d.querySelector('summary').tabIndex=-1}else{d.querySelector('summary').tabIndex=0;if(!d.querySelector('[aria-current]')&&d.__auto!==0)d.open=false}});
 D.forEach(d=>d.querySelector('summary').addEventListener('click',e=>{if(mq.matches)e.preventDefault();else d.__auto=0}));set();mq.addEventListener&&mq.addEventListener('change',set)})();
 
-/* Suche im Menü (Index: /suche.json, wird beim Öffnen geladen) */
+/* „Frag den Ratgeber“ (frag.js, lädt erst bei Bedarf): beantwortet ganze Sätze aus den geprüften Antworten der Seiten (frag.json). Nichts wird erzeugt, keine Frage verlässt das Gerät. */
+window.__sdFrage=()=>window.sdFrag?Promise.resolve(window.sdFrag):(window.__sdFrageP=window.__sdFrageP||new Promise(r=>{const sc=document.querySelector('script[src*="site.js"]'),n=document.createElement('script');n.src=sc.src.replace(/site\.js.*$/,'frag.js');document.addEventListener('sdfrag',()=>r(window.sdFrag),{once:true});document.head.appendChild(n)}));
+
+/* Suche im Menü (Index: /suche.json, wird beim Öffnen geladen). Ab zwei Wörtern kommt zuerst eine geprüfte Antwort aus frag.json, darunter die passenden Seiten. */
 (()=>{const top=document.querySelector('#sh-sheet .sh-top');if(!top)return;
 const w=document.createElement('div');w.className='sq';w.setAttribute('role','search');
-w.innerHTML='<label class="vh" for="sq-in">Ratgeber durchsuchen</label><input id="sq-in" type="search" placeholder="Suchen, z. B. Kühlschrank" autocomplete="off" enterkeyhint="search"><ul id="sq-out" aria-live="polite"></ul>';
+w.innerHTML='<label class="vh" for="sq-in">Suchen oder eine Frage stellen</label><input id="sq-in" type="search" placeholder="Suchen oder Frage stellen" autocomplete="off" enterkeyhint="search"><ul id="sq-out" aria-live="polite"></ul>';
 top.insertAdjacentElement('afterend',w);
-const inp=w.querySelector('input'),out=w.querySelector('ul');let idx=null;
+const inp=w.querySelector('input'),out=w.querySelector('ul');let idx=null,lauf=0;
 const norm=s=>s.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const kurz=u=>u.replace(/^\//,'')||'index';
 const load=()=>idx?Promise.resolve(idx):fetch('/suche.json').then(r=>r.json()).then(j=>(idx=j.map(e=>Object.assign(e,{n:norm(e.t+' '+e.d+' '+e.k)}))));
-inp.addEventListener('focus',load,{once:true});
-inp.addEventListener('input',()=>{const q=norm(inp.value.trim());if(q.length<2){out.innerHTML='';return}
-load().then(L=>{const ws=q.split(/\s+/);const r=L.filter(e=>ws.every(x=>e.n.includes(x))).sort((a,b)=>(norm(b.t).includes(ws[0])?1:0)-(norm(a.t).includes(ws[0])?1:0)).slice(0,8);
-out.innerHTML=r.length?r.map(e=>'<li><a href="'+e.u+'"><b>'+e.t.replace(/</g,'&lt;')+'</b><small>'+e.d.slice(0,90).replace(/</g,'&lt;')+'…</small></a></li>').join(''):'<li class="none">Nichts gefunden. Probier ein anderes Wort.</li>'})});})();
+const zeile=e=>'<li><a href="'+esc(e.u)+'"><b>'+esc(e.t)+'</b><small>'+esc(e.d.slice(0,90))+'…</small></a></li>';
+inp.addEventListener('focus',()=>{load();window.__sdFrage()},{once:true});
+inp.addEventListener('input',()=>{const roh=inp.value.trim(),q=norm(roh),n=++lauf;if(q.length<2){out.innerHTML='';return}
+load().then(L=>{const ws=q.replace(/[?!.,]/g,' ').trim().split(/\s+/);const r=L.filter(e=>ws.every(x=>e.n.includes(x))).sort((a,b)=>(norm(b.t).includes(ws[0])?1:0)-(norm(a.t).includes(ws[0])?1:0)).slice(0,8);
+const zeig=(ant,S)=>{if(n!==lauf)return;const da={};let h='';
+ if(ant)h+='<li class="sq-ant"><a href="'+esc(window.sdFrag.url(ant.u))+'"><small>Antwort aus dem Ratgeber</small><b>'+esc(ant.q)+'</b><span>'+esc(ant.a)+'</span><em>Mehr dazu: '+esc(ant.t)+'</em></a></li>';
+ r.forEach(e=>{da[kurz(e.u)]=1;h+=zeile(e)});
+ (S||[]).forEach(s=>{const e=L.find(x=>kurz(x.u)===kurz(s.u));if(e&&!da[kurz(e.u)]&&Object.keys(da).length<8){da[kurz(e.u)]=1;h+=zeile(e)}});
+ out.innerHTML=h||'<li class="none">Nichts gefunden. Probier andere Worte.</li>'};
+if(ws.length<2){zeig();return}
+if(r.length)zeig();
+window.__sdFrage().then(F=>F.frag(roh)).then(R=>{const a=R.antworten[0];zeig(a&&a.s>=.5?a:null,R.seiten.filter(s=>s.s>=.2))}).catch(()=>zeig())})});})();
+
+/* Fragekasten „Noch eine Frage?“ am Ende jeder Seite mit geprüften Fragen (FAQ). Lädt erst, wenn man in die Nähe scrollt. */
+(()=>{if(!/"FAQPage"/.test([...document.querySelectorAll('script[type="application/ld+json"]')].map(s=>s.textContent).join('')))return;
+const ft=document.querySelector('body>footer'),m=document.querySelector('main');if(!ft&&!m)return;
+const s=document.createElement('section');s.className='fragk-sec';s.innerHTML='<div></div>';if(m)m.appendChild(s);else ft.parentNode.insertBefore(s,ft);
+const go=()=>window.__sdFrage().then(F=>F.kasten(s.firstChild,{beispiel:'Zum Beispiel: Wie kalt muss der Kühlschrank sein?'}));
+if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){io.disconnect();go()}},{rootMargin:'700px'});io.observe(s)}else go()})();
 
 /* ===== Seit 11.11.2026 ===== */
 /* Seitenübergang: Seiten blenden weich ineinander, das angetippte Kachelbild wächst zum Titelbild der Zielseite
