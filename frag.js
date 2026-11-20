@@ -44,11 +44,14 @@ function kasten(el,opt){opt=opt||{};el.classList.add('fragk');
  el.querySelector('form').addEventListener('submit',function(ev){ev.preventDefault();if(inp.value.trim())zeig(inp.value)});
  el.addEventListener('click',function(ev){var b=ev.target.closest('.fragk-c button,.fragk-w');if(!b)return;inp.value=b.textContent;zeig(b.textContent)});
  /* Vorschläge: Fragen von ANDEREN Seiten, die zu dieser Seite passen */
- laden().then(function(){var h1=d.querySelector('h1'),t=(h1?h1.textContent:'')+' '+d.title;frag(t).then(function(r){var seen={},L=[];
-   idx.forEach(function(e){if(e.u===hier||e.k)return;var s=0;woerter(t).forEach(function(w){s+=Math.max(best(w,e.wq),best(w,e.wt)*.7)});if(s>0)L.push([s,e])});
-   L.sort(function(a,b){return b[0]-a[0]});var pick=[];L.forEach(function(x){if(pick.length<4&&!seen[x[1].u]){seen[x[1].u]=1;pick.push(x[1])}});
-   if(pick.length<2)idx.forEach(function(e){if(pick.length<4&&!e.k&&e.u!==hier&&!seen[e.u]){seen[e.u]=1;pick.push(e)}});
-   chips.innerHTML=pick.map(function(e){return '<button type="button">'+esc(e.q)+'</button>'}).join('')})})}
+ laden().then(function(){var fr={},pick=[],zahl={},ord=[];
+   /* Vorschläge kommen von den Seiten, auf die diese Seite selbst verlinkt (das ist redaktionell verwandt), je Seite die erste Frage, die für sich allein verständlich ist. */
+   var LOS=/^(passt|geht|ist|darf|kann|lohnt|gilt|reicht|hilft|braucht|funktioniert)\s+(das|es|sie|er|der stil|dies|sich das)\b|\b(hier|dafür|dabei|damit|davon)\b|unterschied zu /i;
+   [].forEach.call(d.querySelectorAll('main a[href],section a[href]'),function(a){if(a.closest('header,footer,nav,.fragk,.fragk-sec,#sh-sheet,#msheet,.sq'))return;var u;try{u=new URL(a.href)}catch(x){return}if(u.origin!==location.origin)return;
+    var p=u.pathname.replace(/index\.html$/,'');if(p===hier)return;if(!zahl[p]){zahl[p]=0;ord.push(p)}zahl[p]++});
+   ord.map(function(p,i){return [p,i]}).sort(function(a,b){return zahl[b[0]]-zahl[a[0]]||a[1]-b[1]}).forEach(function(x){if(pick.length>=4)return;for(var i=0;i<idx.length;i++){var e=idx[i];if(e.u===x[0]&&!e.k&&!LOS.test(e.q)&&!fr[e.q]){fr[e.q]=1;pick.push(e);break}}});
+   chips.hidden=pick.length<2;if(pick.length<2)pick=[];
+   chips.innerHTML=pick.map(function(e){return '<button type="button">'+esc(e.q)+'</button>'}).join('')})}
 window.sdFrag={frag:frag,kasten:kasten,laden:laden,url:url};
 d.dispatchEvent(new Event('sdfrag'));
 })();
