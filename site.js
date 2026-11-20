@@ -416,3 +416,6 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{if(e.
     });
   });
 })();
+
+/* Klicks auf Awin-Partnerlinks zählen (GoatCounter, ohne Cookies), wie bei den Amazon-Links im Seitenkopf. */
+document.addEventListener('click',function(ev){var w=ev.target.closest&&ev.target.closest('a[href*="awin1.com"]');if(!w||location.hostname!=='strom-daheim.de')return;var e=encodeURIComponent,u='https://stromdaheim.goatcounter.com/count?p='+e('awin: '+w.textContent.trim().slice(0,60))+'&t='+e('Klick von '+location.pathname)+'&e=true&rnd='+Math.random().toString(36).slice(2);if(navigator.sendBeacon){try{if(navigator.sendBeacon(u))return}catch(x){}}new Image().src=u},true);

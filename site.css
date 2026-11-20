@@ -360,3 +360,6 @@ main ol.steps>li .who+h3{margin-top:0}
 .sq-chk{display:inline-flex;align-items:center;gap:6px;padding:3px 11px 3px 8px;border-radius:999px;font-weight:600;font-size:.82rem;color:var(--ink);background:color-mix(in srgb,var(--ok,#30d158) 14%,transparent);border:1px solid color-mix(in srgb,var(--ok,#30d158) 45%,transparent);white-space:nowrap}
 .sq-chk::before{content:"";width:10px;height:5px;border-left:2px solid var(--ok,#30d158);border-bottom:2px solid var(--ok,#30d158);transform:rotate(-45deg) translate(1px,-1px)}
 @media print{.srcx li>a.sq-a::after{content:none}}
+
+/* Partnerlinks über Awin (direkt zum Händler), immer mit .tag „Anzeige“ */
+.aw{margin:20px 0 0;font-weight:600}.aw a{text-decoration:underline;text-underline-offset:3px}

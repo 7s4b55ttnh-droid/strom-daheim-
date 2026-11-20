@@ -1,8 +1,10 @@
 {
  "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
- "geprueft": 288,
- "unklar": 12,
+ "geprueft": 299,
+ "unklar": 10,
  "tot": [],
- "verdacht": [],
+ "verdacht": [
+  "https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/stromverbrauch-kuehlschrank/"
+ ],
  "stand": "2026-11-20"
 }
