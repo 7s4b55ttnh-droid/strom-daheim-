@@ -336,15 +336,15 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{if(e.
 /* KI-Kennzeichnung (seit 11.11.2026, Pflicht, Wunsch des Inhabers: dezent, aber klar). Läuft automatisch für alle Fotos aus assets/:
    - Foto in einer Link-Kachel (Galerie): keine Marke aufs Bild, sondern EINE Zeile über der Galerie (.ki-hinweis).
    - Foto in <figure> mit <figcaption>: Zusatz am Ende der Bildunterschrift (.ki-cap).
-   - Alle anderen (Titelbild, Vorher/Nachher, Szenen): kleine Marke "Mit KI erstellt" in der Bildecke (.ki-marke).
+   - Alle anderen (Titelbild, Vorher/Nachher, Szenen): sehr kleine Marke "KI" in der Bildecke (.ki-marke).
    Nicht entfernen. Fotos immer als <img src="assets/..."> einbinden, nie als CSS-Hintergrund. */
 (function(){
-  var RX=/(^|\/)assets\/[^\/]+\.(jpe?g|webp|png)(\?|$)/i,list=[],T='Mit KI erstellt',G='Fotos: Beispielbilder, mit Hilfe von KI erstellt.',C='Beispielbild, mit Hilfe von KI erstellt.';
+  var RX=/(^|\/)assets\/[^\/]+\.(jpe?g|webp|png)(\?|$)/i,list=[],T='KI',TL='Mit KI erstellt',G='Bilder mit KI erstellt.',C='KI-Bild.',GR=/(^|\/)assets\/(app|app-maskable|balkonkraftwerk-foerderung|lexikon|solar-atlas|solar-rechner|stromkosten|strompreis-archiv|strompreis-heute|was-lohnt-sich)(-[mt])?(-\d+)?\.(jpe?g|webp|png)(\?|$)/i;   /* seit 20.11.2026 auf Wunsch des Inhabers sehr klein: nur „KI“ in der Bildecke (Abkürzung genügt). Grafiken und Symbole (GR) brauchen keinen Hinweis. */
   function box(im){var a=im.parentElement;if(a&&a.tagName==='PICTURE')a=a.parentElement;return a}
   function put(m){var a=m.__a,im=m.__i,ar=a.getBoundingClientRect(),ir=im.getBoundingClientRect();
     if(!ir.width||!ar.width){m.hidden=true;return}m.hidden=false;
-    m.style.right=(Math.max(0,ar.right-ir.right)-a.clientLeft+8)+'px';m.style.bottom=(Math.max(0,ar.bottom-ir.bottom)-a.clientTop+8)+'px'}
-  function mark(im){if(im.__ki)return;var s=im.getAttribute('src')||'';if(!RX.test(s))return;im.__ki=1;
+    m.style.right=(Math.max(0,ar.right-ir.right)-a.clientLeft+6)+'px';m.style.bottom=(Math.max(0,ar.bottom-ir.bottom)-a.clientTop+6)+'px'}
+  function mark(im){if(im.__ki)return;var s=im.getAttribute('src')||'';if(!RX.test(s)||GR.test(s))return;im.__ki=1;
     var card=im.closest('a'),fig=im.closest('figure');
     if(card&&card.parentElement){var g=card.parentElement,p=g.previousElementSibling;
       var sec=g.closest('section');if(sec&&sec.querySelector('.ki-hinweis'))return;   /* eine Zeile je Abschnitt genügt */
@@ -353,7 +353,7 @@ if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{if(e.
     if(fc){if(!fc.querySelector('.ki-cap')){var c=document.createElement('span');c.className='ki-cap';c.textContent=(fc.textContent.trim()?' ':'')+C;fc.appendChild(c)}return}
     var a=box(im);if(!a||a.querySelector(':scope>.ki-marke'))return;
     if(getComputedStyle(a).position==='static')a.style.position='relative';
-    var m=document.createElement('span');m.className='ki-marke';m.textContent=T;
+    var m=document.createElement('span');m.className='ki-marke';m.textContent=T;m.title=TL;m.setAttribute('aria-label',TL);
     m.__a=a;m.__i=im;a.appendChild(m);list.push(m);put(m);
     if(window.ResizeObserver){var ro=new ResizeObserver(function(){put(m)});ro.observe(a);ro.observe(im)}
     im.addEventListener('load',function(){put(m)})}
