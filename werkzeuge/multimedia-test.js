@@ -17,7 +17,7 @@ o=await wahl({tv:'neu',raum:'gross',atmos:'ja',handy:'android'});ok(o.startsWith
 o=await wahl({tv:'neu',raum:'klein',atmos:'nein',handy:'android'});ok(o==='#m-sonos-ray #m-google-streamer','Finder kleiner Raum: '+o);
 ok(await p.evaluate(()=>[...document.querySelectorAll('#sm-out li a,.sm-pk li a')].every(a=>!!document.querySelector(a.getAttribute('href')))),'Sprünge aus Finder und Startpaketen führen zu einem Modell');
 ok(await p.evaluate(()=>document.querySelectorAll('a[href="/smarthome.html"]').length>=3&&/kein Gerät selbst getestet/.test(document.getElementById('quellen').textContent)&&!/Testsieger|Testnote/.test(document.querySelector('main').textContent))&&await p.$$eval('#quellen .src li',A=>A.length>=9),'Verweist auf den Smarthome-Ratgeber, Quellen genannt, kein eigener Test behauptet');
-for(const u of ['/stromkosten/fernseher.html','/stromkosten/spielkonsole.html','/stromkosten/wlan-router.html','/energielabel.html']){const q=await p.request.get(B+u);ok(q.status()===200,'Verlinkte Seite gibt es: '+u)}
+for(const u of ['/stromkosten/fernseher.html','/stromkosten/spielkonsole.html','/stromkosten/wlan-router.html','/energielabel.html']){const st=await p.evaluate(u=>fetch(u).then(r=>r.status),u);ok(st===200,'Verlinkte Seite gibt es: '+u)}
 await p.goto(B+'/smarthome.html',{waitUntil:'networkidle'});ok(await p.evaluate(()=>document.querySelectorAll('a[href="/multimedia.html"]').length>=2),'Smarthome-Ratgeber verweist auf Multimedia');
 await p.goto(B+'/');ok(await p.evaluate(()=>!!document.querySelector('#alles a[href="/multimedia.html"] img')),'Kachel auf der Startseite');
 await p.goto(B+'/sitemap.xml');ok((await p.content()).includes('/multimedia.html'),'Steht in der Sitemap');await c.close();
