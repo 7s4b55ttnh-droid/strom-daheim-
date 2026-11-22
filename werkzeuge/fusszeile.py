@@ -19,7 +19,7 @@ TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/stromfresser.html': 'Stromfresser finden', '/stromkosten.html': 'Stromkosten je Gerät', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
     '/kuehlschrank.html': 'Kühlschrank einstellen', '/spuelmaschine.html': 'Spülmaschine', '/waschmaschine.html': 'Waschmaschine', '/waesche-trocknen.html': 'Wäsche trocknen', '/durchlauferhitzer.html': 'Durchlauferhitzer', '/led-lampen.html': 'LED-Lampen',
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',
-    '/black-friday.html': 'Black Friday',
+    '/black-friday.html': 'Black Friday', '/smarthome.html': 'Smarthome',
     '/waermepumpe.html': 'Wärmepumpe', '/heizluefter.html': 'Heizlüfter', '/klimageraet.html': 'Klimagerät', '/lueften.html': 'Richtig lüften', '/luftentfeuchter.html': 'Luftentfeuchter', '/infrarotheizung.html': 'Infrarotheizung',
     '/stromtarif.html': 'Stromtarif wechseln', '/strompreise-2027.html': 'Strompreise 2027', '/stromsteuer-2027.html': 'Stromsteuer 2027', '/strompreis-heute.html': 'Strompreis heute', '/strompreis-morgen.html': 'Strompreis morgen', '/strompreis-ampel.html': 'Strompreis-Ampel', '/strompreis-archiv.html': 'Strompreis-Archiv', '/smart-meter.html': 'Smart Meter', '/zaehlerstand.html': 'Zählerstand ablesen', '/lexikon.html': 'Lexikon',
 }

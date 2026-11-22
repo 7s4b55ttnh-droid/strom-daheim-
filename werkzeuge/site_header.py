@@ -52,6 +52,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/led-lampen.html', '💡', 'LED-Lampen', 'Lumen statt Watt, Spar-Rechner', 'led-lampen'),
         ('/luftentfeuchter.html', '💧', 'Luftentfeuchter', 'Stromkosten, Bauart, Größe', 'luftentfeuchter'),
         ('/infrarotheizung.html', '🟥', 'Infrarotheizung', 'Stromkosten, Leistung, Gesetz', 'infrarotheizung'),
+        ('/smarthome.html', '🏠', 'Smarthome für Einsteiger', 'Systeme, Geräte, Modelle', 'smarthome'),
         ('/strompreise-2027.html', '📆', 'Strompreise 2027', 'Erhöhung zum 1. Januar, Fristen, Rechner', 'strompreise-2027'),
         ('/stromsteuer-2027.html', '🧾', 'Stromsteuer 2027', 'Senkung auf 0,1 Cent, Ersparnis-Rechner', 'stromsteuer-2027'),
         ('/lexikon.html', '📖', 'Lexikon', 'Strom-Begriffe einfach erklärt', 'lexikon'),
