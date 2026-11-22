@@ -338,7 +338,7 @@ def main():
     <span class="eyebrow">Ratgeber · Stand %(stand_lang)s</span>
     <h1>Smarthome: So fängst du an.</h1>
     <p>Welches System zu dir passt, was es für Licht, Heizung, Tür und Kamera gibt und welche Geräte ihr Geld wert sind. Für Miete und Eigentum.</p>
-    <div class="jump"><a class="pri" href="#finder">Was passt zu mir?</a><a href="#bereiche">Alle Bereiche</a><a href="#systeme">Systeme vergleichen</a><a href="#pakete">Startpakete</a></div>
+    <div class="jump"><a class="pri" href="#finder">Was passt zu mir?</a><a href="#bereiche">Alle Bereiche</a><a href="#systeme">Systeme vergleichen</a><a href="#pakete">Startpakete</a><a href="/multimedia.html">Multimedia</a></div>
   </div>
 </div>
 
@@ -384,6 +384,7 @@ def main():
 <section id="pakete"><div class="wrap">
 <div class="head"><span class="eyebrow">Startpakete</span><h2>Drei Wege für den Anfang.</h2><p class="lede">Fertig zusammengestellt aus den Modellen oben. Tippe auf ein Gerät für Preis, Dafür und Dagegen.</p></div>
 <div class="sm-pk">%(pakete)s</div>
+<div class="cta" style="margin-top:26px"><a class="btn sec" href="/multimedia.html">Fernseher, Soundbar und Streaming: zum Multimedia-Ratgeber</a></div>
 </div></section>
 
 <section class="band" id="sicherheit"><div class="wrap read">
