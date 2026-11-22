@@ -185,6 +185,7 @@ CSS = '''
 .us-f li:before{content:"!";position:absolute;left:14px;top:13px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--warn);color:var(--bg);font-weight:700;font-size:.9rem}
 .us-w{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:0;margin:0}.us-w li{list-style:none}
 .us-w a{display:flex;align-items:center;gap:10px;min-height:56px;padding:10px 14px;border-radius:16px;background:var(--pan);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);color:var(--ink);font-weight:600}
+.sm-m h3{margin:0;font-size:1.18rem;letter-spacing:-.015em;line-height:1.2}
 .us-bc{font-size:.84rem;color:rgba(245,245,247,.8);margin-bottom:14px}.us-bc a{color:#fff;text-decoration:underline}
 '''
 
@@ -202,7 +203,7 @@ def seite(guide, mod, b, i):
     fuss = re.sub(r'<script>\n/\* Titelfilm.*?</script>\n?', '', fuss, count=1, flags=re.S)
     assert 'Finder' not in fuss.split('<script>\n/* Besucherzähler')[0][-400:] or True
     kopf = re.sub(r'<title>.*?</title>', '<title>%s – Strom-Daheim</title>' % title, kopf, count=1)
-    for prop, val in (('og:title', title + ' – Strom-Daheim'), ('og:description', desc), ('og:url', url)):
+    for prop, val in (('og:title', title + ' – Strom-Daheim'), ('og:description', desc), ('og:url', url), ('og:image', '%s/assets/og/%s.jpg' % (SITE, foto))):
         kopf, n = re.subn(r'<meta property="%s" content="[^"]*">' % prop, '<meta property="%s" content="%s">' % (prop, val), kopf, count=1)
         assert n == 1, prop
     kopf, n = re.subn(r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % desc, kopf, count=1)
@@ -281,7 +282,7 @@ def seite(guide, mod, b, i):
 <div class="cta" style="margin-top:22px"><a class="btn" href="/%(guide)s.html">Zum %(gname)s-Ratgeber</a><a class="btn sec" href="/%(a0)s.html">Zum %(a1)s</a></div>
 <div class="src" style="margin-top:32px"><b>Quellen</b><ol>
 %(quellen)s
-</ol><p style="margin-top:12px">Geprüft am %(std)s. Preise sind unverbindliche Preisempfehlungen der Hersteller. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
+</ol><p style="margin-top:12px">Geprüft am %(std)s. Preise sind unverbindliche Preisempfehlungen der Hersteller oder, wo angegeben, der Preis im Shop des Herstellers an diesem Tag. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
 </div></section>
 </main>''' % dict(foto=foto, alt=alt, guide=guide, gname=gname, titel=titel, stand=sh.STAND_LANG, std=sh.STAND, h1=h1, intro=intro, kurz=kurz, satz=satz,
                   jkauf='<a href="#modelle">Modelle</a>' if kauf else '',
@@ -297,7 +298,10 @@ def seite(guide, mod, b, i):
                   quellen='\n'.join('<li>%s <a href="%s" target="_blank" rel="noopener">%s</a></li>' % (t, u, d) for _, t, u, d in (quellen + [q for q in allg if q not in quellen])))
     # Karten zeigen auf "#quellen" und "Quelle n" der großen Seite: hier auf die Liste dieser Seite zeigen, ohne Nummer
     main = re.sub(r'<a class="sm-q" href="#quellen">Quelle \d+</a>', '<a class="sm-q" href="#weiter">Quellen</a>', main)
+    main = main.replace('<div class="sm-mk"><h4>', '<div class="sm-mk"><h3>').replace('</h4><span class="sm-pl', '</h3><span class="sm-pl')   # hier folgen die Karten direkt auf eine h2
     main = main.replace('href="#m-', 'href="/%s.html#m-' % guide)
+    for mo in mods:                                  # Modelle dieser Seite: Sprung bleibt auf der Seite
+        main = main.replace('href="/%s.html#m-%s"' % (guide, mo[0]), 'href="#m-%s"' % mo[0])
     out = kopf + main + fuss
     assert 'src="assets/' not in out and 'srcset="assets/' not in out, 'relative Bildpfade in ' + bid
     (ROOT / guide).mkdir(exist_ok=True)
@@ -308,6 +312,14 @@ def seite(guide, mod, b, i):
 def main():
     assert set(TIEFE) == {b[0] for b in sh.BEREICHE} | {b[0] for b in mm.BEREICHE}, 'TIEFE und Bereiche passen nicht zusammen'
     urls = []
+    from PIL import Image
+    from ki_stempel import stempel
+    for mod in (sh, mm):                             # Teilen-Bild je Unterseite aus dem Foto des Bereichs (1200 x 630, mit KI-Marke)
+        for b in mod.BEREICHE:
+            ziel = ROOT / 'assets' / 'og' / (b[3] + '.jpg')
+            if not ziel.exists():
+                Image.open(ROOT / 'assets' / (b[3] + '.jpg')).convert('RGB').resize((1200, 675), Image.LANCZOS).crop((0, 22, 1200, 652)).save(ziel, quality=86)
+                stempel(str(ziel))
     for guide, mod in (('smarthome', sh), ('multimedia', mm)):
         for i, b in enumerate(mod.BEREICHE):
             urls.append(seite(guide, mod, b, i))

@@ -81,24 +81,39 @@ MODELLE = [
     ('homepod-mini', 'zentrale', 'Apple HomePod mini', 'Lautsprecher und Steuerzentrale', None, '', 'Gut', 'Haushalte mit iPhone',
      ['Steuerzentrale für Apple Home, auch von unterwegs', 'Unterstützt Matter', 'Misst Temperatur und Luftfeuchte im Raum'],
      ['Einrichtung nur mit der Home-App von Apple', 'Ohne iPhone wenig sinnvoll'], 'Apple HomePod mini', 5),
+    ('nest-hub', 'zentrale', 'Google Nest Hub (2. Generation)', 'Lautsprecher mit Bildschirm', 99.99, 'UVP', 'Gut', 'Android-Haushalte, die Geräte auch per Fingertipp steuern wollen',
+     ['Bildschirm mit 7&nbsp;Zoll: Geräte per Tippen oder Sprache steuern', 'Keine Kamera eingebaut', 'Schlafsensor ohne Armband'],
+     ['Welche Funkstandards er beherrscht, nennt die Produktseite nicht'], 'Google Nest Hub 2. Generation', 16),
     ('hue-start', 'licht', 'Philips Hue Starter-Set', '2 farbige E27-Lampen und Hue Bridge Pro', 219.99, 'UVP', 'Gut', 'Alle, die das Licht im ganzen Zuhause ausbauen wollen',
      ['Je Lampe bis zu 1.100&nbsp;Lumen', 'Die Bridge Pro verwaltet bis zu 150 Lampen', 'Funktioniert mit Alexa, Google Home und Apple Home, Matter über die Bridge'],
      ['Der teuerste Einstieg auf dieser Seite', 'Für Sprachsteuerung ist die Bridge nötig'], 'Philips Hue Starter Set E27 White Color Ambiance Bridge Pro', 6),
     ('tapo-l530e', 'licht', 'TP-Link Tapo L530E', 'Farbige E27-Lampe mit WLAN', None, '', 'Sehr gut', 'Einsteiger, die eine oder zwei Lampen smart machen wollen',
      ['Keine Zentrale nötig', '806&nbsp;Lumen, so hell wie eine 60-Watt-Glühlampe', 'Weiß von 2.500 bis 6.500&nbsp;Kelvin und 16&nbsp;Millionen Farben', 'Funktioniert mit Alexa und Google'],
      ['Nur 2,4-GHz-WLAN', 'Farbwechsel und Dimmen nur über App und Cloud', 'Apple Home nennt der Hersteller nicht'], 'TP-Link Tapo L530E', 7),
+    ('hue-white', 'licht', 'Philips Hue White E27 (1.100 Lumen)', 'Einzelne Lampe, warmweiß', 24.99, 'UVP', 'Sehr gut', 'Der günstige Einstieg in Philips Hue',
+     ['1.100&nbsp;Lumen, deutlich heller als eine 60-Watt-Glühlampe', 'Funktioniert per Bluetooth auch ohne Bridge, auf etwa 9&nbsp;Meter', 'Lässt sich später mit einer Bridge ins große System holen'],
+     ['Nur Warmweiß mit 2.700&nbsp;Kelvin, keine Farben', 'Sprachassistenten brauchen die Bridge'], 'Philips Hue White E27 1100 Lumen', 17),
     ('fritz-energy', 'steckdose', 'FRITZ!Smart Energy 200', 'Steckdose mit Verbrauchsmessung', 39.99, 'UVP', 'Gut', 'Haushalte mit FRITZ!Box',
      ['Misst den Stromverbrauch', 'Läuft über die FRITZ!Box, keine weitere Zentrale'],
      ['Gedacht für das FRITZ!-Heimnetz'], 'FRITZ!Smart Energy 200', 4),
     ('tapo-p115', 'steckdose', 'TP-Link Tapo P115', 'Kleine WLAN-Steckdose mit Verbrauchsmessung', None, '', 'Sehr gut', 'Einsteiger ohne Zentrale',
      ['Keine Zentrale nötig', 'Schaltet bis 3.680&nbsp;Watt (16&nbsp;A)', 'Zeigt den Verbrauch und rechnet mit deinem Strompreis', 'Funktioniert mit Alexa und Google'],
      ['Nur 2,4-GHz-WLAN', 'Matter und Apple Home nennt der Hersteller bei diesem Modell nicht'], 'TP-Link Tapo P115', 8),
+    ('shelly-plug', 'steckdose', 'Shelly Plug M Gen3', 'Kleine Steckdose mit Verbrauchsmessung', 9.93, 'Preis im Shop des Herstellers', 'Sehr gut', 'Alle, die mehrere Steckdosen günstig ausstatten wollen',
+     ['Die günstigste Steckdose auf dieser Seite', 'Misst den Stromverbrauch', 'Unterstützt Matter'],
+     ['Die Höchstlast steht im Datenblatt, vor dem Kauf prüfen'], 'Shelly Plug M Gen3', 18),
     ('fritz-thermo', 'heizung', 'FRITZ!Smart Thermo 302', 'Heizkörperthermostat', 54.99, 'UVP', 'Sehr gut', 'Haushalte mit FRITZ!Box',
      ['Läuft über die FRITZ!Box, keine weitere Zentrale', 'Von der Stiftung Warentest geprüft (09/2023, damals als FRITZ!DECT 302)'],
      ['Gedacht für das FRITZ!-Heimnetz'], 'FRITZ!Smart Thermo 302', 4),
     ('hmip-evo', 'heizung', 'Homematic IP Heizkörperthermostat Evo', 'Heizkörperthermostat', None, '', 'Gut', 'Alle, die ein System ohne Abo aufbauen wollen',
      ['Zwei AA-Batterien halten laut Hersteller etwa zwei Jahre', 'Leiser Motor, Anzeige lässt sich drehen', 'Die App erhebt laut Hersteller außer der IP-Adresse keine persönlichen Daten', 'Sicherheits-Updates für mehr als fünf Jahre zugesagt', 'Von der Stiftung Warentest geprüft (09/2023)'],
      ['Braucht den Homematic IP Access Point oder die Zentrale CCU3'], 'Homematic IP Heizkörperthermostat Evo', 9),
+    ('tado-x', 'heizung', 'tado° Smartes Heizkörper-Thermostat X', 'Heizkörperthermostat', None, '', 'Offen', 'Alle, die Alexa, Google Home oder Apple Home nutzen',
+     ['Funktioniert mit Alexa, Google Home, Apple Home und SmartThings', 'Senkt die Temperatur automatisch, wenn du das Haus verlässt', 'Vom Hersteller für den Einbau in Eigenregie gedacht, auch zur Miete'],
+     ['Preise stehen nur im Shop des Herstellers', 'Vor dem Kauf prüfen, welche Funktionen ein Abo brauchen'], 'tado Smartes Heizkörper-Thermostat X', 19),
+    ('fritz-control', 'heizung', 'FRITZ!Smart Control 350', 'Tür- und Fensterkontakt', 34.99, 'UVP', 'Gut', 'Ergänzung zum FRITZ!-Thermostat',
+     ['Meldet ein offenes Fenster, das Thermostat senkt dann die Heizung ab', 'Lässt sich mit Automationen verknüpfen, etwa Licht aus beim Verlassen der Wohnung'],
+     ['Gedacht für das FRITZ!-Heimnetz'], 'FRITZ!Smart Control 350', 20),
     ('nuki-pro', 'tuerschloss', 'Nuki Smart Lock Pro (5. Generation)', 'Türschloss mit Akku', 279, 'UVP', 'Gut', 'Alle, die Komfort ohne Zusatzkosten wollen',
      ['WLAN eingebaut, keine Bridge nötig', 'Matter über Thread', 'Zugriff von unterwegs ist im Preis enthalten', 'Montage innen an der Tür in unter fünf Minuten, ohne Bohren', 'Eingebauter Akku, in etwa zwei Stunden geladen'],
      ['Teuer', 'Passt nur auf geeignete Zylinder, vorher beim Hersteller prüfen'], 'Nuki Smart Lock Pro 5. Generation', 10),
@@ -111,10 +126,22 @@ MODELLE = [
     ('reolink-argus', 'kamera', 'Reolink Argus 4 Pro', 'Akku-Kamera für draußen', None, '', 'Gut', 'Garten, Carport und Stellen ohne Steckdose',
      ['Läuft mit Akku, kein Kabel nötig', '4K-Auflösung mit breitem Blickwinkel, farbige Nachtsicht', 'Speichert auf microSD, kein Abo nötig', 'Wetterfest nach IP66, WLAN&nbsp;6'],
      ['Das Solarpanel zum Nachladen kostet extra', 'Nachts leuchten Strahler, einen unsichtbaren Infrarot-Modus gibt es nicht'], 'Reolink Argus 4 Pro', 12),
+    ('reolink-e1', 'kamera', 'Reolink E1 Pro', 'Schwenkbare Kamera für innen', None, '', 'Gut', 'Wohnung, Flur und Haustier im Blick',
+     ['5&nbsp;Megapixel, schwenkt und folgt Bewegungen', 'Speichert auf microSD bis 512&nbsp;GB', 'Erkennt Personen und Haustiere', 'Privatmodus: dreht die Kamera weg und schaltet Aufnahme und Ton ab'],
+     ['Nur für innen'], 'Reolink E1 Pro', 21),
     ('shelly-2pm', 'rollladen', 'Shelly 2PM Gen3', 'Unterputz-Modul für Motor-Rollläden', 38.90, 'UVP', 'Sehr gut', 'Eigentümer mit Motor-Rollläden',
      ['Passt in die Schalterdose hinter dem Rollladenschalter', 'WLAN und Matter, keine Zentrale nötig', 'Fährt auf Position und misst den Stromverbrauch', 'Funktioniert mit Alexa, Google Home und Home Assistant'],
      ['Arbeit an 230&nbsp;Volt: Einbau durch eine Elektrofachkraft', 'Der Motor braucht richtig eingestellte Endschalter'], 'Shelly 2PM Gen3', 13),
+    ('qrevo-curv', 'saugroboter', 'Roborock Qrevo Curv', 'Saug- und Wischroboter mit Station', 1499, 'UVP', 'Gut', 'Wohnungen mit Hartboden und Türschwellen',
+     ['Station leert den Staub, wäscht die Wischtücher mit 75&nbsp;Grad heißem Wasser und trocknet sie', 'Kommt laut Hersteller über Schwellen bis 3&nbsp;cm, über doppelte bis 4&nbsp;cm', 'Erkennt Hindernisse mit Kamera'],
+     ['Die Station braucht 45&nbsp;×&nbsp;45&nbsp;×&nbsp;45&nbsp;cm Platz', 'Matter ist erst für ein späteres Update angekündigt', 'Hat eine Kamera: vorher die Datenschutz-Einstellungen ansehen'], 'Roborock Qrevo Curv', 22),
+    ('saros-10', 'saugroboter', 'Roborock Saros 10', 'Flacher Saug- und Wischroboter mit Station', 1499, 'UVP', 'Gut', 'Wohnungen mit niedrigen Möbeln',
+     ['Nur knapp 8&nbsp;cm hoch, der Sensor fährt ein', 'Station wäscht die Wischtücher mit bis zu 80&nbsp;Grad und leert den Staub', 'Unterstützt Matter'],
+     ['Teuer', 'Hat eine Kamera: vorher die Datenschutz-Einstellungen ansehen'], 'Roborock Saros 10', 23),
 ]
+
+# Preis im Shop des Herstellers am Tag STAND, wenn er unter der UVP liegt (id -> Euro). Nur Werte von den Herstellerseiten.
+AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899}
 
 QUELLEN = [
     (1, 'Verbraucherzentrale: Smart Home, das intelligente Zuhause (Stand 24.02.2026)', 'https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/wohnen/smart-home-das-intelligente-zuhause-6882', 'verbraucherzentrale.de'),
@@ -132,6 +159,14 @@ QUELLEN = [
     (13, 'Shelly: 2PM Gen3', 'https://www.shelly.com/de/products/shelly-2pm-gen3', 'shelly.com'),
     (14, 'Stiftung Warentest: Smarte Heizkörperthermostate im Test (09/2023)', 'https://www.test.de/Heizkoerperthermostat-Test-5115581-0/', 'test.de'),
     (15, 'Stiftung Warentest: Saugroboter im Test (06/2026)', 'https://www.test.de/Saugroboter-im-Test-4806685-0/', 'test.de'),
+    (16, 'Google Store: Nest Hub (2. Generation)', 'https://store.google.com/de/product/nest_hub_2nd_gen', 'store.google.com'),
+    (17, 'Philips Hue: White A60 E27, 1.100 Lumen', 'https://www.philips-hue.com/de-at/p/hue-white-ambiance-a60---e27-smarte-lampe---1100/8719514288232', 'philips-hue.com'),
+    (18, 'Shelly: Plug M Gen3', 'https://www.shelly.com/de/products/shelly-plug-m-gen3', 'shelly.com'),
+    (19, 'tado°: Smarte Thermostate, Übersicht', 'https://www.tado.com/de-de', 'tado.com'),
+    (20, 'FRITZ!: Smart Control 350', 'https://fritz.com/produkte/smart-home/fritzdect-350/', 'fritz.com'),
+    (21, 'Reolink: E1 Pro', 'https://reolink.com/de/product/e1-pro/', 'reolink.com'),
+    (22, 'Roborock: Qrevo Curv', 'https://de.roborock.com/products/roborock-qrevo-curv', 'roborock.com'),
+    (23, 'Roborock: Saros 10', 'https://de.roborock.com/products/roborock-saros-10', 'roborock.com'),
 ]
 
 # Systeme: (id, Name, für wen, Stärke, Schwäche, Funk)
@@ -165,14 +200,32 @@ def eur(p):
     return s + '&nbsp;€'
 
 
-def karte(m):
+def preiszeile(m, akt):
+    """Preis einer Karte: UVP, bei niedrigerem Preis im Shop des Herstellers dieser Preis mit durchgestrichener UVP."""
+    preis, ph, a = m[4], m[5], akt.get(m[0])
+    if not preis:
+        return '<p class="sm-p sm-p0">Preis beim Händler ansehen</p>'
+    if a and a < preis:
+        return '<p class="sm-p"><b>%s</b> beim Hersteller am %s <s>UVP %s</s></p>' % (eur(a), STAND[:6], eur(preis))
+    return '<p class="sm-p"><b>%s</b> %s</p>' % (eur(preis), ph + ' laut Hersteller' if ph == 'UVP' else ph)
+
+
+def tabelle(mods, akt):
+    """Vergleich aller Modelle eines Bereichs in einer Tabelle (ab zwei Modellen)."""
+    if len(mods) < 2:
+        return ''
+    z = ''.join('<tr><td><a href="#m-%s">%s</a></td><td>%s</td><td>%s</td><td>%s</td></tr>' % (m[0], m[2], (eur(min(m[4], akt.get(m[0], m[4]))) if m[4] else 'beim Händler'), m[6], m[7]) for m in mods)
+    return '<div class="tbl sm-vt"><table><thead><tr><th>Modell</th><th>Preis</th><th>Preis-Leistung</th><th>Für wen</th></tr></thead><tbody>%s</tbody></table></div>' % z
+
+
+def karte(m, akt=None):
     mid, ber, name, art, preis, ph, pl, wer, pro, con, such, q = m
-    preis_h = ('<p class="sm-p"><b>%s</b> %s laut Hersteller</p>' % (eur(preis), ph)) if preis else '<p class="sm-p sm-p0">Preis beim Händler ansehen</p>'
+    preis_h = preiszeile(m, AKTUELL if akt is None else akt)
     return ('<article class="sm-m" id="m-%s"><div class="sm-mk"><h4>%s</h4><span class="sm-pl sm-pl-%s">Preis-Leistung: %s</span></div>'
             '<p class="sm-a">%s</p>%s<p class="sm-w"><b>Für wen:</b> %s</p>'
             '<div class="sm-pc"><div><p class="sm-h pro">Dafür</p><ul>%s</ul></div><div><p class="sm-h con">Dagegen</p><ul>%s</ul></div></div>'
             '<div class="sm-go"><a class="btn" href="%s" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a><span class="tag">Anzeige</span><a class="sm-q" href="#quellen">Quelle %d</a></div></article>'
-            % (mid, name, 'a' if pl == 'Sehr gut' else 'b', pl, art, preis_h, wer,
+            % (mid, name, 'a' if pl == 'Sehr gut' else 'b', pl.lower() if pl == 'Offen' else pl, art, preis_h, wer,
                ''.join('<li>%s</li>' % x for x in pro), ''.join('<li>%s</li>' % x for x in con), amz(such), q))
 
 
@@ -181,8 +234,8 @@ def bereich(i, b):
     mods = [m for m in MODELLE if m[1] == bid]
     extra = ''
     if bid == 'saugroboter':
-        extra = ('<div class="sm-roh"><p>Für Saugroboter nennen wir keine eigene Auswahl, weil sich die Modelle schnell ändern und der Test der Stiftung Warentest die bessere Grundlage ist. '
-                 'Geprüft wurden dort unter anderem diese drei:</p><div class="items">%s</div>'
+        extra = ('<div class="sm-roh"><p>Die Modelle wechseln schnell. Eine gute Grundlage ist der Test der Stiftung Warentest, '
+                 'geprüft wurden dort unter anderem diese drei:</p><div class="items">%s</div>'
                  % ''.join('<a class="item" href="%s" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🧹</span><div><b>%s</b><span>Von der Stiftung Warentest geprüft (06/2026)</span></div><span class="go">Ansehen →</span></a>' % (amz(n), n)
                            for n in ('Roborock Qrevo Curv', 'Dreame L40 Ultra AE', 'Ecovacs Deebot T50 Pro Omni')) +
                  '<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Die Ergebnisse stehen im <a href="https://www.test.de/Saugroboter-im-Test-4806685-0/" target="_blank" rel="noopener">Test bei test.de</a>.</p></div>')
@@ -196,7 +249,7 @@ def bereich(i, b):
             % (' class="band"' if i % 2 else '', bid, emo, i + 1, len(BEREICHE), titel + '.', satz,
                ''.join('<li>%s</li>' % x for x in kann), ''.join('<li>%s</li>' % x for x in achte),
                (('<p class="sm-n">%s</p>' % hinweis) if hinweis else '') + '<p style="margin:20px 0 0"><a class="btn sec" href="/smarthome/%s.html">Schritt für Schritt: %s</a></p>' % (bid, titel), pic(foto, alt),
-               ('<h3 class="sm-mh">Modelle im Vergleich</h3><div class="sm-mg">%s</div>' % ''.join(karte(m) for m in mods)) if mods else '', extra))
+               ('<h3 class="sm-mh">Modelle im Vergleich</h3>%s<div class="sm-mg">%s</div>' % (tabelle(mods, AKTUELL), ''.join(karte(m) for m in mods))) if mods else '', extra))
 
 
 HAUS = '''<figure class="sm-haus"><svg viewBox="0 0 720 420" role="group" aria-label="Haus im Schnitt mit neun nummerierten Punkten für die Bereiche des Smarthomes">
@@ -267,9 +320,10 @@ CSS = '''/* Smarthome-Ratgeber: Stile dieser Seite (werkzeuge/smarthome.py) */
 .sm-mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
 .sm-m{display:flex;flex-direction:column;gap:10px;background:var(--pan);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);border-radius:22px;padding:22px 20px}
 .band .sm-m{background:var(--bg)}
-.sm-mk{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.sm-m h4{margin:0;font-size:1.18rem;letter-spacing:-.015em;line-height:1.2}
+.sm-mk{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 12px;align-items:flex-start}.sm-m h4{margin:0;font-size:1.18rem;letter-spacing:-.015em;line-height:1.2}
 .sm-pl{flex:none;font-size:.76rem;font-weight:700;padding:5px 10px;border-radius:999px;border:1.5px solid var(--line);white-space:nowrap}.sm-pl-a{background:var(--ok);border-color:var(--ok);color:var(--bg)}
-.sm-a{margin:0;color:var(--mut);font-size:.92rem}.sm-p{margin:0}.sm-p b{font-size:1.5rem;letter-spacing:-.02em;margin-right:4px}.sm-p0{color:var(--mut);font-size:.92rem}
+.sm-a{margin:0;color:var(--mut);font-size:.92rem}.sm-p{margin:0}.sm-p b{font-size:1.5rem;letter-spacing:-.02em;margin-right:4px}.sm-p0{color:var(--mut);font-size:.92rem}.sm-p s{color:var(--mut);margin-left:6px;white-space:nowrap}
+.sm-vt{margin-bottom:16px}.sm-vt td:first-child{font-weight:600;white-space:normal}.sm-vt td{white-space:normal}.sm-vt a{color:var(--ink);text-decoration:underline}
 .sm-w{margin:0;font-size:.93rem}.sm-pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid var(--line);padding-top:12px}
 .sm-h{margin:0 0 6px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.sm-h.pro{color:var(--ok)}.sm-h.con{color:var(--warn)}
 .sm-pc ul{margin:0;padding-left:16px;font-size:.9rem;color:var(--mut);display:grid;gap:5px}
@@ -338,7 +392,7 @@ def main():
 
     nav = ''.join('<li><a href="#%s"><b>%d</b>%s</a></li>' % (b[0], i + 1, b[2]) for i, b in enumerate(BEREICHE))
     sys_h = ''.join('<article><h3>%s</h3><p class="w">%s</p><dl><div><dt>Stärke</dt><dd>%s</dd></div><div><dt>Schwäche</dt><dd>%s</dd></div><div><dt>Funk</dt><dd>%s</dd></div></dl></article>' % s[1:] for s in SYSTEME)
-    namen = '{%s}' % ','.join("'%s':['%s','%s']" % (m[0], m[2].replace("'", ''), (eur(m[4]).replace('&nbsp;', ' ') or 'Preis beim Händler')) for m in MODELLE)
+    namen = '{%s}' % ','.join("'%s':['%s','%s']" % (m[0], m[2].replace("'", ''), (eur(min(m[4], AKTUELL.get(m[0], m[4]))).replace('&nbsp;', ' ') if m[4] else 'Preis beim Händler')) for m in MODELLE)
 
     def frage(name, leg, opts):
         return '<fieldset><legend>%s</legend><div class="sm-ch">%s</div></fieldset>' % (leg, ''.join('<label><input type="radio" name="%s" value="%s"%s><span>%s</span></label>' % (name, val, ' checked' if k == 0 else '', t) for k, (val, t) in enumerate(opts)))
@@ -428,7 +482,7 @@ def main():
 <p class="hint" style="margin-top:18px">Wie viel Strom deine Geräte brauchen, steht unter <a href="/stromkosten.html">Stromkosten je Gerät</a>. Was smarte Thermostate mit dem Lüften zu tun haben, unter <a href="/lueften.html">Richtig lüften</a>.</p>
 <div class="src" style="margin-top:32px"><b>Quellen</b><ol>
 %(quellen)s
-</ol><p style="margin-top:12px">Geprüft am %(stand)s. Preise sind unverbindliche Preisempfehlungen der Hersteller an diesem Tag, der Preis im Handel weicht oft ab. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
+</ol><p style="margin-top:12px">Geprüft am %(stand)s. Preise sind unverbindliche Preisempfehlungen der Hersteller oder, wo angegeben, der Preis im Shop des Herstellers an diesem Tag. Der Preis im Handel weicht oft ab. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
 </div></section>
 ''' % dict(stand=STAND, stand_lang=STAND_LANG, haus=HAUS, nav=nav, sys=sys_h, funk=FUNK,
            f1=frage('handy', 'Welches Handy nutzt du?', [('android', 'Android'), ('iphone', 'iPhone')]),

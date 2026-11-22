@@ -57,7 +57,15 @@ MODELLE = [
     ('sonos-era100', 'multiroom', 'Sonos Era 100', 'WLAN-Lautsprecher', 229, 'UVP', 'Sehr gut', 'Der Einstieg in Musik für mehrere Räume',
      ['WLAN und Bluetooth, AirPlay&nbsp;2', 'Stereo aus einem Gehäuse', 'Sprachsteuerung mit Sonos Voice und Alexa', 'Lässt sich als Rücklautsprecher zur Soundbar nutzen'],
      ['Für den Kabel-Eingang ist ein Adapter nötig, der extra kostet'], 'Sonos Era 100', 8),
+    ('xgimi-mogo4', 'beamer', 'XGIMI MoGo 4', 'Kleiner Beamer mit Akku', 599, 'UVP', 'Gut', 'Balkon, Garten und Schlafzimmer',
+     ['Akku für bis zu 2,5&nbsp;Stunden Film', 'Full HD, Google TV mit Netflix eingebaut', 'Wiegt 1,31&nbsp;kg, Lautsprecher mit 2&nbsp;×&nbsp;6&nbsp;Watt'],
+     ['450&nbsp;ISO-Lumen: nur für dunkle Räume', 'Kein 4K'], 'XGIMI MoGo 4', 10),
+    ('xgimi-horizon20', 'beamer', 'XGIMI Horizon 20', 'Heimkino-Beamer mit 4K', 1699, 'UVP', 'Gut', 'Der feste Platz im Wohnzimmer',
+     ['4K und 3.200&nbsp;ISO-Lumen aus drei Lasern', 'Optischer Zoom und Lens-Shift: Bild verschieben, ohne den Beamer zu verrücken', 'Google TV mit Netflix eingebaut'],
+     ['Teuer', 'Braucht einen festen Platz mit Abstand zur Wand'], 'XGIMI Horizon 20', 11),
 ]
+
+AKTUELL = {'sonos-ray': 179, 'sonos-beam': 349, 'sonos-arc': 849, 'xgimi-mogo4': 399, 'xgimi-horizon20': 1299}   # Preis im Shop des Herstellers am Tag STAND
 
 QUELLEN = [
     (1, 'Stiftung Warentest: Fernseher im Test (Stand 02.10.2026)', 'https://www.test.de/Fernseher-im-Test-1629201-0/', 'test.de'),
@@ -68,6 +76,8 @@ QUELLEN = [
     (6, 'Google Store: Google TV Streamer (4K)', 'https://store.google.com/de/product/google_tv_streamer', 'store.google.com'),
     (7, 'Apple: Apple TV 4K', 'https://www.apple.com/de/apple-tv-4k/', 'apple.com'),
     (8, 'Sonos: Era 100', 'https://www.sonos.com/de-de/shop/era-100', 'sonos.com'),
+    (10, 'XGIMI: MoGo 4', 'https://de.xgimi.com/products/mogo-4', 'xgimi.com'),
+    (11, 'XGIMI: Horizon 20', 'https://de.xgimi.com/products/horizon-20', 'xgimi.com'),
     (9, 'Bundesamt für Sicherheit in der Informationstechnik: Smarthome sicher einrichten', 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Internet-der-Dinge-Smart-leben/Smart-Home/smart-home_node.html', 'bsi.bund.de'),
 ]
 
@@ -127,7 +137,7 @@ def bereich(i, b):
             % (' class="band"' if i % 2 else '', bid, emo, i + 1, len(BEREICHE), titel + '.', satz,
                ''.join('<li>%s</li>' % x for x in kann), ''.join('<li>%s</li>' % x for x in achte),
                (('<p class="sm-n">%s</p>' % hinweis) if hinweis else '') + '<p style="margin:20px 0 0"><a class="btn sec" href="/multimedia/%s.html">Schritt für Schritt: %s</a></p>' % (bid, titel), sh.pic(foto, alt),
-               ('<h3 class="sm-mh">Modelle im Vergleich</h3><div class="sm-mg">%s</div>' % ''.join(sh.karte(m) for m in mods)) if mods else '', extra))
+               ('<h3 class="sm-mh">Modelle im Vergleich</h3>%s<div class="sm-mg">%s</div>' % (sh.tabelle(mods, AKTUELL), ''.join(sh.karte(m, AKTUELL) for m in mods))) if mods else '', extra))
 
 
 def main():
@@ -151,7 +161,7 @@ def main():
     kopf = kopf.replace('</style>', sh.CSS + '.sm-nav.n5{grid-template-columns:repeat(5,1fr)}@media(max-width:1000px){.sm-nav.n5{grid-template-columns:1fr 1fr}}\n</style>', 1)
 
     nav = ''.join('<li><a href="#%s"><b>%d</b>%s</a></li>' % (b[0], i + 1, b[2]) for i, b in enumerate(BEREICHE))
-    namen = '{%s}' % ','.join("'%s':['%s','%s']" % (m[0], m[2], (sh.eur(m[4]).replace('&nbsp;', ' ') or 'Preis beim Händler')) for m in MODELLE)
+    namen = '{%s}' % ','.join("'%s':['%s','%s']" % (m[0], m[2], (sh.eur(min(m[4], AKTUELL.get(m[0], m[4]))).replace('&nbsp;', ' ') if m[4] else 'Preis beim Händler')) for m in MODELLE)
 
     def frage(name, leg, opts):
         return '<fieldset><legend>%s</legend><div class="sm-ch">%s</div></fieldset>' % (leg, ''.join('<label><input type="radio" name="%s" value="%s"%s><span>%s</span></label>' % (name, val, ' checked' if k == 0 else '', t) for k, (val, t) in enumerate(opts)))
@@ -224,7 +234,7 @@ def main():
 <p class="hint" style="margin-top:18px">Was Konsole und Router an Strom brauchen, steht unter <a href="/stromkosten/spielkonsole.html">Spielkonsole</a> und <a href="/stromkosten/wlan-router.html">WLAN-Router</a>. Wo dein Strom sonst bleibt, zeigt <a href="/stromfresser.html">Stromfresser finden</a>.</p>
 <div class="src" style="margin-top:32px"><b>Quellen</b><ol>
 %(quellen)s
-</ol><p style="margin-top:12px">Geprüft am %(stand)s. Preise sind unverbindliche Preisempfehlungen der Hersteller, der Preis im Handel liegt oft darunter. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
+</ol><p style="margin-top:12px">Geprüft am %(stand)s. Preise sind unverbindliche Preisempfehlungen der Hersteller oder, wo angegeben, der Preis im Shop des Herstellers an diesem Tag. „Preis-Leistung“ ist unsere Einschätzung aus Preis und Ausstattung. Wir haben kein Gerät selbst getestet.</p></div>
 </div></section>
 ''' % dict(stand=STAND, stand_lang=STAND_LANG, nav=nav, kette=KETTE,
            f1=frage('tv', 'Welchen Ton-Ausgang hat dein Fernseher?', [('neu', 'Hat HDMI mit ARC oder eARC'), ('alt', 'Nur optischer Ausgang')]),
@@ -236,8 +246,8 @@ def main():
            + pk('Wohnzimmer', 'Das runde Paket', ['sonos-beam', 'google-streamer', 'sonos-era100'], 'Dolby Atmos vorn, später zwei Lautsprecher nach hinten.')
            + pk('Apple-Haushalt', 'Alles in einer App', ['apple-tv', 'sonos-beam', 'sonos-era100'], 'Das Apple TV steuert zugleich Apple Home, die Lautsprecher spielen per AirPlay&nbsp;2.'),
            faq='\n'.join('<details><summary>%s</summary><div><p>%s</p></div></details>' % x for x in FAQ),
-           quellen='\n'.join('<li>%s <a href="%s" target="_blank" rel="noopener">%s</a></li>' % (t, u, d) for _, t, u, d in QUELLEN))
-    assert [q[0] for q in QUELLEN] == list(range(1, len(QUELLEN) + 1))
+           quellen='\n'.join('<li>%s <a href="%s" target="_blank" rel="noopener">%s</a></li>' % (t, u, d) for _, t, u, d in sorted(QUELLEN)))
+    assert sorted(q[0] for q in QUELLEN) == list(range(1, len(QUELLEN) + 1))
     for mo in MODELLE:
         assert any(b[0] == mo[1] for b in BEREICHE) and 1 <= mo[11] <= len(QUELLEN), mo[0]
     out = kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', sh.FILM + SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
