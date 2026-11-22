@@ -182,10 +182,10 @@ def bereich(i, b):
     extra = ''
     if bid == 'saugroboter':
         extra = ('<div class="sm-roh"><p>Für Saugroboter nennen wir keine eigene Auswahl, weil sich die Modelle schnell ändern und der Test der Stiftung Warentest die bessere Grundlage ist. '
-                 'Geprüft wurden dort unter anderem diese drei:</p><div class="items">%s</div></div>'
+                 'Geprüft wurden dort unter anderem diese drei:</p><div class="items">%s</div>'
                  % ''.join('<a class="item" href="%s" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🧹</span><div><b>%s</b><span>Von der Stiftung Warentest geprüft (06/2026)</span></div><span class="go">Ansehen →</span></a>' % (amz(n), n)
                            for n in ('Roborock Qrevo Curv', 'Dreame L40 Ultra AE', 'Ecovacs Deebot T50 Pro Omni')) +
-                 '<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Die Ergebnisse stehen im <a href="https://www.test.de/Saugroboter-im-Test-4806685-0/" target="_blank" rel="noopener">Test bei test.de</a>.</p>')
+                 '<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Die Ergebnisse stehen im <a href="https://www.test.de/Saugroboter-im-Test-4806685-0/" target="_blank" rel="noopener">Test bei test.de</a>.</p></div>')
     if bid == 'rollladen':
         extra = ('<div class="sm-roh"><div class="items"><a class="item" href="%s" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🪟</span><div><b>Elektrischer Gurtwickler mit Funk</b><span>Für Rollläden mit Gurt, zum Selbsttauschen</span></div><span class="go">Ansehen →</span></a></div>'
                  '<p class="hint">Der Link führt zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Vor dem Kauf Gurtbreite und Lochabstand des alten Wicklers messen.</p></div>' % amz('elektrischer Gurtwickler smart Funk'))
@@ -195,7 +195,7 @@ def bereich(i, b):
             '<figure class="sm-f">%s</figure></div>\n%s%s\n</div></section>\n'
             % (' class="band"' if i % 2 else '', bid, emo, i + 1, len(BEREICHE), titel + '.', satz,
                ''.join('<li>%s</li>' % x for x in kann), ''.join('<li>%s</li>' % x for x in achte),
-               ('<p class="sm-n">%s</p>' % hinweis) if hinweis else '', pic(foto, alt),
+               (('<p class="sm-n">%s</p>' % hinweis) if hinweis else '') + '<p style="margin:20px 0 0"><a class="btn sec" href="/smarthome/%s.html">Schritt für Schritt: %s</a></p>' % (bid, titel), pic(foto, alt),
                ('<h3 class="sm-mh">Modelle im Vergleich</h3><div class="sm-mg">%s</div>' % ''.join(karte(m) for m in mods)) if mods else '', extra))
 
 
@@ -229,6 +229,10 @@ FUNK = '''<div class="sm-funk" tabindex="0" role="region" aria-label="Funk-Schem
 </svg></div>'''
 
 CSS = '''/* Smarthome-Ratgeber: Stile dieser Seite (werkzeuge/smarthome.py) */
+/* Kurzer KI-Film über dem Titelfoto (assets/<name>.mp4/.webm, 10 s, ohne Ton, läuft vor und zurück). Das Foto darunter trägt die KI-Marke. */
+.hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9);opacity:0;transition:opacity 1.2s}.hero-film.an{opacity:1}
+.hero-stop{position:absolute;right:max(14px,env(safe-area-inset-right,0px));bottom:34px;z-index:3;display:none;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:rgba(0,0,0,.5);color:#fff;font-size:.84rem;font-weight:600;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.hero-stop.da{display:inline-flex}
+@media(prefers-reduced-motion:reduce){.hero-film,.hero-stop{display:none!important}}
 .sm-st{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
 .sm-st li{list-style:none;background:var(--pan);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);border-radius:22px;padding:22px 20px;counter-increment:s}
 .sm-st li:before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sun);color:#000;font-weight:700;margin-bottom:12px}
@@ -278,6 +282,17 @@ CSS = '''/* Smarthome-Ratgeber: Stile dieser Seite (werkzeuge/smarthome.py) */
 @media(max-width:1000px){.sm-nav{grid-template-columns:1fr 1fr}.sm-sy{grid-template-columns:1fr 1fr}}
 @media(max-width:900px){.sm-st,.sm-pk,.sm-fd,.sm-b{grid-template-columns:1fr}.sm-f,.sm-res{position:static}.sm-f{order:-1}.sm-f img{aspect-ratio:16/9}}
 @media(max-width:640px){.sm-sy,.sm-2,.sm-pc,.sm-si{grid-template-columns:1fr}.sm-mg{grid-template-columns:1fr}.sm-haus svg text{font-size:17px}.sm-funk svg{min-width:560px}.sm-funk{overflow-x:auto}}
+'''
+
+FILM = '''<script>
+/* Titelfilm: startet erst nach dem Laden, nicht bei „Bewegung reduzieren“ oder Datensparmodus; Knopf zum Anhalten. Speichert nichts. */
+(function(){var v=document.querySelector('.hero-film'),k=document.querySelector('.hero-stop');if(!v||!k)return;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches||(navigator.connection&&navigator.connection.saveData))return;
+function los(){var b=v.getAttribute('data-film');v.innerHTML='<source src="'+b+'.webm" type="video/webm"><source src="'+b+'.mp4" type="video/mp4">';v.load();
+ v.addEventListener('playing',function(){v.classList.add('an');k.classList.add('da')},{once:true});var p=v.play();if(p&&p.catch)p.catch(function(){})}
+k.addEventListener('click',function(){if(v.paused){v.play();k.textContent='Film anhalten';k.setAttribute('aria-pressed','false')}else{v.pause();k.textContent='Film abspielen';k.setAttribute('aria-pressed','true')}});
+if(document.readyState==='complete')setTimeout(los,400);else addEventListener('load',function(){setTimeout(los,400)})})();
+</script>
 '''
 
 SCRIPT = '''<script>
@@ -334,6 +349,8 @@ def main():
     m = '''<main id="main">
 <div class="hero">
   <picture><source type="image/webp" srcset="assets/smarthome-m.webp 800w, assets/smarthome.webp 1280w" sizes="100vw"><img src="assets/smarthome.jpg" srcset="assets/smarthome-m.jpg 800w, assets/smarthome.jpg 1280w" sizes="100vw" alt="Wohnzimmer in der Dämmerung mit warmem Lichtband hinter dem Sideboard, kleinem Lautsprecher und Wandbedienfeld" width="1280" height="720" fetchpriority="high" decoding="async" style="object-position:70%% 50%%"></picture>
+  <video class="hero-film" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-film="assets/smarthome" style="object-position:70%% 50%%"></video>
+  <button class="hero-stop" type="button" aria-pressed="false">Film anhalten</button>
   <div class="wrap">
     <span class="eyebrow">Ratgeber · Stand %(stand_lang)s</span>
     <h1>Smarthome: So fängst du an.</h1>
@@ -429,7 +446,7 @@ def main():
     for mo in MODELLE:
         assert any(b[0] == mo[1] for b in BEREICHE) and 1 <= mo[11] <= len(QUELLEN), mo[0]
     out = kopf + m + SCRIPT.replace('__NAMEN__', namen) + fuss.replace('</main>', '</main>', 1)
-    out = out.replace(m + SCRIPT.replace('__NAMEN__', namen) + '</main>', m + '</main>\n' + SCRIPT.replace('__NAMEN__', namen)) if False else kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
+    out = out.replace(m + SCRIPT.replace('__NAMEN__', namen) + '</main>', m + '</main>\n' + SCRIPT.replace('__NAMEN__', namen)) if False else kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', FILM + SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
     (ROOT / 'smarthome.html').write_text(out, encoding='utf-8')
     print('smarthome.html geschrieben:', len(out), 'Zeichen,', len(MODELLE), 'Modelle')
 

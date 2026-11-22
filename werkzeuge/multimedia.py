@@ -126,7 +126,7 @@ def bereich(i, b):
             '<figure class="sm-f">%s</figure></div>\n%s%s\n</div></section>\n'
             % (' class="band"' if i % 2 else '', bid, emo, i + 1, len(BEREICHE), titel + '.', satz,
                ''.join('<li>%s</li>' % x for x in kann), ''.join('<li>%s</li>' % x for x in achte),
-               ('<p class="sm-n">%s</p>' % hinweis) if hinweis else '', sh.pic(foto, alt),
+               (('<p class="sm-n">%s</p>' % hinweis) if hinweis else '') + '<p style="margin:20px 0 0"><a class="btn sec" href="/multimedia/%s.html">Schritt für Schritt: %s</a></p>' % (bid, titel), sh.pic(foto, alt),
                ('<h3 class="sm-mh">Modelle im Vergleich</h3><div class="sm-mg">%s</div>' % ''.join(sh.karte(m) for m in mods)) if mods else '', extra))
 
 
@@ -162,6 +162,8 @@ def main():
     m = '''<main id="main">
 <div class="hero">
   <picture><source type="image/webp" srcset="assets/multimedia-m.webp 800w, assets/multimedia.webp 1280w" sizes="100vw"><img src="assets/multimedia.jpg" srcset="assets/multimedia-m.jpg 800w, assets/multimedia.jpg 1280w" sizes="100vw" alt="Dunkles Wohnzimmer am Abend mit großem Fernseher, Soundbar und warmem Licht hinter dem Bildschirm" width="1280" height="720" fetchpriority="high" decoding="async" style="object-position:72%% 50%%"></picture>
+  <video class="hero-film" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-film="assets/multimedia" style="object-position:72%% 50%%"></video>
+  <button class="hero-stop" type="button" aria-pressed="false">Film anhalten</button>
   <div class="wrap">
     <span class="eyebrow">Ratgeber · Stand %(stand_lang)s</span>
     <h1>Multimedia: Bild und Ton zu Hause.</h1>
@@ -238,7 +240,7 @@ def main():
     assert [q[0] for q in QUELLEN] == list(range(1, len(QUELLEN) + 1))
     for mo in MODELLE:
         assert any(b[0] == mo[1] for b in BEREICHE) and 1 <= mo[11] <= len(QUELLEN), mo[0]
-    out = kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
+    out = kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', sh.FILM + SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
     (ROOT / 'multimedia.html').write_text(out, encoding='utf-8')
     print('multimedia.html geschrieben:', len(out), 'Zeichen,', len(MODELLE), 'Modelle')
 
