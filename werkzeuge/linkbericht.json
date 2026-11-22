@@ -1,10 +1,17 @@
 {
  "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
- "geprueft": 440,
- "unklar": 92,
- "tot": [],
- "verdacht": [
-  "https://sca.coffee/s/Coffee-Standards-1.pdf"
+ "geprueft": 471,
+ "unklar": 116,
+ "tot": [
+  {
+   "url": "https://sca.coffee/s/Coffee-Standards-1.pdf",
+   "grund": "Seite nicht gefunden (404)",
+   "seiten": [
+    "stil-daheim.de/kaffee.html"
+   ],
+   "seit": "2026-11-22"
+  }
  ],
- "stand": "2026-11-21"
+ "verdacht": [],
+ "stand": "2026-11-22"
 }
