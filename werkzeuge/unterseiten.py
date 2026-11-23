@@ -52,7 +52,7 @@ TIEFE = {
   [('Wie viel Watt hält eine smarte Steckdose aus?', 'Das steht in den technischen Daten. Die TP-Link Tapo P115 schaltet laut Hersteller bis 3.680&nbsp;Watt bei 16&nbsp;Ampere.'),
    ('Lohnt sich das zum Stromsparen?', 'Vor allem zum Finden von Stromfressern. Welche Geräte viel brauchen, steht unter <a href="/stromkosten.html">Stromkosten je Gerät</a>.'),
    ('Darf die Steckdose nach draußen?', 'Nur, wenn sie dafür gebaut ist. Für Balkon und Garten gibt es eigene Modelle mit Spritzwasserschutz.')]),
- 'heizung': ('Smarte Heizkörperthermostate: Einbau, Kosten, Modelle', 'Smarte Heizkörperthermostate: Einbau in fünf Schritten ohne Werkzeug, was sie sparen, und zwei Modelle mit Preis, Dafür und Dagegen.',
+ 'heizung': ('Smarte Heizkörperthermostate: Einbau, Kosten, Modelle', 'Smarte Heizkörperthermostate: Einbau in fünf Schritten ohne Werkzeug, was sie sparen, und Modelle mit Preis, Dafür und Dagegen.',
   'Smarte Thermostate: Heizen nach Plan.', 'Du tauschst nur den Drehkopf am Heizkörper. Das Ventil bleibt, Wasser läuft keines aus, und beim Auszug schraubst du den alten Kopf wieder an.',
   'Ein smartes Thermostat ersetzt den Drehkopf am Heizkörper und heizt nach Zeitplan. Laut Verbraucherzentrale spart das automatische Absenken bei Abwesenheit je nach bisherigem Verhalten 2 bis 8&nbsp;Prozent der Heizkosten. Viele Modelle brauchen eine Zentrale oder einen bestimmten Router, das solltest du vor dem Kauf prüfen.',
   [('Alten Kopf abschrauben', 'Thermostat ganz aufdrehen, dann die Überwurfmutter lösen. Das Ventil darunter bleibt am Heizkörper, es tritt kein Wasser aus.'),
@@ -261,6 +261,12 @@ FOTO2 = {
  'streaming': 'Schwarze Fernbedienung auf einem Sofakissen, im Hintergrund ein Fernseher mit bunten Kacheln',
  'multiroom': 'Kleiner weißer Funklautsprecher auf einer Ablage im Bad neben Handtüchern',
  'beamer': 'Kleiner Beamer auf einem Balkontisch wirft in der Dämmerung ein großes Bild an die Hauswand',
+ 'sensoren': 'Kleiner weißer Bewegungsmelder an der Flurwand, im Raum dahinter ein Wassermelder auf dem Boden neben der Waschmaschine',
+ 'schalter': 'Kleiner weißer Funk-Schalter seitlich am Nachttisch, daneben eine leuchtende Nachttischlampe',
+ 'garten': 'Grüner Bodenfeuchte-Sensor steckt in einem Hochbeet mit Tomaten und Salat, daneben ein Tropfschlauch',
+ 'kopfhoerer': 'Schwarze Bügelkopfhörer auf einem Holzständer neben dem Sofa, ein Ladekabel ist eingesteckt',
+ 'receiver': 'Rückseite eines AV-Receivers mit angeschlossenen roten und schwarzen Lautsprecherkabeln und zwei HDMI-Kabeln',
+ 'konsole': 'Zwei weiße Controller in einer Ladestation auf dem Lowboard, daneben eine weiße Spielkonsole',
 }
 
 CSS = '''

@@ -150,9 +150,9 @@ MODELLE = [
     ('hmip-evo', 'heizung', 'Homematic IP Heizkörperthermostat Evo', 'Heizkörperthermostat', None, '', 'Gut', 'Alle, die ein System ohne Abo aufbauen wollen',
      ['Zwei AA-Batterien halten laut Hersteller etwa zwei Jahre', 'Leiser Motor, Anzeige lässt sich drehen', 'Die App erhebt laut Hersteller außer der IP-Adresse keine persönlichen Daten', 'Sicherheits-Updates für mehr als fünf Jahre zugesagt', 'Von der Stiftung Warentest geprüft (09/2023)'],
      ['Braucht den Homematic IP Access Point oder die Zentrale CCU3'], 'Homematic IP Heizkörperthermostat Evo', 9),
-    ('tado-x', 'heizung', 'tado° Smartes Heizkörper-Thermostat X', 'Heizkörperthermostat', None, '', 'Offen', 'Alle, die Alexa, Google Home oder Apple Home nutzen',
+    ('tado-x', 'heizung', 'tado° Smartes Heizkörper-Thermostat X', 'Heizkörperthermostat', 99.99, 'UVP', 'Gut', 'Alle, die Alexa, Google Home oder Apple Home nutzen',
      ['Funktioniert mit Alexa, Google Home, Apple Home und SmartThings', 'Senkt die Temperatur automatisch, wenn du das Haus verlässt', 'Vom Hersteller für den Einbau in Eigenregie gedacht, auch zur Miete'],
-     ['Preise stehen nur im Shop des Herstellers', 'Vor dem Kauf prüfen, welche Funktionen ein Abo brauchen'], 'tado Smartes Heizkörper-Thermostat X', 19),
+     ['Für den Start verkauft tado° ein eigenes Starter-Kit, das einzelne Thermostat ist die Ergänzung dazu', 'Vor dem Kauf prüfen, welche Funktionen ein Abo brauchen'], 'tado Smartes Heizkörper-Thermostat X', 19),
     ('fritz-control', 'heizung', 'FRITZ!Smart Control 350', 'Tür- und Fensterkontakt', 34.99, 'UVP', 'Gut', 'Ergänzung zum FRITZ!-Thermostat',
      ['Meldet ein offenes Fenster, das Thermostat senkt dann die Heizung ab', 'Lässt sich mit Automationen verknüpfen, etwa Licht aus beim Verlassen der Wohnung'],
      ['Gedacht für das FRITZ!-Heimnetz'], 'FRITZ!Smart Control 350', 20),
@@ -192,19 +192,19 @@ MODELLE = [
     ('hue-modul', 'schalter', 'Philips Hue Wandschaltermodul', 'Modul hinter dem vorhandenen Lichtschalter', 49.99, 'Preis im Shop des Herstellers', 'Gut', 'Alle mit Hue-Lampen, bei denen der Wandschalter immer wieder versehentlich ausgeht',
      ['Sitzt hinter dem vorhandenen Schalter in der Unterputzdose', 'Die Lampen bleiben erreichbar, egal wer den Schalter drückt', 'Der Schalter kann Szenen aufrufen und Automationen starten', 'Knopfzelle CR2450 liegt bei'],
      ['Braucht die Hue Bridge', 'Einbau in der Schalterdose: Arbeit für eine Elektrofachkraft'], 'Philips Hue Wandschaltermodul', 26),
-    ('gardena-water', 'garten', 'GARDENA smart Water Control', 'Bewässerungscomputer für den Wasserhahn', None, '', 'Offen', 'Gartenbesitzer mit Rasen und Beeten am Außenhahn',
+    ('gardena-water', 'garten', 'GARDENA smart Water Control', 'Bewässerungscomputer für den Wasserhahn', 99.99, 'Preis im Shop des Herstellers', 'Gut', 'Gartenbesitzer mit Rasen und Beeten am Außenhahn',
      ['Bis zu 36 Bewässerungen am Tag, jeweils 1 Minute bis 10 Stunden', 'Zeitpläne passen sich laut Hersteller an Wetterdaten an', 'Die App warnt, wenn Frost angekündigt ist', 'Arbeitet mit Apple Home und Amazon Alexa'],
-     ['Die Verbindung ins Internet läuft über das GARDENA smart Gateway', 'Die Bodenfeuchte misst erst der zusätzliche smart Sensor'], 'GARDENA smart Water Control', 28),
+     ['Die Verbindung ins Internet läuft über das GARDENA smart Gateway', 'Die Bodenfeuchte misst erst der zusätzliche smart Sensor', 'Drei AA-Batterien liegen nicht bei'], 'GARDENA smart Water Control', 28),
     ('echo-dot', 'zentrale', 'Amazon Echo Dot (Version 2022)', 'Kleiner Lautsprecher mit Alexa', 89.99, 'UVP', 'Sehr gut', 'Einsteiger, die per Sprache schalten wollen',
      ['Steuert passende Smarthome-Geräte per Sprache oder mit Routinen', 'Eingebaute Sensoren für Bewegung und Raumtemperatur können Routinen auslösen', 'Taste trennt die Mikrofone elektronisch vom Strom', 'Spielt Musik über WLAN oder Bluetooth'],
      ['Vieles läuft über die Cloud von Amazon', 'Zigbee nennt der Hersteller für dieses Modell nicht'], 'Echo Dot 5. Generation', 30),
     ('bosch-thermo', 'heizung', 'Bosch Smart Home Heizkörper-Thermostat II [+M]', 'Thermostat mit Matter', 84.95, 'Preis im Shop des Herstellers', 'Gut', 'Alle, die Thermostate mit Fensterkontakten und anderen Geräten verknüpfen wollen',
      ['Läuft im System von Bosch oder laut Hersteller in allen Systemen mit Matter', 'Temperatur in Schritten von 0,5&nbsp;Grad, per App oder am Gerät', 'Zeitpläne auf 5 Minuten genau', 'Mehrere Thermostate eines Raums lassen sich zusammenfassen'],
-     ['Mit 84,95&nbsp;€ das teuerste Thermostat in dieser Liste', 'Der Dienst „Smartes Lüften“ braucht zusätzlich einen Tür- und Fensterkontakt'], 'Bosch Smart Home Heizkörper-Thermostat II', 29),
+     ['Mit 84,95&nbsp;€ deutlich teurer als die Thermostate von FRITZ! in dieser Liste', 'Der Dienst „Smartes Lüften“ braucht zusätzlich einen Tür- und Fensterkontakt'], 'Bosch Smart Home Heizkörper-Thermostat II', 29),
 ]
 
 # Preis im Shop des Herstellers am Tag STAND, wenn er unter der UVP liegt (id -> Euro). Nur Werte von den Herstellerseiten.
-AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899, 'shelly-blu-dw': 14.32, 'echo-dot': 34.99}
+AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899, 'shelly-blu-dw': 14.32, 'echo-dot': 34.99, 'tado-x': 54.98}
 
 QUELLEN = [
     (1, 'Verbraucherzentrale: Smart Home, das intelligente Zuhause (Stand 24.02.2026)', 'https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/wohnen/smart-home-das-intelligente-zuhause-6882', 'verbraucherzentrale.de'),
@@ -225,7 +225,7 @@ QUELLEN = [
     (16, 'Google Store: Nest Hub (2. Generation)', 'https://store.google.com/de/product/nest_hub_2nd_gen', 'store.google.com'),
     (17, 'Philips Hue: White A60 E27, 1.100 Lumen', 'https://www.philips-hue.com/de-at/p/hue-white-ambiance-a60---e27-smarte-lampe---1100/8719514288232', 'philips-hue.com'),
     (18, 'Shelly: Plug M Gen3', 'https://www.shelly.com/de/products/shelly-plug-m-gen3', 'shelly.com'),
-    (19, 'tado°: Smarte Thermostate, Übersicht', 'https://www.tado.com/de-de', 'tado.com'),
+    (19, 'tado°: Smarte Thermostate, Übersicht und Shop (shop.tado.com)', 'https://www.tado.com/de-de', 'tado.com'),
     (20, 'FRITZ!: Smart Control 350', 'https://fritz.com/produkte/smart-home/fritzdect-350/', 'fritz.com'),
     (21, 'Reolink: E1 Pro', 'https://reolink.com/de/product/e1-pro/', 'reolink.com'),
     (22, 'Roborock: Qrevo Curv', 'https://de.roborock.com/products/roborock-qrevo-curv', 'roborock.com'),
@@ -262,7 +262,7 @@ FAQ = [
 
 
 # Am 23.11.2026 ergänzte Modelle: Preise an diesem Tag geprüft
-NEU23 = {'echo-dot', 'fire-tv', 'shelly-blu-dw', 'hue-dimmer', 'hue-modul', 'sonos-ace', 'airpods-pro3'}
+NEU23 = {'tado-x', 'echo-dot', 'fire-tv', 'shelly-blu-dw', 'hue-dimmer', 'hue-modul', 'sonos-ace', 'airpods-pro3'}
 
 
 def eur(p):
