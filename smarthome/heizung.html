@@ -229,7 +229,8 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 .sm-bt h2{margin:10px 0 12px}.sm-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}.sm-2 h3{font-size:1rem;margin-bottom:8px}
 .sm-l{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem;color:var(--mut)}.sm-l li{padding-left:18px;position:relative}.sm-l li:before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--sun)}
 .sm-n{margin:22px 0 0;padding:14px 16px;border-left:3px solid var(--sun);background:color-mix(in srgb,var(--sun) 9%,transparent);border-radius:0 12px 12px 0;font-size:.94rem}
-.sm-f{margin:0;position:relative;border-radius:24px;overflow:hidden;position:sticky;top:84px}.sm-f img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+/* Foto: bewusst NICHT sticky und ohne top. site.js setzt für die KI-Marke position:relative, ein top-Wert schob das Foto dann über die Überschrift (Meldung des Inhabers 23.11.2026). */
+.sm-f{margin:0;position:relative;border-radius:24px;overflow:hidden}.sm-f img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .sm-mh{margin:clamp(30px,5vw,48px) 0 16px;font-size:1.3rem}
 .sm-mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
 .sm-m{display:flex;flex-direction:column;gap:10px;background:var(--pan);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);border-radius:22px;padding:22px 20px}
@@ -248,7 +249,7 @@ footer .fl{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
 .sm-pk h3{margin:4px 0 10px;font-size:1.3rem}.sm-pk ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}.sm-pk li a{display:block;padding:9px 12px;border-radius:12px;background:var(--soft);color:var(--ink);font-weight:600;font-size:.93rem}.sm-pk p{color:var(--mut);font-size:.9rem;margin:12px 0 0}
 .sm-si{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;margin:0}.sm-si li{list-style:none;background:var(--soft);border-radius:16px;padding:14px 16px;font-size:.95rem}.sm-si b{display:block;margin-bottom:2px}
 @media(max-width:1000px){.sm-nav{grid-template-columns:1fr 1fr}.sm-sy{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.sm-st,.sm-pk,.sm-fd,.sm-b{grid-template-columns:1fr}.sm-f,.sm-res{position:static}.sm-f{order:-1}.sm-f img{aspect-ratio:16/9}}
+@media(max-width:900px){.sm-st,.sm-pk,.sm-fd,.sm-b{grid-template-columns:1fr}.sm-res{position:static}.sm-f{order:-1}.sm-f img{aspect-ratio:16/9}}
 @media(max-width:640px){.sm-sy,.sm-2,.sm-pc,.sm-si{grid-template-columns:1fr}.sm-mg{grid-template-columns:1fr}.sm-haus svg text{font-size:17px}.sm-funk svg{min-width:560px}.sm-funk{overflow-x:auto}}
 
 /* Unterseiten (werkzeuge/unterseiten.py) */

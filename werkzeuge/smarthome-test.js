@@ -27,6 +27,8 @@ await c.close();
 ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Handy: kein seitliches Scrollen');
 ok(await p.evaluate(()=>[...document.querySelectorAll('.sm-go a.btn,.sm-ch span,.sm-nav a,.jump a,.sm-pk li a,#sm-out li a')].every(e=>e.getBoundingClientRect().height>=38)),'Handy: Tippflächen groß genug');
 ok(await p.evaluate(()=>!!document.querySelector('.hero .ki-marke, .hero [class*="ki"]')),'Titelfoto trägt die KI-Marke');
+for(const id of ['heizung','licht','saugroboter']){await p.evaluate(i=>{document.querySelector('.sm-dots a[href="#'+i+'"]').dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true}));location.hash='#'+i},id);await p.waitForTimeout(3500);
+ ok(await p.evaluate(i=>{const s=document.getElementById(i),f=s.querySelector('.sm-f').getBoundingClientRect(),h=s.querySelector('h2').getBoundingClientRect(),e=s.querySelector('.eyebrow').getBoundingClientRect(),k=document.querySelector('header').getBoundingClientRect();const frei=(a,b)=>a.bottom<=b.top+1||b.bottom<=a.top+1;return frei(f,h)&&frei(f,e)&&f.top>=k.bottom-1&&f.top<innerHeight},id),'Handy: Sprung aus der Hausgrafik zu '+id+', Foto verdeckt weder Überschrift noch Kopfzeile');}
 await c.close();
 ok(errs.length===0,'Keine Skriptfehler'+(errs.length?': '+errs.join(' | '):''));ok(fremd.length===0,'Keine Anfrage an fremde Server'+(fremd.length?': '+fremd.slice(0,3).join(', '):''));
 await b.close();console.log(bad?('\n'+bad+' FEHLER'):'\nALLE TESTS BESTANDEN');process.exit(bad?1:0)})();
