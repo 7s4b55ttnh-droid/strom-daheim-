@@ -82,9 +82,12 @@ MODELLE = [
     ('airpods-pro3', 'kopfhoerer', 'Apple AirPods Pro 3', 'Ohrhörer mit Geräuschunterdrückung', 249, 'Preis im Shop des Herstellers', 'Gut', 'Alle mit iPhone, die kleine Ohrhörer für unterwegs und zu Hause suchen',
      ['Bis zu 8 Stunden Wiedergabe mit Geräuschunterdrückung, mit Ladehülle bis zu 24 Stunden', 'Gegen Staub, Schweiß und Wasser geschützt (IP57)', 'Herzfrequenzmessung beim Training und Hörtest', 'Ladehülle mit USB-C, lädt auch kabellos'],
      ['Ausgelegt auf Geräte von Apple', 'Ohne Ladehülle ist nach spätestens 8 Stunden Schluss'], 'Apple AirPods Pro 3', 13),
+    ('fire-tv', 'streaming', 'Amazon Fire TV Stick 4K Plus', 'Streaming-Stick mit Alexa', 84.99, 'UVP', 'Sehr gut', 'Alle, die günstig einen älteren Fernseher aufrüsten wollen',
+     ['4K mit Dolby Vision, HDR10+ und Dolby Atmos', 'Wi-Fi 6', 'Die Sprachfernbedienung steuert auch das Smarthome', 'Xbox-App für Spiele aus der Cloud'],
+     ['Für viele Streaming-Dienste fallen Abogebühren an', 'Spiele aus der Cloud brauchen eine Mitgliedschaft bei Xbox Game Pass Ultimate'], 'Fire TV Stick 4K Plus', 14),
 ]
 
-AKTUELL = {'sonos-ray': 179, 'sonos-beam': 349, 'sonos-arc': 849, 'xgimi-mogo4': 399, 'xgimi-horizon20': 1299, 'sonos-ace': 199}   # Preis im Shop des Herstellers am Tag STAND
+AKTUELL = {'sonos-ray': 179, 'sonos-beam': 349, 'sonos-arc': 849, 'xgimi-mogo4': 399, 'xgimi-horizon20': 1299, 'sonos-ace': 199, 'fire-tv': 36.99}   # Preis im Shop des Herstellers am Tag STAND
 
 QUELLEN = [
     (1, 'Stiftung Warentest: Fernseher im Test (Stand 02.10.2026)', 'https://www.test.de/Fernseher-im-Test-1629201-0/', 'test.de'),
@@ -100,6 +103,7 @@ QUELLEN = [
     (9, 'Bundesamt für Sicherheit in der Informationstechnik: Smarthome sicher einrichten', 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Internet-der-Dinge-Smart-leben/Smart-Home/smart-home_node.html', 'bsi.bund.de'),
     (12, 'Sonos: Ace', 'https://www.sonos.com/de-de/shop/sonos-ace', 'sonos.com'),
     (13, 'Apple: AirPods Pro 3, Technische Daten', 'https://www.apple.com/de/airpods-pro/specs/', 'apple.com'),
+    (14, 'Amazon: Fire TV Stick 4K Plus', 'https://www.amazon.de/dp/B0F7ZFWVTC', 'amazon.de'),
 ]
 
 FAQ = [

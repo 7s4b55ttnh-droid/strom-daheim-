@@ -35,6 +35,8 @@ TINK = {
     'tapo-p115': 'tp-link-tapo-p115-smarte-wlan-steckdose-rund',
     'hmip-evo': 'homematic-ip-heizkorperthermostat-evo-n',
     'fritz-thermo': 'fritz-smart-thermo-302-heizkoerperthermostat',
+    'echo-dot': 'amazon-echo-dot-5th-gen-smart-lautsprecher-mit-alexa',
+    'fire-tv': 'amazon-fire-tv-stick-4k-plus-2025-release',
     'hmip-rauch': 'homematic-ip-rauchwarnmelder-mit-q-label',
     'sonos-ray': 'sonos-ray',
     'sonos-beam': 'sonos-beam-gen-2-smarte-tv-soundbar',
@@ -193,10 +195,16 @@ MODELLE = [
     ('gardena-water', 'garten', 'GARDENA smart Water Control', 'Bewässerungscomputer für den Wasserhahn', None, '', 'Offen', 'Gartenbesitzer mit Rasen und Beeten am Außenhahn',
      ['Bis zu 36 Bewässerungen am Tag, jeweils 1 Minute bis 10 Stunden', 'Zeitpläne passen sich laut Hersteller an Wetterdaten an', 'Die App warnt, wenn Frost angekündigt ist', 'Arbeitet mit Apple Home und Amazon Alexa'],
      ['Die Verbindung ins Internet läuft über das GARDENA smart Gateway', 'Die Bodenfeuchte misst erst der zusätzliche smart Sensor'], 'GARDENA smart Water Control', 28),
+    ('echo-dot', 'zentrale', 'Amazon Echo Dot (Version 2022)', 'Kleiner Lautsprecher mit Alexa', 89.99, 'UVP', 'Sehr gut', 'Einsteiger, die per Sprache schalten wollen',
+     ['Steuert passende Smarthome-Geräte per Sprache oder mit Routinen', 'Eingebaute Sensoren für Bewegung und Raumtemperatur können Routinen auslösen', 'Taste trennt die Mikrofone elektronisch vom Strom', 'Spielt Musik über WLAN oder Bluetooth'],
+     ['Vieles läuft über die Cloud von Amazon', 'Zigbee nennt der Hersteller für dieses Modell nicht'], 'Echo Dot 5. Generation', 30),
+    ('bosch-thermo', 'heizung', 'Bosch Smart Home Heizkörper-Thermostat II [+M]', 'Thermostat mit Matter', 84.95, 'Preis im Shop des Herstellers', 'Gut', 'Alle, die Thermostate mit Fensterkontakten und anderen Geräten verknüpfen wollen',
+     ['Läuft im System von Bosch oder laut Hersteller in allen Systemen mit Matter', 'Temperatur in Schritten von 0,5&nbsp;Grad, per App oder am Gerät', 'Zeitpläne auf 5 Minuten genau', 'Mehrere Thermostate eines Raums lassen sich zusammenfassen'],
+     ['Mit 84,95&nbsp;€ das teuerste Thermostat in dieser Liste', 'Der Dienst „Smartes Lüften“ braucht zusätzlich einen Tür- und Fensterkontakt'], 'Bosch Smart Home Heizkörper-Thermostat II', 29),
 ]
 
 # Preis im Shop des Herstellers am Tag STAND, wenn er unter der UVP liegt (id -> Euro). Nur Werte von den Herstellerseiten.
-AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899, 'shelly-blu-dw': 14.32}
+AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899, 'shelly-blu-dw': 14.32, 'echo-dot': 34.99}
 
 QUELLEN = [
     (1, 'Verbraucherzentrale: Smart Home, das intelligente Zuhause (Stand 24.02.2026)', 'https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/wohnen/smart-home-das-intelligente-zuhause-6882', 'verbraucherzentrale.de'),
@@ -227,6 +235,8 @@ QUELLEN = [
     (26, 'Philips Hue: Wandschaltermodul', 'https://www.philips-hue.com/de-de/p/hue-wandschalter-modul/8719514318045', 'philips-hue.com'),
     (27, 'Philips Hue: Dimmschalter', 'https://www.philips-hue.com/de-de/p/hue-dimmschalter--neuestes-modell-/8719514274617', 'philips-hue.com'),
     (28, 'GARDENA: smart Water Control', 'https://www.gardena.com/de/produkte/bewaesserung/bewaesserungssteuerung/smart-water-control/967045101/', 'gardena.com'),
+    (29, 'Bosch Smart Home: Heizkörper-Thermostat II [+M]', 'https://www.bosch-smarthome.com/de/de/produkte/heizung/heizkoerper-thermostat/', 'bosch-smarthome.com'),
+    (30, 'Amazon: Echo Dot (Version 2022)', 'https://www.amazon.de/dp/B09B8X9RGM', 'amazon.de'),
 ]
 
 # Systeme: (id, Name, für wen, Stärke, Schwäche, Funk)
@@ -252,7 +262,7 @@ FAQ = [
 
 
 # Am 23.11.2026 ergänzte Modelle: Preise an diesem Tag geprüft
-NEU23 = {'shelly-blu-dw', 'hue-dimmer', 'hue-modul', 'sonos-ace', 'airpods-pro3'}
+NEU23 = {'echo-dot', 'fire-tv', 'shelly-blu-dw', 'hue-dimmer', 'hue-modul', 'sonos-ace', 'airpods-pro3'}
 
 
 def eur(p):
