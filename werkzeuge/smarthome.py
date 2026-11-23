@@ -35,6 +35,7 @@ TINK = {
     'tapo-p115': 'tp-link-tapo-p115-smarte-wlan-steckdose-rund',
     'hmip-evo': 'homematic-ip-heizkorperthermostat-evo-n',
     'fritz-thermo': 'fritz-smart-thermo-302-heizkoerperthermostat',
+    'hmip-rauch': 'homematic-ip-rauchwarnmelder-mit-q-label',
     'sonos-ray': 'sonos-ray',
     'sonos-beam': 'sonos-beam-gen-2-smarte-tv-soundbar',
     'sonos-arc': 'sonos-arc-ultra-premium-soundbar-mit-dolby-atm',
@@ -95,6 +96,18 @@ BEREICHE = [
      ['Nach Zeitplan oder per App starten', 'Einzelne Räume reinigen oder aussparen', 'Mit Station: Staub absaugen, Wasser tauschen, Wischtücher trocknen'],
      ['Vor allem Hartboden oder viel Teppich? Auf Teppich sind laut Stiftung Warentest nur wenige gut', 'Wischen ist bei vielen Modellen die Schwäche', 'Die Zahl in Pascal und Werbewörter sagen wenig über die Qualität'],
      'Stiftung Warentest hat bis 06/2026 insgesamt 44 Saug- und Wischroboter geprüft, sie kosten etwa 240 bis 1.300&nbsp;€. Der Preis sagt laut den Testern nicht immer etwas über die Qualität.'),
+    ('sensoren', '🚨', 'Sensoren und Rauchmelder', 'smarthome-sensoren', 'Heller Flur mit einem weißen Rauchmelder an der Decke und einem kleinen Kontakt am Fensterrahmen',
+     'Sensoren sind die Sinne des Smarthomes: Sie melden offene Fenster, Bewegung, Rauch oder Wasser und stoßen Abläufe an.',
+     ['Fenster offen? Dann regelt das Thermostat die Heizung herunter', 'Bewegung im Flur schaltet das Licht', 'Vernetzte Rauchmelder schlagen gemeinsam Alarm'],
+     ['Funk: Viele Sensoren nutzen Zigbee, Thread oder Bluetooth und brauchen eine Zentrale', 'Batterie: Knopfzellen halten laut Herstellern oft mehrere Jahre', 'Beim Rauchmelder auf das Q-Label und eine fest eingebaute Batterie achten'], ''),
+    ('schalter', '🎚️', 'Lichtschalter', 'smarthome-schalter', 'Weißer Wandschalter und daneben ein kleiner Funk-Schalter mit vier Tasten in einer Wandhalterung',
+     'Smarte Lampen brauchen Dauerstrom. Ein Funk-Schalter oder ein Modul hinter dem Wandschalter sorgt dafür, dass trotzdem jeder das Licht wie gewohnt bedient.',
+     ['Licht schalten und dimmen, ohne zum Handy zu greifen', 'Szenen per Tastendruck: Lesen, Kochen, Filmabend', 'Funk-Schalter klebst du dorthin, wo nie ein Schalter war'],
+     ['Passt der Schalter zu deinem Lampensystem?', 'Funk-Schalter mit Batterie brauchen kein Kabel und eignen sich für die Mietwohnung', 'Arbeiten in der Schalterdose sind Arbeiten an 230&nbsp;Volt und gehören in die Hand einer Elektrofachkraft'], ''),
+    ('garten', '💧', 'Bewässerung', 'smarthome-garten', 'Grauer Bewässerungscomputer an einem Außenwasserhahn, im Hintergrund ein Rasensprenger im Morgenlicht',
+     'Ein Bewässerungscomputer am Außenhahn gießt nach Zeitplan, auch wenn du im Urlaub bist.',
+     ['Rasen und Beete zu festen Zeiten wässern', 'Zeitpläne per App ändern oder pausieren', 'Mit Wetterdaten oder einem Bodenfeuchte-Sensor das Gießen auslassen, wenn es nicht nötig ist'],
+     ['Braucht das Gerät eine eigene Zentrale (Gateway)?', 'Reicht der Funk bis zum Wasserhahn?', 'Vor dem ersten Frost abnehmen und frostfrei lagern'], ''),
 ]
 
 # Modelle: (id, Bereich, Name, Art, Preis in €, Preis-Hinweis, P/L, für wen, pro[], con[], Suchbegriff, Quelle-Nr.)
@@ -165,10 +178,25 @@ MODELLE = [
     ('saros-10', 'saugroboter', 'Roborock Saros 10', 'Flacher Saug- und Wischroboter mit Station', 1499, 'UVP', 'Gut', 'Wohnungen mit niedrigen Möbeln',
      ['Nur knapp 8&nbsp;cm hoch, der Sensor fährt ein', 'Station wäscht die Wischtücher mit bis zu 80&nbsp;Grad und leert den Staub', 'Unterstützt Matter'],
      ['Teuer', 'Hat eine Kamera: vorher die Datenschutz-Einstellungen ansehen'], 'Roborock Saros 10', 23),
+    ('hmip-rauch', 'sensoren', 'Homematic IP Rauchwarnmelder mit Q-Label', 'Vernetzter Rauchmelder', None, '', 'Offen', 'Alle, die mehrere Räume und Etagen gemeinsam absichern wollen',
+     ['Bis zu 40 Melder per Funk vernetzbar: Schlägt einer an, warnen alle', 'Fest eingebaute Batterien, laut Hersteller typisch etwa 10 Jahre', 'Sirene mit mehr als 85&nbsp;Dezibel in 3&nbsp;m Abstand', 'Trägt das Q-Label'],
+     ['Batterien nicht wechselbar: Danach wird der ganze Melder getauscht', 'Eigener Funk auf 868&nbsp;MHz, gedacht für das System von Homematic IP'], 'Homematic IP Rauchwarnmelder Q-Label', 24),
+    ('shelly-blu-dw', 'sensoren', 'Shelly BLU Door/Window ZB', 'Tür- und Fensterkontakt', 17.9, 'UVP', 'Sehr gut', 'Alle, die Fenster überwachen und die Heizung daran koppeln wollen',
+     ['Erkennt offen und zu, bei Kippfenstern auch den Neigungswinkel', 'Misst zusätzlich die Helligkeit', 'Zigbee 3.0 und Bluetooth', 'Knopfzelle CR2032 liegt bei, laut Hersteller bis zu 5 Jahre Laufzeit'],
+     ['Für die Shelly-App ist ein Gateway oder ein anderes Shelly-Gerät am Strom nötig', 'Reichweite in Räumen laut Hersteller bis zu 10&nbsp;m'], 'Shelly BLU Door Window ZB', 25),
+    ('hue-dimmer', 'schalter', 'Philips Hue Dimmschalter', 'Funk-Schalter zum Kleben oder Schrauben', 21.99, 'Preis im Shop des Herstellers', 'Sehr gut', 'Mieter und alle, die ohne Kabel einen Schalter mehr wollen',
+     ['Kein Kabel: Wandplatte kleben oder schrauben', 'Der Schalter haftet magnetisch und lässt sich abnehmen', 'Dimmen und zwischen Lichtszenen wechseln', 'Knopfzelle CR2032 liegt bei'],
+     ['Eigene Tastenbelegungen richtest du nur mit der Hue Bridge ein', 'Der Wandschalter der Lampe muss weiter an bleiben'], 'Philips Hue Dimmschalter', 27),
+    ('hue-modul', 'schalter', 'Philips Hue Wandschaltermodul', 'Modul hinter dem vorhandenen Lichtschalter', 49.99, 'Preis im Shop des Herstellers', 'Gut', 'Alle mit Hue-Lampen, bei denen der Wandschalter immer wieder versehentlich ausgeht',
+     ['Sitzt hinter dem vorhandenen Schalter in der Unterputzdose', 'Die Lampen bleiben erreichbar, egal wer den Schalter drückt', 'Der Schalter kann Szenen aufrufen und Automationen starten', 'Knopfzelle CR2450 liegt bei'],
+     ['Braucht die Hue Bridge', 'Einbau in der Schalterdose: Arbeit für eine Elektrofachkraft'], 'Philips Hue Wandschaltermodul', 26),
+    ('gardena-water', 'garten', 'GARDENA smart Water Control', 'Bewässerungscomputer für den Wasserhahn', None, '', 'Offen', 'Gartenbesitzer mit Rasen und Beeten am Außenhahn',
+     ['Bis zu 36 Bewässerungen am Tag, jeweils 1 Minute bis 10 Stunden', 'Zeitpläne passen sich laut Hersteller an Wetterdaten an', 'Die App warnt, wenn Frost angekündigt ist', 'Arbeitet mit Apple Home und Amazon Alexa'],
+     ['Die Verbindung ins Internet läuft über das GARDENA smart Gateway', 'Die Bodenfeuchte misst erst der zusätzliche smart Sensor'], 'GARDENA smart Water Control', 28),
 ]
 
 # Preis im Shop des Herstellers am Tag STAND, wenn er unter der UVP liegt (id -> Euro). Nur Werte von den Herstellerseiten.
-AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899}
+AKTUELL = {'fritz-gateway': 69.99, 'fritz-energy': 29.99, 'fritz-thermo': 44.99, 'fritz-control': 25.99, 'hue-white': 13.19, 'qrevo-curv': 599, 'saros-10': 899, 'shelly-blu-dw': 14.32}
 
 QUELLEN = [
     (1, 'Verbraucherzentrale: Smart Home, das intelligente Zuhause (Stand 24.02.2026)', 'https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/wohnen/smart-home-das-intelligente-zuhause-6882', 'verbraucherzentrale.de'),
@@ -194,6 +222,11 @@ QUELLEN = [
     (21, 'Reolink: E1 Pro', 'https://reolink.com/de/product/e1-pro/', 'reolink.com'),
     (22, 'Roborock: Qrevo Curv', 'https://de.roborock.com/products/roborock-qrevo-curv', 'roborock.com'),
     (23, 'Roborock: Saros 10', 'https://de.roborock.com/products/roborock-saros-10', 'roborock.com'),
+    (24, 'Homematic IP: Rauchwarnmelder mit Q-Label', 'https://homematic-ip.com/de/produkt/rauchwarnmelder-mit-q-label', 'homematic-ip.com'),
+    (25, 'Shelly: BLU Door/Window ZB', 'https://www.shelly.com/de/products/shelly-blu-door-window-zb-white', 'shelly.com'),
+    (26, 'Philips Hue: Wandschaltermodul', 'https://www.philips-hue.com/de-de/p/hue-wandschalter-modul/8719514318045', 'philips-hue.com'),
+    (27, 'Philips Hue: Dimmschalter', 'https://www.philips-hue.com/de-de/p/hue-dimmschalter--neuestes-modell-/8719514274617', 'philips-hue.com'),
+    (28, 'GARDENA: smart Water Control', 'https://www.gardena.com/de/produkte/bewaesserung/bewaesserungssteuerung/smart-water-control/967045101/', 'gardena.com'),
 ]
 
 # Systeme: (id, Name, für wen, Stärke, Schwäche, Funk)
@@ -218,6 +251,10 @@ FAQ = [
 ]
 
 
+# Am 23.11.2026 ergänzte Modelle: Preise an diesem Tag geprüft
+NEU23 = {'shelly-blu-dw', 'hue-dimmer', 'hue-modul', 'sonos-ace', 'airpods-pro3'}
+
+
 def eur(p):
     if p is None:
         return ''
@@ -233,7 +270,7 @@ def preiszeile(m, akt):
     if not preis:
         return '<p class="sm-p sm-p0">Preis beim Händler ansehen</p>'
     if a and a < preis:
-        return '<p class="sm-p"><b>%s</b> beim Hersteller am %s <s>UVP %s</s></p>' % (eur(a), STAND[:6], eur(preis))
+        return '<p class="sm-p"><b>%s</b> beim Hersteller am %s <s>UVP %s</s></p>' % (eur(a), '23.11.' if m[0] in NEU23 else STAND[:6], eur(preis))
     return '<p class="sm-p"><b>%s</b> %s</p>' % (eur(preis), ph + ' laut Hersteller' if ph == 'UVP' else ph)
 
 
@@ -256,6 +293,15 @@ def karte(m, akt=None):
                ''.join('<li>%s</li>' % x for x in pro), ''.join('<li>%s</li>' % x for x in con), amz(such), tink(mid), q))
 
 
+# Suchlinks für Bereiche, in denen wir keine oder nur wenige Modelle einzeln beschreiben: (Suchbegriff, Titel, Untertitel)
+SUCH = {
+    'sensoren': ([('Bewegungsmelder smart Matter', 'Bewegungsmelder', 'Schaltet Licht, wenn jemand den Raum betritt'), ('Wassermelder smart WLAN', 'Wassermelder', 'Für Waschküche, Bad und Keller'),
+                  ('Thermometer Hygrometer smart', 'Temperatur und Luftfeuchte', 'Zeigt, wann gelüftet werden sollte')], '🚨', 'Vor dem Kauf prüfen, ob der Funk zu deiner Zentrale passt.'),
+    'garten': ([('Bewässerungscomputer smart WLAN', 'Bewässerungscomputer mit WLAN', 'Für den Außenwasserhahn'), ('Bodenfeuchtesensor smart Garten', 'Bodenfeuchte-Sensor', 'Gießt nur, wenn der Boden trocken ist')], '💧',
+               'Vor dem Kauf Gewinde des Wasserhahns und Funkreichweite prüfen.'),
+}
+
+
 def bereich(i, b):
     bid, emo, titel, foto, alt, satz, kann, achte, hinweis = b
     mods = [m for m in MODELLE if m[1] == bid]
@@ -269,6 +315,10 @@ def bereich(i, b):
     if bid == 'rollladen':
         extra = ('<div class="sm-roh"><div class="items"><a class="item" href="%s" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">🪟</span><div><b>Elektrischer Gurtwickler mit Funk</b><span>Für Rollläden mit Gurt, zum Selbsttauschen</span></div><span class="go">Ansehen →</span></a></div>'
                  '<p class="hint">Der Link führt zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Vor dem Kauf Gurtbreite und Lochabstand des alten Wicklers messen.</p></div>' % amz('elektrischer Gurtwickler smart Funk'))
+    if bid in SUCH:
+        liste, emoji, tipp = SUCH[bid]
+        extra = ('<div class="sm-roh"><p>Weitere Geräte für diesen Bereich:</p><div class="items">%s</div><p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> %s</p></div>'
+                 % (''.join('<a class="item" href="%s" rel="sponsored nofollow noopener" target="_blank"><span class="ic" aria-hidden="true">%s</span><div><b>%s</b><span>%s</span></div><span class="go">Ansehen →</span></a>' % (amz(q), emoji, t, u) for q, t, u in liste), tipp))
     return ('<section%s id="%s"><div class="wrap">\n'
             '<div class="sm-b"><div class="sm-bt"><span class="eyebrow">%s Bereich %d von %d</span><h2>%s</h2><p class="lede">%s</p>'
             '<div class="sm-2"><div><h3>Was es kann</h3><ul class="sm-l">%s</ul></div><div><h3>Worauf du achtest</h3><ul class="sm-l">%s</ul></div></div>%s</div>'
@@ -279,7 +329,7 @@ def bereich(i, b):
                ('<h3 class="sm-mh">Modelle im Vergleich</h3>%s<div class="sm-mg">%s</div>' % (tabelle(mods, AKTUELL), ''.join(karte(m) for m in mods))) if mods else '', extra))
 
 
-HAUS = '''<figure class="sm-haus"><svg viewBox="0 0 720 420" role="group" aria-label="Haus im Schnitt mit neun nummerierten Punkten für die Bereiche des Smarthomes">
+HAUS = '''<figure class="sm-haus"><svg viewBox="0 0 720 420" role="group" aria-label="Haus im Schnitt mit elf nummerierten Punkten für die Bereiche des Smarthomes">
 <g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
 <path d="M60 190 360 40l300 150"/><path d="M100 172v208h520V172"/><path d="M100 262h520M360 172v208M30 380h660"/>
 <path d="M150 380v-70h50v70"/><rect x="250" y="292" width="60" height="44"/><rect x="430" y="292" width="110" height="52"/><rect x="170" y="198" width="70" height="40"/><rect x="470" y="198" width="80" height="40"/>
@@ -294,6 +344,9 @@ HAUS = '''<figure class="sm-haus"><svg viewBox="0 0 720 420" role="group" aria-l
 <a href="#kamera"><circle cx="72" cy="320" r="15"/><text x="72" y="325">6</text><title>Klingel und Kamera</title></a>
 <a href="#rollladen"><circle cx="510" cy="190" r="15"/><text x="510" y="195">7</text><title>Rollläden</title></a>
 <a href="#saugroboter"><circle cx="590" cy="346" r="15"/><text x="590" y="351">8</text><title>Saugroboter</title></a>
+<a href="#sensoren"><circle cx="405" cy="200" r="15"/><text x="405" y="205">9</text><title>Sensoren und Rauchmelder</title></a>
+<a href="#schalter"><circle cx="124" cy="292" r="15"/><text x="124" y="297" font-size="13">10</text><title>Lichtschalter</title></a>
+<a href="#garten"><circle cx="668" cy="356" r="15"/><text x="668" y="361" font-size="13">11</text><title>Bewässerung</title></a>
 </g></svg><figcaption>Tippe auf eine Zahl, um zum Bereich zu springen.</figcaption></figure>'''
 
 FUNK = '''<div class="sm-funk" tabindex="0" role="region" aria-label="Funk-Schema, auf schmalen Bildschirmen seitlich verschiebbar"><svg viewBox="0 0 720 300" role="img" aria-label="Schema: Der Router verbindet WLAN-Geräte direkt. Geräte mit Zigbee, Thread oder DECT laufen über eine Zentrale.">
@@ -451,7 +504,7 @@ def main():
 </div></section>
 
 <section class="band" id="bereiche"><div class="wrap">
-<div class="head"><span class="eyebrow">Überblick</span><h2>Was im Haus smart werden kann.</h2><p class="lede">Acht Bereiche, vom Lichtschalter bis zur Haustür. Zu jedem steht unten, was es kann, worauf du achtest und welche Modelle wir empfehlen.</p></div>
+<div class="head"><span class="eyebrow">Überblick</span><h2>Was im Haus smart werden kann.</h2><p class="lede">Elf Bereiche, vom Lichtschalter bis zur Haustür. Zu jedem steht unten, was es kann, worauf du achtest und welche Modelle wir empfehlen.</p></div>
 %(haus)s
 <ol class="sm-nav">%(nav)s</ol>
 </div></section>

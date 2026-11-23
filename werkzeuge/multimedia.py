@@ -35,6 +35,19 @@ BEREICHE = [
      'Für den Filmabend mit Bild über die ganze Wand. Ein Beamer ersetzt den Fernseher selten, ergänzt ihn aber gut.',
      ['Bilder mit zwei Metern Breite und mehr', 'Kleine Geräte mit Akku ziehen mit auf den Balkon', 'Viele haben Streaming-Apps und Lautsprecher eingebaut'],
      ['Helligkeit in Lumen: je heller der Raum, desto mehr brauchst du', 'Abstand zur Wand und Bildgröße stehen im Datenblatt', 'Eine helle, glatte Wand oder eine Leinwand'], ''),
+    ('kopfhoerer', '🎧', 'Kopfhörer', 'multimedia-kopfhoerer', 'Weiße Bügelkopfhörer auf einer Sofalehne, daneben kleine Ohrhörer mit Ladehülle auf einem Holztisch',
+     'Für den Film, wenn andere schlafen, und für Musik unterwegs. Manche Kopfhörer übernehmen den Ton direkt von der Soundbar.',
+     ['Aktive Geräuschunterdrückung blendet Umgebungslärm aus', 'Spät abends Filme schauen, ohne jemanden zu wecken', 'Musik hören und telefonieren mit einem Gerät'],
+     ['Über dem Ohr oder im Ohr: Probier aus, was du länger bequem trägst', 'Einige Funktionen gibt es nur im System des Herstellers', 'Akkulaufzeit mit eingeschalteter Geräuschunterdrückung vergleichen'], ''),
+    ('receiver', '🎛️', 'AV-Receiver', 'multimedia-receiver', 'Schwarzer AV-Receiver in einem Eichen-Lowboard unter dem Fernseher, links und rechts schlanke Standlautsprecher',
+     'Die Schaltzentrale für ein Heimkino mit einzelnen Lautsprechern. Wer mehr will als eine Soundbar, landet hier.',
+     ['Verteilt Bild und Ton aller Geräte an Fernseher und Lautsprecher', 'Treibt fünf, sieben oder mehr Lautsprecher und einen Subwoofer an', 'Viele messen den Raum mit einem Mikrofon ein'],
+     ['Genug HDMI-Eingänge für Konsole, Streaming-Box und Player', 'HDMI eARC für den Ton vom Fernseher', 'Platz im Regal: Ein Receiver wird warm und braucht Luft nach oben'],
+     'Für die meisten Wohnzimmer reicht eine Soundbar. Ein AV-Receiver lohnt sich, wenn du Lautsprecher frei aufstellen kannst und Kabel verlegen magst.'),
+    ('konsole', '🎮', 'Spielkonsole', 'multimedia-konsole', 'Weiße Spielkonsole neben dem Fernseher auf einem Lowboard, zwei Controller auf dem Couchtisch',
+     'Spielen am großen Bild. Die Konsole hängt per HDMI am Fernseher und ist oft zugleich Streaming-Gerät.',
+     ['Spiele von der Disc oder aus dem Online-Shop', 'Streaming-Apps laufen auch auf der Konsole', 'Mit mehreren Controllern gemeinsam auf dem Sofa spielen'],
+     ['Welche Spiele willst du spielen? Viele Titel gibt es nur für eine Konsole', 'Mit oder ohne Laufwerk: Ohne Laufwerk kaufst du Spiele nur digital', 'Am Fernseher den Spielemodus einschalten, das verkürzt die Verzögerung'], ''),
 ]
 
 # (id, Bereich, Name, Art, UVP, Hinweis, P/L, für wen, pro[], con[], Suchbegriff, Quelle)
@@ -63,9 +76,15 @@ MODELLE = [
     ('xgimi-horizon20', 'beamer', 'XGIMI Horizon 20', 'Heimkino-Beamer mit 4K', 1699, 'UVP', 'Gut', 'Der feste Platz im Wohnzimmer',
      ['4K und 3.200&nbsp;ISO-Lumen aus drei Lasern', 'Optischer Zoom und Lens-Shift: Bild verschieben, ohne den Beamer zu verrücken', 'Google TV mit Netflix eingebaut'],
      ['Teuer', 'Braucht einen festen Platz mit Abstand zur Wand'], 'XGIMI Horizon 20', 11),
+    ('sonos-ace', 'kopfhoerer', 'Sonos Ace', 'Bügelkopfhörer mit Geräuschunterdrückung', 379, 'UVP', 'Gut', 'Alle mit einer Sonos-Soundbar, die abends leise weiterschauen wollen',
+     ['Übernimmt per Tastendruck den Ton einer passenden Sonos-Soundbar', 'Bis zu 30 Stunden Laufzeit mit Geräuschunterdrückung laut Hersteller', 'Verlustfreier Ton über Bluetooth oder USB-C mit passenden Geräten', 'Kabel für USB-C und 3,5-mm-Klinke liegen bei'],
+     ['Der Tonwechsel braucht eine Sonos-Soundbar und die Sonos-App', 'Mit 312&nbsp;Gramm kein Leichtgewicht'], 'Sonos Ace Kopfhörer', 12),
+    ('airpods-pro3', 'kopfhoerer', 'Apple AirPods Pro 3', 'Ohrhörer mit Geräuschunterdrückung', 249, 'Preis im Shop des Herstellers', 'Gut', 'Alle mit iPhone, die kleine Ohrhörer für unterwegs und zu Hause suchen',
+     ['Bis zu 8 Stunden Wiedergabe mit Geräuschunterdrückung, mit Ladehülle bis zu 24 Stunden', 'Gegen Staub, Schweiß und Wasser geschützt (IP57)', 'Herzfrequenzmessung beim Training und Hörtest', 'Ladehülle mit USB-C, lädt auch kabellos'],
+     ['Ausgelegt auf Geräte von Apple', 'Ohne Ladehülle ist nach spätestens 8 Stunden Schluss'], 'Apple AirPods Pro 3', 13),
 ]
 
-AKTUELL = {'sonos-ray': 179, 'sonos-beam': 349, 'sonos-arc': 849, 'xgimi-mogo4': 399, 'xgimi-horizon20': 1299}   # Preis im Shop des Herstellers am Tag STAND
+AKTUELL = {'sonos-ray': 179, 'sonos-beam': 349, 'sonos-arc': 849, 'xgimi-mogo4': 399, 'xgimi-horizon20': 1299, 'sonos-ace': 199}   # Preis im Shop des Herstellers am Tag STAND
 
 QUELLEN = [
     (1, 'Stiftung Warentest: Fernseher im Test (Stand 02.10.2026)', 'https://www.test.de/Fernseher-im-Test-1629201-0/', 'test.de'),
@@ -79,6 +98,8 @@ QUELLEN = [
     (10, 'XGIMI: MoGo 4', 'https://de.xgimi.com/products/mogo-4', 'xgimi.com'),
     (11, 'XGIMI: Horizon 20', 'https://de.xgimi.com/products/horizon-20', 'xgimi.com'),
     (9, 'Bundesamt für Sicherheit in der Informationstechnik: Smarthome sicher einrichten', 'https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Internet-der-Dinge-Smart-leben/Smart-Home/smart-home_node.html', 'bsi.bund.de'),
+    (12, 'Sonos: Ace', 'https://www.sonos.com/de-de/shop/sonos-ace', 'sonos.com'),
+    (13, 'Apple: AirPods Pro 3, Technische Daten', 'https://www.apple.com/de/airpods-pro/specs/', 'apple.com'),
 ]
 
 FAQ = [
@@ -130,6 +151,14 @@ def bereich(i, b):
         extra = ('<div class="sm-roh">%s<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Vor dem Kauf Helligkeit, Auflösung und Abstand im Datenblatt vergleichen.</p></div>'
                  % such([('Beamer 4K Heimkino', 'Beamer mit 4K', 'Für den festen Platz im Wohnzimmer'), ('Mini Beamer Akku tragbar', 'Kleiner Beamer mit Akku', 'Für Balkon, Garten und unterwegs'),
                          ('Beamer Leinwand Rahmen', 'Leinwand', 'Macht das Bild heller und gleichmäßiger'), ('Beamer Deckenhalterung', 'Deckenhalterung', 'Hält den Beamer aus dem Weg')], '📽️'))
+    if bid == 'receiver':
+        extra = ('<div class="sm-roh"><p>AV-Receiver wechseln jedes Jahr, deshalb nennen wir keine einzelnen Modelle.</p>%s<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Vor dem Kauf Zahl der HDMI-Eingänge und der Lautsprecher-Kanäle im Datenblatt prüfen.</p></div>'
+                 % such([('AV-Receiver 5.2 HDMI eARC', 'AV-Receiver mit 5 Kanälen', 'Für vorne links, Mitte, rechts und zwei Rücklautsprecher'), ('AV-Receiver 7.2 Dolby Atmos', 'AV-Receiver mit 7 Kanälen', 'Mit Platz für zwei Höhenlautsprecher'),
+                         ('Lautsprecherkabel Kupfer 2,5 mm', 'Lautsprecherkabel', 'Vom Receiver zu jedem Lautsprecher'), ('HDMI Kabel Ultra High Speed', 'HDMI-Kabel „Ultra High Speed“', 'Für die Verbindung zum Fernseher')], '🎛️'))
+    if bid == 'konsole':
+        extra = ('<div class="sm-roh">%s<p class="hint">Die Links führen zu einer Suche bei Amazon.<span class="tag">Anzeige</span> Welche Konsole passt, entscheiden vor allem die Spiele, die du spielen willst.</p></div>'
+                 % such([('PlayStation 5 Konsole', 'PlayStation 5', 'Von Sony, mit oder ohne Laufwerk'), ('Xbox Series X Konsole', 'Xbox Series X', 'Von Microsoft'),
+                         ('Nintendo Switch 2 Konsole', 'Nintendo Switch 2', 'Von Nintendo, auch für unterwegs'), ('Controller Ladestation', 'Ladestation für Controller', 'Damit der zweite Controller immer voll ist')], '🎮'))
     return ('<section%s id="%s"><div class="wrap">\n'
             '<div class="sm-b"><div class="sm-bt"><span class="eyebrow">%s Bereich %d von %d</span><h2>%s</h2><p class="lede">%s</p>'
             '<div class="sm-2"><div><h3>Was es kann</h3><ul class="sm-l">%s</ul></div><div><h3>Worauf du achtest</h3><ul class="sm-l">%s</ul></div></div>%s</div>'
@@ -192,7 +221,7 @@ def main():
 </div></section>
 
 <section class="band" id="bereiche"><div class="wrap">
-<div class="head"><span class="eyebrow">Überblick</span><h2>Fünf Bausteine für Bild und Ton.</h2><p class="lede">Zu jedem steht unten, was er kann, worauf du achtest und welche Modelle wir empfehlen.</p></div>
+<div class="head"><span class="eyebrow">Überblick</span><h2>Acht Bausteine für Bild und Ton.</h2><p class="lede">Zu jedem steht unten, was er kann, worauf du achtest und welche Modelle wir empfehlen.</p></div>
 <ol class="sm-nav n5" style="margin-top:0">%(nav)s</ol>
 <h3 id="anschluss" style="margin-top:clamp(32px,5vw,52px)">So hängt alles zusammen.</h3>
 %(kette)s

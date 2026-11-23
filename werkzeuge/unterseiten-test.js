@@ -1,7 +1,7 @@
-// Prüft die 13 Unterseiten (smarthome/*.html, multimedia/*.html) und die Titelfilme der beiden großen Ratgeber.  node werkzeuge/unterseiten-test.js [Basis-URL]
+// Prüft die 19 Unterseiten (smarthome/*.html, multimedia/*.html) und die Titelfilme der beiden großen Ratgeber.  node werkzeuge/unterseiten-test.js [Basis-URL]
 const {chromium,devices}=require('playwright');const B=process.argv[2]||'http://localhost:8765';let bad=0;
 const ok=(c,t)=>{console.log((c?'ok   ':'FEHLER ')+t);if(!c)bad++};
-const S={smarthome:['zentrale','licht','steckdose','heizung','tuerschloss','kamera','rollladen','saugroboter'],multimedia:['fernseher','soundbar','streaming','multiroom','beamer']};
+const S={smarthome:['zentrale','licht','steckdose','heizung','tuerschloss','kamera','rollladen','saugroboter','sensoren','schalter','garten'],multimedia:['fernseher','soundbar','streaming','multiroom','beamer','kopfhoerer','receiver','konsole']};
 (async()=>{const b=await chromium.launch();const errs=[],fremd=[];
 const neu=async o=>{const c=await b.newContext(o);const p=await c.newPage();p.on('pageerror',e=>errs.push(e.message));
  p.on('request',r=>{const u=r.url();if(!u.startsWith(B)&&!/^data:|^blob:/.test(u)&&!/goatcounter/.test(u))fremd.push(u)});return [c,p]};
@@ -21,7 +21,7 @@ for(const g of Object.keys(S)){
   ok(tot.length===0,u+': alle internen Links führen zu einer Seite'+(tot.length?': '+tot.join(', '):''));
   await q.goto(B+u,{waitUntil:'networkidle'});
   ok(await q.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&[...document.querySelectorAll('.jump a,.us-w a,.sm-go a.btn')].every(e=>e.getBoundingClientRect().height>=38)),u+': Handy ohne seitliches Scrollen, Tippflächen groß genug');}}
-await p.goto(B+'/sitemap.xml');const sm=await p.content();ok(Object.keys(S).every(g=>S[g].every(i=>sm.includes('/'+g+'/'+i+'.html'))),'Alle 13 Unterseiten in der Sitemap');
+await p.goto(B+'/sitemap.xml');const sm=await p.content();ok(Object.keys(S).every(g=>S[g].every(i=>sm.includes('/'+g+'/'+i+'.html'))),'Alle 19 Unterseiten in der Sitemap');
 [c,p]=await neu({viewport:{width:1280,height:800},reducedMotion:'reduce'});await p.goto(B+'/smarthome.html',{waitUntil:'networkidle'});await p.waitForTimeout(1500);
 ok(await p.evaluate(()=>{const v=document.querySelector('.hero-film');return v.paused&&!v.querySelector('source')&&getComputedStyle(v).display==='none'}),'Bei „Bewegung reduzieren“ lädt und läuft kein Film');
 ok(errs.length===0,'Keine Skriptfehler'+(errs.length?': '+errs.slice(0,3).join(' | '):''));ok(fremd.length===0,'Keine Anfrage an fremde Server'+(fremd.length?': '+fremd.slice(0,3).join(', '):''));
