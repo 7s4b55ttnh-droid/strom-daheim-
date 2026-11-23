@@ -246,7 +246,25 @@ TIEFE = {
    ('Konsole an den Fernseher oder an die Soundbar?', 'Beides geht. Hat die Soundbar einen HDMI-Eingang, kann die Konsole dort hängen. Sonst kommt sie an den Fernseher, und der Ton geht über HDMI eARC zur Soundbar.')]),
 }
 
+# Zweites Foto je Unterseite (assets/<foto>-2.jpg), steht unter den Schritten: id -> Bildtext
+FOTO2 = {
+ 'zentrale': 'Kleine weiße Zentrale, per Netzwerkkabel mit dem Router auf einem Regal im Flur verbunden',
+ 'licht': 'Neue LED-Lampe und alte Glühlampe auf einem Holztisch unter einer Pendelleuchte',
+ 'steckdose': 'Weißer Zwischenstecker in der Wandsteckdose, daran das Kabel einer Waschmaschine',
+ 'heizung': 'Alter Thermostatkopf, neues smartes Thermostat und zwei Adapterringe auf einer Fensterbank über dem Heizkörper',
+ 'tuerschloss': 'Wohnungstür von innen mit einem runden schwarzen Aufsatz über dem Schließzylinder',
+ 'kamera': 'Kleine weiße Kamera unter dem Dachvorsprung eines Hauses mit Blick auf Einfahrt und Vorgarten',
+ 'rollladen': 'Weißer elektrischer Gurtwickler an der Wand neben einem halb geschlossenen Rollladen',
+ 'saugroboter': 'Weißer Saugroboter in seiner Station an einer Flurwand, daneben eine Schuhbank',
+ 'fernseher': 'Blick vom Sofa auf einen Fernseher, auf dem Boden dazwischen liegt ein Zollstock',
+ 'soundbar': 'Rückseite eines Fernsehers mit eingestecktem HDMI-Kabel, das zu einer Soundbar führt',
+ 'streaming': 'Schwarze Fernbedienung auf einem Sofakissen, im Hintergrund ein Fernseher mit bunten Kacheln',
+ 'multiroom': 'Kleiner weißer Funklautsprecher auf einer Ablage im Bad neben Handtüchern',
+ 'beamer': 'Kleiner Beamer auf einem Balkontisch wirft in der Dämmerung ein großes Bild an die Hauswand',
+}
+
 CSS = '''
+.us-f2{margin:28px 0 0;position:relative;border-radius:24px;overflow:hidden}.us-f2 img{display:block;width:100%;height:auto}
 /* Unterseiten (werkzeuge/unterseiten.py) */
 .us-st{display:grid;gap:12px;counter-reset:u;padding:0;margin:0}
 .us-st li{list-style:none;counter-increment:u;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--pan);border:1px solid color-mix(in srgb,var(--line) 60%,transparent);border-radius:20px;padding:18px 20px}
@@ -267,6 +285,12 @@ def seite(guide, mod, b, i):
     bid, emo, titel, foto, alt, satz, kann, achte, hinweis = b
     T = TIEFE[bid]
     title, desc, h1, intro, kurz, schritte, fehler, fragen = T
+    foto2 = ''
+    if bid in FOTO2 and (ROOT / 'assets' / (b[3] + '-2.jpg')).exists():
+        f2 = b[3] + '-2'
+        foto2 = ('<figure class="us-f2"><picture><source type="image/webp" srcset="/assets/%s-m.webp 800w, /assets/%s.webp 1280w" sizes="(max-width:900px) 100vw, 760px">'
+                 '<img src="/assets/%s.jpg" srcset="/assets/%s-m.jpg 800w, /assets/%s.jpg 1280w" sizes="(max-width:900px) 100vw, 760px" alt="%s" width="1280" height="720" loading="lazy" decoding="async"></picture></figure>'
+                 % (f2, f2, f2, f2, f2, FOTO2[bid]))
     gname = 'Smarthome' if guide == 'smarthome' else 'Multimedia'
     url = '%s/%s/%s.html' % (SITE, guide, bid)
     v = (ROOT / (guide + '.html')).read_text(encoding='utf-8')
@@ -330,7 +354,7 @@ def seite(guide, mod, b, i):
 
 <section id="vorgehen"><div class="wrap read">
 <div class="head"><span class="eyebrow">Schritt für Schritt</span><h2>So gehst du vor.</h2></div>
-<ol class="us-st">%(schritte)s</ol>
+<ol class="us-st">%(schritte)s</ol>%(foto2)s
 </div></section>
 
 <section class="band" id="ueberblick"><div class="wrap">
@@ -363,7 +387,7 @@ def seite(guide, mod, b, i):
                   hinweis=('<p class="sm-n">%s</p>' % hinweis) if hinweis else '',
                   kaufsec=('<section id="modelle"><div class="wrap">\n<div class="head"><span class="eyebrow">Kaufen</span><h2>%s</h2></div>\n%s\n</div></section>\n\n'
                            % ('Modelle im Vergleich.' if mods else 'Was du kaufen kannst.', kauf)) if kauf else '',
-                  fehler=''.join('<li>%s</li>' % x for x in fehler),
+                  foto2=foto2, fehler=''.join('<li>%s</li>' % x for x in fehler),
                   faq='\n'.join('<details><summary>%s</summary><div><p>%s</p></div></details>' % x for x in fragen),
                   nachbarn=''.join('<li><a href="/%s/%s.html"><span aria-hidden="true">%s</span>%s</a></li>' % (guide, x[0], x[1], x[2]) for x in nachbarn),
                   a0=anderer[0], a1=anderer[1],
