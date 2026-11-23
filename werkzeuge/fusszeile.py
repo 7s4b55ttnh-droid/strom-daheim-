@@ -15,7 +15,7 @@ SPALTEN = [('solar', 'Solar und Balkon'), ('auto', 'E-Auto'), ('haushalt', 'Haus
 TEXTE = {  # Reihenfolge innerhalb einer Spalte = Reihenfolge hier
     '/': 'Balkonkraftwerk-Rechner', '/balkonkraftwerk-planer.html': 'Balkonkraftwerk-Planer', '/was-lohnt-sich.html': 'Was lohnt sich bei dir?', '/solar-atlas.html': 'Solar-Atlas', '/anleitung-balkonkraftwerk.html': 'Balkonkraftwerk montieren', '/balkonkraftwerk-speicher.html': 'Balkonkraftwerk mit Speicher', '/balkonkraftwerk-foerderung.html': 'Balkonkraftwerk-Förderung', '/pv-anlage.html': 'Solaranlage aufs Dach', '/solar-rechner.html': 'Solar-Rechner fürs Dach',
     '/powerstation.html': 'Powerstation und Notstrom',
-    '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden',
+    '/e-auto.html': 'E-Auto laden', '/anleitung-wallbox.html': 'Wallbox-Anleitung', '/solar-laden.html': 'Mit Solarstrom laden', '/ebike.html': 'E-Bike',
     '/stromfresser.html': 'Stromfresser finden', '/stromkosten.html': 'Stromkosten je Gerät', '/energielabel.html': 'Energielabel', '/kochen.html': 'Kochen mit wenig Strom',
     '/kuehlschrank.html': 'Kühlschrank einstellen', '/spuelmaschine.html': 'Spülmaschine', '/waschmaschine.html': 'Waschmaschine', '/waesche-trocknen.html': 'Wäsche trocknen', '/durchlauferhitzer.html': 'Durchlauferhitzer', '/led-lampen.html': 'LED-Lampen',
     '/backen.html': 'Plätzchen backen', '/weihnachtsbeleuchtung.html': 'Weihnachtsbeleuchtung', '/weihnachten-strom.html': 'Stromkosten an Weihnachten',

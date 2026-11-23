@@ -23,6 +23,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/#speicher', '🔋', 'Lohnt sich ein Speicher?', 'Zwei Rechenbeispiele', None),
         ('/e-auto.html', '🚗', 'Was kostet mein E-Auto?', 'Ladekosten-Rechner', 'e-auto'),
         ('/anleitung-wallbox.html', '🔌', 'Wallbox installieren', 'Schritte, Kosten, Förderung', 'anleitung-wallbox'),
+        ('/ebike.html', '🚲', 'E-Bike-Ratgeber', 'Typen, Akku, Kosten-Rechner', 'ebike'),
         ('/powerstation.html', '🔦', 'Powerstation und Notstrom', 'Größen-Rechner und Vorsorge-Liste', 'powerstation'),
         ('/stromfresser.html', '💡', 'Stromfresser finden', 'Verbrauch vergleichen, Geräte-Rechner', 'stromfresser'),
         ('/stromtarif.html', '💶', 'Stromtarif wechseln', 'Wechsel-Rechner, dynamischer Tarif', 'stromtarif'),
