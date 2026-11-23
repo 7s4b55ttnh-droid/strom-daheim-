@@ -266,7 +266,7 @@ def main():
     if s2 != s:
         seite.write_text(s2, encoding='utf-8'); s = s2
     kopf = s[:s.index('</head>')].rstrip('\n')
-    fuss = '<footer><div class="wrap">\n<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>\n' + fusszeile.block('') + '\n</div></footer>'
+    fuss = '<footer><div class="wrap">\n<p>Alle Zahlen sind Richtwerte ohne Gewähr. Mit „Anzeige“ markierte Links sind Partnerlinks (Amazon-Partnerprogramm, Awin); bei einem Kauf erhalten wir eine Provision, für dich ändert sich der Preis nicht. Als Amazon-Partner verdienen wir an qualifizierten Verkäufen.</p>\n' + fusszeile.block('') + '\n</div></footer>'
     m = re.search(r'<script>\n/\* Besucherzähler.*?</script>\n', s, flags=re.S)
     goat = m.group(0) if m else ''
     out = ROOT / 'solar'; out.mkdir(exist_ok=True)

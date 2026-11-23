@@ -24,6 +24,33 @@ def amz(q):
     return 'https://www.amazon.de/s?k=%s&amp;tag=%s' % (urllib.parse.quote_plus(q), TAG)
 
 
+# tink (Awin 13686, zugelassen 23.11.2026): Produktseiten, am 23.11.2026 über die Suche von tink.de geprüft.
+TINK = {
+    'tado-x': 'tado-smartes-heizkoerper-thermostat-x-zusatzprodukt',
+    'nuki-pro': 'nuki-smart-lock-pro-5-gen',
+    'nuki-go': 'nuki-smart-lock-go',
+    'hue-start': 'philips-hue-starter-set-mit-bridge-pro-und-2-white-and-color-ambiance-e27-lampen-1110-lm',
+    'hue-white': 'philips-hue-white-e27-1050lm',
+    'homepod-mini': 'apple-homepod-mini-2-gen',
+    'tapo-p115': 'tp-link-tapo-p115-smarte-wlan-steckdose-rund',
+    'hmip-evo': 'homematic-ip-heizkorperthermostat-evo-n',
+    'fritz-thermo': 'fritz-smart-thermo-302-heizkoerperthermostat',
+    'sonos-ray': 'sonos-ray',
+    'sonos-beam': 'sonos-beam-gen-2-smarte-tv-soundbar',
+    'sonos-arc': 'sonos-arc-ultra-premium-soundbar-mit-dolby-atm',
+}
+
+
+def awin(mid, ziel):
+    return 'https://www.awin1.com/cread.php?awinmid=%s&amp;awinaffid=3156925&amp;ued=%s' % (mid, urllib.parse.quote(ziel, safe=''))
+
+
+def tink(mid):
+    if mid not in TINK:
+        return ''
+    return '<a class="btn ghost sm-tk" href="%s" rel="sponsored nofollow noopener" target="_blank">Bei tink ansehen</a>' % awin(13686, 'https://www.tink.de/p/' + TINK[mid])
+
+
 def pic(name, alt, sizes='(max-width:900px) 100vw, 520px', cls=''):
     return ('<picture><source type="image/webp" srcset="assets/%s-m.webp 800w, assets/%s.webp 1280w" sizes="%s">'
             '<img src="assets/%s.jpg" srcset="assets/%s-m.jpg 800w, assets/%s.jpg 1280w" sizes="%s" alt="%s" width="1280" height="720" loading="lazy" decoding="async"%s></picture>'
@@ -224,9 +251,9 @@ def karte(m, akt=None):
     return ('<article class="sm-m" id="m-%s"><div class="sm-mk"><h4>%s</h4><span class="sm-pl sm-pl-%s">Preis-Leistung: %s</span></div>'
             '<p class="sm-a">%s</p>%s<p class="sm-w"><b>Für wen:</b> %s</p>'
             '<div class="sm-pc"><div><p class="sm-h pro">Dafür</p><ul>%s</ul></div><div><p class="sm-h con">Dagegen</p><ul>%s</ul></div></div>'
-            '<div class="sm-go"><a class="btn" href="%s" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a><span class="tag">Anzeige</span><a class="sm-q" href="#quellen">Quelle %d</a></div></article>'
+            '<div class="sm-go"><a class="btn" href="%s" rel="sponsored nofollow noopener" target="_blank">Bei Amazon ansehen</a>%s<span class="tag">Anzeige</span><a class="sm-q" href="#quellen">Quelle %d</a></div></article>'
             % (mid, name, 'a' if pl == 'Sehr gut' else 'b', pl.lower() if pl == 'Offen' else pl, art, preis_h, wer,
-               ''.join('<li>%s</li>' % x for x in pro), ''.join('<li>%s</li>' % x for x in con), amz(such), q))
+               ''.join('<li>%s</li>' % x for x in pro), ''.join('<li>%s</li>' % x for x in con), amz(such), tink(mid), q))
 
 
 def bereich(i, b):
@@ -328,7 +355,7 @@ CSS = '''/* Smarthome-Ratgeber: Stile dieser Seite (werkzeuge/smarthome.py) */
 .sm-w{margin:0;font-size:.93rem}.sm-pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:1px solid var(--line);padding-top:12px}
 .sm-h{margin:0 0 6px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.sm-h.pro{color:var(--ok)}.sm-h.con{color:var(--warn)}
 .sm-pc ul{margin:0;padding-left:16px;font-size:.9rem;color:var(--mut);display:grid;gap:5px}
-.sm-go{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.sm-q{margin-left:auto;font-size:.84rem;color:var(--mut);text-decoration:underline}
+.sm-go .sm-tk{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px currentColor}.sm-go{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.sm-q{margin-left:auto;font-size:.84rem;color:var(--mut);text-decoration:underline}
 .sm-roh{margin-top:26px}.sm-roh>p{max-width:70ch;color:var(--mut)}
 .sm-pk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .sm-pk article{background:var(--pan);border-radius:22px;padding:22px 20px;border:1px solid color-mix(in srgb,var(--line) 60%,transparent)}.sm-pk .k{color:var(--mut);font-weight:700;font-size:.84rem}
