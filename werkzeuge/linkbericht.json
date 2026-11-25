@@ -1,11 +1,25 @@
 {
  "hinweis": "Vom Link-Wächter geschrieben (werkzeuge/linkcheck.py). tot = zweimal hintereinander nicht gefunden: bitte ersetzen oder entfernen. verdacht = heute zum ersten Mal nicht gefunden, noch abwarten.",
  "geprueft": 567,
- "unklar": 112,
- "tot": [],
- "verdacht": [
-  "https://www.awin1.com/cread.php?awinmid=13686&awinaffid=3156925&ued=https%3A%2F%2Fwww.tink.de%2Fp%2Ffritz-smart-thermo-302-heizkoerperthermostat",
-  "https://www.awin1.com/cread.php?awinmid=13686&awinaffid=3156925&ued=https%3A%2F%2Fwww.tink.de%2Fp%2Fphilips-hue-white-e27-1050lm"
+ "unklar": 113,
+ "tot": [
+  {
+   "url": "https://www.awin1.com/cread.php?awinmid=13686&awinaffid=3156925&ued=https%3A%2F%2Fwww.tink.de%2Fp%2Ffritz-smart-thermo-302-heizkoerperthermostat",
+   "grund": "Seite nicht gefunden (404)",
+   "seiten": [
+    "strom-daheim.de/smarthome.html"
+   ],
+   "seit": "2026-11-25"
+  },
+  {
+   "url": "https://www.awin1.com/cread.php?awinmid=13686&awinaffid=3156925&ued=https%3A%2F%2Fwww.tink.de%2Fp%2Fphilips-hue-white-e27-1050lm",
+   "grund": "Seite nicht gefunden (404)",
+   "seiten": [
+    "strom-daheim.de/smarthome.html"
+   ],
+   "seit": "2026-11-25"
+  }
  ],
- "stand": "2026-11-24"
+ "verdacht": [],
+ "stand": "2026-11-25"
 }
