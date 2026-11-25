@@ -365,3 +365,11 @@ main ol.steps>li .who+h3{margin-top:0}
 .aw{margin:20px 0 0;font-weight:600}.aw a{text-decoration:underline;text-underline-offset:3px}
 .btn-2{display:block;margin-top:8px;font-size:.86rem;font-weight:600;text-align:center;text-decoration:underline;text-underline-offset:3px;color:var(--mut,#555)}
 .note a{color:inherit}
+/* Bühne mit Tiefe (Design-Agent 25.11.2026): Beim Herausscrollen bleibt das Titelfoto etwas zurück und der Text gleitet sanft davon. Zeitleiste = Scrollen der Seite (scroll(root)) über die ersten 80svh; view() ginge nicht, weil .hero wegen overflow:hidden selbst Scroll-Container ist. Nur wo unterstützt, aus bei 'Bewegung reduzieren'. */
+@supports (animation-timeline:scroll()){@media (prefers-reduced-motion:no-preference){
+.hero>picture{display:block;position:absolute;inset:0;animation:hpar linear both;animation-timeline:scroll(root);animation-range:0 80svh}
+.hero>.hero-film{animation:hpar linear both;animation-timeline:scroll(root);animation-range:0 80svh}
+.hero>.wrap{animation:hwrap linear both;animation-timeline:scroll(root);animation-range:0 64svh}
+@keyframes hpar{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,26%,0)}}
+@keyframes hwrap{from{transform:none;opacity:1}to{transform:translate3d(0,-12%,0);opacity:.2}}
+}}
