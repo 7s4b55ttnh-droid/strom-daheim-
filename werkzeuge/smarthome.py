@@ -591,6 +591,8 @@ def main():
         assert any(b[0] == mo[1] for b in BEREICHE) and 1 <= mo[11] <= len(QUELLEN), mo[0]
     out = kopf + m + SCRIPT.replace('__NAMEN__', namen) + fuss.replace('</main>', '</main>', 1)
     out = out.replace(m + SCRIPT.replace('__NAMEN__', namen) + '</main>', m + '</main>\n' + SCRIPT.replace('__NAMEN__', namen)) if False else kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', FILM + SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
+    import site_header
+    out = site_header.apply(out, 'smarthome')   # Menü mit dieser Seite als aktueller Seite (25.11.2026: sonst erbt sie aria-current der Vorlage)
     (ROOT / 'smarthome.html').write_text(out, encoding='utf-8')
     print('smarthome.html geschrieben:', len(out), 'Zeichen,', len(MODELLE), 'Modelle')
 

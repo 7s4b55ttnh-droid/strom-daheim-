@@ -284,6 +284,8 @@ def main():
     for mo in MODELLE:
         assert any(b[0] == mo[1] for b in BEREICHE) and 1 <= mo[11] <= len(QUELLEN), mo[0]
     out = kopf + m + '</main>' + fuss[len('</main>'):].replace('<script>\n/* Besucherzähler', sh.FILM + SCRIPT.replace('__NAMEN__', namen) + '<script>\n/* Besucherzähler', 1)
+    import site_header
+    out = site_header.apply(out, 'multimedia')   # Menü mit dieser Seite als aktueller Seite (25.11.2026: sonst erbt sie aria-current der Vorlage)
     (ROOT / 'multimedia.html').write_text(out, encoding='utf-8')
     print('multimedia.html geschrieben:', len(out), 'Zeichen,', len(MODELLE), 'Modelle')
 
