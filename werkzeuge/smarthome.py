@@ -25,16 +25,15 @@ def amz(q):
 
 
 # tink (Awin 13686, zugelassen 23.11.2026): Produktseiten, am 23.11.2026 über die Suche von tink.de geprüft.
+# 25.11.2026: hue-white und fritz-thermo entfernt (Link-Wächter: tink-Seiten 404).
 TINK = {
     'tado-x': 'tado-smartes-heizkoerper-thermostat-x-zusatzprodukt',
     'nuki-pro': 'nuki-smart-lock-pro-5-gen',
     'nuki-go': 'nuki-smart-lock-go',
     'hue-start': 'philips-hue-starter-set-mit-bridge-pro-und-2-white-and-color-ambiance-e27-lampen-1110-lm',
-    'hue-white': 'philips-hue-white-e27-1050lm',
     'homepod-mini': 'apple-homepod-mini-2-gen',
     'tapo-p115': 'tp-link-tapo-p115-smarte-wlan-steckdose-rund',
     'hmip-evo': 'homematic-ip-heizkorperthermostat-evo-n',
-    'fritz-thermo': 'fritz-smart-thermo-302-heizkoerperthermostat',
     'echo-dot': 'amazon-echo-dot-5th-gen-smart-lautsprecher-mit-alexa',
     'fire-tv': 'amazon-fire-tv-stick-4k-plus-2025-release',
     'hmip-rauch': 'homematic-ip-rauchwarnmelder-mit-q-label',
