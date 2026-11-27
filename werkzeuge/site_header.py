@@ -55,6 +55,7 @@ GRID = [('/#rechner-sektion', '☀️', 'Lohnt sich ein Balkonkraftwerk?', 'Rech
         ('/infrarotheizung.html', '🟥', 'Infrarotheizung', 'Stromkosten, Leistung, Gesetz', 'infrarotheizung'),
         ('/heizungspumpe.html', '⚙️', 'Heizungspumpe tauschen', 'Stromkosten, Spar-Rechner, Förderung', 'heizungspumpe'),
         ('/heizdecke.html', '🛋️', 'Heizdecke', 'Stromkosten, Rechner, Sicherheit', 'heizdecke'),
+        ('/nachtspeicher.html', '🧱', 'Nachtspeicherheizung', 'Kosten-Rechner, Tarif, Tausch', 'nachtspeicher'),
         ('/smarthome.html', '🏠', 'Smarthome für Einsteiger', 'Systeme, Geräte, Modelle', 'smarthome'),
         ('/multimedia.html', '📺', 'Multimedia zu Hause', 'Fernseher, Soundbar, Streaming', 'multimedia'),
         ('/strompreise-2027.html', '📆', 'Strompreise 2027', 'Erhöhung zum 1. Januar, Fristen, Rechner', 'strompreise-2027'),
